@@ -213,6 +213,17 @@ Everything here is Grade C or below. The most advanced is 40 Hz gamma sensory st
 - Lithium is the frontier finding most likely to be hyped (cheap, sold as a supplement). It should be clearly flagged as animal-stage.
 - The lowest-dose-best signal for tau antisense and the semaglutide biomarker/clinical disconnect both argue for humility about mechanism-based predictions. A brain-modeling project could add value by modeling biomarker-to-clinical translation explicitly.
 
+**Per-claim grade table: section 4**
+
+| Claim | Grade | Design | Replicated? | Effect vs meaningfulness | COI / red flags |
+|---|---|---|---|---|---|
+| 40 Hz light/sound (Spectris) slows decline | C (pending Phase 3) | Small feasibility RCT (OVERTURE) + open-label extension | Mouse 40 Hz findings (Tsai lab, MIT) have had mixed independent replication (background; not verified) | "76% reduction" is company-reported, from a small n | Cognito press releases; MIT founder ties; HOPE results not found |
+| Non-invasive brain stimulation (Sinaptica) | C | Phase 2, small | No | 44% slowing claim | Company-reported |
+| Focused ultrasound + antibody | C | Open-label, n=3 | No | 32% extra regional amyloid clearance; no clinical endpoint | Academic (WVU, Rezai); safety in larger samples unknown |
+| Lithium orotate prevents/reverses AD | C (human association) / D for any treatment claim | Postmortem human + mouse | No human RCT | Mouse-only reversal | Supplement-industry hype risk; registered human trial not found |
+| Tau ASO | C | See section 1 | | | |
+| TREM2, senolytics, APOE gene therapy, reprogramming, glymphatic | C/D | Preclinical or early-phase | — | — | Not researched in depth this session; TREM2 AL002 Phase 2 failure is background knowledge |
+
 ### Gaps
 - No sources were retrieved this session on: APOE4 gene therapy (e.g., LX1001 AAV-APOE2), TREM2 agonists (background: Alector/AbbVie AL002 failed the Phase 2 INVOKE-2 trial in late 2024; not verified this session), senolytics (dasatinib + quercetin SToMP-AD pilots), partial epigenetic reprogramming (preclinical only, to the researcher's knowledge), neuroinflammation-targeted trials, or glymphatic-clearance interventions. All should be treated as preclinical or early-phase unless the report writer has other sources.
 - HOPE Phase 3 results (expected ~Aug 2026) were not found. Check Cognito / ClinicalTrials.gov NCT05637801.
@@ -236,6 +247,13 @@ Blood biomarkers are now clinically real. The FDA cleared the first AD blood tes
 ### Inferences
 - Cheap, scalable blood tests shift the bottleneck from detection to proven early intervention. Today, a positive test in an asymptomatic person leads to no approved treatment, only lifestyle and risk-factor management and trial enrollment.
 - An open-source project could ground goals in: (a) biomarker-trajectory modeling (p-tau217 → amyloid/tau PET → clinical progression), (b) individual risk prediction combining biomarkers, APOE, and Lancet risk factors, and (c) ARIA risk modeling. All have real, available data and clinical relevance.
+
+**Per-claim grade table: section 5**
+
+| Claim | Grade | Design | Replicated? | Effect vs meaningfulness | COI / red flags |
+|---|---|---|---|---|---|
+| Plasma p-tau217 detects AD pathology accurately | A (diagnostic accuracy) | Many independent cohort validation studies vs PET/CSF (background) plus FDA clearance | Yes, across labs and assays | High accuracy in specialty settings; lower PPV in low-prevalence primary care; indeterminate zone | Assay manufacturers (Fujirebio, C2N, Roche, Lilly) fund many validation studies |
+| Biological definition of AD (AA 2024) | Expert consensus (not an evidence grade) | Workgroup criteria | Contested by IWG | Diagnosing asymptomatic people with no proven therapy raises ethical concerns | Industry participation in the workgroup has been criticized (background; verify) |
 
 ### Gaps
 - Exact Lumipulse performance metrics (sensitivity/specificity/PPV/NPV, indeterminate rate) were not retrieved this session.

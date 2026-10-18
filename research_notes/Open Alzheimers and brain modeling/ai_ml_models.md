@@ -424,6 +424,33 @@ AlzKB, an open AD knowledge graph with about 119k entities and 1.3M relations in
 ### Inferences
 - The pattern is consistent: a curated AD knowledge graph or data lake, an LLM planner, and tool or code execution. The KG and agent frameworks are open, but the validation of AD-specific insights so far is press-release or self-reported.
 
+#### Vetting assessments (KG and agents)
+
+**AlzKB**
+- Peer review: yes (JMIR 2024).
+- Availability: freely available on the web.
+- Critiques: none found.
+- Red flags:
+  - A KG reflects literature bias, so heavily studied genes dominate.
+  - Version drift (119k vs 234k nodes) between the paper and later releases.
+- To verify: pin the KG version, and run a time-split evaluation (build the KG from pre-2015 data, test whether it predicts later trial-supported repurposing candidates).
+
+**ESCARGOT (AlzKB + LLM)**
+- Peer review: yes (BioData Mining 2025).
+- External validation: no independent benchmark found.
+- Red flags:
+  - LLM non-determinism.
+  - The evaluation of repurposing "outcomes" may rely on literature already in the KG or LLM training data, which is leakage via pretraining. This is an inference.
+- To verify: repeated runs with seeds, temporal holdout, and blinded expert review.
+
+**Biomni / Biomni-AD**
+- Peer review: Biomni was a preprint per press coverage; journal status not verified. Biomni-AD is a prize announcement only ([Mount Sinai](https://www.mountsinai.org/about/newsroom/2026/mount-sinai-scientists-recognized-with-global-ai-prize-for-novel-alzheimers-disease-research-platform)).
+- Availability: base Biomni is open source. The release status of Biomni-AD is unknown.
+- RED FLAGS:
+  - Prize and press claims are not evidence of validated insights.
+  - Agents can produce plausible but wrong analyses.
+- To verify: audit agent-generated analyses by re-running the code by hand, and test reproducibility across runs and LLM versions.
+
 ### Gaps
 - Not checked this session:
   - Whether Biomni-AD's code and data lake are publicly released (as opposed to base Biomni).
