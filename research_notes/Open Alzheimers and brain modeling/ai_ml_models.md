@@ -477,6 +477,19 @@ Leakage is endemic and well documented:
 - Any AD MRI classifier claiming more than 95% AD-vs-CN accuracy, especially with 2D slices, a Kaggle-style ADNI/OASIS slice dataset, or no subject-level split, should be presumed leaky until shown otherwise.
 - Other likely leakage sources follow from the same mechanism: multiple visits per subject across folds, preprocessing or feature selection fit on the full dataset, and site or scanner confounds. Subject-level, site-aware splits and external validation (e.g., NACC→ADNI/FHS, as in nmed2024) are the minimum standard.
 
+#### Red-flag checklist for any AD model the user brings in (derived from the findings above)
+1. Reported AD vs CN accuracy above 95% from MRI, or above 90% from speech. Likely leakage or confounding ([Yagis](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8604922/); [Clever Hans](https://arxiv.org/abs/2406.07410)).
+2. 2D slice-based models, or no explicit statement that splits are subject-level.
+3. Multiple visits per subject with no grouping by subject ID.
+4. Normalization, feature selection or hyperparameter tuning done before the train/test split.
+5. Test data from the same cohort as training (e.g., ADNI-only) with no independent external cohort.
+6. Foundation model pretraining corpus includes the downstream test cohort (ADNI, OASIS, UKB) with no de-duplication.
+7. No simple baseline reported (hippocampal volume, SVM on volumes, age+APOE, PCA).
+8. Labels are clinical diagnoses only, with no amyloid or tau confirmation, which mixes in non-AD dementias.
+9. Micro-averaged metrics hiding minority-class performance.
+10. No released weights, or weights on ephemeral hosting (Dropbox), or a license that bars the intended use (NC, AGPL, no-distillation).
+11. Performance claims supported only by press releases or prizes.
+
 ### Gaps
 - Not found:
   - A systematic 2024–2026 audit quantifying leakage in recent AD deep-learning or foundation-model papers.
