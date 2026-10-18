@@ -1,0 +1,40 @@
+# Compromised or discredited research. Anything traced to these is excluded unless
+# independently replicated. See policy/INTEGRITY.md. Facts here came partly from
+# secondary sources; cite primary notices (retraction notice, ORI/NIH, SEC) before publishing.
+resources:
+  - id: lesne-abeta56
+    name: Lesne et al. 2006 (Nature) Abeta*56 oligomer and work built on it
+    url: https://researchexperts.utmb.edu/en/publications/retraction-note-a-specific-amyloid-%CE%B2-protein-assembly-in-the-brai/
+    kind: research-claim
+    triage: C
+    license: {spdx: n/a, class: none, source: n/a}
+    reason: Retracted 2024 for image manipulation; other labs doubt Abeta*56 is detectable as described.
+    to_verify: [Cite the Nature retraction notice directly (notes disagree on June vs July 2024)]
+    checked: 2026-10-18
+
+  - id: masliah
+    name: Eliezer Masliah-authored findings
+    url: https://alzforum.org/news/community-news/data-fabrication-ousted-nia-neuroscience-director-eliezer-masliah
+    kind: research-claim
+    triage: C
+    license: {spdx: n/a, class: none, source: n/a}
+    reason: NIH research-misconduct finding (Sept 2024); a Science dossier flagged 132 papers.
+    checked: 2026-10-18
+
+  - id: simufilam
+    name: Simufilam / Cassava Sciences data
+    url: https://sec.gov/newsroom/press-releases/2024-151
+    kind: research-claim
+    triage: C
+    license: {spdx: n/a, class: none, source: n/a}
+    reason: Two failed Phase 3 trials, $40M SEC settlement, indicted academic collaborator (Hoau-Yan Wang).
+    checked: 2026-10-18
+
+  - id: bredesen-recode
+    name: Bredesen ReCODE "reversal" claims
+    url: https://alzheimer.ca/en/whats-happening/news/bredesen-protocol-offers-false-hope-reversing-alzheimers-disease
+    kind: research-claim
+    triage: C
+    license: {spdx: n/a, class: none, source: n/a}
+    reason: Uncontrolled case series with no published RCT; Alzheimer Society of Canada calls it "false hope".
+    checked: 2026-10-18

@@ -1,0 +1,100 @@
+# Biology foundation models (single-cell, protein structure, DNA) and fluid/digital biomarker models.
+# Source: docs/landscape-2026-10 (notes/ai_ml_models.md).
+resources:
+  - id: geneformer
+    name: Geneformer
+    url: https://huggingface.co/ctheodoris/Geneformer
+    kind: model
+    triage: B
+    license: {spdx: Apache-2.0, class: permissive, source: docs}
+    peer_reviewed: "yes"
+    reason: Openly licensed, but zero-shot use often loses to PCA/HVG baselines; AD perturbation work is preprint-only.
+    sources: [https://pmc.ncbi.nlm.nih.gov/articles/PMC12328236/]
+    checked: 2026-10-18
+
+  - id: scgpt
+    name: scGPT (incl. brain checkpoint)
+    url: https://github.com/bowang-lab/scGPT
+    kind: model
+    triage: B
+    license: {spdx: MIT, class: permissive, source: license-file}
+    peer_reviewed: "yes"
+    reason: Did not beat simple linear baselines on perturbation prediction (Nature Methods 2025).
+    checked: 2026-10-18
+
+  - id: open-structure-models
+    name: Boltz-2, OpenFold3, Chai-1
+    url: https://huggingface.co/OpenFold/OpenFold3
+    kind: model
+    triage: B
+    license: {spdx: MIT / Apache-2.0 / disputed, class: unconfirmed, source: secondary}
+    reason: Commercially usable AF3 alternatives, unvalidated on AD targets; tau and Abeta are disordered (hard case).
+    red_flags: [Chai-1 license reported as Apache-2.0 by repo but non-commercial by a secondary source.]
+    checked: 2026-10-18
+
+  - id: evo2
+    name: Evo 2
+    url: https://github.com/ArcInstitute/evo2
+    kind: model
+    triage: B
+    license: {spdx: Apache-2.0 (code), class: unconfirmed, source: license-file}
+    reason: Code LICENSE is Apache-2.0; weights license still ambiguous (possibly NVIDIA Open Model License).
+    checked: 2026-10-18
+
+  - id: restricted-deepmind-esm
+    name: AlphaFold 3 weights, AlphaGenome, ESM3-open
+    url: https://deepmind.google.com/science/alphagenome/terms
+    kind: model
+    triage: C
+    license: {spdx: custom-restrictive, class: non-commercial, source: docs}
+    reason: Restrictive terms (AlphaGenome bars commercial use and training other models).
+    checked: 2026-10-18
+
+  - id: biofinder-plasma-ml
+    name: BioFINDER plasma p-tau to amyloid-PET models
+    url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12808103/
+    kind: model
+    triage: B
+    license: {spdx: none-released, class: none, source: n/a}
+    peer_reviewed: "yes"
+    reason: R^2 0.73-0.79 but assay- and cohort-specific with no code; re-implement from the paper.
+    checked: 2026-10-18
+
+  - id: ukb-dementia-risk-score
+    name: UKB Dementia Risk Score
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC9519470
+    kind: model
+    triage: B
+    license: {spdx: none-released, class: none, source: n/a}
+    peer_reviewed: "yes"
+    independent_replication: partial
+    reason: Externally validated (AUC 0.83 in Whitehall II); re-implement from published coefficients.
+    checked: 2026-10-18
+
+  - id: synthetic-data-precedents
+    name: Synthetic AD trial generator (medRxiv 2024), LDM100K
+    url: https://www.medrxiv.org/content/10.1101/2024.02.05.24302140.full.pdf
+    kind: dataset
+    access: open
+    triage: B
+    license: {spdx: unknown, class: unconfirmed, source: unconfirmed}
+    reason: Precedents for shareable demo data; licenses, memorisation risk and fidelity unverified.
+    checked: 2026-10-18
+
+  - id: speech-dementia-classifiers
+    name: ADReSS / DementiaBank speech classifiers
+    url: https://arxiv.org/abs/2406.07410
+    kind: research-claim
+    triage: C
+    license: {spdx: n/a, class: none, source: n/a}
+    reason: Silence-only segments give ~100% accuracy (recording confound); tiny test sets.
+    checked: 2026-10-18
+
+  - id: keystroke-digital-biomarkers
+    name: Keystroke and small digital-biomarker claims (e.g. Neurokeys 97.9%)
+    url: https://jmir.org/2024/1/e59247/PDF
+    kind: research-claim
+    triage: C
+    license: {spdx: n/a, class: none, source: n/a}
+    reason: n=111, unreplicated, implausibly high sensitivity.
+    checked: 2026-10-18

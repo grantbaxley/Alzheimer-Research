@@ -1,0 +1,96 @@
+# Mechanistic models: connectome spreading, ODE cascade models, QSP, glial metabolism.
+# Source: docs/landscape-2026-10 (notes/ad_disease_progression_models.md, notes/brain_simulation_platforms.md).
+resources:
+  - id: ucl-network-spreading
+    name: UCL network_spreading_models (NDM, FKPP, amyloid-weighted FKPP)
+    url: https://github.com/ucl-pond/network_spreading_models
+    kind: software
+    triage: B
+    license: {spdx: MIT, class: permissive, source: license-file}
+    maintained: last commit 2025-12-02
+    peer_reviewed: partial
+    independent_replication: "no"
+    reason: Closest open toolbox to alzres.spreading, but evidence is a conference abstract with group-level fits.
+    red_flags: [Scout notes disagreed on whether the repo exists; confirmed public via git 2026-10-18.]
+    to_verify: [Cross-check outputs against alzres.spreading on the same connectome]
+    sources: [https://pmc.ncbi.nlm.nih.gov/articles/PMC11716492/]
+    checked: 2026-10-18
+
+  - id: nexis
+    name: Nexis / extended network diffusion (UCSF Raj Lab)
+    url: https://github.com/Raj-Lab-UCSF/Nexis
+    kind: software
+    triage: B
+    license: {spdx: MIT, class: permissive, source: license-file}
+    peer_reviewed: "yes"
+    maintained: default-branch last commit 2022-10-13
+    reason: Peer-reviewed method, but MATLAB-only, 2 stars and stale; port and benchmark.
+    checked: 2026-10-18
+
+  - id: biofinder-sir-tau
+    name: BioFINDER agent-based SIR tau spread model
+    url: https://github.com/DeMONLab-BioFINDER/Xiao_Tau_simulation_SIR
+    kind: software
+    triage: C
+    license: {spdx: none, class: none, source: license-file}
+    maintained: last commit 2026-04-01
+    reason: No LICENSE file (checked 2026-10-18), so no reuse rights; ask the authors to add one.
+    checked: 2026-10-18
+
+  - id: ejcorn-tau-spread
+    name: ejcorn/tau-spread
+    url: https://github.com/ejcorn/tau-spread
+    kind: software
+    triage: B
+    license: {spdx: MIT, class: permissive, source: license-file}
+    maintained: last commit 2021-07-20
+    reason: MIT, but mouse data only and unmaintained since 2021.
+    checked: 2026-10-18
+
+  - id: raj-aggregation-network-diffusion
+    name: Raj Lab Aggregation-Network-Diffusion
+    url: https://github.com/Raj-Lab-UCSF/Aggregation-Network-Diffusion
+    kind: software
+    triage: C
+    license: {spdx: none, class: none, source: api-metadata}
+    reason: Dormant since 2020; README claims BSD-3 but no license file exists.
+    checked: 2026-10-18
+
+  - id: multiscale-ode-19var
+    name: Multiscale 19-variable AD ODE model
+    url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10995318/
+    kind: research-claim
+    triage: B
+    license: {spdx: n/a, class: unconfirmed, source: n/a}
+    peer_reviewed: "yes"
+    reason: Sensitivity-analysed, but 75 parameters vs sparse human data is an identifiability risk; equations only.
+    to_verify: [Re-implement in SBML, Identifiability analysis, Audit parameter sources for retracted work]
+    checked: 2026-10-18
+
+  - id: abeta-oligomer-odes
+    name: Amyloid-beta oligomer ODE models
+    url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12334554/
+    kind: research-claim
+    triage: B
+    license: {spdx: n/a, class: unconfirmed, source: n/a}
+    reason: Theoretical, not calibrated to human data; audit for dependence on the retracted Abeta*56 work.
+    checked: 2026-10-18
+
+  - id: lcsb-astrocyte-metabolism
+    name: LCSB astrocyte energy-metabolism model
+    url: https://gitlab.lcsb.uni.lu/ICS-lcsb/energy-metabolism-model-astrocyte
+    kind: software
+    triage: B
+    license: {spdx: unknown, class: unconfirmed, source: unconfirmed}
+    peer_reviewed: "yes"
+    reason: Peer-reviewed (PLoS Comp Biol 2023) but some experiments need Python 2.7 and FEniCS 1.5.
+    checked: 2026-10-18
+
+  - id: industry-qsp
+    name: Industry AD QSP models (Biogen/Applied BioMath, Certara, InSysBio)
+    url: https://www.certara.com/poster/quantitative-systems-pharmacology-model-for-therapies-targeting-a%ce%b2-and-tau-pathologies-in-alzheimers-disease/
+    kind: model
+    triage: C
+    license: {spdx: proprietary, class: none, source: docs}
+    reason: Closed code and vendor-reported calibration; cannot be verified.
+    checked: 2026-10-18

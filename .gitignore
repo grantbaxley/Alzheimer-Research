@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+
+# Local data: never committed (policy/DATA_ACCESS.md)
+data/
+private/
+*.nii
+*.nii.gz
+*.dcm
+*.mgz
+*.mgh
+*.h5ad
+*.loom
+*.pickle
+*.pkl
+pickle_files/
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/

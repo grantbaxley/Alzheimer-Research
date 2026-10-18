@@ -1,0 +1,91 @@
+# Targets, drugs, knowledge graphs, pipelines and AI agents.
+# Source: docs/landscape-2026-10 (notes/drug_discovery_and_communities.md, notes/ai_ml_models.md).
+resources:
+  - id: open-targets
+    name: Open Targets Platform
+    url: https://platform.opentargets.org/
+    kind: knowledge-base
+    triage: A
+    license: {spdx: CC0-1.0 (to confirm), class: permissive, source: secondary}
+    peer_reviewed: "yes"
+    independent_replication: "yes"
+    reason: Free, open-source target prioritisation with per-source evidence; do not rely on literature score alone.
+    to_verify: [Confirm data license from the platform's license page]
+    checked: 2026-10-18
+
+  - id: agora
+    name: Agora (AMP-AD target explorer)
+    url: https://agora.adknowledgeportal.org/
+    kind: knowledge-base
+    triage: B
+    license: {spdx: unknown, class: unconfirmed, source: unconfirmed}
+    reason: More than 950 nominated targets, but nominations are hypotheses from consortia that study them.
+    checked: 2026-10-18
+
+  - id: treat-ad
+    name: TREAT-AD probes and Target Enabling Packages
+    url: https://treatad.org/
+    kind: knowledge-base
+    triage: B
+    license: {spdx: unknown, class: unconfirmed, source: unconfirmed}
+    reason: Openly distributed chemical/biological probes; terms of reuse not confirmed.
+    checked: 2026-10-18
+
+  - id: alzped
+    name: AlzPED (preclinical efficacy database)
+    url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11713837/
+    kind: knowledge-base
+    triage: B
+    license: {spdx: unknown, class: unconfirmed, source: secondary}
+    reason: Useful for meta-research; only 4% of studies report power calculations, 10% blinding.
+    red_flags: [Access listed as public by NIA but "restricted" in its RRID record.]
+    checked: 2026-10-18
+
+  - id: alzforum-therapeutics
+    name: Alzforum Therapeutics database and Cummings pipeline reviews
+    url: https://alzforum.org/therapeutics
+    kind: knowledge-base
+    triage: B
+    license: {spdx: editorial, class: data-terms, source: docs}
+    reason: Reliable as a census, not as efficacy evidence (2025 pipeline still listed simufilam).
+    to_verify: [Cross-check each entry against ClinicalTrials.gov]
+    sources: [https://doi.org/10.1002/trc2.70251]
+    checked: 2026-10-18
+
+  - id: alzkb
+    name: AlzKB knowledge graph
+    url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11066745/
+    kind: knowledge-base
+    triage: B
+    license: {spdx: unknown, class: unconfirmed, source: unconfirmed}
+    peer_reviewed: "yes"
+    reason: Literature-derived edges need retraction filtering and version pinning (sizes drift by version).
+    checked: 2026-10-18
+
+  - id: primekg-txgnn
+    name: PrimeKG and TxGNN
+    url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9893183/
+    kind: knowledge-base
+    triage: B
+    license: {spdx: unknown, class: unconfirmed, source: unconfirmed}
+    peer_reviewed: "yes"
+    reason: Open graph and zero-shot repurposing model; validation is retrospective only.
+    checked: 2026-10-18
+
+  - id: llm-agents
+    name: ESCARGOT, base Biomni (LLM research agents)
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC12326721/
+    kind: software
+    triage: B
+    license: {spdx: unknown, class: unconfirmed, source: unconfirmed}
+    reason: No independent benchmark; non-deterministic; possible answer leakage via pretraining data.
+    checked: 2026-10-18
+
+  - id: ai-prize-winners
+    name: Biomni-AD, Prima Mente (2026 Alzheimer's Insights AI Prize)
+    url: https://www.mountsinai.org/about/newsroom/2026/mount-sinai-scientists-recognized-with-global-ai-prize-for-novel-alzheimers-disease-research-platform
+    kind: research-claim
+    triage: C
+    license: {spdx: unknown, class: unconfirmed, source: unconfirmed}
+    reason: Prize and press claims only; release status unknown.
+    checked: 2026-10-18

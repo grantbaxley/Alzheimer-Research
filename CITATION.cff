@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software or registry, please cite it, and cite the upstream tools and papers it builds on (see registry/)."
+title: "alzheimer-research: a verification-first open toolkit for Alzheimer's disease modeling"
+authors:
+  - name: "alzheimer-research contributors"
+repository-code: "https://github.com/grantbaxley/alzheimer-research"
+license: Apache-2.0
+version: 0.1.0
+date-released: 2026-10-18

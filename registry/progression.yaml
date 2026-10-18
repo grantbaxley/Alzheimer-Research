@@ -1,0 +1,113 @@
+# Data-driven disease progression models and benchmarks.
+# Source: docs/landscape-2026-10 (notes/ad_disease_progression_models.md). Fields: registry/README.md.
+resources:
+  - id: pysustain
+    name: pySuStaIn (Subtype and Stage Inference)
+    url: https://github.com/ucl-pond/pySuStaIn
+    kind: software
+    triage: A
+    license: {spdx: MIT, class: permissive, source: license-file}
+    peer_reviewed: "yes"
+    independent_replication: partial
+    maintained: last push 2026-03-30
+    pinned: 708fa22d89c9692dbeafcc2c31a1c8460ced5640
+    our_status: smoke-tested
+    verification: tests/test_integration_pysustain.py (recovers known event order on synthetic data)
+    reason: Most-used open progression tool; atrophy subtypes replicated across cohorts.
+    red_flags:
+      - Subtypes shift with cohort mix and control inclusion (arXiv 2412.00160).
+      - Independent tau-PET cohort found three subtypes, not Vogel 2021's four (PMC12734641).
+    to_verify:
+      - Reproduce one published SuStaIn figure on an approved cohort copy.
+      - Subtype-stability analysis across cohorts and with/without controls.
+    sources: [https://arxiv.org/pdf/2412.00160, https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12734641/]
+    checked: 2026-10-18
+
+  - id: leaspy
+    name: Leaspy / AD Course Map
+    url: https://github.com/aramis-lab/leaspy
+    kind: software
+    triage: B
+    license: {spdx: BSD-3-Clause-Clear, class: permissive, source: license-file}
+    peer_reviewed: "yes"
+    independent_replication: "no"
+    maintained: last push 2026-09-17
+    reason: Maintained mixed-effects trajectory models, but only independent test is a student thesis.
+    red_flags:
+      - Docs claim it "outperformed 56 methods" in TADPOLE; organisers found no method beat random on ADAS-Cog13.
+      - BSD-3-Clause-Clear explicitly withholds patent rights.
+    to_verify: [Re-score against naive baselines on held-out subjects, Recover ground truth on alzres.synthetic cohorts]
+    sources: [https://leaspy.readthedocs.io/en/dev/to_go_further.html, https://arxiv.org/pdf/2002.03419]
+    checked: 2026-10-18
+
+  - id: kde-ebm
+    name: kde_ebm (kernel density event-based model)
+    url: https://github.com/ucl-pond/kde_ebm
+    kind: software
+    triage: B
+    license: {spdx: GPL-3.0, class: copyleft, source: license-file}
+    peer_reviewed: "yes"
+    independent_replication: unknown
+    reason: Maintained EBM variant; GPL so it must live in a separately licensed module.
+    to_verify: [Synthetic ground-truth recovery]
+    checked: 2026-10-18
+
+  - id: pyebm
+    name: pyebm
+    url: https://github.com/88vikram/pyebm
+    kind: software
+    triage: B
+    license: {spdx: GPL-3.0, class: copyleft, source: license-file}
+    maintained: last commit 2022-01-20
+    reason: Event-based model implementation; GPL-3.0 and unmaintained since 2022.
+    checked: 2026-10-18
+
+  - id: brlp
+    name: BrLP (Brain Latent Progression, latent diffusion)
+    url: https://github.com/LemuelPuglisi/BrLP
+    kind: model
+    triage: B
+    license: {spdx: MIT, class: permissive, source: license-file}
+    peer_reviewed: "yes"
+    independent_replication: "no"
+    reason: MICCAI 2024 oral, but realistic generated MRI is not evidence of clinical validity.
+    checked: 2026-10-18
+
+  - id: tadpole
+    name: TADPOLE challenge (evaluation design)
+    url: https://arxiv.org/pdf/2002.03419
+    kind: benchmark
+    triage: A
+    license: {spdx: n/a, class: data-terms, source: n/a}
+    peer_reviewed: "yes"
+    independent_replication: "yes"
+    reason: Strongest prospective, organiser-run AD forecasting benchmark; use its design, data is ADNI-gated.
+    red_flags: [Data only via ADNI IDA under the ADNI DUA; cannot be redistributed.]
+    checked: 2026-10-18
+
+  - id: sustain-matlab
+    name: SuStaInMatlab
+    url: https://github.com/ucl-pond/SuStaInMatlab
+    kind: software
+    triage: C
+    license: {spdx: none, class: none, source: api-metadata}
+    reason: No license (no reuse rights) and superseded by pySuStaIn.
+    checked: 2026-10-18
+
+  - id: dive-and-legacy-ebm
+    name: DIVE, noxtoby/TADPOLE, ucl-pond/ebm (legacy repos)
+    url: https://github.com/ucl-pond
+    kind: software
+    triage: C
+    license: {spdx: mixed, class: unconfirmed, source: api-metadata}
+    reason: Archived, stale or unlicensed; use pySuStaIn or kde_ebm instead.
+    checked: 2026-10-18
+
+  - id: gppm
+    name: GP progression model (Lorenzi)
+    url: https://doi.org/10.1016/j.neuroimage.2017.08.059
+    kind: software
+    triage: C
+    license: {spdx: unknown, class: unconfirmed, source: unconfirmed}
+    reason: No maintained public repository could be confirmed.
+    checked: 2026-10-18

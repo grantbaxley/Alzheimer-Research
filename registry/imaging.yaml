@@ -1,0 +1,123 @@
+# Neuroimaging pipelines and imaging ML models.
+# Source: docs/landscape-2026-10 (notes/ai_ml_models.md, notes/ad_disease_progression_models.md).
+resources:
+  - id: clinicadl
+    name: ClinicaDL
+    url: https://github.com/aramis-lab/clinicadl
+    kind: software
+    triage: A
+    license: {spdx: MIT, class: permissive, source: license-file}
+    peer_reviewed: "yes"
+    independent_replication: partial
+    maintained: pushed 2026-10
+    reason: Built to prevent leakage (subject-level splits, leakage checks); peer-reviewed (CMPB 2022).
+    sources: [https://pubmed.ncbi.nlm.nih.gov/35483271/]
+    checked: 2026-10-18
+
+  - id: clinica
+    name: Clinica (BIDS converters and pipelines)
+    url: https://github.com/aramis-lab/clinica
+    kind: software
+    triage: A
+    license: {spdx: MIT, class: permissive, source: license-file}
+    peer_reviewed: "yes"
+    reason: BIDS converters for ADNI, AIBL, OASIS and others; LICENSE.txt read 2026-10-18 is MIT (resolves notes conflict).
+    red_flags: [Wrapped tools (FreeSurfer, SPM, ANTs) carry their own licenses.]
+    to_verify: [Check each wrapped tool's license for the pipelines used]
+    checked: 2026-10-18
+
+  - id: fastsurfer
+    name: FastSurfer
+    url: https://github.com/deep-MI/FastSurfer
+    kind: software
+    triage: A
+    license: {spdx: Apache-2.0, class: permissive, source: license-file}
+    peer_reviewed: "yes"
+    independent_replication: "yes"
+    reason: Peer-reviewed, containerised, maintained MRI segmentation.
+    red_flags:
+      - Surface stream needs a FreeSurfer license.
+      - Hippocampal volumes differ ~10% from SynthSeg; never mix tools within one study.
+    checked: 2026-10-18
+
+  - id: synthseg
+    name: SynthSeg
+    url: https://github.com/BBillot/SynthSeg
+    kind: software
+    triage: A
+    license: {spdx: Apache-2.0, class: permissive, source: license-file}
+    peer_reviewed: "yes"
+    independent_replication: "yes"
+    reason: Contrast-agnostic segmentation, independently on par with FreeSurfer/FIRST for hippocampus.
+    sources: [https://ixico.com/assets/Uploads/Automatic-segmentation-using-deep-learning-for-the-hippocampus.pdf]
+    checked: 2026-10-18
+
+  - id: nmed2024
+    name: Multimodal dementia etiology model (Xue/Kolachalama, Nat Med 2024)
+    url: https://github.com/vkola-lab/nmed2024
+    kind: model
+    triage: B
+    license: {spdx: AGPL-3.0, class: network-copyleft, source: license-file}
+    peer_reviewed: "yes"
+    independent_replication: partial
+    reason: Externally validated, but AGPL, unclear weight availability, and a 2025 hotfix changed behaviour.
+    red_flags: [Micro-averaged AUROCs can hide weak classes.]
+    checked: 2026-10-18
+
+  - id: brainsegfounder
+    name: BrainSegFounder
+    url: https://arxiv.org/html/2406.10395v3
+    kind: model
+    triage: B
+    license: {spdx: unknown, class: unconfirmed, source: unconfirmed}
+    reason: Code and weights exist but evaluated on tumour and stroke, not AD.
+    checked: 2026-10-18
+
+  - id: sfcn-brain-age
+    name: SFCN brain-age model
+    url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7610710/
+    kind: model
+    triage: B
+    license: {spdx: unknown, class: unconfirmed, source: unconfirmed}
+    peer_reviewed: "yes"
+    reason: Low error on healthy UK Biobank does not show AD sensitivity; brain-age gap needs bias correction.
+    checked: 2026-10-18
+
+  - id: brainiac
+    name: BrainIAC (MRI foundation model)
+    url: https://github.com/AIM-KannLab/BrainIAC
+    kind: model
+    triage: C
+    license: {spdx: custom-noncommercial, class: non-commercial, source: docs}
+    peer_reviewed: "yes"
+    reason: Non-commercial weights on Dropbox; possible ADNI/OASIS overlap between pretraining and test sets.
+    checked: 2026-10-18
+
+  - id: pyment
+    name: pyment brain-age models
+    url: https://github.com/estenhl/pyment-public
+    kind: model
+    triage: C
+    license: {spdx: CC-BY-NC-4.0, class: non-commercial, source: license-file}
+    reason: Non-commercial license blocks inclusion under an OSI license.
+    checked: 2026-10-18
+
+  - id: kaggle-hf-cohort-mirrors
+    name: Kaggle / Hugging Face OASIS or ADNI slice datasets
+    url: https://www.kaggle.com/datasets
+    kind: dataset
+    access: open
+    triage: C
+    license: {spdx: unknown, class: unconfirmed, source: unconfirmed}
+    reason: Unknown provenance, likely DUA breaches, and leakage-prone 2D slices. Banned in this repo.
+    checked: 2026-10-18
+
+  - id: high-accuracy-classifiers
+    name: Any MRI AD-vs-CN classifier >95% or speech classifier >90%
+    url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8604922/
+    kind: research-claim
+    triage: C
+    license: {spdx: n/a, class: none, source: n/a}
+    reason: Presume leakage or confounding until shown otherwise (Wen 2020; Yagis 2021).
+    sources: [https://arxiv.org/pdf/1904.07773]
+    checked: 2026-10-18

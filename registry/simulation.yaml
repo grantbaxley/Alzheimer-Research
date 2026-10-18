@@ -1,0 +1,193 @@
+# Brain simulators, whole-brain platforms and "digital twin" claims.
+# Source: docs/landscape-2026-10 (notes/brain_simulation_platforms.md).
+resources:
+  - id: neuron
+    name: NEURON
+    url: https://github.com/neuronsimulator/nrn
+    kind: software
+    triage: A
+    license: {spdx: BSD-3-Clause, class: permissive, source: license-file}
+    peer_reviewed: "yes"
+    independent_replication: "yes"
+    maintained: 9.0.2 (Aug 2026)
+    reason: Decades of independent use for cellular simulation; general-purpose, not AD-specific.
+    checked: 2026-10-18
+
+  - id: arbor
+    name: Arbor
+    url: https://github.com/arbor-sim/arbor
+    kind: software
+    triage: A
+    license: {spdx: BSD-3-Clause, class: permissive, source: license-file}
+    peer_reviewed: "yes"
+    maintained: 0.12.2
+    reason: Active multicompartment simulator.
+    checked: 2026-10-18
+
+  - id: netpyne
+    name: NetPyNE
+    url: https://github.com/suny-downstate-medical-center/netpyne
+    kind: software
+    triage: A
+    license: {spdx: MIT, class: permissive, source: license-file}
+    peer_reviewed: "yes"
+    reason: Active network-building layer over NEURON.
+    checked: 2026-10-18
+
+  - id: bmtk
+    name: Allen Brain Modeling Toolkit (BMTK)
+    url: https://github.com/AllenInstitute/bmtk
+    kind: software
+    triage: A
+    license: {spdx: BSD-3-Clause, class: permissive, source: license-file}
+    peer_reviewed: "yes"
+    maintained: 1.2.0
+    reason: Active, Allen-maintained multiscale network toolkit.
+    checked: 2026-10-18
+
+  - id: tvb
+    name: The Virtual Brain (platform)
+    url: https://github.com/the-virtual-brain/tvb-root
+    kind: software
+    triage: A
+    license: {spdx: GPL-3.0-or-later, class: copyleft, source: license-file}
+    peer_reviewed: "yes"
+    independent_replication: "yes"
+    maintained: commits Oct 2026; last release 2.10.0 (Jul 2025)
+    reason: Open whole-brain workhorse; copyleft, so it must sit in a separately GPL-licensed module.
+    red_flags: [EBRAINS 2.0 funding ends Dec 2026 with no confirmed successor.]
+    checked: 2026-10-18
+
+  - id: nest
+    name: NEST simulator
+    url: https://github.com/nest/nest-simulator
+    kind: software
+    triage: A
+    license: {spdx: GPL-2.0-or-later, class: copyleft, source: license-file}
+    peer_reviewed: "yes"
+    maintained: 3.10.0
+    reason: Mature spiking-network simulator; isolate like TVB, check GPL-2.0 compatibility.
+    checked: 2026-10-18
+
+  - id: brian2
+    name: Brian2
+    url: https://github.com/brian-team/brian2
+    kind: software
+    triage: A
+    license: {spdx: CECILL-2.1, class: copyleft, source: license-file}
+    peer_reviewed: "yes"
+    maintained: 2.10.1
+    reason: Mature, active spiking simulator; CeCILL is GPL-compatible copyleft.
+    checked: 2026-10-18
+
+  - id: tvb-ad-models
+    name: TVB Alzheimer's virtual brains (Stefanovski 2019, Triebkorn 2022, Patow 2023)
+    url: https://frontiersin.org/journals/computational-neuroscience/articles/10.3389/fncom.2019.00054/full
+    kind: research-claim
+    triage: B
+    license: {spdx: n/a, class: unconfirmed, source: n/a}
+    peer_reviewed: "yes"
+    independent_replication: "no"
+    reason: One consortium, small ADNI subsets (classifier n=33, no external test); re-implement with nulls.
+    to_verify: [Shuffled-connectome and uniform-amyloid nulls, External cohort]
+    checked: 2026-10-18
+
+  - id: vbi
+    name: VBI (Virtual Brain Inference)
+    url: https://pypi.org/project/vbi/
+    kind: software
+    triage: B
+    license: {spdx: Apache-2.0, class: permissive, source: api-metadata}
+    reason: Active inference add-on for TVB with a small user base; confirm its methods paper.
+    checked: 2026-10-18
+
+  - id: neurolib
+    name: neurolib
+    url: https://github.com/neurolib-dev/neurolib
+    kind: software
+    triage: B
+    license: {spdx: MIT, class: permissive, source: license-file}
+    reason: Whole-brain modeling library with commits but no release since 2022; pin a commit.
+    checked: 2026-10-18
+
+  - id: obi-forks
+    name: Open Brain Institute forks (BluePyOpt, neurodamus)
+    url: https://github.com/openbraininstitute
+    kind: software
+    triage: B
+    license: {spdx: LGPL-3.0 / Apache-2.0, class: weak-copyleft, source: license-file}
+    reason: Maintained heirs of archived Blue Brain code, with very small communities.
+    checked: 2026-10-18
+
+  - id: obi-platform
+    name: Open Brain Institute hosted Virtual Labs
+    url: https://www.openbraininstitute.org/
+    kind: platform
+    triage: C
+    license: {spdx: none-stated, class: unconfirmed, source: docs}
+    reason: Freemium, mouse-only, no open-source license stated; not a dependency for this repo.
+    checked: 2026-10-18
+
+  - id: bluebrain-archived
+    name: Archived BlueBrain/* repositories, CoreNEURON
+    url: https://www.github.com/BlueBrain
+    kind: software
+    triage: C
+    license: {spdx: mixed, class: unconfirmed, source: api-metadata}
+    reason: Read-only since Feb 2025; use NEURON and OBI forks instead.
+    checked: 2026-10-18
+
+  - id: dormant-tvb-extensions
+    name: Virtual Aging Brain, EBRAINS-cosim, fast_tvb
+    url: https://repos.ecosyste.ms/api/v1/hosts/GitHub/repositories/ins-amu%2Fvirtual_aging_brain
+    kind: software
+    triage: C
+    license: {spdx: mixed, class: unconfirmed, source: api-metadata}
+    reason: Dormant since 2022-23; Virtual Aging Brain code may be incomplete.
+    checked: 2026-10-18
+
+  - id: fudan-digital-twin-brain
+    name: Fudan Digital Twin Brain / Fugaku mouse cortex
+    url: https://arxiv.org/pdf/2510.15745
+    kind: research-claim
+    triage: C
+    license: {spdx: none, class: none, source: n/a}
+    reason: Scale milestones with no public code or biological validation (DTB used ~0.72% of connections).
+    checked: 2026-10-18
+
+  - id: ebrain-health-twins
+    name: eBRAIN-Health Alzheimer's "digital twin" claims
+    url: https://cordis.europa.eu/project/id/101058516
+    kind: research-claim
+    triage: C
+    license: {spdx: n/a, class: none, source: n/a}
+    reason: Consortium communications only; revisit if peer-reviewed outcome validation appears.
+    checked: 2026-10-18
+
+  - id: brainlm
+    name: BrainLM (fMRI foundation model)
+    url: https://github.com/vandijklab/BrainLM
+    kind: model
+    triage: C
+    license: {spdx: CC-BY-NC-ND-4.0, class: non-commercial, source: license-file}
+    reason: No-derivatives license forbids distributing fine-tuned or modified versions.
+    checked: 2026-10-18
+
+  - id: unlicensed-neuro-repos
+    name: POYO, flywire_annotations
+    url: https://github.com/flyconnectome/flywire_annotations
+    kind: software
+    triage: C
+    license: {spdx: none, class: none, source: api-metadata}
+    reason: No license file means no reuse rights.
+    checked: 2026-10-18
+
+  - id: microns-fnn
+    name: MICrONS foundation model (cajal/fnn)
+    url: https://github.com/cajal/fnn
+    kind: model
+    triage: B
+    license: {spdx: MIT, class: permissive, source: license-file}
+    peer_reviewed: "yes"
+    reason: Peer-reviewed (Nature 2025) and MIT, but mouse visual cortex only; no AD relevance yet.
+    checked: 2026-10-18

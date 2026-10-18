@@ -1,0 +1,134 @@
+# AD datasets and cohorts. Gated cohorts are graded B: excellent science, but usable
+# only through loaders that read a contributor's own approved copy. Never commit their data.
+# Source: docs/landscape-2026-10 (notes/ad_open_datasets.md). Access terms change: re-check before use.
+resources:
+  - id: sea-ad
+    name: SEA-AD processed atlas (Allen Institute)
+    url: https://brain-map.org/explore/seattle-alzheimers-disease/seattle-alzheimers-disease-brain-cell-atlas-download
+    kind: dataset
+    access: open
+    triage: A
+    license: {spdx: Allen-Terms-of-Use, class: data-terms, source: docs}
+    peer_reviewed: "yes"
+    reason: Only flagship AD cell atlas downloadable without an application; fetch at runtime, never re-host.
+    red_flags:
+      - Allen terms, not Creative Commons; full commercial/redistribution clauses not yet read.
+      - Download page carries a "under review ... Administration directives" banner; pin versions and checksums.
+    checked: 2026-10-18
+
+  - id: openneuro
+    name: OpenNeuro
+    url: https://openneuro.org/
+    kind: dataset
+    access: open
+    triage: A
+    license: {spdx: CC0-1.0, class: permissive, source: docs}
+    reason: Only clearly redistributable imaging source; no AD-specific accession confirmed yet.
+    to_verify: [Identify and pin specific AD-relevant accessions]
+    checked: 2026-10-18
+
+  - id: adni
+    name: ADNI (incl. TADPOLE data)
+    url: https://adni.loni.usc.edu/data-samples/adni-data/
+    kind: dataset
+    access: application
+    triage: B
+    license: {spdx: ADNI-DUA, class: data-terms, source: docs}
+    reason: Backbone AD cohort; DUA forbids redistributing participant-level or derived data in any manner.
+    red_flags:
+      - DUA states AI tools that may release participant data to others violate it; no cloud LLMs on ADNI rows.
+      - ADNI on the byline and Data and Publications Committee review before submission.
+      - ~89% White; scanner/phase confounds in harmonisation.
+    checked: 2026-10-18
+
+  - id: oasis
+    name: OASIS-1/2/3/4
+    url: https://sites.wustl.edu/oasisbrains/
+    kind: dataset
+    access: application
+    triage: B
+    license: {spdx: OASIS-DUA, class: non-commercial, source: docs}
+    reason: Despite the name, DUA-gated and non-commercial; no face-reconstructable derivatives.
+    checked: 2026-10-18
+
+  - id: aibl
+    name: AIBL
+    url: https://data.aibl.org.au/adni/index.html
+    kind: dataset
+    access: application
+    triage: B
+    license: {spdx: AIBL-DUA, class: non-commercial, source: docs}
+    reason: LONI application, non-commercial; code only in this repo.
+    checked: 2026-10-18
+
+  - id: nacc
+    name: NACC
+    url: https://naccdata.org/requesting-data/data-request-process
+    kind: dataset
+    access: application
+    triage: B
+    license: {spdx: NACC-DUA, class: data-terms, source: docs}
+    reason: Free request plus DUA, 56,000+ participants; stratify by ADRC and UDS version.
+    checked: 2026-10-18
+
+  - id: a4-learn
+    name: A4 / LEARN
+    url: https://ida.loni.usc.edu/collaboration/access/appApply.jsp?project=A4
+    kind: dataset
+    access: application
+    triage: B
+    license: {spdx: A4-DUA, class: data-terms, source: docs}
+    reason: Non-transferable licence; code only.
+    checked: 2026-10-18
+
+  - id: uk-biobank
+    name: UK Biobank
+    url: https://www.ukbiobank.ac.uk/use-our-data/fees/
+    kind: dataset
+    access: enclave
+    triage: B
+    license: {spdx: UKB-MTA, class: data-terms, source: docs}
+    reason: Fees GBP 3,000-9,000; analysis only inside the Research Analysis Platform.
+    red_flags: [Healthy-volunteer bias (unverified in notes).]
+    checked: 2026-10-18
+
+  - id: ad-knowledge-portal
+    name: AD Knowledge Portal (ROSMAP, Mayo, MSBB; AMP-AD)
+    url: https://adknowledgeportal.synapse.org/
+    kind: dataset
+    access: controlled
+    triage: B
+    license: {spdx: Synapse-DUC, class: data-terms, source: docs}
+    reason: Open tier plus controlled DUC; no redistribution of individual-level data in any form.
+    red_flags: [Donor-level reanalysis of Mathys 2019 snRNA-seq found 549x fewer DE genes (eLife 90214).]
+    checked: 2026-10-18
+
+  - id: adsp-niagads
+    name: ADSP / NIAGADS genetics
+    url: https://www.niagads.org/
+    kind: dataset
+    access: controlled
+    triage: B
+    license: {spdx: dbGaP-DUA, class: data-terms, source: secondary}
+    reason: Controlled via dbGaP or NIAGADS DSS; current application process unconfirmed.
+    checked: 2026-10-18
+
+  - id: gnpc
+    name: GNPC v1 proteomics (via AD Workbench)
+    url: https://www.alzheimersdata.org/gnpc-v1-harmonized-dataset
+    kind: dataset
+    access: enclave
+    triage: B
+    license: {spdx: ADDI-terms, class: data-terms, source: docs}
+    reason: Workspace-only access; SomaScan and Olink agree poorly (median r ~0.30).
+    checked: 2026-10-18
+
+  - id: hcp-aging
+    name: HCP-Aging
+    url: https://humanconnectome.org/study/hcp-lifespan-aging/data-use-terms
+    kind: dataset
+    access: application
+    triage: B
+    license: {spdx: NDA-DUC, class: data-terms, source: docs}
+    reason: Needs NDA DUC with an institutional signatory; use open-tier HCP connectomes as templates.
+    checked: 2026-10-18

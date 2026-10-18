@@ -1,0 +1,63 @@
+# Atlases, parcellations and connectome-construction tools.
+# Source: docs/landscape-2026-10 (notes/brain_simulation_platforms.md).
+resources:
+  - id: siibra
+    name: siibra / Julich-Brain / BigBrain (EBRAINS atlases)
+    url: https://pypi.org/project/siibra/
+    kind: software
+    triage: A
+    license: {spdx: Apache-2.0, class: permissive, source: license-file}
+    peer_reviewed: "yes"
+    reason: Maintained EBRAINS atlas framework; pin versions, the 1.0 line is still pre-release.
+    red_flags: [Atlas data licenses (BigBrain, Julich-Brain) are separate from siibra's code license.]
+    checked: 2026-10-18
+
+  - id: hcppipelines
+    name: HCPpipelines
+    url: https://github.com/Washington-University/HCPpipelines
+    kind: software
+    triage: A
+    license: {spdx: BSD-style, class: permissive, source: license-file}
+    peer_reviewed: "yes"
+    independent_replication: "yes"
+    reason: Standard pipeline for template and individual connectomes.
+    checked: 2026-10-18
+
+  - id: mrtrix3
+    name: MRtrix3 and MRtrix3_connectome
+    url: https://github.com/MRtrix3/mrtrix3
+    kind: software
+    triage: A
+    license: {spdx: MPL-2.0 / Apache-2.0, class: weak-copyleft, source: license-file}
+    peer_reviewed: "yes"
+    independent_replication: "yes"
+    reason: Active, standard diffusion-MRI tractography and connectome tools.
+    checked: 2026-10-18
+
+  - id: permissive-map-tools
+    name: ENIGMA Toolbox, netneurotools, BrainSpace, CBIG
+    url: https://github.com/ThomasYeoLab/CBIG
+    kind: software
+    triage: A
+    license: {spdx: BSD-3-Clause / MIT, class: permissive, source: license-file}
+    peer_reviewed: "yes"
+    reason: Permissive alternatives to non-commercial neuromaps for map analysis and parcellations.
+    checked: 2026-10-18
+
+  - id: neuromaps
+    name: neuromaps (as a vendored dependency)
+    url: https://github.com/netneurolab/neuromaps
+    kind: software
+    triage: C
+    license: {spdx: CC-BY-NC-SA-4.0, class: non-commercial, source: license-file}
+    reason: Non-commercial share-alike; may be called by users but not vendored or required.
+    checked: 2026-10-18
+
+  - id: allensdk
+    name: AllenSDK
+    url: https://github.com/AllenInstitute/AllenSDK
+    kind: software
+    triage: B
+    license: {spdx: BSD-3-Clause-with-noncommercial-redistribution-clause, class: non-commercial, source: license-file}
+    reason: Usable for non-commercial access to Allen data, but extra clause and no release since Nov 2023.
+    checked: 2026-10-18
