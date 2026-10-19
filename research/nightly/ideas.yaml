@@ -1,0 +1,20 @@
+# Idea catalogue for the nightly research loop (research/nightly/PROGRAM.md).
+# Ideas are research hypotheses, not recommendations. Never delete an idea: kill it with a reason.
+#
+# Fields:
+#   id            kebab-case, unique
+#   title         one line
+#   created       YYYY-MM-DD
+#   lens          lens id it came from
+#   goal          detect | slow | stop | reverse | understand
+#   status        new | investigating | promising | parked | killed | tested
+#   mechanism     two sentences
+#   novelty       what was found when searching for prior work (trials, reviews)
+#   against       strongest evidence against
+#   falsify       cheapest test that could kill it
+#   evidence      in-silico | preclinical | observational | RCT | none
+#   safety        obvious risks, or "none identified"
+#   next          next step
+#   sources       list of URLs or DOIs
+#   history       list of {date, note}
+ideas: []

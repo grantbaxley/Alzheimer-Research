@@ -6,9 +6,17 @@ This is where the project's own work lands, on top of the vetted foundation in
 ```
 research/
 ├── intake/          # incoming work (e.g. the founder's project folder), not yet vetted
+├── nightly/         # the nightly idea loop: question bank, idea catalogue, logs, weekly reports
 ├── reproductions/   # one write-up per external resource we reproduce (policy/VETTING.md)
 └── studies/         # our own analyses, each built on registry resources
 ```
+
+## Nightly research loop
+
+Every night a scheduled session takes one lens and one constraint from the question bank,
+researches it, proposes and red-teams new ideas, and logs the result; every Sunday it
+writes a weekly report. See [`nightly/PROGRAM.md`](nightly/PROGRAM.md). Ideas there are
+hypotheses, not findings, until they pass the vetting protocol.
 
 ## Bringing work in
 

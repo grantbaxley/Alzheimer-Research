@@ -1,0 +1,124 @@
+# Question bank for the nightly research loop (research/nightly/PROGRAM.md).
+# Each night uses one LENS (least recently used first) and one CONSTRAINT (random, not used in
+# the last 10 nights), chosen by `python tools/nightly.py pick`. Lenses force a different
+# direction each night; constraints stop the same lens producing the same ideas twice.
+# Add lenses and constraints freely; never delete one that a log refers to.
+
+lenses:
+  - id: inversion
+    name: Work backwards from reversal
+    questions:
+      - What would have to be true, biologically, for a person's cognition to measurably improve and stay improved?
+      - Which damage is reversible in principle (synapses, metabolism, inflammation, myelin, vessels) and which is not (lost neurons)? What fraction of today's impairment is in each, at each stage?
+      - What is the smallest change to surviving neurons or their environment that would restore function?
+      - If a drug restored function for 6 months and then stopped working, what would most likely have caught up with it?
+
+  - id: resilience
+    name: People who have the pathology but not the disease
+    questions:
+      - Who carries heavy amyloid and tau yet stays cognitively normal, and what differs in their brains, genes or lives?
+      - Which protective variants are known (e.g. APOE3 Christchurch, RELN-COLBOS, APOE2, PLCG2, TREM2 variants), and what single mechanism could they share?
+      - Can that mechanism be mimicked by an existing drug, a lifestyle factor or a device?
+      - What do super-agers and centenarians have in common at the cellular level?
+
+  - id: earliest-signal
+    name: The first measurable change
+    questions:
+      - What changes 10 to 25 years before symptoms, and which of those changes is cheapest to measure at scale (blood, retina, speech, sleep, smell, gait, typing)?
+      - Which early signal is closest to cause rather than consequence?
+      - What would an early-warning test need (sensitivity, cost, frequency) to change outcomes, given today's treatments?
+      - Is there a signal that predicts who will NOT progress despite being amyloid-positive?
+
+  - id: causal-chain
+    name: Stress-test the causal chain
+    questions:
+      - Amyloid, tau, neurodegeneration, symptoms - which link is the weakest, and which is the most leverageable?
+      - For each alternative hypothesis (vascular, infection, insulin/metabolic, lipid/APOE, glymphatic/sleep, microglia/immune, mitochondria, myelin, blood-brain barrier), what observation would falsify it?
+      - Which hypotheses make different predictions that one cheap study could separate?
+      - What does the failure of a mechanism's drug actually tell us (wrong target, wrong time, wrong dose, wrong patients)?
+
+  - id: cross-domain
+    name: Borrow from a field that reversed a degenerative process
+    questions:
+      - How did hepatology learn to reverse fibrosis, cardiology to regress plaque, HIV medicine to turn a fatal disease chronic, MS research to remyelinate? What is the transferable principle?
+      - What would an engineer, ecologist, economist or immunologist call this system, and what does their field do to repair it?
+      - Which tool built for another disease (cancer, diabetes, heart failure, autoimmunity) has an unexplored mechanism in the brain?
+
+  - id: combination-timing
+    name: Combinations and timing windows
+    questions:
+      - Which mechanisms are independent enough that combining them should be more than additive?
+      - When in the disease does each intervention stop working, and why?
+      - What does models/open-ad-sim say about the window for restoring surviving neurons, and how robust is that to its unidentified parameters?
+      - What sequence (clear, protect, repair, rebuild) would a combination trial need?
+
+  - id: repurposing
+    name: Safe drugs with a reason to work
+    questions:
+      - Which approved, safe, cheap drugs have both a mechanistic rationale and a human signal (natural experiments, claims data, Mendelian randomisation)?
+      - Which of those signals already failed in an RCT, and what did the failure show?
+      - What active-comparator or target-trial-emulation design would make an observational signal credible?
+
+  - id: reversal-biology
+    name: Rebuilding - synapses, circuits, cells
+    questions:
+      - What is the human evidence for synaptic regrowth, adult neurogenesis, remyelination or circuit rewiring in later life?
+      - Which interventions restored synapses or memory in animal models AFTER damage (not before), and did any replicate?
+      - What would partial epigenetic reprogramming, cell replacement or gene therapy have to overcome in an Alzheimer's brain?
+      - Can memories encoded in lost neurons be recovered at all, or only the capacity to form new ones?
+
+  - id: trial-design
+    name: Why trials fail and how to make them informative
+    questions:
+      - Which trial failures were failures of the endpoint, the population, the timing or the dose rather than the idea?
+      - How could N-of-1, adaptive, platform or biomarker-enriched designs test reversal claims faster and more honestly?
+      - What outcome measure would detect real improvement (not slower decline) in 6 to 12 months?
+
+  - id: modeling
+    name: Put a number on it
+    questions:
+      - Which idea in the catalogue can be tested quantitatively tonight with the repo's tools (open-ad-sim, alzres.spreading, alzres.synthetic)?
+      - What does the model predict, how sensitive is the prediction to the parameters the data do not identify, and what result would contradict it?
+      - Which open item in research/reproductions/open-ad-sim (e.g. the flagged calibration targets) moves the model most toward being trustworthy?
+
+  - id: red-team
+    name: Try to kill the best idea
+    questions:
+      - Take the most promising idea in ideas.yaml. What is the strongest evidence against it?
+      - Has it already been tested (ClinicalTrials.gov, preprints, failed programmes)? What happened?
+      - What is the cheapest experiment that could kill it, and what result would?
+      - If it survived, what would the next, harder test be?
+
+  - id: frontier-scan
+    name: What is new this week
+    questions:
+      - What was published, posted or presented in the last 7 to 30 days (journals, bioRxiv/medRxiv, trial registries, conferences, regulators) that changes the picture?
+      - Does anything new confirm, weaken or kill an idea in the catalogue or a claim in evidence/claims.yaml?
+      - Is there a new open dataset, model or tool worth a registry record?
+
+  - id: prevention-population
+    name: Prevention at population scale
+    questions:
+      - Which modifiable risk factor has the strongest causal (not just observational) evidence, and what mechanism links it to the disease?
+      - What intervention could plausibly delay onset by five years across a population, and what would it cost?
+      - Which natural experiments (policy changes, vaccination cutoffs, infrastructure) could be exploited to test causality?
+
+constraints:
+  - Assume the amyloid hypothesis is wrong. What follows?
+  - Only interventions that already exist and are approved for something else.
+  - Only things a person could measure at home.
+  - Start from a single cell type (pick one - oligodendrocyte, astrocyte, microglia, pericyte, interneuron) and work outward.
+  - The idea must cost less than 100 dollars per person per year.
+  - Think like an engineer - feedback loops, failure modes, redundancy.
+  - Think like an ecologist - the brain as an ecosystem that lost its balance.
+  - Start from sleep.
+  - Start from blood vessels and the blood-brain barrier.
+  - Start from the immune system outside the brain.
+  - The idea must produce a testable prediction within 12 months.
+  - Focus on people who are already symptomatic (MCI or mild dementia), not prevention.
+  - Focus on women; ask why two thirds of patients are women.
+  - Focus on people with Down syndrome or autosomal dominant mutations - what do they reveal?
+  - Look for a signal in the last 10 years of negative or failed results.
+  - Combine two ideas already in the catalogue into one.
+  - Use a field outside medicine as the source of the idea.
+  - Look at the earliest region affected (entorhinal cortex, locus coeruleus) and ask why there.
