@@ -17,4 +17,160 @@
 #   next          next step
 #   sources       list of URLs or DOIs
 #   history       list of {date, note}
-ideas: []
+ideas:
+  - id: detection-vs-biological-resilience
+    title: "Women's verbal-memory reserve is a detection artifact, not extra biological resilience"
+    created: 2026-10-19
+    lens: resilience
+    goal: understand
+    status: new
+    mechanism: >-
+      Women outperform men on verbal-memory tests at the same level of pathology, which
+      is read as cognitive reserve; but per unit of autopsy pathology, pathology is far
+      more often clinically expressed as dementia in women than in men. The hypothesis is
+      that the verbal-memory advantage delays diagnosis (a measurement effect) while the
+      brain is, if anything, under-protected at the synapse for its tau load, so at matched
+      tau women should show equal or lower synaptic-integrity markers, not higher.
+    novelty: >-
+      Sex-specific memory norms and the female verbal advantage are documented (Sundermann
+      2016, 2019); the clinical-expression gap is old (Barnes 2005). Framing the advantage as
+      a detection artifact to be separated from biological (synaptic) resilience, and
+      predicting lower synaptic markers at matched tau in women, is not something the night's
+      sources stated directly.
+    against: >-
+      The female advantage could be genuine functional reserve (richer verbal networks) rather
+      than a measurement bias, in which case synaptic markers at matched tau would be equal or
+      higher in women, not lower. Off-target tau-PET binding in women inflates apparent tau and
+      could confound any matched-tau comparison.
+    falsify: >-
+      In a cohort with tau-PET (or plasma p-tau217) and a CSF synaptic panel, regress a
+      synaptic-integrity marker on tau with a sex term. If women show equal or higher synaptic
+      markers at matched tau, the "under-protected synapse" reading is killed.
+    evidence: observational
+    safety: >-
+      None for the hypothesis. If acted on clinically, sex-specific norms risk over-diagnosing
+      men or re-diagnosing women; a biomarker study is needed before any norm change.
+    next: >-
+      Check whether published CSF synaptic-marker studies (YWHAG:NPTX2, NPTX2, NRN1, VGF)
+      report sex-stratified marker-vs-tau slopes; list cohorts that could test it.
+    sources:
+      - "10.1212/wnl.0000000000003288"
+      - "10.1212/wnl.0000000000008467"
+      - "10.1001/archpsyc.62.6.685"
+      - "10.1038/s41591-025-03565-2"
+    history:
+      - date: 2026-10-19
+        note: "Created under resilience lens, women constraint. Unifies the reserve-vs-vulnerability contradiction both research scans flagged."
+
+  - id: synaptic-reversal-endpoint
+    title: "A sex-normed synaptic-integrity fluid panel as a reversal (not just slowing) endpoint"
+    created: 2026-10-19
+    lens: resilience
+    goal: reverse
+    status: new
+    mechanism: >-
+      Across autopsy and single-cell cohorts, preserved synapses and neurons track preserved
+      cognition better than plaque or tangle load, and synaptic proteins (NPTX2, NRN1, VGF,
+      the YWHAG:NPTX2 ratio) are the strongest fluid correlates of cognition beyond amyloid and
+      tau. If synaptic loss is partly reversible, a rise in these markers over time could be an
+      early, objective signal of restored function, read against sex-specific norms because the
+      female verbal advantage masks decline.
+    novelty: >-
+      These markers are established as cross-sectional correlates and decline predictors (Nat Med
+      2025; Ann Neurol 2023). Using an upward change as a reversal readout, and pairing it with
+      sex-specific norms, was not stated in the sources; most work treats them as decline markers.
+    against: >-
+      The markers may be downstream readouts that never rise with any current intervention, or
+      rise without cognitive benefit; measurement noise could swamp small upward changes. No
+      intervention has yet been shown to raise them.
+    falsify: >-
+      In any interventional cohort with serial CSF or plasma synaptic markers, test whether a
+      marker ever rises above its own measurement error and whether a rise precedes cognitive
+      improvement. If markers only ever fall or plateau, the reversal-endpoint claim is killed.
+    evidence: observational
+    safety: "None; this is a biomarker/endpoint proposal, not a treatment."
+    next: "Find interventional cohorts with serial synaptic-marker sampling and sex breakdown."
+    sources:
+      - "10.1038/s41591-025-03565-2"
+      - "10.1002/ana.26725"
+      - "10.1016/j.mcpro.2023.100542"
+    history:
+      - date: 2026-10-19
+        note: "Created under resilience lens, women constraint."
+
+  - id: sex-amyloid-tau-window
+    title: "Use each person's amyloid-to-tau interval, not age, to time an anti-seeding therapy"
+    created: 2026-10-19
+    lens: resilience
+    goal: detect
+    status: new
+    mechanism: >-
+      The resilience variants that most clearly protect (APOE3-Christchurch, PLCG2 P522R) act by
+      suppressing amyloid-induced tau seeding and spread via microglia, so the leverage point is
+      the amyloid-to-tau coupling step. Women traverse that step faster (shorter amyloid-to-tau
+      interval, faster tau accumulation when amyloid-positive), so the hypothesis is that the
+      useful window for an anti-seeding drug is set by time since amyloid onset and runs out
+      sooner in women, arguing for enrichment and timing by a personal amyloid clock rather than
+      by chronological age.
+    novelty: >-
+      The amyloid-to-tau interval is described (J Prev Alzheimers Dis 2026) and faster female tau
+      is well supported (JAMA Neurol 2025). Using the interval as a sex-aware enrichment clock
+      for an anti-seeding therapy, rather than age or amyloid status alone, was not stated in the
+      sources.
+    against: >-
+      Tonight's toy FKPP model did not reproduce the naive "faster growth = narrower window"
+      intuition: raising the local tau-growth rate pulled both first-detection and widespread tau
+      earlier together, rather than shrinking the gap between them, so "faster" may mean "earlier
+      and still detectable", not "no window". The clinical interval also needs two scans, which is
+      costly and may be a surrogate for amyloid burden rather than an independent clock.
+    falsify: >-
+      In a cohort with serial amyloid and tau PET, test whether time since amyloid positivity
+      predicts tau accumulation rate better than chronological age, and whether a sex term adds
+      anything once the interval is in the model. If sex adds nothing beyond the interval, the
+      "sex-specific window" part is killed.
+    evidence: observational
+    safety: >-
+      None for the analysis. Any resulting trial-timing rule would need prospective validation
+      before use.
+    next: "Add a modeling note; look for open serial amyloid+tau PET summary statistics by sex."
+    sources:
+      - "10.1001/jamaneurol.2025.0013"
+      - "10.1016/j.tjpad.2026.100622"
+      - "10.1016/j.cell.2023.11.029"
+      - "10.1007/s00401-020-02138-6"
+    history:
+      - date: 2026-10-19
+        note: "Created under resilience lens, women constraint. Toy FKPP run (scripts/window_2026_10_19.py) complicated the premise; recorded as evidence against, idea kept for the cohort test."
+
+  - id: fsh-blockade-women
+    title: "Blocking follicle-stimulating hormone to slow post-menopausal Alzheimer's"
+    created: 2026-10-19
+    lens: resilience
+    goal: slow
+    status: parked
+    mechanism: >-
+      In mice, FSH acts on hippocampal and cortical neurons to accelerate amyloid and tau
+      deposition through a C/EBP-beta / delta-secretase pathway, and blocking FSH reportedly
+      abrogates the phenotype. FSH rises sharply at menopause, so FSH blockade is proposed as a
+      female-specific way to slow the disease.
+    novelty: >-
+      Not novel as a target: a humanized FSH-blocking antibody (MS-Hu6) is described as
+      IND-enabling. Logged to record the skeptical assessment, not to claim the idea.
+    against: >-
+      All the mechanistic and therapeutic FSH work traced tonight comes from a single
+      collaborating group with no independent replication found. Human data are small,
+      cross-sectional and contradictory (one cohort found higher FSH associated with worse
+      cognition, another found higher FSH associated with better cognition in cognitively normal
+      women). Hormone therapy, which lowers FSH, does not prevent dementia in RCTs.
+    falsify: >-
+      An independent lab repeating the mouse FSH to delta-secretase result, or a human study that
+      separates FSH from estradiol (for example GnRH-agonist users), showing no FSH effect once
+      estradiol is accounted for, would sink it.
+    evidence: preclinical
+    safety: >-
+      FSH blockade would perturb reproductive endocrinology; bone and metabolic effects are
+      plausible. Not a candidate for anything but carefully controlled study.
+    next: "Watch for independent replication; do not pursue without it."
+    history:
+      - date: 2026-10-19
+        note: "Logged as parked: single-group preclinical program, contradictory human data, HT (which lowers FSH) null in RCTs."

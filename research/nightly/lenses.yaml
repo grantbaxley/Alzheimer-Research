@@ -20,6 +20,8 @@ lenses:
       - Which protective variants are known (e.g. APOE3 Christchurch, RELN-COLBOS, APOE2, PLCG2, TREM2 variants), and what single mechanism could they share?
       - Can that mechanism be mimicked by an existing drug, a lifestyle factor or a device?
       - What do super-agers and centenarians have in common at the cellular level?
+      - When a protective variant or state is found, is its protection sex-specific, and does the direction match or oppose women's faster tau accumulation?
+      - Which resilience readouts are causal rather than mere markers, and which could move upward under an intervention (i.e. serve as reversal endpoints)?
 
   - id: earliest-signal
     name: The first measurable change
