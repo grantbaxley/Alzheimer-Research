@@ -1,0 +1,4 @@
+#!/bin/sh
+# Rule #1: nothing that could identify a real person, and no participant data, is ever committed.
+# Enable once per clone:  git config core.hooksPath .githooks
+exec python3 tools/check_data_policy.py --staged

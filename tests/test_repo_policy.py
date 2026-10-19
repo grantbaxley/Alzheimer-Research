@@ -1,4 +1,4 @@
-"""Repository-level checks: registry validity, data-policy scanner, generated docs."""
+"""Repository-level checks: registry validity and generated docs (privacy: test_privacy_gate)."""
 
 import subprocess
 import sys
@@ -7,9 +7,6 @@ from pathlib import Path
 from alzres.registry import load, validate, validate_record
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "tools"))
-
-import check_data_policy  # noqa: E402
 
 
 def test_registry_is_valid():
@@ -47,20 +44,20 @@ def test_status_claims_need_verification_pointer():
     assert any("verification" in e for e in validate_record(rec))
 
 
-def test_scanner_flags_ids_and_imaging(tmp_path):
-    adni_like = "123" + "_S_" + "4567"  # built at runtime so this file passes the scan
-    (tmp_path / "rows.csv").write_text(f"subject,mmse\n{adni_like},28\n")
-    (tmp_path / "scan.nii.gz").write_bytes(b"\0")
-    (tmp_path / "ok.md").write_text("Nothing to see here.\n")
-    problems = check_data_policy.scan(sorted(tmp_path.iterdir()))
-    assert len(problems) == 2
-    assert any("ADNI" in p for p in problems)
-    assert any("blocked file type" in p for p in problems)
-
-
-def test_tracked_files_pass_data_policy():
-    files = check_data_policy.tracked_files()
-    assert check_data_policy.scan(files) == []
+def test_in_repo_urls_must_exist():
+    rec = {
+        "id": "x",
+        "name": "x",
+        "url": "docs/landscape-2026-10",
+        "kind": "model",
+        "triage": "B",
+        "license": {"spdx": "MIT", "class": "permissive", "source": "license-file"},
+        "reason": "x",
+        "checked": __import__("datetime").date(2026, 1, 1),
+    }
+    assert validate_record(rec) == []
+    for bad in ("models/does-not-exist", "../outside", "/etc/passwd", "http://insecure.org"):
+        assert any("url" in e for e in validate_record(rec | {"url": bad})), bad
 
 
 def test_generated_docs_are_fresh():

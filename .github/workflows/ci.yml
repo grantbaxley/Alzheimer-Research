@@ -8,6 +8,25 @@ permissions:
   contents: read
 
 jobs:
+  privacy:
+    # Rule #1 (policy/PRIVACY.md): nothing that could identify a real person ever enters the repo.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history: every file version, path, message and author is scanned
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Privacy gate (tracked files)
+        env:
+          PRIVACY_DENYLIST: ${{ secrets.PRIVACY_DENYLIST }}
+        run: python tools/check_data_policy.py
+      - name: Privacy gate (entire history)
+        env:
+          PRIVACY_DENYLIST: ${{ secrets.PRIVACY_DENYLIST }}
+        run: python tools/check_data_policy.py --history
+
   test:
     runs-on: ubuntu-latest
     strategy:
@@ -15,12 +34,12 @@ jobs:
         python-version: ["3.10", "3.12"]
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
       - run: pip install -e ".[dev]"
-      - name: Data policy
-        run: python tools/check_data_policy.py
       - name: Registry
         run: python -m alzres.registry validate
       - name: Generated docs are fresh
@@ -30,6 +49,8 @@ jobs:
           ruff check .
           ruff format --check .
       - name: Tests
+        env:
+          PRIVACY_DENYLIST: ${{ secrets.PRIVACY_DENYLIST }}
         run: pytest
 
   integration:
@@ -40,5 +61,5 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -e ".[dev,progression]"
-      - name: Upstream tools against synthetic ground truth
+      - name: Upstream tools and open-ad-sim against their reference outputs
         run: pytest -m integration

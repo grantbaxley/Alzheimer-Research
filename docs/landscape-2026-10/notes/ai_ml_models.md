@@ -68,7 +68,7 @@ The mature, permissively licensed backbone of open AD neuroimaging is the pipeli
   - Data: 51,269 participants from 9 cohorts; the paper reports 10 etiologies, and the repo lists 13 diagnostic categories.
   - Performance: microaveraged AUROC 0.94 for NC/MCI/dementia and 0.96 for etiologies.
   - Code: github.com/vkola-lab/nmed2024 under AGPL-3.0, with an installable `adrd` package, a Hugging Face demo and a MONAI Swin UNETR SSL MRI encoder.
-  - Caveat: the README does not state that the trained transformer weights are included. A hotfix dated 04/15/2025 fixed a performance degradation when nhead > 1.
+  - Caveat: the README does not state that the trained transformer weights are included. A hotfix dated 2025-04-15 fixed a performance degradation when nhead > 1.
 
   — [nmed2024 GitHub](https://github.com/vkola-lab/nmed2024); [Columbia bibliography](https://bibliography.cumc.columbia.edu/node/43314)
 

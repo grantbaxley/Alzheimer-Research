@@ -30,7 +30,7 @@ A new AD project has an unusually rich open layer to build on, mostly from NIA. 
 - Conflict: the RRID/dkNET record (SCR_021230) lists AlzPED's availability as "restricted". The NIA paper describes it as public. — [RRID record](https://rrid.site/data/record/nlx_144509-1/SCR_021230/resolver)
 
 **Alzforum Therapeutics database**
-- It catalogs AD and related-disorder therapeutics that reached **Phase 2 or beyond** in U.S. trials, grouped by therapy and target type. Each agent has synonyms, FDA status, sponsor and target type. Alzforum asks for updates at therapeutics@alzforum.org. — [Alzforum Therapeutics](https://alzforum.org/therapeutics); [search page](https://alzforum.org/therapeutics/search)
+- It catalogs AD and related-disorder therapeutics that reached **Phase 2 or beyond** in U.S. trials, grouped by therapy and target type. Each agent has synonyms, FDA status, sponsor and target type. Alzforum asks for updates by e-mail (the address is on its therapeutics page). — [Alzforum Therapeutics](https://alzforum.org/therapeutics); [search page](https://alzforum.org/therapeutics/search)
 - **AlzPipeline** (UNLV + Cleveland Clinic) is a continuously updated database of AD trials on ClinicalTrials.gov. At launch it covered 141 drugs in 187 active trials. — [FDAnews](https://www.fdanews.com/articles/212774-141-investigatory-alzheimers-drugs-187-clinical-trials-described-in-new-database)
 
 **Open Targets Platform**
@@ -161,7 +161,7 @@ Controlled-access human data (AMP-AD individual-level omics, AD Workbench datase
 
 ### Cited Findings
 - Agora accepts target nominations from "the broader AD research community," not only consortium members. — [PMC12726812](https://pmc.ncbi.nlm.nih.gov/articles/PMC12726812/)
-- Alzforum Therapeutics invites public update reports via therapeutics@alzforum.org. — [Alzforum Therapeutics](https://alzforum.org/therapeutics)
+- Alzforum Therapeutics invites public update reports by e-mail (address on its therapeutics page). — [Alzforum Therapeutics](https://alzforum.org/therapeutics)
 - ADDI's prize was open to outside teams. The winners included a startup (Prima Mente), and semifinalists get AI Collaboratory pairings with AD researchers. — [ADDI](https://www.alzheimersdata.org/news/alzheimer-s-disease-data-initiative-doubles-1m-prize-competition-for-agentic-ai-solutions-to-accelerate-alzheimer-s-research)
 - DREAM challenges on Synapse are crowdsourced and open to registered participants. — [Allen data challenges](https://brain-map.org/bkp/analyze/data-challenges); [BrightFocus on AD DREAM #1](https://www.brightfocus.org/grant/support-sage-bionetworks-alzheimers-big-data-dream-challenge-1)
 - Stall Catchers is open to anyone on a laptop, tablet or phone. — [BrightFocus](https://brightfocus.org/news/crowdsourcing-alzheimers-data-through-new-eyesonalz-game-will-accelerate-research-brightfocus)

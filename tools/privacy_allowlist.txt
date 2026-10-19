@@ -1,0 +1,19 @@
+# Reviewed exceptions for tools/check_data_policy.py. Every entry needs a reason and PR review.
+#
+# Formats:
+#   <repo path>            the file may have a blocked type or be binary (e.g. a generated figure);
+#                          its text, if any, is still scanned. Never use for anything about a person.
+#   blob:<sha, 12+ hex>    a historical file version whose pattern hits were reviewed as not
+#                          identifying anyone; only the private denylist still applies to it.
+#
+# Denylist matches and private-directory rules can never be allowed.
+
+# Historical versions of the 2026-10 landscape notes (already public). The hits are public
+# organisational contact addresses (Alzforum's therapeutics desk, the CNS*org comp-neuro mailing
+# list in an archive URL) and a software release date written as MM/DD/YYYY. None refers to a
+# person. The current versions were rewritten so they no longer need an exception.
+blob:065753241557bc4b3510215bfe57a2f35d9da547  # mailing-list address in an archive URL
+blob:56c5b92329d3756ff9924d66323dca44d693e7a1  # software hotfix date
+blob:627569dc2c30b88938d18b32fe42b484af90de6b  # software hotfix date (earlier draft)
+blob:dbdc933817e81b09165b5e62d8471edba0c31841  # software hotfix date (earlier draft)
+blob:8d75dd8fdbfefd0faeef94c5fad3884e2a74db8b  # Alzforum corrections address

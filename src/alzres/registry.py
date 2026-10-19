@@ -49,7 +49,8 @@ EVIDENCE = {"yes", "partial", "no", "unknown"}
 REQUIRED = ("id", "name", "url", "kind", "triage", "license", "reason", "checked")
 # A-grade items must be reusable by an open project.
 A_ALLOWED_LICENSES = {"permissive", "weak-copyleft", "copyleft", "data-terms"}
-DEFAULT_DIR = Path(__file__).resolve().parents[2] / "registry"
+REPO_ROOT = Path(__file__).resolve().parents[2]
+DEFAULT_DIR = REPO_ROOT / "registry"
 
 
 @dataclass
@@ -106,8 +107,14 @@ def validate_record(r: dict) -> list[str]:
     checked = r["checked"]
     if not isinstance(checked, dt.date):
         errs.append("checked must be an ISO date (YYYY-MM-DD)")
-    if not str(r["url"]).startswith("https://"):
-        errs.append("url must be https")
+    url = str(r["url"])
+    in_repo = (
+        not url.startswith(("/", "http"))
+        and ".." not in Path(url).parts
+        and (REPO_ROOT / url).exists()
+    )
+    if not url.startswith("https://") and not in_repo:
+        errs.append("url must be https, or an existing path in this repository")
     return errs
 
 

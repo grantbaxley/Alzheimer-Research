@@ -1,5 +1,8 @@
 # Data access policy
 
+Rule #1 comes first: nothing that could identify a real person ever enters this repository
+([PRIVACY.md](PRIVACY.md)). This page covers research-cohort data.
+
 **This repository ships code, not participant data.** Almost every major Alzheimer's
 cohort is governed by a data use agreement (DUA) that forbids redistribution. Breaking
 one can end a researcher's access and harm the cohort's participants and future
@@ -30,10 +33,12 @@ science. These rules are absolute.
 
 ## Enforcement
 
-- `tools/check_data_policy.py` blocks imaging/raw-data file types (NIfTI, DICOM,
-  MGZ, EDF, h5ad, pickles and others), cohort participant ID patterns and files over
-  5 MB. It runs in CI and as a pre-commit hook (`pre-commit install`).
-- `.gitignore` excludes `data/`, `private/` and common imaging formats.
+- `tools/check_data_policy.py`, the privacy gate described in [PRIVACY.md](PRIVACY.md),
+  blocks imaging, recording, tabular and other data file types, binary files, cohort
+  participant ID patterns, personal identifiers and files over 5 MB. It runs in CI on every
+  file version in history and locally through `git config core.hooksPath .githooks`.
+- `.gitignore` excludes `data/`, `patients/`, `private/`, `local/`, `results/` and common
+  imaging formats.
 - If gated data is committed by mistake: do not just delete it in a new commit. Tell
   the maintainers immediately; history must be rewritten and the cohort may need to be
   notified under its DUA.

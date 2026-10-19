@@ -8,9 +8,15 @@ __pycache__/
 build/
 dist/
 
-# Local data: never committed (policy/DATA_ACCESS.md)
-data/
+# Personal and local data: never committed (policy/PRIVACY.md, policy/DATA_ACCESS.md)
+patients/
 private/
+local/
+data/
+results/
+denylist*
+*.denylist
+.env
 *.nii
 *.nii.gz
 *.dcm
