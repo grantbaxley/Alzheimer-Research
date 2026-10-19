@@ -6,7 +6,7 @@
 | Registry | `open-ad-sim` in [`registry/project_models.yaml`](../../../registry/project_models.yaml): **triage B**, our status **reproducing** |
 | Source | `open-ad-sim.zip` (sha256 `abf02847bcc1a6dd579f0ef28b82cd362323f8475e5ecfc72962d06f44559d95`, archive comment `33616530daa4…`), 33 files, built with AI assistance in a separate session |
 | Imported | Vetted on an exact copy of the archive. The first public commit already carries the changes in [§7](#7-what-was-changed-and-why). The original profile file was never published, because it held an unused genotype label ([§1](#1-privacy-review-rule-1)). Anyone holding the archive can check the import against its checksum and §7. |
-| Checked | 2026-10-19, Python 3.13.16, NumPy 2.3.5, SciPy 1.18.1, Linux x86_64 |
+| Checked | 2026-10-19 on Linux x86_64: Python 3.13.16, NumPy 2.3.5, SciPy 1.18.1, with spot checks on Python 3.11.17, NumPy 2.4.6, SciPy 1.17.1 |
 | Re-run | `python research/reproductions/open-ad-sim/vet.py all` (about 15 min on 2 cores), plus the commands in [§8](#8-how-to-re-run-every-check) |
 
 ## Verdict
@@ -80,12 +80,13 @@ The fit metrics used P = 4,000 and seed 11; validation used P = 8,000 and seed 3
 - `docs/CALIBRATION.md` and `docs/VALIDATION.md` regenerate byte-identically from the
   ensemble files (`model/make_docs.py`, members in their original order).
 - `docs/RESULTS_*.md` (all six members, 150,000 virtual people each) reproduced
-  **byte-identically** from the original code. Regeneration under the renamed profile with
-  the modified code is in progress (§7).
+  **byte-identically** from the original code. With the modified code and the renamed
+  profile it regenerates byte-identically again, apart from the title line (§7).
 
-Across platforms, BLAS and NumPy versions can move a borderline virtual person across a
-threshold, so CI checks agreement to 0.02 rather than bit-identity
-(`tests/test_open_ad_sim.py`).
+Validation outputs are also bit-identical on a second environment: Python 3.11.17,
+NumPy 2.4.6, SciPy 1.17.1, checked for `v6_r01` and `flatcog_r05`. Other BLAS builds can
+still move a borderline virtual person across a threshold, so CI checks agreement to 0.02
+rather than bit-identity (`tests/test_open_ad_sim.py`).
 
 ## 3. Does the code do what the documentation says?
 
@@ -124,7 +125,7 @@ fresh random populations and on one population four times larger.
 | `v6_r01` | 50.6 | 50.4 (49.2–51.1) | 51.2 |
 | `v6_r05` | 46.6 | 48.1 (46.9–50.0) | 48.7 |
 
-The optimiser gained at most about 3 loss units (under 8%) from its particular random
+The optimiser gained at most about 3 loss units (about 8%) from its particular random
 draw. The out-of-sample results are just as stable: the donanemab and lecanemab
 comparisons vary with SD ≤ 0.015 CDR-SB across five fresh seeds.
 
@@ -134,7 +135,7 @@ tolerance at P = 16,000. Tolerances express how far apart published sources are,
 
 | Target | What it is | Members with \|z\| ≥ 2 (z) |
 |---|---|---|
-| `dCDR_pbo_TB_hi` | Placebo decline, high-tau, TRAILBLAZER-ALZ 2 (a derived target) | all six (−2.7 to −3.2) |
+| `dCDR_pbo_TB_hi` | Placebo decline, high-tau, TRAILBLAZER-ALZ 2 (a derived target; still −2.4 to −2.9 against the published 3.34, §5) | all six (−2.7 to −3.2) |
 | `prog5_ATpos_mci` | Amyloid+ tau+ MCI reaching dementia in 5 years (70%) | `v6_r01` +3.5, `late40_r01` +3.3 |
 | `prog5_ATneg_mci` | Amyloid+ tau− MCI reaching dementia in 5 years (~35%, derived) | `v6_r05` +2.7, `nolate_r05` +2.7, `flatcog_r05` +2.1 |
 | `S_PCC_ApTn_CU` | Little posterior-cingulate hypometabolism in amyloid+ tau− unimpaired people | `v6_r01`, `late40_r01` −2.5 |
@@ -172,7 +173,8 @@ one at a time, with the same virtual population (common random numbers).
 
 1. Replace the targets with the model's own output at the fitted parameters.
 2. Start the optimiser from a random perturbation of up to about 37%.
-3. Give it the same kind of budget the calibration used (400 Nelder-Mead evaluations).
+3. Give it a budget a little smaller than the original fits' (400 Nelder-Mead evaluations,
+   against their 450–700 plus a random search).
 
 The optimiser fits the synthetic targets almost perfectly: loss 0.6 and 1.6, down from
 about 9. But **about half the parameters do not come back.** They stay more than 10% from
@@ -189,8 +191,8 @@ strongly tau harms surviving neurons (`sT`), the neuron-death rate (`delta`), di
 
 **Does that move the headline?** The headline result splits today's impairment into
 "neurons already lost" and "neurons alive but impaired". It was recomputed for the default
-profile (40,000 virtual people) at the recovered parameters, which fit the targets as well
-as the true ones:
+profile (40,000 virtual people) at the recovered parameters, which fit the targets nearly
+as well as the true ones:
 
 | Member | Share of impairment in lost neurons, fitted | Recovered |
 |---|---|---|
@@ -237,15 +239,16 @@ documents:
 - the stereology (Gómez-Isla 1996 and Price 2001 at the MCI stage), the synapse counts
   (Scheff 2007 and 2011) and the SV2A PET papers.
 
-The model's antibody kinetics also reproduce the published amyloid-PET aggregates closely:
-for donanemab, the share below 24.1 Centiloids at weeks 24, 52 and 76 is 30%, 65% and 80%
-in the model against 29.7%, 66.1% and 76.4% published.
+The model's antibody kinetics also reproduce the published amyloid-PET aggregates closely.
+Simulating its clearance-rate distribution from the trial's 104 Centiloid baseline, the
+share below 24.1 Centiloids at weeks 24, 52 and 76 is 30%, 65% and 80%, against 29.7%,
+66.1% and 76.4% published for donanemab.
 
 **Problems found:**
 
 | Target or assumption | Problem | Effect or fix |
 |---|---|---|
-| `N_EC_mild` = 0.45 (entorhinal neurons at mild dementia) | **Wrong basis.** The source has one CDR 1 case. Its whole-entorhinal count gives 0.84; 0.45 is that case's layer II only, while the MCI-stage target uses whole-region counts. | Pushes the model toward more entorhinal loss than whole-region data show, which bears on the "lost neurons" share. Re-derive on one basis with a wide tolerance, or drop it. |
+| `N_EC_mild` = 0.45 (entorhinal neurons at mild dementia) | **Wrong basis.** The source has one CDR 1 case. Its whole-entorhinal count gives 0.84; 0.45 is that case's layer II only, while the MCI-stage target uses whole-region counts. | On a whole-region basis the only data point (n = 1) shows little further loss after CDR 0.5. So the target probably asks for more entorhinal loss at mild dementia than whole-region counts support, which bears on the "lost neurons" share. Re-derive on one basis with a wide tolerance, or drop it. |
 | `dCDR_pbo_TB_hi` = 3.56 (placebo decline, high tau) | **Derived, but a published value exists**: 3.34 (post hoc, MMRM). | The target is about 7% high. The model's 1.27–1.63 is still less than half of 3.34, so the misfit stands. |
 | `prog5_ATneg_mci` ≈ 0.35 | Derived by mixing CSF-based odds ratios with a tau-PET-based risk. | Moscoso 2025 reports the 5-year risk directly: 30.4% (15.9–47.8%). |
 | `S_PCC_mci` = 0.85 | **Misattributed.** The cited papers report only Z/W-scores, at the dementia stage. The numbers match a 2019 conference abstract (n = 9, MCI and mild dementia pooled) and Minoshima 1997 (n = 8). PCC SV2A loss is not significant after partial-volume correction (Mecca 2020). | The value is plausible; re-cite and widen the tolerance. |
@@ -253,7 +256,7 @@ in the model against 29.7%, 66.1% and 76.4% published.
 | `S_PFC_mci` = 0.92 | **Uncited.** Its "−25% frontal synaptophysin" matches Masliah et al. 2001, and Masliah is on the [integrity watchlist](../../../registry/integrity_watchlist.yaml). | Under [INTEGRITY.md](../../../policy/INTEGRITY.md) it must not rest on that paper. Independent sources support a similar value: Mecca 2020 SV2A −5.7% after correction; Counts 2006 found no frontal synaptophysin loss in MCI. |
 | `N_PCC_mci` = 0.98; `S_EC_mci` = 0.92 | **No source found.** There are no PCC neuron counts at MCI. The entorhinal survivor claim has mixed indirect evidence: layer II neurons shrink 24% in MCI (Kordower 2001). | Label both as assumptions and test their sensitivity. |
 | `N_HC_mci` = 0.65 | One supporting figure is misdescribed: West 2004's −48% is the symptomatic AD group, not mixed AD or MCI. | The value lies between Price (0.54) and von Gunten (0.74); keep it, re-cite, and note it is CA1-only. |
-| TDP-43 prevalence: 25%, and 40% "upper range" | 40% is the *average* any-stage prevalence at a mean age of death of 88. Among amyloid-positive brains it is about 50–55%. | The `late40` variant is a central estimate, not an upper bound. |
+| TDP-43 prevalence: 25%, and 40% "upper range" | 40% is the *average* any-stage prevalence at a mean age of death of 88. Among brains with frequent neuritic plaques it is about 55%. | The `late40` variant is a central estimate, not an upper bound. |
 | Rates double every 15 years of age | **No support found, and contrary evidence exists.** In symptomatic people, younger age predicts faster tau accumulation (Jack 2020) and faster posterior atrophy (Fiford 2018). | A structural assumption that needs a sensitivity analysis or removal. |
 | Donanemab stopping rule | The model omits the "11 to <25 Centiloids on two consecutive scans" arm. | Fewer modeled stops by week 76: about 60% against the trial's 69%. |
 | CDR-SB measurement noise SD 0.85 | Derived from ICCs measured in narrow-spread samples. The published SEm in early AD is about 0.7. | About 20% high; affects the "no decline at 1 year" targets. |
@@ -281,10 +284,12 @@ outside its confidence interval (0.89 against 70%, CI 59–81%).
 
 ## 7. What was changed and why
 
-Model numerics are untouched. After the changes, every reproduction check above passes
-again (`tests/test_open_ad_sim.py`, `pytest -m integration`). Confirmation that the
-results document regenerates with identical numbers under the renamed profile is in
-progress.
+Model numerics are untouched. After the changes:
+
+- every reproduction check above passes again (`tests/test_open_ad_sim.py`,
+  `pytest -m integration`);
+- the results document regenerates byte-identically under the renamed profile, apart from
+  its title line.
 
 | Change | Why |
 |---|---|
