@@ -42,7 +42,7 @@ Before a model's output is used in anything we publish:
 6. **Report uncertainty and calibration**, not just a headline metric.
 7. **Confirm the license** from the upstream LICENSE file (not API metadata) and any data terms from the primary source.
 
-Write up the result in `research/reproductions/<id>.md` and update the registry record.
+Write up the result in `research/reproductions/<id>/README.md` (with the scripts that produced it) and update the registry record.
 
 ## Red-flag checklist
 

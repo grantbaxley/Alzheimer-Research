@@ -7,6 +7,11 @@ and checking it before trusting it.
 > **Not medical advice.** Nothing here is a validated clinical tool. No intervention
 > has been shown to reverse Alzheimer's disease; see [evidence/](evidence/README.md).
 
+> **Rule #1: nothing that could identify a real person ever enters this repository**:
+> no names, initials, dates, places, clinicians, exact test values, documents or photos,
+> in files, file names, commit messages, pull requests or issues. It is enforced on every
+> commit and push and across the whole history ([policy/PRIVACY.md](policy/PRIVACY.md)).
+
 ## Why this project exists
 
 A [landscape review (Oct 2026)](docs/landscape-2026-10/report.md) of open brain and
@@ -32,12 +37,13 @@ model claiming a cure.
 
 | Path | What it is |
 |---|---|
-| [`registry/`](registry/README.md) | 89 graded records (A build on / B vet first / C avoid) for external tools, models, datasets and claims, with license provenance and our verification status. |
+| [`registry/`](registry/README.md) | 90 graded records (A build on / B vet first / C avoid) for external tools, models, datasets and claims, with license provenance and our verification status. |
 | [`awesome/`](awesome/README.md) | The registry rendered as a curated, graded resource list. |
 | [`evidence/`](evidence/README.md) | Evidence-graded prevention/slowing/"reversal" claims. |
-| [`policy/`](policy/) | [Vetting](policy/VETTING.md), [data access](policy/DATA_ACCESS.md) and [integrity](policy/INTEGRITY.md) rules, enforced in CI. |
+| [`policy/`](policy/) | [Privacy (Rule #1)](policy/PRIVACY.md), [vetting](policy/VETTING.md), [data access](policy/DATA_ACCESS.md) and [integrity](policy/INTEGRITY.md) rules, enforced in CI. |
 | [`src/alzres/`](src/alzres/) | Python package (Apache-2.0). |
-| [`research/`](research/README.md) | Where our own work lands: intake, then reproductions, then studies. |
+| [`models/open-ad-sim/`](models/open-ad-sim/README.md) | A calibrated 10-region model of the Alzheimer's disease process at the MCI stage, run as a six-member ensemble (MIT). It asks how much of today's impairment sits in lost neurons versus impaired surviving neurons, and what each class of treatment could do for a patient *type*. Triage B: see its [vetting record](research/reproductions/open-ad-sim/README.md). |
+| [`research/`](research/README.md) | Where our own work lands: intake, then [reproductions](research/reproductions/), then studies. |
 | [`docs/landscape-2026-10/`](docs/landscape-2026-10/report.md) | The landscape report and the six source notes behind it. |
 
 ### The `alzres` package
@@ -64,17 +70,22 @@ tooling, not findings about Alzheimer's.
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
+git config core.hooksPath .githooks      # Rule #1 privacy gate on every commit and push
 pytest                                   # unit + policy tests (fast)
 python -m alzres.registry summary        # what's graded A/B/C and what we've verified
 python examples/spreading_null_test.py
 
 pip install -e ".[progression]"          # optional: pinned pySuStaIn
-pytest -m integration
+pytest -m integration                    # slower: pySuStaIn and all six open-ad-sim members
 python examples/pysustain_synthetic_recovery.py
+
+cd models/open-ad-sim && python model/run_ensemble.py --profile mci_moderate_amyloid_70s
 ```
 
 ## Principles
 
+0. **Rule #1: no identifying information, ever.** Real people are described only as
+   ranges, locally, in git-ignored folders ([policy](policy/PRIVACY.md)).
 1. **Build on others' work, credit it, verify it.** Upstream tools are installed and
    pinned, never copied in. Re-implementations cite the paper and are cross-checked
    against the original.
@@ -104,6 +115,11 @@ Gap areas from the landscape review, in priority order:
    evidence tiers on every claim.
 6. **Open SBML re-implementation** of the 19-variable multiscale AD ODE model, with
    identifiability analysis.
+7. **Take open-ad-sim from B to A:** primary-source checks of every calibration target, a
+   measured connectome in place of its hand-set network (tested with `alzres.spreading`
+   nulls), external validation of progression, and a side-effect (ARIA) module before any
+   treatment comparison is read as benefit versus harm. Open items are listed in its
+   [vetting record](research/reproductions/open-ad-sim/README.md).
 
 Open items carried over from the review (unverified figures, scout disagreements) are
 listed in [the report](docs/landscape-2026-10/report.md#where-the-scouts-disagree-and-what-was-never-re-fetched).
@@ -111,5 +127,7 @@ listed in [the report](docs/landscape-2026-10/report.md#where-the-scouts-disagre
 ## Contributing and licenses
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Code is [Apache-2.0](LICENSE). Documentation,
-the registry and the evidence tables are [CC BY 4.0](LICENSES/CC-BY-4.0.txt). External
-resources keep their own licenses and terms, recorded per record in `registry/`.
+the registry and the evidence tables are [CC BY 4.0](LICENSES/CC-BY-4.0.txt).
+`models/open-ad-sim` keeps the license it was contributed under ([MIT](models/open-ad-sim/LICENSE)
+for code, CC BY 4.0 for its docs). External resources keep their own licenses and terms,
+recorded per record in `registry/`.

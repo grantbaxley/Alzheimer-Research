@@ -1,0 +1,15 @@
+# Rule #1: real patient data never enters this repository.
+patients/
+private/
+local/
+*.dcm
+*.nii
+*.nii.gz
+*.pdf
+*.docx
+*.xlsx
+# model outputs (regenerate locally)
+results/
+*.npz
+__pycache__/
+*.pyc

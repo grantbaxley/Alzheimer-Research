@@ -20,6 +20,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from alzres.registry import load, validate  # noqa: E402
 
 LAYER_TITLES = {
+    "project_models": "Models developed in this project",
     "progression": "Disease progression models and benchmarks",
     "imaging": "Neuroimaging pipelines and imaging ML",
     "simulation": "Brain simulators and whole-brain platforms",
@@ -68,8 +69,9 @@ def render_awesome(records) -> str:
             for r in sorted(rows, key=lambda r: r["name"].lower()):
                 lic = r["license"]
                 lic_txt = f"{lic['spdx']} ({lic['source']})"
+                url = r["url"] if str(r["url"]).startswith("https://") else f"../{r['url']}"
                 out.append(
-                    f"| [{_cell(r['name'])}]({r['url']}) | {_cell(lic_txt)} | "
+                    f"| [{_cell(r['name'])}]({url}) | {_cell(lic_txt)} | "
                     f"{r.get('our_status', 'not-started')} | {_cell(r['reason'])} |\n"
                 )
             out.append("\n")

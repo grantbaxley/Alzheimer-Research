@@ -1,0 +1,19 @@
+{
+ "V1_dona_3y_vs_untreated": -0.9583446025051972,
+ "desc_dona_3y_early_vs_delayed": -0.4779829211866433,
+ "desc_true_improved_12m_dona_lo": 0.0,
+ "desc_true_improved_12m_pbo_lo": 0.0,
+ "desc_measured_improved_12m_dona_lo": 0.15070189925681254,
+ "V2_lec_diff_1.5y": 0.3513521642464479,
+ "V2_lec_diff_3.0y": 0.8226686812700645,
+ "V2_lec_diff_4.0y": 1.1541021631522739,
+ "V3_ATpos_mci_dementia_5y": 0.8854545454545455,
+ "desc_ATneg_mci_dementia_5y": 0.49612403100775193,
+ "desc_years_amyloid_pos_at_mci_median": 13.0,
+ "desc_age_at_mci_median": 72.0,
+ "oos_z": {
+  "V1_dona_3y_vs_untreated": 0.9294438365184723,
+  "V2_lec_diff_4.0y": -2.0147445921193152
+ },
+ "oos_loss": 4.923061616716202
+}

@@ -1,0 +1,35 @@
+# Models developed in or contributed to this project. They are graded with the same skepticism
+# as external resources; our_status records what has actually been verified here.
+resources:
+  - id: open-ad-sim
+    name: open-ad-sim (10-region Alzheimer's disease-process model, v6 six-member ensemble)
+    url: models/open-ad-sim
+    kind: model
+    triage: B
+    license: {spdx: MIT (code) / CC-BY-4.0 (docs), class: permissive, source: license-file}
+    peer_reviewed: "no"
+    independent_replication: "no"
+    maintained: contributed 2026-10-19
+    pinned: upload sha256 abf02847bcc1..., with the changes listed in the vetting record
+    our_status: reproducing
+    verification: research/reproductions/open-ad-sim/README.md
+    reason: >-
+      Carefully documented, calibrated mechanistic model whose committed outputs reproduce
+      exactly and whose code matches its equations; but unreviewed, with two weak
+      out-of-sample checks, non-identifiable mechanism parameters and several calibration
+      targets that need correcting.
+    red_flags:
+      - Not peer reviewed or independently replicated; written with AI assistance.
+      - Only two out-of-sample checks, both open-label extensions against external controls.
+      - No treatment harms modeled (no ARIA module); APOE genotype has no effect.
+      - Hand-set 10-region network and regional constants; ~19 fitted parameters for 28 targets.
+      - Parameter recovery leaves about half the parameters >10% off (tau harm, neuron death, disconnection).
+      - "Calibration targets need fixes - one mixes counting bases (N_EC_mild), two are misattributed, two have no source, and one appears to rest on a watchlisted author's paper (S_PFC_mci); the age-scaling assumption has contrary evidence."
+      - Running a member without its ADSIM_VARIANT silently changed results (guard added here).
+    to_verify:
+      - Correct the calibration targets flagged in the vetting record (section 5) and refit.
+      - Refit on an independent cohort's group-level data; external validation of progression.
+      - Replace the hand-set network with a measured connectome and test against alzres.spreading nulls.
+      - Parameter identifiability (profile likelihood) and refits from fresh random seeds.
+    sources: [research/reproductions/open-ad-sim/README.md]
+    checked: 2026-10-19

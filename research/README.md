@@ -27,6 +27,12 @@ Work moves in stages; nothing skips intake.
    with its evidence grade and the registry IDs it rests on. Unvetted remnants stay in
    intake or are deleted.
 
+## Work brought in so far
+
+| Work | Stage | Record |
+|---|---|---|
+| open-ad-sim (10-region disease-process model, six-member ensemble) | Reproduced its own outputs; independent re-modeling in progress. Lives in `models/open-ad-sim/`. | [vetting record](reproductions/open-ad-sim/README.md) |
+
 ## Write-up template
 
 Each study or reproduction should state: question; data (and its access terms); registry

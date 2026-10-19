@@ -4,6 +4,14 @@
 
 A curated, skeptical list of open resources for modeling the brain and Alzheimer's disease. Grades come from the [2026-10 landscape review](../docs/landscape-2026-10/report.md) and are **not** endorsements: `our status` says what this project has actually checked. See [policy/VETTING.md](../policy/VETTING.md) for what each grade means.
 
+## Models developed in this project
+
+### B: Promising: vet and re-model first
+
+| Resource | License | Our status | Why |
+|---|---|---|---|
+| [open-ad-sim (10-region Alzheimer's disease-process model, v6 six-member ensemble)](../models/open-ad-sim) | MIT (code) / CC-BY-4.0 (docs) (license-file) | reproducing | Carefully documented, calibrated mechanistic model whose committed outputs reproduce exactly and whose code matches its equations; but unreviewed, with two weak out-of-sample checks, non-identifiable mechanism parameters and several calibration targets that need correcting. |
+
 ## Disease progression models and benchmarks
 
 ### A: Good starting points

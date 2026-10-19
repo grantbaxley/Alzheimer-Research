@@ -1,0 +1,53 @@
+# Generic patient TYPES, defined by ranges. Never real people, and never built around one person's
+# values (Rule #1, policy/PRIVACY.md at the repository root).
+# Each profile selects virtual patients whose simulated state falls inside every range at an age
+# inside the age range.
+# Fields: age [min, max]; centiloid [min, max] (amyloid PET); cdr_sb [min, max] (Clinical Dementia
+#         Rating, sum of boxes); tau: unknown | negative | positive | high
+#         atrophy (optional): unknown | present | absent  (medial temporal atrophy on MRI; 'present'
+#         keeps only virtual patients with some entorhinal neuron loss)
+# There is no APOE field: genotype has no effect in this simulation and no side-effect (ARIA)
+# module exists, so a genotype label would change nothing and only add sensitive detail.
+profiles:
+  mci_moderate_amyloid_70s:
+    description: "Mild cognitive impairment, moderate amyloid, in their 70s, tau status unspecified"
+    age: [70, 79]
+    centiloid: [60, 100]
+    cdr_sb: [0.5, 2.5]
+    tau: unknown
+  mci_high_amyloid_60s:
+    description: "Mild cognitive impairment, high amyloid, in their 60s"
+    age: [62, 69]
+    centiloid: [100, 140]
+    cdr_sb: [0.5, 3.5]
+    tau: unknown
+  mci_moderate_to_high_amyloid_60s:
+    description: "Mild cognitive impairment, moderate to high amyloid, in their 60s"
+    age: [62, 70]
+    centiloid: [60, 120]
+    cdr_sb: [0.5, 3.0]
+    tau: unknown
+  mci_tau_spread_70s:
+    description: "Mild cognitive impairment with tau already beyond the temporal lobe, in their 70s"
+    age: [70, 79]
+    centiloid: [70, 120]
+    cdr_sb: [1.5, 4.0]
+    tau: high
+  mci_tau_negative_70s:
+    description: "Mild cognitive impairment, amyloid-positive, tau PET negative, in their 70s"
+    age: [70, 79]
+    centiloid: [40, 100]
+    cdr_sb: [0.5, 2.5]
+    tau: negative
+  mild_dementia_70s:
+    description: "Mild Alzheimer's dementia, in their 70s"
+    age: [70, 79]
+    centiloid: [70, 130]
+    cdr_sb: [4.5, 9.0]
+    tau: unknown
+  preclinical_70s:
+    description: "Amyloid-positive, cognitively unimpaired, in their 70s (prevention questions)"
+    age: [70, 79]
+    centiloid: [30, 80]
+    cdr_sb: [0.0, 0.4]
+    tau: unknown

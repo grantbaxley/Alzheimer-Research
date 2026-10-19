@@ -28,12 +28,15 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-markers = ["integration: needs optional upstream packages (pip install -e .[progression])"]
+markers = ["integration: slower reproduction checks; some need optional upstream packages (pip install -e .[progression])"]
 addopts = "-m 'not integration'"
 
 [tool.ruff]
 line-length = 100
 target-version = "py310"
+# The contributed model keeps its own style so its code stays recognisably the same as the
+# version that produced its committed outputs; it is checked by tests/test_open_ad_sim.py.
+extend-exclude = ["models/open-ad-sim"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "B", "UP"]

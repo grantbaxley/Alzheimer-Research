@@ -1,0 +1,90 @@
+{
+ "members": {
+  "q1_r01": {
+   "recovery_impact": {
+    "fitted": {
+     "n_matched": 5625,
+     "share_lost_prop_N": 0.3281749755225738,
+     "share_lost_shapley_N": 0.314561645342166,
+     "tau_negative_share": 0.11733333333333333
+    },
+    "recovered": {
+     "n_matched": 5369,
+     "share_lost_prop_N": 0.32986695106364267,
+     "share_lost_shapley_N": 0.31952503474921606,
+     "tau_negative_share": 0.08921586887688583
+    },
+    "recovered_fit_loss": 0.5789644020484048,
+    "seconds": 89.04337954521179,
+    "settings": [
+     "mci_moderate_amyloid_70s",
+     40000,
+     21
+    ]
+   },
+   "variant": "base"
+  },
+  "v6_r05": {
+   "recovery_impact": {
+    "fitted": {
+     "n_matched": 7532,
+     "share_lost_prop_N": 0.3912951983129425,
+     "share_lost_shapley_N": 0.3771064329560857,
+     "tau_negative_share": 0.6881306425916092
+    },
+    "recovered": {
+     "n_matched": 8551,
+     "share_lost_prop_N": 0.4358147142584792,
+     "share_lost_shapley_N": 0.41869869391458125,
+     "tau_negative_share": 0.6972283943398433
+    },
+    "recovered_fit_loss": 1.6420789596972853,
+    "seconds": 90.4827527999878,
+    "settings": [
+     "mci_moderate_amyloid_70s",
+     40000,
+     21
+    ]
+   },
+   "variant": "base"
+  }
+ },
+ "settings": {
+  "calibration": [
+   4000,
+   11,
+   7
+  ],
+  "fresh_calibration_seeds": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ],
+  "fresh_validation_seeds": [
+   34,
+   35,
+   36,
+   37,
+   38
+  ],
+  "large_population": [
+   16000,
+   201
+  ],
+  "numpy": "2.3.5",
+  "perturbation_factors": [
+   0.7,
+   0.9,
+   1.1,
+   1.3
+  ],
+  "python": "3.13.16",
+  "scipy": "1.18.1",
+  "validation": [
+   8000,
+   33
+  ]
+ }
+}
