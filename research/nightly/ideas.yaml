@@ -23,7 +23,7 @@ ideas:
     created: 2026-10-19
     lens: resilience
     goal: understand
-    status: new
+    status: killed
     mechanism: >-
       Women outperform men on verbal-memory tests at the same level of pathology, which
       is read as cognitive reserve; but per unit of autopsy pathology, pathology is far
@@ -61,13 +61,26 @@ ideas:
     history:
       - date: 2026-10-19
         note: "Created under resilience lens, women constraint. Unifies the reserve-vs-vulnerability contradiction both research scans flagged."
+      - date: 2026-10-21
+        note: >-
+          Killed on red-team night. Both halves fail. The pure detection-artifact framing is
+          refuted by its own cornerstone datum (equal hippocampal atrophy, better female verbal
+          memory, Sundermann 2016 PMID 27029635), which is at least as consistent with genuine
+          reserve and is read that way by the group that found it (PMID 39951912). The
+          "under-protected at the synapse" half is contradicted by the largest CSF synaptic study
+          (Oh 2025 Nat Med, n=3,397, PMID 40164724): the synapse-to-cognition axis shows no sex
+          interaction, so women do not show lower synaptic markers at matched pathology. Surviving
+          kernel, kept as a separate observation not this idea: women decline faster per unit tau
+          once symptomatic (PMID 37641484, PMID 41540505) - cognitive vulnerability, not synaptic
+          under-protection. Genuine gap remains: no study reports sex-stratified
+          synaptic-marker-vs-tau slopes.
 
   - id: synaptic-reversal-endpoint
     title: "A sex-normed synaptic-integrity fluid panel as a reversal (not just slowing) endpoint"
     created: 2026-10-19
     lens: resilience
     goal: reverse
-    status: new
+    status: parked
     mechanism: >-
       Across autopsy and single-cell cohorts, preserved synapses and neurons track preserved
       cognition better than plaque or tangle load, and synaptic proteins (NPTX2, NRN1, VGF,
@@ -89,21 +102,40 @@ ideas:
       improvement. If markers only ever fall or plateau, the reversal-endpoint claim is killed.
     evidence: observational
     safety: "None; this is a biomarker/endpoint proposal, not a treatment."
-    next: "Find interventional cohorts with serial synaptic-marker sampling and sex breakdown."
+    next: >-
+      Reframe to marker-specific directions, then re-assay the full panel in banked samples from
+      a positive anti-amyloid trial (or sabirnetug ALTITUDE-AD, NCT06335173) to see whether the
+      protective markers rise, plus a 2-6 week repeatability substudy to fix the minimal
+      detectable change.
     sources:
       - "10.1038/s41591-025-03565-2"
       - "10.1002/ana.26725"
       - "10.1016/j.mcpro.2023.100542"
+      - "10.1001/jamaneurol.2024.0991"
+      - "10.1016/j.tjpad.2025.100082"
+      - "10.1186/s13024-024-00755-3"
     history:
       - date: 2026-10-19
         note: "Created under resilience lens, women constraint."
+      - date: 2026-10-21
+        note: >-
+          Parked on red-team night: not killed, but wrong as written. The panel is directionally
+          incoherent for an "up = good" readout - neurogranin, YWHAG and VAMP2 RISE with damage
+          while NPTX2, NRN1 and VGF fall, and the YWHAG:NPTX2 ratio rises with both decline and
+          normal aging (PMID 39380095, PMID 40164724). In the only interventional CSF data,
+          anti-amyloid therapy moved damage markers DOWN (gantenerumab lowered neurogranin,
+          DIAN-TU, PMID 38683602; sabirnetug lowered neurogranin and VAMP2, PMID 39955261); no
+          human trial has driven the protective markers UP (only a preclinical mouse Nptx2 boost).
+          Markers are also non-specific (Lewy-body disease, acute injury) with no established
+          test-retest reliability for this use. A reframed, marker-specific version survives; the
+          simple upswing endpoint does not.
 
   - id: sex-amyloid-tau-window
     title: "Use each person's amyloid-to-tau interval, not age, to time an anti-seeding therapy"
     created: 2026-10-19
     lens: resilience
     goal: detect
-    status: new
+    status: investigating
     mechanism: >-
       The resilience variants that most clearly protect (APOE3-Christchurch, PLCG2 P522R) act by
       suppressing amyloid-induced tau seeding and spread via microglia, so the leverage point is
@@ -132,15 +164,34 @@ ideas:
     safety: >-
       None for the analysis. Any resulting trial-timing rule would need prospective validation
       before use.
-    next: "Add a modeling note; look for open serial amyloid+tau PET summary statistics by sex."
+    next: >-
+      In a serial amyloid+tau PET cohort (ADNI, BioFINDER), test whether the amyloid-to-tau
+      interval predicts tau-accumulation rate and cognitive decline AFTER removing amyloid burden
+      and age, and whether a sex-by-interval term survives. If it adds nothing, the enrichment
+      premise dies cheaply; if a residual effect survives, re-cut an existing tau-stage-enriched
+      trial by estimated interval and sex before proposing anything bespoke.
     sources:
       - "10.1001/jamaneurol.2025.0013"
       - "10.1016/j.tjpad.2026.100622"
       - "10.1016/j.cell.2023.11.029"
       - "10.1007/s00401-020-02138-6"
+      - "10.1002/alz.71064"
+      - "10.1007/s00259-026-07934-y"
     history:
       - date: 2026-10-19
         note: "Created under resilience lens, women constraint. Toy FKPP run (scripts/window_2026_10_19.py) complicated the premise; recorded as evidence against, idea kept for the cohort test."
+      - date: 2026-10-21
+        note: >-
+          Advanced to investigating on red-team night. One objection fell, one got sharper. The
+          off-target tau-PET worry (that female tau excess is a meningeal/vascular artifact) is
+          largely defeated by an off-target-immune fluid tau marker tracking tau-PET with no sex
+          interaction (MTBR-tau243, Robinson 2026, PMID 42191949), so the "faster female tau"
+          premise stands. But the real kill is that the amyloid-to-tau interval is confounded with
+          age at amyloid onset and amyloid burden, and adds little after tau positivity (PMID
+          42309020); a reframing (PMID 41485137) describes it better as an amyloid-level x age x
+          sex threshold. So "time by interval, not age" largely collapses into "amyloid burden +
+          age", which existing enrichment already approximates. The cheapest decisive test is now
+          in `next`.
 
   - id: fsh-blockade-women
     title: "Blocking follicle-stimulating hormone to slow post-menopausal Alzheimer's"
@@ -174,3 +225,128 @@ ideas:
     history:
       - date: 2026-10-19
         note: "Logged as parked: single-group preclinical program, contradictory human data, HT (which lowers FSH) null in RCTs."
+
+  - id: clearance-threshold-onset
+    title: "Model onset as a clearance-capacity tipping point, not a seeding event - and test for hysteresis"
+    created: 2026-10-21
+    lens: red-team
+    goal: understand
+    status: new
+    mechanism: >-
+      Perivascular and blood-brain-barrier routes continuously clear amyloid and tau, and
+      clearance (not overproduction) is impaired in sporadic disease. Model the brain as
+      normally holding small seeds below a threshold set by clearance capacity: when vascular
+      aging drops clearance below the local aggregation rate the same pre-existing seed takes
+      off, and because the system is bistable, restoring clearance after onset may not pull it
+      back - predicting that late clearance-restoring therapy fails even when early would have
+      worked.
+    novelty: >-
+      The clearance-deficit view of sporadic disease is established (Mawuenyega 2010) and CAA is
+      framed as clearance failure (Greenberg 2020). The specific, testable additions are the
+      bistability/hysteresis framing - a tipping point with a no-return region - and tonight's
+      toy model (scripts/clearance_2026_10_21.py) showing a sharp clearance threshold at fixed
+      seed. A search did not find this cast as a hysteresis prediction for therapy timing.
+    against: >-
+      Tonight's model only shows that adding a linear clearance term gives a threshold near
+      clearance = growth rate, which is close to tautological, not evidence about the brain.
+      Autosomal-dominant disease is driven by amyloid overproduction, so seeding clearly matters
+      independently of clearance; and clearance proxies (CSF sPDGFR-beta, DCE-MRI leakage) are
+      single-cohort and may be confounded by age and small-vessel disease rather than measuring a
+      causal clock.
+    falsify: >-
+      In a serial-PET cohort, test whether a baseline clearance proxy (sPDGFR-beta or DCE-MRI
+      Ktrans) predicts tau take-off independent of baseline amyloid burden and age. For the
+      hysteresis claim, test in a model system whether restoring clearance after aggregation is
+      established reverses burden or only slows it. If clearance adds nothing beyond amyloid
+      burden, or if restoration reverses burden freely, the tipping-point framing is wrong.
+    evidence: in-silico
+    safety: "None; this is a modeling and analysis hypothesis."
+    next: "Extend the toy model to show/deny hysteresis (does lowering gamma then raising it return to baseline?); look for serial clearance-proxy + tau-PET data."
+    sources:
+      - "10.1126/science.1197623"
+      - "10.1038/s41582-019-0281-2"
+      - "10.1038/s41586-020-2247-3"
+    history:
+      - date: 2026-10-21
+        note: "Created on red-team night under the blood-vessel/BBB constraint, seeded by the clearance-threshold toy model."
+
+  - id: vascular-reserve-aria-dosing
+    title: "Stratify anti-amyloid dose by a pre-treatment vascular-integrity readout to widen the ARIA-limited window"
+    created: 2026-10-21
+    lens: red-team
+    goal: slow
+    status: new
+    mechanism: >-
+      The dominant neurovascular event in the clinic is iatrogenic ARIA, driven by cerebral
+      amyloid angiopathy and vessel-wall fragility as anti-amyloid antibodies clear vascular
+      amyloid. If a pre-treatment vascular-integrity readout (microbleed/CAA burden on MRI plus a
+      BBB/pericyte-injury marker such as CSF sPDGFR-beta) predicts individual ARIA risk beyond
+      APOE4 and microbleed count, dose and titration could be personalised, turning the
+      neurovascular unit from an uncontrolled liability into a dosing variable and letting
+      lower-risk patients clear amyloid faster.
+    novelty: >-
+      APOE4 genotype and baseline microbleeds already gate eligibility and dosing. Adding a
+      dynamic BBB-integrity biomarker to personalise dose/titration, rather than just exclude, is
+      less established; no trial found that tests sPDGFR-beta-guided dosing.
+    against: >-
+      CSF sPDGFR-beta is validated mainly in one cohort and may not be specific to cerebrovascular
+      injury; ARIA prediction from APOE4 plus microbleed count may already capture most of the
+      signal, leaving little to add. Collecting CSF to decide dosing adds cost and invasiveness.
+    falsify: >-
+      In banked baseline samples and MRI from a positive anti-amyloid trial, test whether baseline
+      sPDGFR-beta (or a small vascular panel) predicts ARIA-E after adjusting for APOE4 and
+      microbleed count. If it adds no discrimination, the idea is dead without any new trial.
+    evidence: observational
+    safety: >-
+      Aimed at reducing iatrogenic harm, but a mis-set rule could under-treat someone who would
+      have benefited, or expose a mis-classified patient to ARIA. Any dosing rule needs
+      prospective validation before use.
+    next: "List anti-amyloid trials with banked baseline CSF + MRI; check whether sPDGFR-beta or similar was measured."
+    sources:
+      - "10.1001/jamaneurol.2025.0065"
+      - "10.1038/s41586-020-2247-3"
+      - "10.1038/s41582-019-0281-2"
+    history:
+      - date: 2026-10-21
+        note: "Created on red-team night under the blood-vessel/BBB constraint, from the observation that ARIA makes the neurovascular unit clinically central as a toxicity site."
+
+  - id: fn1-clearance-restore
+    title: "Lower excess blood-brain-barrier fibronectin to phenocopy the FN1 resilience variant in APOE4 carriers"
+    created: 2026-10-21
+    lens: red-team
+    goal: slow
+    status: new
+    mechanism: >-
+      A rare loss-of-function FN1 variant (rs140926439) is strongly protective in APOE4
+      homozygotes, apparently because less fibronectin accumulates at the blood-brain barrier,
+      so toxic-protein clearance and gliovascular remodeling are preserved. Reducing
+      astrocyte-derived or vascular fibronectin assembly at the barrier might phenocopy that
+      protection and restore clearance in APOE4 carriers who did not inherit the variant.
+    novelty: >-
+      FN1 as an Alzheimer's resilience target is recent (2024-2026) with an independent-cohort
+      replication and a mechanistic follow-up; no drug programme targeting barrier fibronectin for
+      this purpose was found. The specific twist is testing reduction AFTER pathology is
+      established, i.e. as a restorative rather than preventive move.
+    against: >-
+      The protective odds come from case-control genetics on a rare variant with a wide
+      confidence interval, not from intervention. Fibronectin is essential for vascular integrity,
+      wound healing and haemostasis, so lowering it is likely dangerous systemically, and the
+      zebrafish loss-of-function benefit may be developmental and not reproducible by lowering
+      fibronectin in an adult brain.
+    falsify: >-
+      In an APOE4 blood-brain-barrier model with established fibronectin accumulation, lower
+      fibronectin assembly and test whether clearance recovers and gliosis falls (restoration),
+      not merely whether co-suppression from the start prevents it. No restoration effect kills
+      the restorative version.
+    evidence: preclinical
+    safety: >-
+      Fibronectin is systemically essential (clotting, wound healing, vascular integrity); any
+      approach would need brain-vascular-local targeting and careful bleeding/fibrosis monitoring.
+    next: "Check whether the FN1 mechanism papers tested post-hoc lowering (restoration) vs co-suppression, and whether any local FN1-assembly inhibitor exists."
+    sources:
+      - "10.1007/s00401-024-02721-1"
+      - "10.1038/s43587-026-01204-0"
+      - "10.1097/WAD.0000000000000692"
+    history:
+      - date: 2026-10-21
+        note: "Created on red-team night under the blood-vessel/BBB constraint, from the FN1 vascular-resilience signal."

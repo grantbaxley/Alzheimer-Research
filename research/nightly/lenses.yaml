@@ -38,6 +38,7 @@ lenses:
       - For each alternative hypothesis (vascular, infection, insulin/metabolic, lipid/APOE, glymphatic/sleep, microglia/immune, mitochondria, myelin, blood-brain barrier), what observation would falsify it?
       - Which hypotheses make different predictions that one cheap study could separate?
       - What does the failure of a mechanism's drug actually tell us (wrong target, wrong time, wrong dose, wrong patients)?
+      - Is onset better modelled as a tipping point (clearance capacity falling below aggregation rate) than as a seeding event, and would that predict hysteresis - a point past which restoring clearance no longer reverses pathology?
 
   - id: cross-domain
     name: Borrow from a field that reversed a degenerative process
@@ -90,6 +91,7 @@ lenses:
       - Has it already been tested (ClinicalTrials.gov, preprints, failed programmes)? What happened?
       - What is the cheapest experiment that could kill it, and what result would?
       - If it survived, what would the next, harder test be?
+      - Can a liability be turned into a controllable variable - e.g. can the neurovascular unit, today the site of ARIA toxicity, become a pre-treatment stratifier that widens the therapeutic window?
 
   - id: frontier-scan
     name: What is new this week
