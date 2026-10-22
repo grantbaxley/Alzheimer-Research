@@ -261,14 +261,33 @@ ideas:
       burden, or if restoration reverses burden freely, the tipping-point framing is wrong.
     evidence: in-silico
     safety: "None; this is a modeling and analysis hypothesis."
-    next: "Extend the toy model to show/deny hysteresis (does lowering gamma then raising it return to baseline?); look for serial clearance-proxy + tau-PET data."
+    next: >-
+      The hysteresis half is answered (no, in this model family). Next, test the tipping-point
+      half on data: in a serial-PET cohort, does a clearance proxy (sPDGFR-beta or DCE-MRI
+      leakage) predict tau take-off independent of amyloid burden and age? Separately, note that
+      irreversibility likely sits in neuron loss, not clearance dynamics.
     sources:
       - "10.1126/science.1197623"
       - "10.1038/s41582-019-0281-2"
       - "10.1038/s41586-020-2247-3"
+      - "10.1523/jneurosci.16-14-04491.1996"
     history:
       - date: 2026-10-21
         note: "Created on red-team night under the blood-vessel/BBB constraint, seeded by the clearance-threshold toy model."
+      - date: 2026-10-22
+        note: >-
+          Hysteresis corollary falsified in-silico. scripts/hysteresis_2026_10_22.py ran the
+          clearance model two ways - fixed clearance, and clearance impaired by pathology (a
+          positive-feedback failure loop) - and NEITHER showed hysteresis: restoring clearance
+          collapsed burden back to the never-ill baseline both times. Reason: the logistic growth
+          term is zero at saturation, so any positive clearance drains the high state; this model
+          family is reversible by construction. Implication for the inversion lens: the
+          irreversibility of real disease cannot come from clearance/aggregation dynamics here -
+          it must come from loss of substrate (neuron death), which the model does not represent
+          and which the reversibility scan puts at ~60% entorhinal layer-II loss by very-mild
+          dementia (Gomez-Isla 1996, PMID 8699259). The tipping-point (onset) half of the idea is
+          untouched by this and still needs the cohort test in `next`; the "no way back" half is
+          reattributed from clearance bistability to neuron loss.
 
   - id: vascular-reserve-aria-dosing
     title: "Stratify anti-amyloid dose by a pre-treatment vascular-integrity readout to widen the ARIA-limited window"
@@ -350,3 +369,121 @@ ideas:
     history:
       - date: 2026-10-21
         note: "Created on red-team night under the blood-vessel/BBB constraint, from the FN1 vascular-resilience signal."
+
+  - id: identify-autocatalysis-rate
+    title: "Test whether tau's growth term is actually positive in humans, or just connectivity-patterned transport"
+    created: 2026-10-22
+    lens: inversion
+    goal: understand
+    status: new
+    mechanism: >-
+      Network-spreading models (including this repo's FKPP) assume tau grows autocatalytically via
+      a logistic term alpha*x*(1-x), but "autocatalytic" is an assumption, not a measured human
+      rate, and a good spatial fit (high Pearson r to a regional tau map) does not prove the
+      spreading mechanism - regional vulnerability can produce the same pattern. The idea is to fit
+      the growth parameter region-wise to longitudinal human tau-PET and test whether it is
+      genuinely greater than zero (true self-amplification) or near zero (pattern set by transport
+      plus intrinsic vulnerability), because if there is no real self-amplification the whole
+      rationale for anti-seeding therapy weakens.
+    novelty: >-
+      Diffusion models are fit to human tau (Vogel 2020, Raj 2012) and growth+diffusion models
+      exist (Schafer/Kuhl 2021), but explicitly testing whether the growth term is identifiable
+      and positive region-wise, against a regional-vulnerability confound, is the open question the
+      feedback-loop scan surfaced (Xiao et al. preprint: network dynamics set tau presence,
+      vulnerability sets load).
+    against: >-
+      Identifiability: with only a few PET timepoints the growth rate and a static vulnerability
+      map may be statistically confounded, so the fit could be unable to separate them even in
+      principle. The repo's own synthetic tests show the tooling runs; they say nothing about
+      whether a real growth rate is recoverable.
+    falsify: >-
+      First on synthetic data with a known growth rate: does the fit recover it, or does a
+      vulnerability-only model fit equally well? If the two are not separable in silico, the
+      question cannot be answered from the available human data and the idea is parked; if they
+      are separable, apply it to a public longitudinal tau-PET summary.
+    evidence: in-silico
+    safety: "None; modeling and inference only. Also a useful honesty check on the repo's own FKPP results."
+    next: "Simulate: fit FKPP growth vs a vulnerability-only null on synthetic connectome data with known parameters; report identifiability before touching real data."
+    sources:
+      - "10.1038/s41467-020-15701-2"
+      - "10.1016/j.neuron.2011.12.040"
+      - "10.3389/fphys.2021.702975"
+    history:
+      - date: 2026-10-22
+        note: "Created on inversion night under the engineering constraint, from the feedback-loop scan's point that autocatalysis is assumed, not measured, and good fit does not prove mechanism."
+
+  - id: reserve-as-redundancy-threshold
+    title: "Operationalise cognitive reserve as a measured network-redundancy quantity that predicts a tipping point"
+    created: 2026-10-22
+    lens: inversion
+    goal: detect
+    status: new
+    mechanism: >-
+      Cognitive reserve is invoked as redundancy - spare circuits that keep function as nodes fail
+      - but it is usually measured by proxies (education) rather than a redundancy quantity, and no
+      one has tied a measured redundancy to a predicted resilience threshold. The idea is to define
+      a concrete graph-redundancy or degeneracy metric on an individual's connectome (independent
+      path count, or spectral robustness to node removal) and test whether it predicts the tau
+      burden at which that person's cognition falls - a personal failure threshold.
+    novelty: >-
+      Reserve-as-redundancy and graph-resilience are active but conceptual or cross-sectional; the
+      feedback-loop scan found no source closing the loop from a measured redundancy quantity to a
+      predicted threshold (Nawani 2025 calls for exactly this). The specific, falsifiable metric
+      -> threshold link is the gap.
+    against: >-
+      Education and brain volume already predict cognition-at-matched-pathology, so a redundancy
+      metric may add nothing; cross-sectional connectomes confound cause and consequence; and
+      "degeneracy" (different structures, same function) is hard to measure and easy to assert.
+    falsify: >-
+      Does a connectome-redundancy metric predict cognition at matched tau beyond education and
+      brain volume? If it adds no variance in a cohort with connectomes, tau-PET and cognition, the
+      idea is dead. Prototype the metric on synthetic connectomes first to check it behaves.
+    evidence: observational
+    safety: "None; analysis only."
+    next: "Prototype a redundancy metric (independent paths / spectral robustness) on the repo's synthetic connectome and check it discriminates graphs before proposing a cohort test."
+    sources:
+      - "10.1002/brb3.70903"
+      - "10.1016/j.neuron.2011.12.040"
+    history:
+      - date: 2026-10-22
+        note: "Created on inversion night under the engineering (redundancy) constraint, from the gap the feedback-loop scan named."
+
+  - id: restore-before-the-floor
+    title: "Gate reversal trials on preserved neuronal substrate and read out a plastic compartment"
+    created: 2026-10-22
+    lens: inversion
+    goal: reverse
+    status: new
+    mechanism: >-
+      Reversal is only possible in compartments that are still plastic (synapses, myelin,
+      perfusion, inflammation); once neurons are dead they are not replaced, and ~60% of entorhinal
+      layer-II neurons are already gone by very-mild dementia. So a reversal trial should enrol only
+      people whose neuronal/synaptic substrate is still largely intact - gated by preserved synaptic
+      density (SV2A-PET) or entorhinal volume - and measure a plastic-compartment readout that can
+      actually move upward, rather than chasing reversal in brains past the irreversible floor.
+    novelty: >-
+      Trials enrich by amyloid level and tau stage, not by a synaptic-substrate floor, and no
+      reversal trial uses SV2A-PET as a substrate gate plus improvement readout. The twist is
+      designing for the window where reversal is biologically possible instead of testing it where
+      it cannot occur.
+    against: >-
+      No intervention has yet raised SV2A-PET or any synaptic marker in humans, and no longitudinal
+      recovery study exists, so the readout is unproven; a strict substrate gate might exclude most
+      symptomatic patients, shrinking the trial population to near-preclinical where change is
+      slow and hard to detect.
+    falsify: >-
+      Is there any cohort where SV2A-PET (or another plastic-compartment readout) rose after an
+      intervention? If synaptic density is never observed to increase in humans, the reversal
+      endpoint is unusable and the design cannot work; that single question settles it cheaply.
+    evidence: observational
+    safety: >-
+      None for the design itself; any trial would carry its intervention's own risks and must not
+      give enrolled people a false expectation of reversal.
+    next: "Check for any longitudinal SV2A-PET study showing an increase after any intervention; if none exists, that is the blocking experiment."
+    sources:
+      - "10.1523/jneurosci.16-14-04491.1996"
+      - "10.1002/alz.12097"
+      - "10.1002/ana.410300410"
+    history:
+      - date: 2026-10-22
+        note: "Created on inversion night; the reversibility scan's compartment inventory (plastic vs lost-neuron) and tonight's no-hysteresis model both point to a narrow pre-floor window."

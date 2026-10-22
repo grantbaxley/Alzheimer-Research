@@ -12,6 +12,8 @@ lenses:
       - Which damage is reversible in principle (synapses, metabolism, inflammation, myelin, vessels) and which is not (lost neurons)? What fraction of today's impairment is in each, at each stage?
       - What is the smallest change to surviving neurons or their environment that would restore function?
       - If a drug restored function for 6 months and then stopped working, what would most likely have caught up with it?
+      - Which published models does a result actually depend on - and does a good fit (high correlation) prove the mechanism, or could regional vulnerability produce the same pattern without it?
+      - Where is the irreversible floor (lost neurons) at each stage, and does that set the latest point at which any reversal attempt could still work?
 
   - id: resilience
     name: People who have the pathology but not the disease
