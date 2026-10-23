@@ -63,6 +63,7 @@ lenses:
       - Which approved, safe, cheap drugs have both a mechanistic rationale and a human signal (natural experiments, claims data, Mendelian randomisation)?
       - Which of those signals already failed in an RCT, and what did the failure show?
       - What active-comparator or target-trial-emulation design would make an observational signal credible?
+      - When a claims-data signal and a Mendelian-randomization or regression-discontinuity estimate disagree, which do you believe and why - and how big is the gap (the likely size of healthy-user bias)?
 
   - id: reversal-biology
     name: Rebuilding - synapses, circuits, cells

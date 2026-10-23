@@ -334,7 +334,7 @@ ideas:
     created: 2026-10-21
     lens: red-team
     goal: slow
-    status: new
+    status: investigating
     mechanism: >-
       A rare loss-of-function FN1 variant (rs140926439) is strongly protective in APOE4
       homozygotes, apparently because less fibronectin accumulates at the blood-brain barrier,
@@ -361,7 +361,11 @@ ideas:
     safety: >-
       Fibronectin is systemically essential (clotting, wound healing, vascular integrity); any
       approach would need brain-vascular-local targeting and careful bleeding/fibrosis monitoring.
-    next: "Check whether the FN1 mechanism papers tested post-hoc lowering (restoration) vs co-suppression, and whether any local FN1-assembly inhibitor exists."
+    next: >-
+      Read the Nat Aging 2026 full-text Methods to settle restoration vs co-suppression (was FN1
+      lowered after BBB/amyloid pathology was established, or from baseline? was leak reversed or
+      only prevented?). That single fact decides whether this is a reversal lead or only a
+      prevention one.
     sources:
       - "10.1007/s00401-024-02721-1"
       - "10.1038/s43587-026-01204-0"
@@ -369,6 +373,20 @@ ideas:
     history:
       - date: 2026-10-21
         note: "Created on red-team night under the blood-vessel/BBB constraint, from the FN1 vascular-resilience signal."
+      - date: 2026-10-23
+        note: >-
+          Advanced on repurposing night. Both source papers reconfirmed (Bhattarai 2024 Acta
+          Neuropathol, PMID 38598053; Bhattarai 2026 Nat Aging, PMID 42728404). The 2026 abstract
+          says reducing fibronectin "rescues" BBB function in vitro and in vivo - suggestive of
+          restoration - but does not state whether FN1 was lowered after pathology was established
+          or co-suppressed from baseline; full text is paywalled, so the restoration-vs-prevention
+          question (the crux for this idea's reversal goal) is still open. No cheap approved
+          brain-penetrant FN1-lowering drug exists: pirfenidone is antifibrotic but not CNS-targeted
+          and likely fails the cost gate; the FUD/pUR4 fibronectin-assembly inhibitor is
+          experimental, not approved; losartan and metformin lower peripheral fibronectin cheaply
+          but there is no evidence they reach the perivascular brain compartment (speculative).
+          So: genetically anchored and mechanistically fresh, but neither clearly reversal-capable
+          nor cheaply druggable yet.
 
   - id: identify-autocatalysis-rate
     title: "Test whether tau's growth term is actually positive in humans, or just connectivity-patterned transport"
@@ -487,3 +505,166 @@ ideas:
     history:
       - date: 2026-10-22
         note: "Created on inversion night; the reversibility scan's compartment inventory (plastic vs lost-neuron) and tonight's no-hysteresis model both point to a narrow pre-floor window."
+
+  - id: vaccine-trained-immunity
+    title: "Test whether adult vaccines protect by trained innate immunity (antigen-independent), not anti-herpesvirus action"
+    created: 2026-10-23
+    lens: repurposing
+    goal: understand
+    status: new
+    mechanism: >-
+      A regression-discontinuity natural experiment on the Welsh shingles rollout found roughly a
+      20% relative drop in dementia, and the protection does not look antigen-specific: the
+      recombinant shingles vaccine (a different, adjuvanted antigen) protects at least as well as
+      the live one, an adjuvanted RSV vaccine shows a similar signal, and unrelated vaccines (BCG,
+      Tdap, influenza, pneumococcal) each associate with lower risk. The hypothesis is that the
+      shared cause is trained innate immunity - durable epigenetic/metabolic reprogramming of
+      myeloid cells and microglia - so the protective ingredient is immune stimulation in general,
+      not suppression of any one pathogen.
+    novelty: >-
+      The individual vaccine-dementia associations are published; framing them as one
+      antigen-independent trained-immunity effect with a single decisive prediction, and treating
+      the recombinant-vs-live and cross-vaccine contrasts as the test, is the contribution. A
+      BCG-to-CSF reprogramming trial exists but is tiny and open-label.
+    against: >-
+      Healthy-vaccinee bias inflates cohort estimates (the regression-discontinuity effect ~20% is
+      far smaller than cohort hazard ratios of 0.49-0.74, and an active Tdap comparator attenuates
+      one estimate from 0.49 to 0.73). An antigen-specific anti-herpesvirus pathway is not excluded
+      (shingles infection itself raises risk; antivirals modestly lower it). Trained immunity can
+      also worsen neuroinflammation, so "net protective" is not obvious. No RCT with a clinical
+      dementia endpoint exists for any of these.
+    falsify: >-
+      Antigen-independence is the test. If, across regression-discontinuity or active-comparator
+      designs, antigenically unrelated vaccines (BCG, Tdap) do NOT lower risk while only
+      herpesvirus-directed ones do, trained immunity is wrong and the effect is anti-herpesvirus.
+      If recombinant and live shingles vaccines diverge sharply (live better), that also favours
+      the antiviral story over trained immunity.
+    evidence: observational
+    safety: >-
+      Adult vaccines are broadly safe and already recommended, so the translational risk is low;
+      but trained immunity is double-edged and could in principle worsen neuroinflammation in some
+      people, which any trial must monitor. Nothing here is medical advice.
+    next: "Watch for independent (non-originating-group) regression-discontinuity replications and any head-to-head antigen-unrelated-vaccine comparison; see the power note in scripts/power_2026_10_23.py."
+    sources:
+      - "10.1038/s41586-025-08800-x"
+      - "10.1038/s41591-024-03201-5"
+      - "10.1038/s41541-025-01172-3"
+      - "10.1001/jamanetworkopen.2023.14336"
+      - "10.7554/eLife.106037"
+    history:
+      - date: 2026-10-23
+        note: "Created on repurposing night. Strongest of the night: a cheap, safe class with a natural-experiment signal and one clean falsification (antigen-independence)."
+
+  - id: lithium-microdose-target-trial
+    title: "Microdose lithium for prevention, made credible by an active-comparator target-trial emulation"
+    created: 2026-10-23
+    lens: repurposing
+    goal: slow
+    status: new
+    mechanism: >-
+      Endogenous brain lithium is reduced in MCI and further depleted in Alzheimer's by amyloid
+      sequestration, and in mice dietary lithium depletion worsens amyloid, tau, inflammation and
+      memory via GSK3-beta while an amyloid-evading lithium salt prevents it. The hypothesis is
+      that restoring lithium at microdose (well below psychiatric doses) slows progression, tested
+      not by yet another tiny trial but by emulating a target trial in existing records.
+    novelty: >-
+      Lithium-in-AD is an old idea with small positive MCI trials and drinking-water epidemiology;
+      the fresh parts are the 2025 endogenous-depletion mechanism and, as the contribution here, a
+      credible-inference design - comparing people already on lithium for mood disorders against an
+      active comparator (other mood stabilisers) to defeat healthy-user bias - rather than relying
+      on confounded ecological water-lithium studies.
+    against: >-
+      The mechanism and salt-specific rescue are preclinical (mouse); the human RCTs are small and
+      old (Forlenza, n=45) and a microdose pilot was methodologically weak; drinking-water studies
+      are ecological and confounded. Even low-dose lithium carries real renal and thyroid risk over
+      years, and the amyloid-evading orotate salt is unproven in humans.
+    falsify: >-
+      In a claims/records cohort, emulate a target trial of lithium vs an active mood-stabiliser
+      comparator in people with mood disorders, with negative-control outcomes. If lithium shows no
+      lower dementia incidence against the active comparator, the observational rationale collapses
+      before any prevention RCT is worth running.
+    evidence: preclinical
+    safety: >-
+      Lithium has a narrow therapeutic window even if microdosing is safer; chronic renal and
+      thyroid toxicity are the main risks and would gate any trial. Not medical advice; no one
+      should self-dose.
+    next: "Specify the active-comparator target-trial emulation (lithium vs other mood stabilisers, negative-control outcomes); check whether any cohort can support it."
+    sources:
+      - "10.1038/s41586-025-09335-x"
+      - "10.1192/bjp.bp.110.080044"
+      - "10.1016/j.envpol.2026.127766"
+    history:
+      - date: 2026-10-23
+        note: "Created on repurposing night. Cheapest candidate with a 2025 mechanism; the design, not the drug, is the novel part."
+
+  - id: repurposing-credibility-gate
+    title: "A standard active-comparator / regression-discontinuity bar before any observational repurposing claim is graded"
+    created: 2026-10-23
+    lens: repurposing
+    goal: understand
+    status: new
+    mechanism: >-
+      Observational repurposing signals in this field are systematically inflated by healthy-user
+      and immortal-time bias: the shingles-vaccine effect shrinks from cohort hazard ratios near
+      0.5 to ~20% under regression discontinuity, the sildenafil claims signal attenuates under
+      active-comparator designs, and metformin's protective claims signal is near-null in Mendelian
+      randomisation. The idea is a fixed credibility gate - active comparator, negative-control
+      outcomes, and regression discontinuity where an eligibility cutoff exists - that any
+      observational repurposing claim must pass before the repo grades it above the weakest level.
+    novelty: >-
+      Target-trial emulation and active comparators are established methods; adopting them as an
+      explicit grading gate in this repo's evidence table, tied to concrete worked examples from
+      the nightly scans, is the contribution.
+    against: >-
+      Emulation cannot remove unmeasured confounding entirely, and regression discontinuity needs a
+      natural eligibility cutoff that usually does not exist, so the gate could reject real effects
+      for lack of a clean design rather than for being false.
+    falsify: >-
+      Apply the gate retrospectively to the night's candidates. If active-comparator correction
+      does NOT change the signals (e.g. if the shingles effect had not shrunk from 0.49 to 0.73
+      against a Tdap comparator), the gate adds nothing and is not worth adopting. Its value is
+      exactly the size of the corrections it forces.
+    evidence: observational
+    safety: "None; this is a methodological standard for grading evidence."
+    next: "Draft the gate as a short addition to policy/VETTING.md or evidence grading, with the shingles 0.49->0.73 and sildenafil attenuation as worked examples; propose before adopting."
+    sources:
+      - "10.1038/s41586-025-08800-x"
+      - "10.1038/s41591-024-03201-5"
+      - "10.1007/s00125-022-05743-0"
+    history:
+      - date: 2026-10-23
+        note: "Created on repurposing night, from the recurring pattern that every observational repurposing signal shrank under a stronger design."
+
+  - id: antiviral-hsv-reactivation
+    title: "Antiherpes antivirals (valacyclovir) to slow Alzheimer's via the HSV-reactivation hypothesis"
+    created: 2026-10-23
+    lens: repurposing
+    goal: slow
+    status: killed
+    mechanism: >-
+      Herpes simplex reactivation was proposed to drive neuroinflammation and amyloid as an
+      antimicrobial response, so suppressing reactivation with antiherpes antivirals was expected
+      to slow decline.
+    novelty: >-
+      Not novel; logged to record that a randomized trial has now settled it for the tested
+      regimen.
+    against: >-
+      The VALAD randomized trial (valacyclovir 4 g/day, early symptomatic Alzheimer's, HSV
+      seropositive) was not merely negative: cognition worsened significantly MORE on valacyclovir
+      than on placebo (ADAS-Cog between-group difference 3.93, 95% CI 1.03-6.83, p=0.01), with no
+      effect on amyloid or tau PET. The 4 g/day dose also fails the cost gate.
+    falsify: >-
+      Already falsified for this regimen by VALAD. A residual, narrower question (early/preclinical
+      timing, low suppressive dose, or PCR-confirmed active reactivation only) would need its own
+      trial and is not pursued here without a positive signal first.
+    evidence: RCT
+    safety: >-
+      The trial suggests possible harm (greater cognitive worsening) at the dose tested; this is a
+      reason not to pursue the regimen, and certainly not medical advice.
+    next: "Do not pursue the tested regimen. Read VALMCI (PMID 42210804) in full before revisiting any narrower version."
+    sources:
+      - "10.1001/jama.2025.21738"
+      - "10.1186/s13195-021-00950-0"
+    history:
+      - date: 2026-10-23
+        note: "Created and immediately killed on repurposing night: the VALAD RCT (Devanand, JAMA 2026, PMID 41405855) reported negative and trending to harm, verified against Europe PMC."
