@@ -192,6 +192,17 @@ ideas:
           sex threshold. So "time by interval, not age" largely collapses into "amyloid burden +
           age", which existing enrichment already approximates. The cheapest decisive test is now
           in `next`.
+      - date: 2026-10-24
+        note: >-
+          Trial-design night adds a sobering constraint on the sex half. AD trials are essentially
+          never powered for a sex-by-treatment interaction (detecting one needs ~4x the sample of a
+          main effect), and the existing sex subgroups point in opposite directions across drugs
+          (male-favoring for lecanemab/aducanumab, female-favoring for donanemab; Lim 2025, PMID
+          41551731) - a pattern consistent with underpowered noise, not a real sex effect on
+          response. So the testable value of this idea sits in the interval-enrichment half, not
+          the sex half: run the interval test first (see `next`), and treat sex as a hierarchical
+          sub-analysis borrowing strength across a platform rather than a standalone powering
+          demand. Status stays investigating.
 
   - id: fsh-blockade-women
     title: "Blocking follicle-stimulating hormone to slow post-menopausal Alzheimer's"
@@ -668,3 +679,120 @@ ideas:
     history:
       - date: 2026-10-23
         note: "Created and immediately killed on repurposing night: the VALAD RCT (Devanand, JAMA 2026, PMID 41405855) reported negative and trending to harm, verified against Europe PMC."
+
+  - id: regime-shift-trial-signatures
+    title: "Design trials to detect the signatures of alternative stable states, not a group-mean slope"
+    created: 2026-10-24
+    lens: trial-design
+    goal: reverse
+    status: new
+    mechanism: >-
+      If the brain behaves like an ecosystem with alternative stable states, recovery is not a
+      graded reversal of decline but a jump between basins, so the useful trial signals are (a)
+      bimodal, person-level outcomes - a subset crossing back above their own baseline while most do
+      not - and (b) a threshold-shaped dose-response rather than a straight line. A trial that reads
+      only the group-mean change averages a bimodal response into a muddy slope and misses both.
+    novelty: >-
+      Responder and dose-ranging analyses exist, but as secondary readouts; pre-specifying a
+      bimodality/time-to-improvement endpoint AND a test for a discontinuous dose-response, both
+      motivated explicitly by an alternative-stable-states model, is the contribution. Tonight's toy
+      regime-shift model (scripts/regime_shift_2026_10_24.py) shows the hysteresis gap this would
+      look for; dynamical tipping-point models of AD exist (PMID 42899506, PMID 41675964) but have
+      not been turned into trial-readout prescriptions.
+    against: >-
+      No instrument is validated to detect improvement above baseline in 6-12 months (the trial-
+      design scan's central finding), so a "crossed back above baseline" endpoint has no validated
+      ruler yet. Bistability in human AD is unproven - it is so far modeling and metaphor, with no
+      demonstrated basin structure - so the premise may simply be false, and a responder threshold
+      can be gamed by where it is set.
+    falsify: >-
+      Re-analyze a positive anti-amyloid trial (lecanemab CLARITY-AD or donanemab TRAILBLAZER-ALZ 2)
+      for a bimodal responder distribution and its dose arms for a graded-vs-threshold shape. If the
+      outcome is unimodal decline and the dose-response is graded, there is no basin signature and
+      the premise is unsupported.
+    evidence: observational
+    safety: "None; a trial-analysis and design proposal."
+    next: "Specify the bimodality + threshold-dose readout concretely; check whether published trial-level distributions (not just means) are available to test for bimodality."
+    sources:
+      - "10.1111/ejn.70713"
+      - "10.1002/qub2.86"
+      - "10.1056/NEJMoa2212948"
+    history:
+      - date: 2026-10-24
+        note: "Created on trial-design night under the ecosystem constraint, from tonight's regime-shift model and the finding that no endpoint detects improvement."
+
+  - id: microglia-plaque-predator-prey
+    title: "A predator-prey model of microglia clearing amyloid, where the predator degrades as it feeds"
+    created: 2026-10-24
+    lens: trial-design
+    goal: understand
+    status: new
+    mechanism: >-
+      Neurodegeneration modeling uses spreading/aggregation math (reaction-diffusion, epidemic-style)
+      but almost no true population-competition models; yet microglia clearing amyloid look like a
+      predator-prey system with a twist - chronic engagement exhausts and transforms microglia from a
+      homeostatic to a dysfunctional disease-associated state, so the predator degrades as it feeds.
+      A Lotka-Volterra-type model with that feedback could reveal whether the amyloid-microglia system
+      has collapse or oscillation regimes a pure spreading model cannot show.
+    novelty: >-
+      The ecosystem scan found genuine Lotka-Volterra / predator-prey models of brain cell populations
+      are essentially absent; this fills a real gap rather than restating known spreading dynamics.
+    against: >-
+      Microglial states are a continuum, not two discrete species - the field has formally deprecated
+      the two-state A1/A2 and M1/M2 caricatures (Escartin 2021, PMID 33589835) - so a discrete
+      predator-prey model may encode exactly the oversimplification that was abandoned, and could be
+      elegant but unfalsifiable without longitudinal single-cell state data.
+    falsify: >-
+      Build the model and ask whether it predicts anything the existing reaction-diffusion/epidemic
+      models do not (e.g. a clearance-collapse regime or oscillation), then check whether that
+      prediction is distinguishable against published microglial-state trajectories. If it only
+      re-describes known spreading behavior, it adds nothing and is dropped.
+    evidence: in-silico
+    safety: "None; modeling only."
+    next: "Prototype the predator-prey-with-exhaustion ODE alongside the repo's spreading model; compare regimes and identifiability."
+    sources:
+      - "10.1038/nature21029"
+      - "10.1038/s41593-020-00783-4"
+      - "10.1371/journal.pcbi.1012743"
+    history:
+      - date: 2026-10-24
+        note: "Created on trial-design night under the ecosystem constraint, from the Lotka-Volterra gap the scan identified."
+
+  - id: improvement-endpoint-validation
+    title: "Find and validate a readout that can detect within-person cognitive improvement in 6-12 months"
+    created: 2026-10-24
+    lens: trial-design
+    goal: detect
+    status: new
+    mechanism: >-
+      Every validated cognitive, digital and fluid measure is validated for rate of DECLINE, not for
+      improvement above a person's own baseline, so no reversal trial can currently be scored on its
+      own terms. The idea is to validate a candidate improvement-sensitive readout - a passive
+      digital/speech measure with good within-person reliability, or a functional measure that
+      outperforms cognitive composites over short windows - by testing whether it can detect a KNOWN
+      within-person gain against a positive control (e.g. recovery from a reversible cause such as
+      treated depression, delirium or sleep deprivation).
+    novelty: >-
+      The gap is explicit in the literature (no improvement-validated endpoint over 6-12 months); using
+      a reversible-cause recovery as a positive control to validate an improvement ruler is the
+      contribution.
+    against: >-
+      Practice effects contaminate any apparent improvement (both arms rose in FINGER/POINTER largely
+      via retesting), so a measure might register "improvement" that is just test familiarity; and if
+      genuine within-person gains essentially never occur in Alzheimer's, there is nothing to validate
+      the ruler against within the disease.
+    falsify: >-
+      Take a candidate measure and test whether it detects a real within-person cognitive gain in a
+      positive-control setting with acceptable reliability and above practice-effect noise. If it
+      cannot, no improvement endpoint is feasible and reversal trials cannot be scored - a decisive,
+      cheap negative.
+    evidence: observational
+    safety: "None; a measurement-validation proposal."
+    next: "List candidate within-person-reliable digital/functional measures and positive-control datasets (reversible-cause cognitive recovery) that could validate an improvement readout."
+    sources:
+      - "10.1001/jamaneurol.2014.803"
+      - "10.1002/alz.14314"
+      - "10.1002/alz.70753"
+    history:
+      - date: 2026-10-24
+        note: "Created on trial-design night, from the scan's central finding that no instrument is validated to detect improvement above baseline."

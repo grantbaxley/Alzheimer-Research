@@ -79,6 +79,7 @@ lenses:
       - Which trial failures were failures of the endpoint, the population, the timing or the dose rather than the idea?
       - How could N-of-1, adaptive, platform or biomarker-enriched designs test reversal claims faster and more honestly?
       - What outcome measure would detect real improvement (not slower decline) in 6 to 12 months?
+      - Is the drug's dose-response graded or threshold-like, and is the person-level outcome unimodal or bimodal - i.e. does the data show the signature of a basin boundary (alternative stable states) or not?
 
   - id: modeling
     name: Put a number on it
@@ -129,3 +130,4 @@ constraints:
   - Combine two ideas already in the catalogue into one.
   - Use a field outside medicine as the source of the idea.
   - Look at the earliest region affected (entorhinal cortex, locus coeruleus) and ask why there.
+  - Treat the brain as an ecosystem - which change is a cause and which a downstream marker, remembering that tidy two-state cell labels (A1/A2, M1/M2) are deprecated for continua?
