@@ -339,6 +339,16 @@ ideas:
     history:
       - date: 2026-10-21
         note: "Created on red-team night under the blood-vessel/BBB constraint, from the observation that ARIA makes the neurovascular unit clinically central as a toxicity site."
+      - date: 2026-10-25
+        note: >-
+          Contextual advance (not a dedicated ARIA-biomarker search tonight). The prevention/myelin
+          scan reinforces that white-matter-hyperintensity (WMH) / small-vessel burden is both
+          measurable and modifiable - intensive blood-pressure control slowed WMH growth in the
+          SPRINT MIND MRI substudy (Nasrallah 2019, PMID 31408137) - so baseline WMH burden is a
+          natural third component of the pre-treatment vascular-integrity readout alongside
+          microbleeds and CSF sPDGFR-beta. Still status new: the decisive test (does any vascular
+          marker predict ARIA beyond APOE4 + microbleed count in banked trial data?) has not been
+          run. Flagged for a dedicated ARIA-biomarker literature pull.
 
   - id: fn1-clearance-restore
     title: "Lower excess blood-brain-barrier fibronectin to phenocopy the FN1 resilience variant in APOE4 carriers"
@@ -796,3 +806,121 @@ ideas:
     history:
       - date: 2026-10-24
         note: "Created on trial-design night, from the scan's central finding that no instrument is validated to detect improvement above baseline."
+
+  - id: remyelination-prevention-window
+    title: "Test a cheap remyelination drug early, in high-myelin-risk people, with a myelin imaging endpoint"
+    created: 2026-10-25
+    lens: prevention-population
+    goal: slow
+    status: new
+    mechanism: >-
+      Myelin breakdown is demonstrably early in Alzheimer's - visible in preclinical disease and even
+      in APOE4-carrier infants - and remyelination is druggable (clemastine shortened visual-evoked
+      latency in a multiple-sclerosis RCT; metformin rejuvenates aged oligodendrocyte precursors in
+      rodents). Yet no remyelination trial exists in Alzheimer's. The idea is to test a cheap generic
+      remyelinator in high-risk preclinical people (APOE4 or high white-matter-hyperintensity burden)
+      with a myelin imaging readout (myelin water fraction / g-ratio), where repair is still possible.
+    novelty: >-
+      The absence of any Alzheimer's remyelination trial is an explicit gap in the literature; moving a
+      proven-in-MS agent into early/high-risk Alzheimer's with a myelin endpoint is the contribution.
+    against: >-
+      Clemastine's MS benefit was a surrogate (conduction latency), not cognition, and clemastine is
+      strongly anticholinergic - and anticholinergic burden is itself associated with higher dementia
+      risk, so the drug could do net harm in an older brain. Structural myelin protection may not reach
+      cognition anyway: SPRINT MIND slowed white-matter-lesion growth yet missed its dementia endpoint.
+      Remyelination may also be MS-specific and not achievable against ongoing amyloid/tau toxicity.
+    falsify: >-
+      In a high-risk cohort, does a remyelination agent move BOTH myelin imaging and cognition, or
+      myelin only? A myelin-only result (as in the MS surrogate, and echoing SPRINT's
+      structure-without-dementia) shows the chain does not reach clinical benefit, killing the
+      prevention rationale. Choose a non-anticholinergic agent (e.g. metformin) to avoid confounding
+      harm.
+    evidence: RCT
+    safety: >-
+      Clemastine is sedating and anticholinergic (a real dementia-risk concern in older adults);
+      metformin is safer but has its own cautions. Any trial needs a non-anticholinergic agent and
+      careful monitoring. Not medical advice.
+    next: "Check whether any remyelination agent has been trialled in MCI/preclinical AD with a myelin-imaging endpoint; prefer metformin over clemastine on the anticholinergic concern."
+    sources:
+      - "10.1016/S0140-6736(17)32346-2"
+      - "10.1016/j.stem.2019.08.015"
+      - "10.1038/s41586-023-06120-6"
+      - "10.1001/jama.2019.10551"
+    history:
+      - date: 2026-10-25
+        note: "Created on prevention night starting from the oligodendrocyte; the AD remyelination-trial gap plus the anticholinergic safety tension are the crux."
+
+  - id: wmh-enriched-prevention-trial
+    title: "Enrich a blood-pressure prevention trial for high white-matter-lesion burden before concluding BP does not prevent dementia"
+    created: 2026-10-25
+    lens: prevention-population
+    goal: slow
+    status: new
+    mechanism: >-
+      Intensive blood-pressure control slowed white-matter-hyperintensity growth in the SPRINT MIND
+      MRI substudy and cut mild cognitive impairment, but missed its probable-dementia endpoint even on
+      extended follow-up - plausibly because the trial stopped early (underpowered) and enrolled
+      everyone, not those with the most small-vessel/myelin damage to protect. The idea is a prevention
+      trial enriched for high baseline white-matter-lesion burden, with a myelin/vascular mechanistic
+      endpoint and adequately powered long dementia follow-up.
+    novelty: >-
+      SPRINT MIND was not enriched for white-matter burden; targeting the subgroup with the most
+      modifiable small-vessel damage, and testing whether the structure-to-dementia link holds there,
+      is the contribution.
+    against: >-
+      The structure-vs-clinical disconnect may be real - slowing lesion growth might simply not prevent
+      dementia - in which case enrichment will not rescue it. Enriching for high white-matter burden
+      also selects mixed/vascular dementia, muddying an Alzheimer's-specific claim, and blood-pressure
+      lowering has intrinsic limits and harms at the extremes.
+    falsify: >-
+      Re-analyze SPRINT MIND by baseline white-matter-hyperintensity burden: did the high-burden
+      subgroup get a dementia benefit (a treatment-by-burden interaction)? No interaction means
+      enrichment will not help and the premise is dead - a cheap test on existing data before any new
+      trial.
+    evidence: RCT
+    safety: >-
+      Intensive blood-pressure lowering carries falls/syncope/renal risks, especially in frail elders;
+      a trial would weigh these. Not medical advice.
+    next: "Look for a published SPRINT MIND analysis stratified by baseline WMH burden; if absent, that interaction test is the first, cheap step."
+    sources:
+      - "10.1001/jama.2019.10551"
+      - "10.1001/jama.2018.21442"
+      - "10.1001/jamaneurol.2018.3122"
+    history:
+      - date: 2026-10-25
+        note: "Created on prevention night; connects the oligodendrocyte/WMH thread to the population BP lever and SPRINT MIND's structure-without-dementia result."
+
+  - id: oligodendrocyte-amyloid-source-test
+    title: "Does remyelination raise or lower amyloid? A go/no-go for combining it with anti-amyloid therapy"
+    created: 2026-10-25
+    lens: prevention-population
+    goal: understand
+    status: new
+    mechanism: >-
+      Two recent preclinical findings conflict: myelin loss drives amyloid accumulation (so repairing
+      myelin should lower it), yet oligodendrocytes themselves produce amyloid-beta and contribute to
+      plaques (so boosting oligodendrocyte activity might raise it). If oligodendrocytes are a
+      meaningful amyloid source, promoting remyelination could paradoxically increase amyloid load and
+      conflict with anti-amyloid therapy - a decision that must be settled before pairing the two.
+    novelty: >-
+      The victim-versus-culprit contradiction is fresh (both findings 2023-2024) and unreconciled;
+      framing it as a go/no-go test for combining remyelination with anti-amyloid therapy is the
+      contribution.
+    against: >-
+      Both findings are in amyloid-overexpressing mouse models, which translate poorly; the
+      oligodendrocyte amyloid contribution may be negligible in human brain, making the worry moot. The
+      question may also be unanswerable without clean lineage-specific amyloid-source measurement.
+    falsify: >-
+      In a model, promote remyelination and measure amyloid burden: if it falls (the myelin-loss-drives-
+      amyloid direction dominates), the conflict worry is void and remyelination is safe to combine; if
+      it rises, remyelination-as-therapy carries an amyloid penalty. Either result is decisive.
+    evidence: preclinical
+    safety: "None directly; the point is to prevent a harmful drug combination before it is tried in people."
+    next: "Read whether either source paper measured amyloid after a remyelination manipulation; if not, that is the experiment."
+    sources:
+      - "10.1038/s41593-024-01730-3"
+      - "10.1038/s41586-023-06120-6"
+      - "10.1038/s41586-022-05439-w"
+    history:
+      - date: 2026-10-25
+        note: "Created on prevention night from the oligodendrocyte victim-vs-culprit contradiction (Sasmita 2024 vs Depp 2023); a mechanistic go/no-go rather than a prevention lever."

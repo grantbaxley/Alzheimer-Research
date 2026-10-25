@@ -110,6 +110,8 @@ lenses:
       - Which modifiable risk factor has the strongest causal (not just observational) evidence, and what mechanism links it to the disease?
       - What intervention could plausibly delay onset by five years across a population, and what would it cost?
       - Which natural experiments (policy changes, vaccination cutoffs, infrastructure) could be exploited to test causality?
+      - Is a "preventable fraction" a causal estimate or an observational population-attributable-fraction - and how much of it survives when restricted to RCT or Mendelian-randomization evidence?
+      - Does protecting or repairing a structural substrate (myelin, white matter, vessels) actually translate to a clinical endpoint, or does the benefit stop at the imaging marker (as when BP control slowed lesions but not dementia)?
 
 constraints:
   - Assume the amyloid hypothesis is wrong. What follows?
