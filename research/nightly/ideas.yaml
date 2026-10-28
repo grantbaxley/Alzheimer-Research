@@ -299,6 +299,22 @@ ideas:
           dementia (Gomez-Isla 1996, PMID 8699259). The tipping-point (onset) half of the idea is
           untouched by this and still needs the cohort test in `next`; the "no way back" half is
           reattributed from clearance bistability to neuron loss.
+      - date: 2026-10-28
+        note: >-
+          Two advances on the combination-timing / sleep night. (1) Timing of clearance matters,
+          not just its average: scripts/intermittent_clearance_2026_10_28.py shows that at an equal
+          daily-average clearance, delivering it in a short window with long low-clearance gaps
+          (sleep-like) leaves more burden near the threshold than constant clearance, because the
+          gaps let the seed regrow - a nonlinear-averaging (Jensen) effect of the concave growth
+          term. So the model says regularity/consolidation of the clearance window could matter,
+          not just total clearance. (2) The physiological analog is shakier than the model's clean
+          term suggests: sleep is the proposed clearance mechanism, but the glymphatic bulk-flow
+          account is contested (Smith/Verkman vs Nedergaard/Mestre), Mendelian randomization is
+          largely null for sleep traits causing AD (Anderson 2021, PMID 33150399), and the best
+          controlled sleep-improvement trials (CPAP/APPLES, CBT-I/Siengsukon 2026 PMID 42298279)
+          are null on cognition and amyloid. Only the worsening direction (acute deprivation) and an
+          acute suvorexant biomarker drop are randomized. So: keep the model as an abstraction, but
+          do not read it as "improve sleep clearance to slow AD" - that causal claim is unproven.
 
   - id: vascular-reserve-aria-dosing
     title: "Stratify anti-amyloid dose by a pre-treatment vascular-integrity readout to widen the ARIA-limited window"
@@ -924,3 +940,113 @@ ideas:
     history:
       - date: 2026-10-25
         note: "Created on prevention night from the oligodendrocyte victim-vs-culprit contradiction (Sasmita 2024 vs Depp 2023); a mechanistic go/no-go rather than a prevention lever."
+
+  - id: sleep-regularity-vs-duration
+    title: "Night-to-night regularity of consolidated slow-wave sleep may predict pathology better than sleep duration"
+    created: 2026-10-28
+    lens: combination-timing
+    goal: understand
+    status: new
+    mechanism: >-
+      Both short and long sleep associate with worse amyloid and cognition (a U-shape), which makes
+      total duration a poor single axis. Tonight's timing model shows that, near a clearance
+      threshold, how clearance is distributed in time changes containment even at equal daily
+      average - long low-clearance gaps let pathology regrow. That points to the regularity and
+      consolidation of slow-wave windows, not mean duration, as the sleep variable most likely to
+      track amyloid/tau.
+    novelty: >-
+      Sleep-regularity indices predict cardiometabolic outcomes and mortality, but their link to AD
+      biomarkers versus mean duration is far less established; the timing model gives the prediction
+      a concrete rationale, and the U-shape in duration is a reason to expect duration to
+      underperform.
+    against: >-
+      Mendelian randomization is largely null for sleep traits causing AD, so any sleep-pathology
+      link may be reverse causation (early pathology fragments sleep) or confounding; regularity is
+      noisier to measure than duration; and the model's timing effect is a property of its concave
+      growth term, not evidence the brain works this way.
+    falsify: >-
+      In a cohort with multi-night actigraphy (or EEG) and amyloid/tau PET, does a sleep-regularity
+      / slow-wave-consolidation index predict pathology better than mean duration, adjusting for
+      age and APOE? If regularity adds nothing beyond duration, the idea is dead.
+    evidence: observational
+    safety: "None; an analysis and measurement hypothesis."
+    next: "Look for cohorts with actigraphy/EEG regularity metrics plus amyloid/tau PET; compare regularity vs mean duration as predictors."
+    sources:
+      - "10.1001/jamaneurol.2021.2876"
+      - "10.1093/brain/awx148"
+      - "10.1038/s41386-019-0478-5"
+    history:
+      - date: 2026-10-28
+        note: "Created on combination-timing night (sleep constraint), from the U-shaped duration finding plus the intermittent-clearance timing model."
+
+  - id: orexin-antagonist-early-window
+    title: "A dual orexin-receptor antagonist tested early, with PET endpoints, to see if nightly use durably lowers accumulation"
+    created: 2026-10-28
+    lens: combination-timing
+    goal: slow
+    status: new
+    mechanism: >-
+      A single dose of suvorexant acutely lowered CSF amyloid and p-tau in a small randomized study,
+      and the field's best-evidenced timing lesson is that intervening earlier helps far more. The
+      idea is to test a dual orexin-receptor antagonist nightly in high-risk preclinical people with
+      amyloid/tau PET endpoints, with the explicit prediction that it only changes trajectory if the
+      acute biomarker drop accumulates into durable lowering AND it is started before the tipping
+      point - a sleep-drug-plus-early-timing combination.
+    novelty: >-
+      A DORA trial with a cognitive or PET-progression endpoint is an explicit gap (evidence stops at
+      acute biomarkers); pairing it with early-stage enrollment and a durability test is the
+      contribution.
+    against: >-
+      The sleep-causal premise is shaky: Mendelian randomization is largely null for sleep traits,
+      and the best sleep-improvement trials (CPAP, CBT-I) are null on cognition and amyloid, so a
+      DORA may move biomarkers acutely without changing disease. Suvorexant's effect was transient,
+      single-night, biomarker-only; DORAs cause next-day somnolence and fall risk in elderly.
+    falsify: >-
+      A nightly-DORA RCT in high-risk preclinical people with serial amyloid/tau PET: does chronic
+      dosing produce durable lowering and slower accumulation, or only the known acute dip? Acute-
+      only (no durable change) kills the disease-modification rationale.
+    evidence: RCT
+    safety: >-
+      Dual orexin-receptor antagonists cause somnolence, next-day impairment and fall risk,
+      especially in older adults; a trial must weigh these. Not medical advice.
+    next: "Check whether any DORA trial with a cognitive/PET-progression endpoint is registered; if not, that is the missing study."
+    sources:
+      - "10.1002/ana.26641"
+      - "10.1002/alz.71591"
+      - "10.1093/ije/dyaa183"
+    history:
+      - date: 2026-10-28
+        note: "Created on combination-timing night; the DORA cognitive-endpoint gap plus the early-timing lesson are the crux, against a shaky sleep-causal premise."
+
+  - id: circadian-period-enrichment
+    title: "Use intrinsic cellular circadian period as prognostic enrichment to select fast progressors for trials"
+    created: 2026-10-28
+    lens: combination-timing
+    goal: detect
+    status: new
+    mechanism: >-
+      A longer intrinsic cellular circadian period (measured ex vivo) was associated with higher
+      p-tau/NfL/GFAP, medial-temporal atrophy, and faster clinical decline, reportedly independent of
+      baseline pathology. If it genuinely adds prognostic information beyond standard markers, it
+      could enrich trials for fast progressors - shrinking the sample size and time needed to detect
+      an effect, the recurring bottleneck in this field.
+    novelty: >-
+      The circadian-period association is published as prognostic only; using it as a trial-
+      enrichment variable (alongside or instead of p-tau217) is the contribution.
+    against: >-
+      The measurement is an ex-vivo fibroblast assay - invasive, slow, and hard to scale for
+      enrollment; and the period may partly track pathology rather than add to it, in which case it
+      collapses into p-tau217 and adds no value. Single-cohort finding.
+    falsify: >-
+      Does circadian period predict decline after adjusting for plasma p-tau217 and baseline tau PET
+      (i.e. is the reported independence robust and replicable)? If it collapses into p-tau217, it
+      adds nothing as an enrichment variable.
+    evidence: observational
+    safety: "None; a trial-enrichment biomarker proposal."
+    next: "Read the circadian-period paper's adjustment models; check whether a scalable proxy (e.g. a blood-based clock measure) exists."
+    sources:
+      - "10.1073/pnas.2527236123"
+      - "10.1002/alz.71577"
+    history:
+      - date: 2026-10-28
+        note: "Created on combination-timing night from the circadian-period prognostic signal; framed as trial enrichment, connecting to the trial-design night's power problem."
