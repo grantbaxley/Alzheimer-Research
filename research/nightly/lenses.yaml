@@ -32,6 +32,8 @@ lenses:
       - Which early signal is closest to cause rather than consequence?
       - What would an early-warning test need (sensitivity, cost, frequency) to change outcomes, given today's treatments?
       - Is there a signal that predicts who will NOT progress despite being amyloid-positive?
+      - Is the earliest signal also the most predictive, or are "earliest" and "most prognostic" different markers (e.g. amyloid early but weak, tau/synaptic later but strong)?
+      - When combining signals, does the addition beat the best single marker (p-tau217) on EXTERNAL validation, not just internal cross-validation - and by how much?
 
   - id: causal-chain
     name: Stress-test the causal chain

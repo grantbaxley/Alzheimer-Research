@@ -430,7 +430,7 @@ ideas:
     created: 2026-10-22
     lens: inversion
     goal: understand
-    status: new
+    status: investigating
     mechanism: >-
       Network-spreading models (including this repo's FKPP) assume tau grows autocatalytically via
       a logistic term alpha*x*(1-x), but "autocatalytic" is an assumption, not a measured human
@@ -458,7 +458,10 @@ ideas:
       are separable, apply it to a public longitudinal tau-PET summary.
     evidence: in-silico
     safety: "None; modeling and inference only. Also a useful honesty check on the repo's own FKPP results."
-    next: "Simulate: fit FKPP growth vs a vulnerability-only null on synthetic connectome data with known parameters; report identifiability before touching real data."
+    next: >-
+      Harder test still needed: distinguish growth from a STATIC regional-vulnerability map (not
+      just pure diffusion), add realistic noise and unknown seed location, and only then apply to a
+      public longitudinal tau-PET summary.
     sources:
       - "10.1038/s41467-020-15701-2"
       - "10.1016/j.neuron.2011.12.040"
@@ -466,6 +469,22 @@ ideas:
     history:
       - date: 2026-10-22
         note: "Created on inversion night under the engineering constraint, from the feedback-loop scan's point that autocatalysis is assumed, not measured, and good fit does not prove mechanism."
+      - date: 2026-10-29
+        note: >-
+          Ran the synthetic identifiability test (scripts/identifiability_2026_10_29.py) and advanced
+          to investigating. First attempt used a NULL with no network term at all - a strawman the
+          growth model trivially beat, which told us nothing; corrected to a nested, network-aware
+          test (FKPP with free growth vs the same model with growth off = pure diffusion). Honest
+          methodological lesson in its own right: a weak null fakes identifiability (echoes the
+          "good fit does not prove mechanism" caution). On the corrected test, when the ground truth
+          genuinely has strong autocatalytic growth (alpha=1.2, light noise, known seed), the growth
+          term IS recoverable even from 3 scans - alpha_hat recovered exactly, fit ~15-20x better
+          than pure diffusion. So the method is sound in principle and worth applying to real serial
+          tau-PET. Two caveats keep it at investigating, not promising: (1) the harder real-world
+          confound is growth vs a STATIC regional-vulnerability map (Xiao et al.), which this test
+          does not cover - only growth vs pure diffusion; (2) real data add noise, unknown seed, and
+          model misspecification. Those are the new `next`. Tonight this idea also became a component
+          of the fused idea nonprogressor-rate-plus-synapse (personal tau rate as an early signal)."
 
   - id: reserve-as-redundancy-threshold
     title: "Operationalise cognitive reserve as a measured network-redundancy quantity that predicts a tipping point"
@@ -1050,3 +1069,117 @@ ideas:
     history:
       - date: 2026-10-28
         note: "Created on combination-timing night from the circadian-period prognostic signal; framed as trial enrichment, connecting to the trial-design night's power problem."
+
+  - id: distance-to-tipping-point-signal
+    title: "A personal distance-to-tipping-point signal, fusing network reserve with pathology-accumulation rate"
+    created: 2026-10-29
+    lens: earliest-signal
+    goal: detect
+    status: new
+    mechanism: >-
+      Fuses two catalogue ideas - reserve-as-redundancy-threshold (a measured network-redundancy
+      reserve) and clearance-threshold-onset (onset as a tipping point). Instead of a static
+      biomarker, estimate how close a person is to their personal basin boundary by combining how
+      much reserve/redundancy their network still has with how fast pathology is currently
+      accumulating - a dynamic early signal that is closer to the disease's dynamics than any single
+      snapshot marker, aimed at the question of who will NOT progress.
+    novelty: >-
+      Both components are catalogue ideas; fusing them into a dynamic margin-to-tipping-point score
+      is new. The research shows why it is unproven: critical-slowing-down / tipping-point early-
+      warning signals have essentially NO human Alzheimer's precedent (the early-warning literature
+      is ecology/climate/mood), and connectome redundancy predicting non-progression is unsupported-
+      but-open.
+    against: >-
+      Neither ingredient is validated in humans: no cohort shows rising variance/autocorrelation
+      before cognitive decline (possibly because cognition is sampled too sparsely to see it), and
+      no study shows a redundancy metric predicting stability at matched pathology. Worse, p-tau217
+      plus a cognitive test already captures most predictable risk, and added signals buy only
+      ~1-3% AUC - so a complex composite may add nothing over the cheap marker.
+    falsify: >-
+      In a longitudinal cohort with connectomes and serial amyloid/tau, does a redundancy-plus-rate
+      composite predict cognitive stability at matched pathology BEYOND plasma p-tau217? If it adds
+      no discrimination over p-tau217 on external validation, the fusion is dead.
+    evidence: observational
+    safety: "None; an analysis and early-signal proposal."
+    next: "Define the redundancy metric and the rate estimate; check for any cohort with connectomes + serial PET to test added value over p-tau217."
+    sources:
+      - "10.1016/j.ynirp.2025.100255"
+      - "10.1038/s41591-025-03565-2"
+      - "10.1002/dad2.70321"
+    history:
+      - date: 2026-10-29
+        note: "Created on earliest-signal night by fusing reserve-as-redundancy-threshold + clearance-threshold-onset; the research puts both components at hypothesis stage (no human tipping-point or redundancy-prediction evidence)."
+
+  - id: passive-circadian-early-signal
+    title: "A passive wearable sleep-regularity signal, validated against the intrinsic circadian-period marker"
+    created: 2026-10-29
+    lens: earliest-signal
+    goal: detect
+    status: new
+    mechanism: >-
+      Fuses two catalogue ideas - sleep-regularity-vs-duration and circadian-period-enrichment. Use a
+      passive, cheap, at-scale wearable sleep-regularity index as the earliest signal, and validate
+      it against the expensive but prognostic intrinsic cellular circadian-period marker - the lab
+      marker anchoring the wearable one. Two large UK Biobank analyses already tie low sleep
+      regularity to incident dementia.
+    novelty: >-
+      Both components are catalogue ideas; fusing a scalable wearable signal with a lab circadian-
+      period anchor, and testing it against pathology rather than diagnosis, is the contribution.
+    against: >-
+      The regularity-dementia link may be reverse causation (early pathology fragments rhythms),
+      and the two UK Biobank analyses disagree on shape (U-shaped vs near-linear); no study runs a
+      clean head-to-head showing regularity beats mean sleep duration, or shows it predicts amyloid/
+      tau PET rather than a dementia diagnosis. Mendelian randomization is largely null for sleep
+      traits causing AD, so the whole causal premise is shaky.
+    falsify: >-
+      Does the wearable regularity index predict amyloid/tau PET (not just dementia diagnosis), beat
+      mean sleep duration head-to-head in one model, and track the intrinsic circadian-period marker?
+      If it only tracks diagnosis (reverse causation) and does not beat duration, the fusion is dead.
+    evidence: observational
+    safety: "None; a passive-measurement and validation proposal."
+    next: "Find a cohort with wearable regularity (SRI) plus amyloid/tau PET; run SRI vs mean duration head-to-head against pathology."
+    sources:
+      - "10.1212/wnl.0000000000208029"
+      - "10.1186/s12889-025-21649-z"
+      - "10.1073/pnas.2527236123"
+    history:
+      - date: 2026-10-29
+        note: "Created on earliest-signal night by fusing sleep-regularity-vs-duration + circadian-period-enrichment; bounded by the no-head-to-head-vs-duration gap and the null sleep-trait MR."
+
+  - id: nonprogressor-rate-plus-synapse
+    title: "A two-marker non-progressor test: where you are (synaptic integrity) plus where you are going (tau rate)"
+    created: 2026-10-29
+    lens: earliest-signal
+    goal: detect
+    status: new
+    mechanism: >-
+      Fuses two catalogue ideas - synaptic-reversal-endpoint (synaptic-integrity markers, the best
+      single discriminator of progressors from non-progressors) and identify-autocatalysis-rate (a
+      personal tau-accumulation rate estimated from serial scans, which tonight's model shows is
+      recoverable when real). Pair a static "where you are" readout (synaptic integrity, e.g. the
+      CSF YWHAG:NPTX2 ratio) with a dynamic "where you are going" readout (personal tau rate) to
+      identify amyloid-positive people who will stay stable.
+    novelty: >-
+      Each component is a catalogue idea; combining a synaptic-level snapshot with a personal
+      accumulation-rate estimate as a non-progressor classifier is the contribution, and it directly
+      targets the lens's hardest question (who will not progress despite amyloid).
+    against: >-
+      Synaptic-integrity ratios already add the most independent variance of any marker (Oh 2025),
+      so the tau-rate term may add little once the synaptic marker is in; the 1-3% AUC ceiling for
+      added signals applies; "non-progressor" is confounded by lead-time and circular definitions
+      (Ourry 2026); and the personal tau-rate estimate needs two-plus scans, which is costly and
+      noisy in practice.
+    falsify: >-
+      In a cohort with CSF synaptic markers and serial tau, does adding the personal tau-rate term
+      improve non-progressor prediction BEYOND the synaptic marker alone, on external validation? If
+      the synaptic marker alone does as well, the rate term (and the fusion) adds nothing.
+    evidence: observational
+    safety: "None; a risk-stratification proposal, not a treatment."
+    next: "Check whether any cohort pairs CSF synaptic markers with serial tau-PET so the added value of a rate term over the synaptic marker can be tested."
+    sources:
+      - "10.1038/s41591-025-03565-2"
+      - "10.1038/s41591-022-02049-x"
+      - "10.1038/s41467-026-71732-1"
+    history:
+      - date: 2026-10-29
+        note: "Created on earliest-signal night by fusing synaptic-reversal-endpoint + identify-autocatalysis-rate; grounded in Oh 2025 (synaptic markers best discriminator) and tonight's identifiability result (tau rate recoverable when real)."
