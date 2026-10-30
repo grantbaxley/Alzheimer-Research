@@ -491,7 +491,7 @@ ideas:
     created: 2026-10-22
     lens: inversion
     goal: detect
-    status: new
+    status: investigating
     mechanism: >-
       Cognitive reserve is invoked as redundancy - spare circuits that keep function as nodes fail
       - but it is usually measured by proxies (education) rather than a redundancy quantity, and no
@@ -514,13 +514,31 @@ ideas:
       idea is dead. Prototype the metric on synthetic connectomes first to check it behaves.
     evidence: observational
     safety: "None; analysis only."
-    next: "Prototype a redundancy metric (independent paths / spectral robustness) on the repo's synthetic connectome and check it discriminates graphs before proposing a cohort test."
+    next: >-
+      Needs data: does algebraic connectivity (or a better efficiency-based robustness measure)
+      predict cognition at matched tau in a real connectome cohort, beyond education and brain
+      volume? Also replace the failed edge-weight knockout measure with a global-efficiency
+      (shortest-path) one.
     sources:
       - "10.1002/brb3.70903"
       - "10.1016/j.neuron.2011.12.040"
+      - "10.1016/j.ynirp.2025.100255"
     history:
       - date: 2026-10-22
         note: "Created on inversion night under the engineering (redundancy) constraint, from the gap the feedback-loop scan named."
+      - date: 2026-10-30
+        note: >-
+          Prototyped the metric on the repo's synthetic connectome (scripts/redundancy_metric_2026_10_30.py)
+          and advanced to investigating - with a partial result. Algebraic connectivity (the Fiedler
+          value) WORKS as a reserve proxy: it cleanly separated a redundant many-long-range-edge graph
+          (1.145) from a sparse one (0.231) and fell monotonically as nodes were lesioned (1.145 ->
+          0.471 over 24 removed). But the second measure I tried - knockout robustness defined as
+          retained giant-component edge weight - did NOT discriminate (0.636 vs 0.638), because it is
+          dominated by the dense local backbone both graphs share; it needs a global-efficiency
+          (shortest-path) definition instead. So the method check half-passes: one usable metric, one
+          to fix. Independent human support that redundancy is amyloid-sensitive (cross-sectional):
+          Blujus 2025, posterior-hippocampal redundancy reduced by amyloid (doi:10.1016/j.ynirp.2025.100255).
+          The matched-pathology predictive test still needs a real cohort (the `next`)."
 
   - id: restore-before-the-floor
     title: "Gate reversal trials on preserved neuronal substrate and read out a plastic compartment"
@@ -610,6 +628,20 @@ ideas:
     history:
       - date: 2026-10-23
         note: "Created on repurposing night. Strongest of the night: a cheap, safe class with a natural-experiment signal and one clean falsification (antigen-independence)."
+      - date: 2026-10-30
+        note: >-
+          Weakened on the frontier-scan night (confidence lowered; still new, no longer treated as
+          the single most promising idea). A 2026 reanalysis (Kivimaki et al., Brain Behav Immun,
+          PMID 42754179, verified against source) quantified the IMPLIED vaccine effectiveness behind
+          the shingles natural experiments: Wales 18%, Australia 177%, Canada 84% and 111% - two
+          exceed the 100% theoretical maximum, and no matching decline appears in national dementia
+          statistics, so the authors conclude these "cannot be considered strong evidence of a
+          clinically meaningful effect." Reading: the flagship Welsh regression-discontinuity (~18%)
+          remains the least-biased single estimate and is not overturned, but the "robustly
+          replicated ~20%" framing does not hold - the confirmatory-looking replications are
+          implausibly large, consistent with residual (healthy-vaccinee) confounding. The idea
+          survives as a hypothesis with a clean falsification (antigen-independence), but its
+          evidence base is weaker than the first write-up implied."
 
   - id: lithium-microdose-target-trial
     title: "Microdose lithium for prevention, made credible by an active-comparator target-trial emulation"
@@ -1183,3 +1215,117 @@ ideas:
     history:
       - date: 2026-10-29
         note: "Created on earliest-signal night by fusing synaptic-reversal-endpoint + identify-autocatalysis-rate; grounded in Oh 2025 (synaptic markers best discriminator) and tonight's identifiability result (tau rate recoverable when real)."
+
+  - id: down-syndrome-condensed-window-trial
+    title: "Use Down syndrome's condensed, near-deterministic cascade as the fastest test of very-early amyloid lowering"
+    created: 2026-10-30
+    lens: frontier-scan
+    goal: slow
+    status: new
+    mechanism: >-
+      APP triplication makes amyloid near-universal in Down syndrome, and new data show the tau
+      cascade is "condensed" - p-tau217 and tau-PET turn positive almost simultaneously ~4-6 years
+      after amyloid, versus a longer latency in neurotypical adults. That near-deterministic,
+      time-compressed trajectory makes Down syndrome the population where whether very-early amyloid
+      lowering prevents the tau phase can be answered fastest and with the most statistical power.
+      The first dedicated anti-amyloid trial in Down syndrome (donanemab, ALADDIN) is now registered.
+    novelty: >-
+      ALADDIN exists; the contribution is framing Down syndrome's condensed window as the decisive,
+      fastest prevention read for the whole field, and tying the trial's value to whether amyloid
+      lowering can still open space before tau co-emerges within that 4-6 year window.
+    against: >-
+      Cerebral amyloid angiopathy and ARIA risk are elevated in Down syndrome, raising the safety
+      bar; the condensed window may mean that by the time anyone is identified, tau has already
+      co-emerged and amyloid lowering is too late; and co-pathologies are common in Down syndrome
+      autopsy, muddying a pure-amyloid readout. Consent and trial-design ethics are also harder.
+    falsify: >-
+      ALADDIN (donanemab, NCT06911944) or the ABATE anti-amyloid vaccine (NCT05462106): does
+      lowering amyloid in Down syndrome delay the onset of tau-PET/p-tau217 positivity and cognitive
+      decline? No delay in the tau phase despite amyloid clearance would be strong evidence that, at
+      least in this near-deterministic setting, removing amyloid does not open a treatment window.
+    evidence: RCT
+    safety: >-
+      ARIA and cerebral amyloid angiopathy risk are elevated in Down syndrome; dedicated dosing and
+      safety data are needed, and this population warrants extra consent and ethics care. Not medical
+      advice.
+    next: "Watch NCT06911944 (ALADDIN) status and NCT05462106 (ABATE DS arm); note whether either reports a tau-phase/downstream readout, not just amyloid change."
+    sources:
+      - "10.1093/brain/awaf428"
+      - "10.1002/alz.71404"
+      - "10.1002/alz.71738"
+    history:
+      - date: 2026-10-30
+        note: "Created on frontier-scan night (Down syndrome / autosomal-dominant constraint), from the condensed-tau-cascade finding (Brain 2026, PMID 41240365) and the first DS anti-amyloid trials now registering."
+
+  - id: beta-synuclein-ultra-early-signal
+    title: "Serum beta-synuclein as a presynaptic signal that may precede p-tau217 by ~two decades"
+    created: 2026-10-30
+    lens: frontier-scan
+    goal: detect
+    status: new
+    mechanism: >-
+      In Down syndrome, serum beta-synuclein (a presynaptic protein) was reported elevated about two
+      decades before symptoms, rising before p-tau217, NfL and GFAP, and linked to atrophy,
+      hypometabolism and worse memory. If that ordering holds, beta-synuclein could be an
+      ultra-early synaptic signal - earlier than the current blood front-runner - and a cheap blood
+      readout of the synaptic dysfunction that tracks cognition.
+    novelty: >-
+      New (2026-09) and cross-sectional; the contribution is testing whether beta-synuclein is
+      genuinely earlier than p-tau217 within individuals and adds value over the dominant predictors
+      (age, p-tau217), rather than just correlating.
+    against: >-
+      Cross-sectional, single cohort (n=131), Down syndrome-specific; in Down syndrome, chronological
+      age outperforms biomarkers as a predictor, and p-tau217 already dominates - so beta-synuclein
+      may add little independent value. Beta-synuclein is also not AD-specific (a general synaptic
+      marker).
+    falsify: >-
+      Longitudinally and in sporadic AD, does serum beta-synuclein rise before p-tau217 within the
+      same individuals, and does it improve prediction beyond age plus p-tau217? If it does not
+      precede p-tau217 or adds nothing over age+p-tau217, it is not the earlier signal claimed.
+    evidence: observational
+    safety: "None; a blood-marker hypothesis."
+    next: "Check for any longitudinal beta-synuclein data (DS or sporadic) testing temporal order vs p-tau217 and added value over age+p-tau217."
+    sources:
+      - "10.1002/alz.71860"
+      - "10.1002/alz.71661"
+      - "10.1038/s41591-025-03565-2"
+    history:
+      - date: 2026-10-30
+        note: "Created on frontier-scan night from the DS serum beta-synuclein finding (Alz&Dem 2026, PMID 42768868); bounded by the age-dominates-prediction caveat (PMID 42449194)."
+
+  - id: resilience-downstream-effector
+    title: "Target the downstream glial/vascular effector of resilience variants, not the variant itself"
+    created: 2026-10-30
+    lens: frontier-scan
+    goal: slow
+    status: new
+    mechanism: >-
+      The 2026 mechanistic burst around the APOE3-Christchurch and RELN-COLBOS resilience variants
+      points to protection acting DOWNSTREAM - through microglial, vascular and hepatic/lipid effects
+      and an oligogenic combination - rather than through the rare coding change itself. If the
+      protective output is a druggable cell state or pathway, mimicking that downstream effector
+      could confer resilience without needing the variant.
+    novelty: >-
+      Night 1 logged resilience-mimicry ideas (e.g. FN1); the contribution here is the reframing that
+      the DRUGGABLE node is the shared downstream effector (a microglial/vascular state), supported by
+      the recent mechanism papers, not the upstream variant.
+    against: >-
+      "Oligogenic" and "downstream burst" mean there may be no single effector to target; the
+      mechanism work is preclinical/iPSC/plasma-EV; and the human protection from the heterozygous
+      Christchurch variant was only modest (a ~5-year delay in carriers), so even a faithful mimic
+      might buy little.
+    falsify: >-
+      In a model, does reproducing the proposed downstream state (e.g. the Christchurch-like
+      microglial program) confer protection WITHOUT the variant? If mimicking the effector does not
+      reproduce protection, the "downstream effector is the druggable node" claim fails.
+    evidence: preclinical
+    safety: >-
+      Manipulating microglial/vascular states carries real risk (trained immunity is double-edged;
+      vascular changes can harm). Preclinical only; not medical advice.
+    next: "Pull the 2026 Christchurch/RELN mechanism papers; identify whether a single downstream effector (microglial state, Wnt/Dkk1, lipid pathway) recurs across them."
+    sources:
+      - "10.1016/j.cell.2023.11.029"
+      - "10.1038/s41591-023-02318-3"
+    history:
+      - date: 2026-10-30
+        note: "Created on frontier-scan night from the 2026 APOE3-Christchurch / RELN-COLBOS mechanism burst (resilience looks downstream, glial/vascular, oligogenic, potentially druggable)."

@@ -107,6 +107,7 @@ lenses:
       - What was published, posted or presented in the last 7 to 30 days (journals, bioRxiv/medRxiv, trial registries, conferences, regulators) that changes the picture?
       - Does anything new confirm, weaken or kill an idea in the catalogue or a claim in evidence/claims.yaml?
       - Is there a new open dataset, model or tool worth a registry record?
+      - Does a new reanalysis or trial overturn something the catalogue currently treats as promising - and have you verified it against the primary source before downgrading?
 
   - id: prevention-population
     name: Prevention at population scale
