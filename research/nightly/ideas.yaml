@@ -545,7 +545,7 @@ ideas:
     created: 2026-10-22
     lens: inversion
     goal: reverse
-    status: new
+    status: investigating
     mechanism: >-
       Reversal is only possible in compartments that are still plastic (synapses, myelin,
       perfusion, inflammation); once neurons are dead they are not replaced, and ~60% of entorhinal
@@ -571,14 +571,33 @@ ideas:
     safety: >-
       None for the design itself; any trial would carry its intervention's own risks and must not
       give enrolled people a false expectation of reversal.
-    next: "Check for any longitudinal SV2A-PET study showing an increase after any intervention; if none exists, that is the blocking experiment."
+    next: >-
+      The reversal endpoint is the bottleneck, not the gate. Before designing the trial, establish a
+      minimal-detectable-change for SV2A-PET (test-retest ~3-9%) and find or run a positive-control
+      setting where a synaptic readout provably rises, since no therapy has yet moved it.
     sources:
       - "10.1523/jneurosci.16-14-04491.1996"
       - "10.1002/alz.12097"
       - "10.1002/ana.410300410"
+      - "10.1371/journal.pbio.3002456"
     history:
       - date: 2026-10-22
         note: "Created on inversion night; the reversibility scan's compartment inventory (plastic vs lost-neuron) and tonight's no-hysteresis model both point to a narrow pre-floor window."
+      - date: 2026-10-31
+        note: >-
+          Advanced to investigating on the modeling night; the blocking question was answered, and the
+          answer is discouraging for the endpoint. SV2A-PET CAN rise detectably in humans - but the
+          only convincing within-subject increase is from SLEEP DEPRIVATION (thalamus +4.6%,
+          hippocampus +5.6%, n=40 randomized; Elmenhorst 2026, PMID 42335020), read as pathological
+          synaptic accumulation, not recovery. NO therapy has ever driven a significant within-group
+          SV2A-PET rise: human single-dose ketamine (PMID 41863255) and psilocybin (PMID 42457666)
+          were null, and the increases that exist sit right at the ~3-9% test-retest floor (Finnema
+          2018, PMID 28792356). The one genuine above-baseline COGNITIVE gain from a peripheral-immune
+          agent (sargramostim, Potter 2021, +1.45 MMSE within-group) was tiny, transient and not a
+          synaptic readout. So the gate half of the idea is sound but the reversal-readout half is not
+          yet usable: SV2A-PET has never been shown to go up with treatment and barely clears its own
+          noise floor. Reframed `next` accordingly. Related idea improvement-endpoint-validation
+          carries the same bottleneck."
 
   - id: vaccine-trained-immunity
     title: "Test whether adult vaccines protect by trained innate immunity (antigen-independent), not anti-herpesvirus action"
@@ -642,8 +661,15 @@ ideas:
           implausibly large, consistent with residual (healthy-vaccinee) confounding. The idea
           survives as a hypothesis with a clean falsification (antigen-independence), but its
           evidence base is weaker than the first write-up implied."
-
-  - id: lithium-microdose-target-trial
+      - date: 2026-10-31
+        note: >-
+          A mechanistic headwind from the peripheral-immune scan: the key preclinical experiment on
+          peripheral innate-immune training (Wendeln 2018 Nature, PMID 29643512) found that immune
+          TRAINING WORSENED cerebral amyloidosis while tolerance alleviated it - the opposite
+          direction to the human vaccine-lower-dementia signal. Combined with last night's
+          confounding critique, the net sign of peripheral immune training on AD pathology is now
+          genuinely in doubt; this is the decisive question spun out tonight as idea
+          trained-immunity-net-sign."
     title: "Microdose lithium for prevention, made credible by an active-comparator target-trial emulation"
     created: 2026-10-23
     lens: repurposing
@@ -803,7 +829,7 @@ ideas:
     created: 2026-10-24
     lens: trial-design
     goal: understand
-    status: new
+    status: investigating
     mechanism: >-
       Neurodegeneration modeling uses spreading/aggregation math (reaction-diffusion, epidemic-style)
       but almost no true population-competition models; yet microglia clearing amyloid look like a
@@ -826,14 +852,36 @@ ideas:
       re-describes known spreading behavior, it adds nothing and is dropped.
     evidence: in-silico
     safety: "None; modeling only."
-    next: "Prototype the predator-prey-with-exhaustion ODE alongside the repo's spreading model; compare regimes and identifiability."
+    next: >-
+      Fix the likely wrong sign of the peripheral term: re-run with peripheral input allowed to ADD
+      to inflammation / suppress clearance (per Wendeln 2018), and work out which human readout would
+      reveal the true sign. Also move from two discrete states toward a continuum before over-reading.
     sources:
       - "10.1038/nature21029"
       - "10.1038/s41593-020-00783-4"
       - "10.1371/journal.pcbi.1012743"
+      - "10.1038/nature25158"
     history:
       - date: 2026-10-24
         note: "Created on trial-design night under the ecosystem constraint, from the Lotka-Volterra gap the scan identified."
+      - date: 2026-10-31
+        note: >-
+          Built the model (scripts/predator_prey_2026_10_31.py) on the modeling night and advanced to
+          investigating. Minimal predator-prey with microglial exhaustion (self-limitation) and a
+          peripheral-immune reinforcement term r. Result: the outcome is a THRESHOLD, not a dial -
+          amyloid either clears or saturates; clearance efficiency a and peripheral reinforcement r
+          push toward clearing, microglial exhaustion q pushes toward saturation (sensitivity across
+          each range: a -0.62, q +0.49, r -0.44 around the base point). So the model answers its own
+          falsification - it does predict a collapse/clearance threshold a pure spreading model does
+          not. BUT tonight's peripheral-immune scan undercuts the model's most policy-relevant
+          assumption: physiological peripheral-monocyte amyloid clearance is ~0 (the engraftment story
+          is largely an irradiation-chimera artifact - Mildner 2007, Prokop/Varvel 2015), peripheral
+          trained immunity WORSENED amyloidosis in the key experiment (Wendeln 2018 Nature, PMID
+          29643512), and systemic inflammation suppresses clearance. So the r>0-helps term may have
+          the WRONG SIGN, and microglia may not even be rate-limiting for plaque maintenance
+          (Grathwohl 2009). The model is structurally sound and its threshold behaviour is honest, but
+          its optimistic peripheral knob is not supported by the biology - that is the new `next`. The
+          night-6 caveat (states are a continuum, not two species) still stands."
 
   - id: improvement-endpoint-validation
     title: "Find and validate a readout that can detect within-person cognitive improvement in 6-12 months"
@@ -1329,3 +1377,117 @@ ideas:
     history:
       - date: 2026-10-30
         note: "Created on frontier-scan night from the 2026 APOE3-Christchurch / RELN-COLBOS mechanism burst (resilience looks downstream, glial/vascular, oligogenic, potentially druggable)."
+
+  - id: trained-immunity-net-sign
+    title: "Resolve whether peripheral immune training is net-protective or net-harmful for AD pathology"
+    created: 2026-10-31
+    lens: modeling
+    goal: understand
+    status: new
+    mechanism: >-
+      The human signal (adult vaccines associated with less dementia) and the key preclinical
+      experiment point in opposite directions: peripheral innate-immune TRAINING worsened cerebral
+      amyloidosis in mice while immune TOLERANCE alleviated it (Wendeln 2018). Since the whole
+      vaccine-trained-immunity program and tonight's predator-prey "peripheral reinforcement helps"
+      assumption both rest on peripheral immune activation being net-protective, the sign of that
+      effect is the decisive go/no-go.
+    novelty: >-
+      The clash between Wendeln's harmful training and the protective human vaccine epidemiology is
+      known but unreconciled; framing it as the single decisive test that gates both the vaccine idea
+      and the clearance-reinforcement modeling is the contribution.
+    against: >-
+      May be irreducibly context-dependent (training dose, timing, stimulus, amyloid vs tau, mouse vs
+      human), so there may be no single "sign"; mouse amyloidosis models translate poorly; and the
+      human evidence is confounded (healthy-vaccinee bias), so neither side is clean.
+    falsify: >-
+      A preclinical study varying training stimulus, dose and timing with amyloid AND tau AND
+      cognition readouts, or a human mechanistic (not epidemiological) test of whether a defined
+      immune-training exposure raises or lowers pathology. A consistently harmful result kills
+      vaccine-trained-immunity; a consistently protective one rescues it and fixes the model's sign.
+    evidence: preclinical
+    safety: >-
+      Directly relevant: if training is net-harmful, immune-activating prevention strategies could
+      accelerate pathology - a reason to settle the sign before any trial. Not medical advice.
+    next: "Pull Wendeln 2018 and any follow-ups varying training timing/dose; map where protective vs harmful training diverge."
+    sources:
+      - "10.1038/nature25158"
+      - "10.1038/s41586-025-08800-x"
+      - "10.7554/eLife.106037"
+    history:
+      - date: 2026-10-31
+        note: "Created on the modeling night (peripheral-immune constraint); the Wendeln-vs-vaccine-epidemiology sign clash is the crux, and it also decides the sign of the predator-prey model's peripheral term."
+
+  - id: sargramostim-above-baseline-replication
+    title: "Replicate sargramostim/GM-CSF's rare above-baseline cognitive gain, properly powered and with a durability readout"
+    created: 2026-10-31
+    lens: modeling
+    goal: reverse
+    status: new
+    mechanism: >-
+      Most peripheral-immune interventions in AD failed (etanercept, IVIG), but a small phase-2 RCT of
+      sargramostim (GM-CSF) produced a rare signal of genuine IMPROVEMENT above a patient's own
+      baseline - MMSE rose ~1.45 points within-group over three weeks - plausibly by mobilising innate
+      immunity toward clearance or trophic support. Because above-baseline improvement is almost
+      unheard of in AD, this specific signal is worth a properly powered replication with a durability
+      and mechanistic readout.
+    novelty: >-
+      The Potter trials exist; the contribution is isolating the above-baseline-improvement signal
+      (not slowed decline) as the thing to replicate, and pairing it with a synaptic/mechanistic
+      readout and longer follow-up to test whether the gain is real and durable.
+    against: >-
+      The signal is fragile: n=40, three-week dosing, a baseline MMSE imbalance that made the
+      placebo-adjusted result non-significant after adjustment, a transient ADAS-Cog worsening, and no
+      effect on CDR-SB/Trails - classic small-trial noise. The broader peripheral-immune trial record
+      is discouraging, and GM-CSF broadly activates immunity (see the net-sign worry).
+    falsify: >-
+      A larger, longer sargramostim RCT: does the above-baseline MMSE gain replicate and persist
+      beyond the dosing window? No replication, or a gain that vanishes after dosing stops, kills it.
+    evidence: RCT
+    safety: >-
+      GM-CSF is immune-activating (injection-site and inflammatory effects) and, given the trained-
+      immunity net-sign uncertainty, could in principle aggravate pathology - monitoring required. Not
+      medical advice.
+    next: "Read the Potter 2021 trial and the 2026 follow-up in full; check whether a larger sargramostim AD RCT is registered or reporting."
+    sources:
+      - "10.1002/trc2.12158"
+      - "10.1056/NEJMoa2212948"
+    history:
+      - date: 2026-10-31
+        note: "Created on the modeling night (peripheral-immune constraint); the one above-baseline cognitive gain in the peripheral-immune record, flagged for replication, with its fragility recorded."
+
+  - id: clearance-vs-production-rate-limiting
+    title: "Settle whether amyloid clearance is even rate-limiting before betting on clearance-boosting"
+    created: 2026-10-31
+    lens: modeling
+    goal: understand
+    status: new
+    mechanism: >-
+      A whole family of ideas here (clearance-threshold-onset, the predator-prey model, peripheral-
+      immune and glymphatic boosting) assumes that raising clearance can control pathology. But
+      preclinical work shows plaques persist even when microglia are ablated (clearance may not be
+      rate-limiting for plaque maintenance), while human kinetic studies show impaired clearance in
+      sporadic disease - a real tension. Which step is rate-limiting, production/seeding or clearance,
+      decides whether any clearance-boosting strategy can work.
+    novelty: >-
+      The production-vs-clearance question is old, but the specific tension between "clearance not
+      rate-limiting for maintenance" (Grathwohl 2009) and "clearance deficit in sporadic AD"
+      (Mawuenyega 2010) is unresolved; making it an explicit gate on the repo's clearance-centric
+      ideas is the contribution.
+    against: >-
+      May be stage-dependent (clearance matters for onset, production for maintenance), so the
+      dichotomy could be false; the mouse ablation and human kinetic studies measure different things
+      (maintenance vs flux), so they may not actually conflict.
+    falsify: >-
+      A human stable-isotope-kinetic (SILK-type) comparison across stages: is the amyloid imbalance
+      driven by production/seeding or by clearance, and does it shift with stage? If clearance is not
+      rate-limiting at the stage a therapy targets, clearance-boosting (and the model's clearance
+      knob) cannot help there.
+    evidence: preclinical
+    safety: "None; a mechanistic/kinetic question."
+    next: "Reconcile Grathwohl 2009 (plaques persist without microglia) with Mawuenyega 2010 (clearance deficit); find any staged human kinetic data."
+    sources:
+      - "10.1038/nn.2432"
+      - "10.1126/science.1197623"
+    history:
+      - date: 2026-10-31
+        note: "Created on the modeling night; the peripheral-immune scan's point that microglia may not be rate-limiting for plaque maintenance puts the whole clearance-centric line (including tonight's model) in question."

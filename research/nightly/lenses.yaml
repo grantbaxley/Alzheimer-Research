@@ -91,6 +91,8 @@ lenses:
       - Which idea in the catalogue can be tested quantitatively tonight with the repo's tools (open-ad-sim, alzres.spreading, alzres.synthetic)?
       - What does the model predict, how sensitive is the prediction to the parameters the data do not identify, and what result would contradict it?
       - Which open item in research/reproductions/open-ad-sim (e.g. the flagged calibration targets) moves the model most toward being trustworthy?
+      - Does the model's most policy-relevant parameter even have the right SIGN according to the biology, or is a convenient assumption (e.g. "boosting immunity helps clearance") contradicted by the key experiment?
+      - Is the step the idea targets (e.g. clearance) actually rate-limiting, or is the intervention aimed at a lever that does not move the outcome?
 
   - id: red-team
     name: Try to kill the best idea
