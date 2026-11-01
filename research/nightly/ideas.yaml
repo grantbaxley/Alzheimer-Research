@@ -399,10 +399,10 @@ ideas:
       Fibronectin is systemically essential (clotting, wound healing, vascular integrity); any
       approach would need brain-vascular-local targeting and careful bleeding/fibrosis monitoring.
     next: >-
-      Read the Nat Aging 2026 full-text Methods to settle restoration vs co-suppression (was FN1
-      lowered after BBB/amyloid pathology was established, or from baseline? was leak reversed or
-      only prevented?). That single fact decides whether this is a reversal lead or only a
-      prevention one.
+      The question is now specific and preclinical: run the staged "establish-then-treat" experiment
+      - lower fibronectin (genetically or with pUR4/FUD) in aged APOE4-knock-in mice that already
+      have established deposition - and see whether established leak/deposition REVERSES. Until that
+      is done, treat FN1 as a prevention lead only (see idea fn1-staged-reversal-test).
     sources:
       - "10.1007/s00401-024-02721-1"
       - "10.1038/s43587-026-01204-0"
@@ -410,6 +410,22 @@ ideas:
     history:
       - date: 2026-10-21
         note: "Created on red-team night under the blood-vessel/BBB constraint, from the FN1 vascular-resilience signal."
+      - date: 2026-11-01
+        note: >-
+          The restoration-vs-prevention question is answered: PREVENTION. A full-text read of the
+          Nat Aging 2026 paper (PMID 42728404, open access PMC13577929) shows every FN1-lowering
+          manipulation was co-suppression or constitutive, never applied to established pathology:
+          the genetic tool is a constitutive fn1b knockout that blocks the rise of fibronectin after
+          Abeta42 exposure; the pharmacologic tools (camptothecin, Torin2, the FAK inhibitor
+          PF-573228, the integrin blocker ATN-161) were given concurrently in an acute 1-day adult
+          zebrafish model; and the aged APOE4-knock-in mice (the only model with chronic established
+          pathology) were used descriptively, with NO FN1-lowering intervention. So "rescue/restore"
+          in the paper means a concurrently-induced acute phenotype, not reversal of established
+          deposition. Consequence: this idea's distinctive claim (lowering FN1 AFTER pathology
+          reverses it) is UNTESTED, and FN1 is currently a prevention/co-suppression lead, not a
+          reversal lead. The decisive experiment is spun out as idea fn1-staged-reversal-test. No
+          cheap approved FN-lowering CNS drug exists (pUR4/FUD and ATN-161 are preclinical;
+          pirfenidone's brain exposure is unproven; nintedanib barely crosses the barrier)."
       - date: 2026-10-23
         note: >-
           Advanced on repurposing night. Both source papers reconfirmed (Bhattarai 2024 Acta
@@ -1491,3 +1507,116 @@ ideas:
     history:
       - date: 2026-10-31
         note: "Created on the modeling night; the peripheral-immune scan's point that microglia may not be rate-limiting for plaque maintenance puts the whole clearance-centric line (including tonight's model) in question."
+
+  - id: treat-to-target-proximal-biomarker
+    title: "Borrow HIV/oncology treat-to-target, but aim at a proximal biomarker (tau/p-tau217), not amyloid"
+    created: 2026-11-01
+    lens: cross-domain
+    goal: slow
+    status: new
+    mechanism: >-
+      HIV turned fatal into chronic by hitting an obligate step with combinations and treating to a
+      quantified target (viral load); oncology adds measure/combine/adapt. The transferable move for
+      symptomatic Alzheimer's is treat-to-target with adaptive combinations - but against a PROXIMAL
+      marker that tracks the lesion, namely tau/p-tau217, rather than amyloid, since clearing amyloid
+      to near-zero barely changes cognition while tau tracks atrophy and decline.
+    novelty: >-
+      Treat-to-target is standard in HIV and lipidology; applying it to AD with p-tau217 as the
+      target (explicitly not amyloid) and an adaptive combination design is the contribution. Current
+      trials enrich by tau stage but do not treat-to-a-tau-target or adapt.
+    against: >-
+      p-tau217 is a validated READOUT, not a validated TARGET: lowering it may not change cognition,
+      exactly the trap amyloid fell into (amyloid cleared, cognition barely moved). No drug reliably
+      lowers tau with proven clinical benefit yet, and tonight's model shows a hard symptomatic-stage
+      ceiling that no target-hitting can lift. Combination also compounds toxicity (ARIA).
+    falsify: >-
+      Trial-level surrogacy test: across trials, does the treatment effect on p-tau217 predict the
+      treatment effect on cognition? If lowering p-tau217 does not track cognitive benefit (as
+      amyloid lowering did not), treat-to-target on p-tau217 is as hollow as on amyloid and the idea
+      fails.
+    evidence: observational
+    safety: >-
+      Combination anti-amyloid/anti-tau regimens compound ARIA and bleeding risk; a treat-to-target
+      rule must not push dosing past safety. Not medical advice.
+    next: "Check whether treatment effects on p-tau217 and on cognition have been correlated across trials (trial-level surrogacy), the way the amyloid-cognition surrogacy was tested."
+    sources:
+      - "10.1056/NEJMoa2212948"
+      - "10.1001/jama.2023.13239"
+      - "10.1093/brain/awz321"
+    history:
+      - date: 2026-11-01
+        note: "Created on cross-domain night (symptomatic constraint); the cross-domain scan's single most transferable principle (HIV treat-to-target + oncology measure/combine/adapt, aimed at a proximal marker)."
+
+  - id: reversible-ceiling-staging
+    title: "Estimate each patient's reversible-vs-banked deficit and set trial endpoints to the reachable ceiling"
+    created: 2026-11-01
+    lens: cross-domain
+    goal: reverse
+    status: new
+    mechanism: >-
+      Hepatology, cardiology and MS reverse because the damaged tissue is in a remodellable
+      compartment; symptomatic Alzheimer's also carries an irreversible compartment (lost neurons)
+      with no regrowth analog. Split a patient's deficit into a reversible part (synapse, inflammation,
+      perfusion, myelin) and a banked irreversible part (neuron loss), estimate the personal reversible
+      ceiling, and set trial endpoints to that ceiling instead of expecting full reversal.
+    novelty: >-
+      The reversible/irreversible compartment split is conceptually known; computing a per-person
+      reversible ceiling as an explicit trial-design and endpoint-setting tool, and powering reversal
+      trials against it, is the contribution. Tonight's model (scripts/reversible_ceiling_2026_11_01.py)
+      makes the ceiling concrete: achievable recovery falls the later treatment starts.
+    against: >-
+      No validated in-vivo way to measure the reversible fraction exists - synaptic density (SV2A-PET)
+      has never been shown to rise with therapy (prior night), and separating reversible load from
+      banked neuron loss may be unidentifiable from available markers. If you cannot measure the
+      ceiling, you cannot set endpoints to it.
+    falsify: >-
+      Can the reversible fraction (e.g. synaptic/inflammatory markers) and the banked fraction (NfL,
+      atrophy, neuron-loss proxies) be estimated from available biomarkers, and does the estimated
+      ceiling predict the improvement actually achieved in a trial? If the split does not predict
+      achievable recovery, it is not a usable design tool.
+    evidence: in-silico
+    safety: "None; a trial-design and endpoint-setting proposal. Must not promise patients reversal beyond the measured ceiling."
+    next: "List candidate reversible-compartment markers (synaptic, perfusion, inflammation) and banked-damage markers (NfL, atrophy); check whether their ratio predicts response in any trial."
+    sources:
+      - "10.1523/jneurosci.16-14-04491.1996"
+      - "10.1002/alz.12097"
+    history:
+      - date: 2026-11-01
+        note: "Created on cross-domain night from the reversible-ceiling model and the cross-domain lesson that every reversal analogy fails on AD's irreversible neuron loss."
+
+  - id: fn1-staged-reversal-test
+    title: "Run the missing staged experiment: does lowering fibronectin AFTER established pathology reverse it?"
+    created: 2026-11-01
+    lens: cross-domain
+    goal: reverse
+    status: new
+    mechanism: >-
+      The FN1-at-the-barrier work showed that preventing fibronectin rise protects the blood-brain
+      barrier, but never tested lowering fibronectin once deposition is established. Borrowing the
+      hepatology question (does the ECM regress when you remove the driver?), the decisive experiment
+      is to lower fibronectin - genetically or with an assembly inhibitor (pUR4/FUD) - in aged
+      APOE4-knock-in mice that ALREADY have established deposition, and ask whether the barrier leak
+      and deposition reverse.
+    novelty: >-
+      This is exactly the experiment the 2026 paper did not do (its aged, chronically-affected mice
+      got no FN1 intervention); it converts an open factual gap into a single decisive test, and
+      imports the fibrosis-reversal framing from hepatology.
+    against: >-
+      Established extracellular-matrix may not remodel in the brain the way liver fibrosis does (the
+      cross-domain caution: AD's defining lesion does not regrow); fibronectin is systemically
+      essential, so lowering it risks bleeding/fibrosis; and pUR4/FUD CNS delivery is unproven.
+    falsify: >-
+      The experiment is its own test: lower fibronectin after established deposition in aged APOE4
+      mice. No reversal of barrier leak/deposition means FN1 is a prevention-only lead, closing the
+      reversal version of fn1-clearance-restore.
+    evidence: preclinical
+    safety: >-
+      Preclinical; any eventual translation carries fibronectin's systemic essentiality (clotting,
+      wound healing). Not medical advice.
+    next: "Specify the staged protocol (establish deposition in aged APOE4-KI, then FN1-lower with pUR4/FUD or inducible knockdown, read barrier leak + deposition); check if any group has data."
+    sources:
+      - "10.1038/s43587-026-01204-0"
+      - "10.1007/s00401-024-02721-1"
+    history:
+      - date: 2026-11-01
+        note: "Created on cross-domain night, spun out of the fn1-clearance-restore revisit once the 2026 paper was found to test prevention only; the staged establish-then-treat test is the decisive missing experiment."

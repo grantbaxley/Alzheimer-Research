@@ -50,6 +50,8 @@ lenses:
       - How did hepatology learn to reverse fibrosis, cardiology to regress plaque, HIV medicine to turn a fatal disease chronic, MS research to remyelinate? What is the transferable principle?
       - What would an engineer, ecologist, economist or immunologist call this system, and what does their field do to repair it?
       - Which tool built for another disease (cancer, diabetes, heart failure, autoimmunity) has an unexplored mechanism in the brain?
+      - What substrate does the source field actually regrow or remodel (hepatocytes, ECM, CD4 cells, myelin), and does AD have an analog - if not, the borrowed principle caps at "freeze progression", not "reverse"?
+      - If you would treat-to-target a biomarker, is that marker validated as a TARGET (does lowering it improve outcomes) or only as a READOUT - and has trial-level surrogacy actually been shown?
 
   - id: combination-timing
     name: Combinations and timing windows
