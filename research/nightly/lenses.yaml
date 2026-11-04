@@ -43,6 +43,7 @@ lenses:
       - Which hypotheses make different predictions that one cheap study could separate?
       - What does the failure of a mechanism's drug actually tell us (wrong target, wrong time, wrong dose, wrong patients)?
       - Is onset better modelled as a tipping point (clearance capacity falling below aggregation rate) than as a seeding event, and would that predict hysteresis - a point past which restoring clearance no longer reverses pathology?
+      - Does the modifiable genetic signal point at the causal ROOT or at a different, more leverageable node - and for a repurposing candidate, does drug-target MR support the direction the drug would push, or argue against it?
 
   - id: cross-domain
     name: Borrow from a field that reversed a degenerative process

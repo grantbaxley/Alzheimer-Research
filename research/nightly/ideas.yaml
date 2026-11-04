@@ -732,7 +732,7 @@ ideas:
     created: 2026-10-23
     lens: repurposing
     goal: understand
-    status: new
+    status: investigating
     mechanism: >-
       Observational repurposing signals in this field are systematically inflated by healthy-user
       and immortal-time bias: the shingles-vaccine effect shrinks from cohort hazard ratios near
@@ -756,7 +756,9 @@ ideas:
       exactly the size of the corrections it forces.
     evidence: observational
     safety: "None; this is a methodological standard for grading evidence."
-    next: "Draft the gate as a short addition to policy/VETTING.md or evidence grading, with the shingles 0.49->0.73 and sildenafil attenuation as worked examples; propose before adopting."
+    next: >-
+      Put the five-point gate below to the project owner as a proposed addition to policy/VETTING.md
+      (do not edit policy unprompted). Then apply it to one live candidate end to end.
     sources:
       - "10.1038/s41586-025-08800-x"
       - "10.1038/s41591-024-03201-5"
@@ -764,6 +766,22 @@ ideas:
     history:
       - date: 2026-10-23
         note: "Created on repurposing night, from the recurring pattern that every observational repurposing signal shrank under a stronger design."
+      - date: 2026-11-02
+        note: >-
+          Advanced to investigating with concrete criteria drafted on the causal-chain/repurposing
+          night. Proposed five-point gate a repurposing claim should pass before being graded above
+          the weakest tier: (1) active-comparator new-user / target-trial emulation; (2)
+          negative-control outcomes AND exposures; (3) regression discontinuity where an eligibility
+          cutoff exists; (4) drug-target cis-Mendelian-randomization PLUS colocalization,
+          direction-matched to the proposed drug effect; (5) APOE-locus exclusion and a
+          clinically-diagnosed (non-proxy) AD GWAS as primary, proxy-AD only for replication. Worked
+          examples from our own history: shingles (0.49 cohort -> 0.73 vs active comparator, but the
+          effect survives and has a birth-date regression-discontinuity natural experiment ->
+          promotes); sildenafil (naive ~69% collapses under active-comparator/DREAM -> stays weakest);
+          metformin (MR null/conflicting -> stays weakest); and tonight's ACE example (coloc-backed MR
+          with a direction that argues against the drug -> criterion 4 catches a false-positive
+          "protective" story). This is a PROPOSAL, not adopted; it needs owner sign-off to enter
+          policy/VETTING.md."
 
   - id: antiviral-hsv-reactivation
     title: "Antiherpes antivirals (valacyclovir) to slow Alzheimer's via the HSV-reactivation hypothesis"
@@ -1620,3 +1638,111 @@ ideas:
     history:
       - date: 2026-11-01
         note: "Created on cross-domain night, spun out of the fn1-clearance-restore revisit once the 2026 paper was found to test prevention only; the staged establish-then-treat test is the decisive missing experiment."
+
+  - id: target-the-leverage-node-not-the-root
+    title: "Search approved drugs by the modifiable-genetics node (microglia/immune), not the causal root (amyloid)"
+    created: 2026-11-02
+    lens: causal-chain
+    goal: slow
+    status: new
+    mechanism: >-
+      Common-variant genetics puts the dominant MODIFIABLE Alzheimer's signal in microglial/immune
+      genes (TREM2, PLCG2, INPP5D, MS4A, ABI3, SPI1, BIN1); amyloid overproduction is the causal root
+      only in autosomal-dominant disease, and APOE is the single largest effect. So the causal root
+      (amyloid) is not the highest-yield drug target, which is why anti-amyloid gives real-but-capped
+      benefit. The idea is to prioritise the search for approved/repurposable drugs by the modifiable
+      genetic node - microglial state and lipid/APOE biology - rather than by amyloid clearance.
+    novelty: >-
+      The microglial-genetics story is well known; the contribution is making it the explicit SEARCH
+      STRATEGY for approved-drug repurposing (screen drug targets that are microglial/immune-expressed
+      and genetics-supported), rather than defaulting to the amyloid axis.
+    against: >-
+      The strongest microglial target (TREM2 agonism) has no approved drug and AL002 failed Phase 2;
+      "microglial state" is a continuum, hard to drug cleanly, and training can worsen pathology
+      (Wendeln 2018); tonight's cascade model also showed which node you hit matters far less than how
+      early you start.
+    falsify: >-
+      Screen approved-drug targets by microglial/immune expression plus drug-target MR support; if the
+      resulting candidates do not out-rank amyloid-axis candidates on causal genetic evidence, the
+      node-prioritisation adds nothing over the status quo.
+    evidence: observational
+    safety: "None for the search strategy; any resulting drug carries its own risks (immune modulation is double-edged)."
+    next: "Rank microglial/immune and lipid drug targets by drug-target MR + colocalization on open data (see drug-target-MR-pipeline)."
+    sources:
+      - "10.1038/s41588-022-01024-z"
+      - "10.1038/nature25158"
+    history:
+      - date: 2026-11-02
+        note: "Created on causal-chain night; genetics (Bellenguez 2022) plus tonight's cascade model both say the causal root is not the highest-yield target - the modifiable signal is microglial/immune."
+
+  - id: ace-inhibitor-ad-pharmacovigilance
+    title: "Test whether ACE-inhibitor use raises Alzheimer's risk (drug-target MR says lower ACE = higher risk)"
+    created: 2026-11-02
+    lens: causal-chain
+    goal: understand
+    status: new
+    mechanism: >-
+      Drug-target Mendelian randomization with colocalization reports that genetically LOWER ACE (what
+      ACE inhibitors pharmacologically mimic) is associated with HIGHER Alzheimer's risk, independent
+      of blood pressure, in both blood and brain. If that causal direction is real, the very common
+      ACE-inhibitor class could be a modifiable risk factor, and the actionable move is a
+      pharmacovigilance test, not a therapy.
+    novelty: >-
+      A harm signal, not a benefit one - the opposite of most repurposing hunts. The MR/coloc direction
+      is published; turning it into an active-comparator pharmacovigilance test (ACE inhibitors vs
+      angiotensin-receptor blockers) on claims data is the contribution.
+    against: >-
+      MR direction can be confounded by pleiotropy; brain and blood ACE differ, and ACE has many
+      substrates (including amyloid-degrading activity) so the mechanism is not clean; observational
+      ACEi-vs-dementia data are mixed, and an active-comparator analysis may show no excess.
+    falsify: >-
+      Active-comparator new-user claims analysis, ACE inhibitors vs angiotensin-receptor blockers,
+      with negative-control outcomes, for incident Alzheimer's. No excess risk with ACEi vs ARB means
+      the MR direction does not translate to the drug.
+    evidence: observational
+    safety: >-
+      This is a safety/harm hypothesis about a widely used drug class; it must NOT be read as advice
+      to start or stop any medication - only as a signal to test. Not medical advice.
+    next: "Confirm the MR/coloc direction against its source, then specify the ACEi-vs-ARB active-comparator emulation; check whether published claims analyses already did this."
+    sources:
+      - "10.1186/s13195-025-01671-4"
+      - "10.1038/s41588-022-01024-z"
+    history:
+      - date: 2026-11-02
+        note: "Created on causal-chain night from the repurposing scan's cleanest coloc-backed drug-target MR - whose direction argues AGAINST ACE inhibition, i.e. a potential harm signal worth a pharmacovigilance test."
+
+  - id: drug-target-mr-pipeline
+    title: "Stand up an open-data drug-target MR + colocalization pipeline to screen approved drugs for AD"
+    created: 2026-11-02
+    lens: causal-chain
+    goal: understand
+    status: new
+    mechanism: >-
+      The one causal route this project can actually run without any restricted data is drug-target
+      cis-Mendelian-randomization plus colocalization: combine an open AD GWAS with open protein/
+      expression QTLs to ask, target by target, whether genetically mimicking a drug's effect raises or
+      lowers Alzheimer's risk. Built as a repeatable pipeline, it screens approved-drug targets and
+      flags both benefit and harm directions (as the ACE example shows).
+    novelty: >-
+      Drug-target MR is an established method; the contribution is making it a standing, reproducible
+      capability of this open repo (the first thing here that outputs a causal estimate rather than a
+      hypothesis), with APOE handling and proxy-AD controls baked in.
+    against: >-
+      A genetic proxy for lifelong lower protein is NOT the same as a drug given late in life
+      (magnitude, timing, tissue); plasma and CSF pQTL overlap is low; the APOE region breaks MR and
+      must be excluded; proxy-AD GWAS dilute effects. So the pipeline bounds plausibility, it does not
+      prove a drug works.
+    falsify: >-
+      Validate against known controls before trusting it: does it reproduce the expected null for
+      statins/HMGCR, the adverse/benefit directions already reported (e.g. ACE), and stable estimates
+      with vs without the APOE region? If it cannot recover controls, it is not trustworthy.
+    evidence: observational
+    safety: "None; a computational capability on summary data. Respects the repo's no-participant-data rule."
+    next: "Assemble the open inputs (Kunkle non-proxy + Bellenguez AD GWAS; UKB-PPP + deCODE pQTL; GTEx/eQTLGen/MetaBrain) and TwoSampleMR + coloc; run known-control validation first. Needs owner go-ahead."
+    sources:
+      - "10.7554/eLife.34408"
+      - "10.1038/s41586-023-06592-6"
+      - "10.1038/s41588-022-01024-z"
+    history:
+      - date: 2026-11-02
+        note: "Created on causal-chain night; operationalises the open-data causal-inference capability flagged to the owner - the project's first route to an actual causal estimate, using only summary-level data."
