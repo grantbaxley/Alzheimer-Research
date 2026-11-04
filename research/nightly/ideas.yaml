@@ -620,7 +620,7 @@ ideas:
     created: 2026-10-23
     lens: repurposing
     goal: understand
-    status: new
+    status: investigating
     mechanism: >-
       A regression-discontinuity natural experiment on the Welsh shingles rollout found roughly a
       20% relative drop in dementia, and the protection does not look antigen-specific: the
@@ -686,6 +686,32 @@ ideas:
           confounding critique, the net sign of peripheral immune training on AD pathology is now
           genuinely in doubt; this is the decisive question spun out tonight as idea
           trained-immunity-net-sign."
+      - date: 2026-11-04
+        note: >-
+          Reversal-lens / women-focus revisit. Status new -> investigating. The idea's OWN
+          falsification test is antigen-independence, and it now has data that leans toward trained
+          immunity: the recombinant adjuvanted Shingrix out-protects the live-attenuated Zostavax
+          (Taquet et al., Nat Med 2024, restricted-mean-time-lost ratio 0.83 [0.80-0.87], PMID
+          39053634) - a replicating live virus should win if the mechanism were antiviral, so losing
+          to the adjuvanted protein favours the adjuvant/trained-immunity read; the two AS01
+          vaccines (zoster, RSV) are equivalent (npj Vaccines 2025, 10.1038/s41541-025-01172-3); and
+          BCG lowers dementia ~20% despite zero shared antigen with VZV (JAMA Netw Open 2023 HR 0.80
+          [0.69-0.99]; Swedish cohort PLOS ONE 10.1371/journal.pone.0292174, AD-specific NS), though
+          only in confounded bladder-cancer cohorts. Sex-specificity verified in both primary RD
+          sources (Eyting 2025 Nature 10.1038/s41586-025-08800-x, effect markedly greater in women;
+          Cell 2025 progression study, men indistinguishable from zero for every outcome) BUT it is
+          MECHANISM-AGNOSTIC - estrogen-enhanced trained immunity, higher female anti-VZV response,
+          and sex-skewed healthy-vaccinee bias all predict a female signal, so sex does not
+          adjudicate; recorded as a feature, not as support. Still NO independent (non-originating-
+          group) regression-discontinuity replication (the Australian RD is a Geldsetzer
+          collaboration; Taquet/Oxford is independent but a different, cohort design). Reversal lens:
+          only progression-slowing in the already-diagnosed (Cell 2025) plus mouse-only microglial-
+          repair hints; no evidence of reversal, consistent with the recurring freeze-not-reverse
+          finding. Net: the mechanism half strengthened, the effect-is-real half stayed weak
+          (Kivimaki >100% implied VE in 3 of 4 natural experiments, PMID 42754179; Wendeln 2018
+          training worsened amyloid, PMID 29643512; no RCT). Not promising (effect base too weak),
+          not parked/killed (the discriminating test is alive and currently favourable)."
+  - id: lithium-microdose-target-trial
     title: "Microdose lithium for prevention, made credible by an active-comparator target-trial emulation"
     created: 2026-10-23
     lens: repurposing
@@ -1746,3 +1772,124 @@ ideas:
     history:
       - date: 2026-11-02
         note: "Created on causal-chain night; operationalises the open-data causal-inference capability flagged to the owner - the project's first route to an actual causal estimate, using only summary-level data."
+  - id: menopause-timed-plasticity-window
+    title: "Time regenerative interventions to menopausal stage, not chronological age"
+    created: 2026-11-04
+    lens: reversal-biology
+    goal: understand
+    status: new
+    mechanism: >-
+      Women accumulate tau faster than men at matched amyloid and carry ~2/3 of AD, and the menopausal
+      transition - not chronological age - marks a measurable drop in brain glucose metabolism,
+      mitochondrial ATP markers and grey-matter volume, with a partial post-menopausal rebound that
+      tracks preserved cognition (Mosconi 2021, Sci Rep, 10.1038/s41598-021-90084-y). Rodent
+      hippocampal plasticity and new-cell survival are estrogen-gated. Hypothesis: there is a
+      menopause-anchored window in which the brain's regenerative/plasticity machinery is transiently
+      reopened, and aligning a pro-regenerative intervention to menopausal STAGE would beat
+      age-matched dosing - a reason women-specific timing, not just women-specific risk, matters.
+    novelty: >-
+      Reframes the well-known menopause-AD link as a TIMING lever for reversal/repair rather than a
+      risk factor, and makes a falsifiable stage-vs-age prediction. Distinct from estrogen-replacement
+      trials (which tested hormone level, not the plasticity-window hypothesis and largely failed on
+      timing, e.g. WHIMS late initiation).
+    against: >-
+      The rebound is observational imaging, not a demonstrated plasticity window; no intervention has
+      ever raised a human regenerative readout; estrogen-timing trials (WHIMS) were negative when
+      started late, which could mean the window is narrow or illusory; healthy-user and
+      reverse-causation confounds are heavy in menopause cohorts.
+    falsify: >-
+      If a plasticity/synaptic biomarker (SV2A PET, or a validated CSF plasticity marker) shows NO
+      menopausal-stage dependence after adjusting for chronological age, the window is illusory and the
+      idea dies. Equally, if a stage-matched vs age-matched intervention arm shows no difference.
+    evidence: observational
+    safety: >-
+      The timing hypothesis is testable with imaging/biomarkers before any intervention; any estrogen
+      or regenerative intervention carries real risk and must be gated by trial safety. Not medical
+      advice.
+    next: "Check whether existing menopause-imaging cohorts (open summary level) report stage-resolved plasticity markers; specify a stage-vs-age analysis."
+    sources:
+      - "10.1038/s41598-021-90084-y"
+      - "10.1001/jamaneurol.2017.2188"
+    history:
+      - date: 2026-11-04
+        note: "Created on the reversal-biology / women night; turns the menopause-AD link into a timing-of-repair hypothesis with a stage-vs-age falsification test."
+  - id: x-escape-oligodendrocyte-reversal-triage
+    title: "Triage open AD omics for X-escape / oligodendrocyte-reactivation genes as a female-specific repair lever"
+    created: 2026-11-04
+    lens: reversal-biology
+    goal: reverse
+    status: new
+    mechanism: >-
+      In aged female mice the normally silent second X chromosome partially reactivates in the
+      hippocampus, and a reactivated X-escapee (Plp1) expressed in oligodendrocytes improved cognition
+      (Gadek et al. 2025, Sci Adv - mouse); reactivating silenced maternal-X genes reversed some
+      deficits (Abdulai-Saiku et al. 2025, Nature, 10.1038/s41586-024-08457-y - mouse); a second X and
+      the escapee Kdm6a confer resilience in hAPP mice with a human expression association
+      (Davis/Dubal 2020, Sci Transl Med - mouse + human association). Hypothesis: the female brain
+      holds a latent, age-triggered regenerative reserve on the inactive X, myelin-linked, with no male
+      equivalent - and the tractable first step is a purely computational triage of OPEN AD omics for
+      X-escape and oligodendrocyte-reactivation genes whose female-specific expression tracks
+      resilience (non-decliners) vs decliners.
+    novelty: >-
+      The X-escape / second-X-reserve story is new (2020-2025) and almost entirely mouse; no AI agent
+      or open project has nominated a sex-specific X-escape / oligodendrocyte AD target (the 2026-11-02
+      breadcrumb scan found agents converge on microglial+lipid targets only). The contribution is to
+      make it an open-data, in-silico screen this repo can run.
+    against: >-
+      Everything load-bearing is mouse; human X-reactivation in aged brain is unproven; expression
+      associations are not causal; oligodendrocyte/myelin benefits in AD may cap at imaging markers
+      (prior nights: structural-marker benefit often fails to reach clinical endpoints). PLP1 is also
+      an autoimmune/overexpression-toxicity antigen, so "more PLP1" is not obviously safe.
+    falsify: >-
+      If female resilient (non-decliner) AD brains show NO enrichment of X-escape / PLP1-axis
+      oligodendrocyte expression versus matched female decliners in open datasets, drop it. If the
+      signal is present in males equally, the female-specific framing is wrong.
+    evidence: in-silico
+    safety: >-
+      The triage is computational on open summary/omic data (no participant-level data; respects the
+      repo rule). Any downstream reactivation intervention is high-risk (tumorigenicity, autoimmunity)
+      and far off. Not medical advice.
+    next: "Scope an X-escape + oligodendrocyte-reactivation gene list against AMP-AD Agora target nominations and sex-stratified expression; define the resilient-vs-decliner contrast."
+    sources:
+      - "10.1038/s41586-024-08457-y"
+    history:
+      - date: 2026-11-04
+        note: "Created on the reversal-biology / women night; the night's most surprising finding (aging reactivates the silent second X; a myelin escapee improves cognition in mice) turned into an open-data in-silico screen. Mouse-grounded; human causal data absent."
+  - id: silent-engram-recoverable-window
+    title: "Stage AD by silenced-but-alive vs dead engrams to define the only window reversal theory allows"
+    created: 2026-11-04
+    lens: reversal-biology
+    goal: reverse
+    status: new
+    mechanism: >-
+      The engram literature says memories held in neurons that are ALIVE but synaptically SILENCED can
+      be recovered (optogenetic engram reactivation restores 'lost' memories and spine density in early
+      AD mice; Roy/Tonegawa 2016, Nature, 10.1038/nature17172), whereas a memory whose neuron ensemble
+      is DEAD is gone. So the only stage theory predicts is reversible is the pre-ensemble-loss window
+      when engrams are silenced, not destroyed. Hypothesis: a human staging readout that separates
+      silenced-but-recoverable from lost circuitry (e.g. SV2A-PET synaptic density paired with
+      cued-retrieval paradigms) would define who is even eligible for a reversal attempt - and tonight's
+      toy (scripts/silent_engram_window_2026_11_04.py) shows recoverable benefit is front-loaded and
+      collapses as loss overtakes silencing.
+    novelty: >-
+      Imports the silent-vs-lost engram distinction as a clinical STAGING criterion for reversal
+      eligibility - different from existing amyloid/tau staging, which indexes pathology not
+      recoverability. Gives the field a concrete unmet endpoint (a human synaptic-density RISE, never
+      yet achieved; no therapy has raised SV2A-PET signal in humans, Chen 2018, PMID 30014145).
+    against: >-
+      Human staging of silenced-vs-lost does not exist and may be impossible if SV2A loss and
+      irreversible recall failure are already coincident at earliest detectable disease; the whole
+      silent-engram construct is mouse/optogenetic and may not transfer; 'reactivation' has never been
+      delivered as a human therapy.
+    falsify: >-
+      If, at the earliest clinically detectable AD, synaptic loss and irreversible recall failure are
+      already coincident (no cue recovers performance), then the recoverable window does not exist in
+      humans and the staging idea is moot.
+    evidence: none
+    safety: "A staging/biomarker concept; no intervention. Not medical advice."
+    next: "Specify a silenced-vs-lost staging readout (SV2A-PET + cued retrieval) and check whether any open imaging cohort could test whether the two collapse together at onset."
+    sources:
+      - "10.1038/nature17172"
+    history:
+      - date: 2026-11-04
+        note: "Created on the reversal-biology / women night and modelled tonight (silent_engram_window toy): recoverable gain is front-loaded and capped by the surviving-neuron ceiling - the 'treat early' wall derived from alive-vs-dead rather than reversible-vs-banked damage."

@@ -79,6 +79,8 @@ lenses:
       - Which interventions restored synapses or memory in animal models AFTER damage (not before), and did any replicate?
       - What would partial epigenetic reprogramming, cell replacement or gene therapy have to overcome in an Alzheimer's brain?
       - Can memories encoded in lost neurons be recovered at all, or only the capacity to form new ones?
+      - Can the disease be staged by what is silenced-but-alive versus truly lost, so that "reversible" means the pre-ensemble-loss window - and is there a human readout (e.g. synaptic density plus cued retrieval) that separates the two?
+      - Is the brain's regenerative or plasticity capacity itself sex-dimorphic (estrogen-gated, X-escape-linked), and if so is the reversal lever a modifiable context (hormonal/epigenetic state) rather than a fixed limit?
 
   - id: trial-design
     name: Why trials fail and how to make them informative
