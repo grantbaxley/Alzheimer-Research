@@ -716,7 +716,7 @@ ideas:
     created: 2026-10-23
     lens: repurposing
     goal: slow
-    status: new
+    status: investigating
     mechanism: >-
       Endogenous brain lithium is reduced in MCI and further depleted in Alzheimer's by amyloid
       sequestration, and in mice dietary lithium depletion worsens amyloid, tau, inflammation and
@@ -744,14 +744,43 @@ ideas:
       Lithium has a narrow therapeutic window even if microdosing is safer; chronic renal and
       thyroid toxicity are the main risks and would gate any trial. Not medical advice; no one
       should self-dose.
-    next: "Specify the active-comparator target-trial emulation (lithium vs other mood stabilisers, negative-control outcomes); check whether any cohort can support it."
+    next: "The emulation now largely exists (medRxiv 2026); shift to the untested matched-pathology question - in an autopsy cohort with lithium + amyloid + tau + cognition, does PFC lithium predict cognition WITHIN the high-pathology stratum (a resilience buffer) or only track disease stage? Treat the 2026 preprint as not-yet-peer-reviewed."
     sources:
       - "10.1038/s41586-025-09335-x"
       - "10.1192/bjp.bp.110.080044"
       - "10.1016/j.envpol.2026.127766"
+      - "10.64898/2026.01.12.26343472"
     history:
       - date: 2026-10-23
         note: "Created on repurposing night. Cheapest candidate with a 2025 mechanism; the design, not the drug, is the novel part."
+      - date: 2026-11-04
+        note: >-
+          (Bookkeeping) This entry was silently merged into vaccine-trained-immunity from 2026-10-23
+          until 2026-11-04 because its `- id:` line was missing (YAML duplicate-key last-wins), so it
+          did not exist as a loadable catalogue entry during that window; restored on the
+          reversal-biology night.
+      - date: 2026-11-05
+        note: >-
+          Resilience-lens revisit. Status new -> investigating, with two honest DOWNGRADES and a
+          reframe. (1) The entry's claimed novelty was "the design, not the drug" - an
+          active-comparator, new-user target-trial emulation - but that design now LARGELY EXISTS: a
+          2026 preprint (medRxiv 10.64898/2026.01.12.26343472) emulates exactly it (lithium vs
+          antiepileptic mood stabilisers, Medicare/MarketScan/Optum) and finds a modest, heterogeneous
+          5-yr RR ~0.84-0.87 for progression to advanced ADRD (Optum null ~0.90, MarketScan ~0.57),
+          not peer-reviewed and about PROGRESSION in already-ill patients, not prevention; a 2024
+          Nordic register target trial (lithium vs lamotrigine/valproate) found no systematic dementia
+          difference. So the signal weakly survives an active comparator but is not clean. (2) The 2025
+          Nature mechanism paper (10.1038/s41586-025-09335-x) compared DIAGNOSTIC groups (CN/MCI/AD),
+          not cognitively resilient-vs-demented brains at matched pathology, so the tempting
+          "endogenous lithium is a resilience buffer" reading is an inference, not a demonstrated
+          resilience finding, and its mouse rescue is prevention-dominant/reversal-ambiguous. Reframe:
+          the live contribution is now (a) the resilience-buffer MECHANISM (PFC-specific lithium
+          depletion already at MCI, amyloid sequestration, de-repressed GSK3-beta driving tau - a
+          growth-term lever, which tonight's firebreak toy argues is where resilience against an
+          autocatalytic spreader actually lives) and (b) the untested matched-pathology question. Note
+          a possible convergence: the RELN-COLBOS resilience variant lowers tau via Dab1 and lithium
+          loss raises tau via GSK3-beta - plausibly the same kinase node. Kept evidence: preclinical;
+          not promoted to promising (modest, heterogeneous, unreplicated by peer review)."
 
   - id: repurposing-credibility-gate
     title: "A standard active-comparator / regression-discontinuity bar before any observational repurposing claim is graded"
@@ -1893,3 +1922,125 @@ ideas:
     history:
       - date: 2026-11-04
         note: "Created on the reversal-biology / women night and modelled tonight (silent_engram_window toy): recoverable gain is front-loaded and capped by the surviving-neuron ceiling - the 'treat early' wall derived from alive-vs-dead rather than reversible-vs-banked damage."
+  - id: resilience-is-growth-not-topology
+    title: "Against an autocatalytic tau spreader, resilience lives in the growth term, not in network firebreaks"
+    created: 2026-11-05
+    lens: resilience
+    goal: understand
+    status: investigating
+    mechanism: >-
+      Borrowed from outside medicine (wildfire firebreaks, power-grid islanding, percolation theory):
+      the hypothesis was that a resilient brain arrests a prion-like tau front at network bottlenecks
+      (bridge edges), so WHERE pathology can travel, not just how much, sets resilience. Tonight's toy
+      (scripts/firebreak_percolation_2026_11_05.py) tests it on the repo's FKPP reaction-diffusion vs
+      linear NDM spreading models and reframes it: a containment/"resilience" threshold exists ONLY
+      because tau growth is autocatalytic (FKPP has an invasion threshold in the growth rate; linear
+      diffusion floods every connected node and has none), so the real resilience lever is the GROWTH
+      term (the GSK3-beta / lithium-buffer and disease-tolerance axes), not edge topology.
+    novelty: >-
+      Imports a percolation/firebreak frame and then KILLS its naive form with a model, converting a
+      borrowed analogy into a sharp claim: topology-based resilience (islanding, firebreaks,
+      sub-threshold hub-loading) is mechanistically empty against a supercritical self-amplifying
+      spreader. Distinct from the repo's reserve-as-redundancy idea (spare capacity) - this is about
+      where the controllable lever is (growth vs wiring), and it ties resilience to the open
+      autocatalysis question.
+    against: >-
+      In the toy, down-weighting even the top bottleneck (effective-resistance) edges did NOT contain
+      an above-threshold front; only a full cut did, and that merely disconnects the epicenter node
+      (and contains linear diffusion equally) - trivial disconnection a brain cannot do. So the
+      firebreak mechanism fails here. Caveat: this is one synthetic connectome with assumed rates; a
+      real small-world brain network with different hub structure, or a near-critical growth regime,
+      could behave differently, and the whole claim is conditional on tau being autocatalytic in
+      humans (unresolved; see identify-autocatalysis-rate).
+    falsify: >-
+      On real tau-PET + connectome data: if targeted weakening of bottleneck/hub edges predicts slower
+      tau-front advance beyond total connectivity and baseline tau (i.e. topology DOES buy resilience),
+      the growth-not-topology claim is wrong. Conversely, if human tau growth is shown to be
+      non-autocatalytic (alpha ~ 0), the percolation/firebreak family is void regardless.
+    evidence: in-silico
+    safety: "A modeling/conceptual result on synthetic networks; no intervention. Not medical advice."
+    next: "Rerun the toy on an open group connectome (e.g. an HCP-derived matrix) and at a near-critical growth rate to see whether partial bottleneck weakening ever contains without full disconnection; link to identify-autocatalysis-rate."
+    sources:
+      - "10.1016/j.neuron.2011.12.040"
+      - "10.1038/s41467-020-15701-2"
+      - "10.1103/PhysRevLett.86.3200"
+    history:
+      - date: 2026-11-05
+        note: "Created and tested the same night on the resilience lens (outside-medicine constraint). The firebreak/islanding/percolation analogy's topological form was killed by the toy; the surviving claim - resilience against an autocatalytic spreader is a growth-term property - is kept as investigating and ties to the lithium/GSK3-beta buffer and the disease-tolerance idea."
+  - id: disease-tolerance-slope-endpoint
+    title: "Measure cognitive resilience as disease tolerance - the per-person slope of cognition vs tau, not low tau"
+    created: 2026-11-05
+    lens: resilience
+    goal: understand
+    status: new
+    mechanism: >-
+      Borrowed from the ecology/immunology of host defence (Medzhitov, Schneider & Soares 2012,
+      10.1126/science.1214935): hosts survive a pathogen by RESISTANCE (lower burden) or TOLERANCE
+      (less damage per unit burden, read off the slope of the health-vs-burden reaction norm). Mapped
+      to AD: resilience = tolerance = a flat cognition-vs-tau slope, distinct from resistance = low
+      tau. The decisive quantity is the between-person random slope of cognition regressed on tau-PET;
+      resilience variants that act downstream (APOE3-Christchurch, RELN-COLBOS) are tolerance
+      mechanisms (they lower tau's cognitive cost), aligning the construct with real human biology.
+    novelty: >-
+      Reframes "cognitive reserve" (usually education/IQ proxies) as a measurable tolerance slope with
+      a clean statistical test, and separates a tolerance therapeutic axis (preserve function per
+      tangle) from the clearance axis (remove tangles) that dominates trials.
+    against: >-
+      Phenomenological - it names the slope without a spreading mechanism and gives no topology
+      prediction; it may not cleanly separate "less damage per tangle" from "fewer functionally
+      relevant tangles" (resistance in disguise); and a stable between-person slope must exceed
+      measurement error to be real.
+    falsify: >-
+      Fit cognition ~ tau with a per-person random slope in a tau-PET + cognition cohort (ADNI-style
+      summary stats suffice). If, after accounting for measurement error, there is no stable
+      between-person slope component (all variance is in the intercept = baseline ability), there is
+      nothing to "tolerate" and the frame is wrong.
+    evidence: observational
+    safety: "A measurement/endpoint concept; no intervention. Not medical advice."
+    next: "Specify the random-slope model and a noise floor; check whether an open tau-PET + cognition summary dataset can estimate a between-person slope component."
+    sources:
+      - "10.1126/science.1214935"
+      - "10.1038/s41591-019-0611-3"
+      - "10.1038/s41591-023-02318-3"
+    history:
+      - date: 2026-11-05
+        note: "Created on the resilience / outside-medicine night; the disease-tolerance frame gives the single sharpest already-measurable resilience readout and complements resilience-is-growth-not-topology (resilience off the spread axis, onto the tolerance axis)."
+  - id: response-diversity-not-redundancy
+    title: "Resilience is decorrelated circuit vulnerability (response diversity), not spare capacity (redundancy)"
+    created: 2026-11-05
+    lens: resilience
+    goal: understand
+    status: new
+    mechanism: >-
+      Borrowed from ecology's insurance hypothesis (Yachi & Loreau 1999, 10.1073/pnas.96.4.1463;
+      response diversity, Elmqvist 2003, 10.1890/1540-9295(2003)001[0488:RDECAR]2.0.CO;2): functional
+      redundancy buffers a system only if the redundant components have RESPONSE DIVERSITY - they fail
+      under different stresses, so they do not collapse together. Mapped to AD: resilience is not spare
+      circuit capacity (the repo's reserve-as-redundancy-threshold) but redundancy x (1 - cross-circuit
+      tau-susceptibility correlation). A brain with many parallel circuits that are all equally
+      tau-vulnerable (correlated failure) is NOT resilient; one whose parallel circuits have
+      decorrelated vulnerability is.
+    novelty: >-
+      Explicitly distinct from the repo's redundancy (Fiedler/algebraic-connectivity) metric - it is
+      about the correlation structure of vulnerability across redundant paths, a claim the redundancy
+      metric cannot make. Closest formalism is Edelman & Gally degeneracy (10.1073/pnas.131216798).
+    against: >-
+      AD presents essentially one chronic stressor (tau), so "diversity of responses to different
+      stresses" barely applies; per-circuit response curves are unmeasured (we have at best
+      cross-sectional vulnerability rankings), so the construct may be untestable with current data and
+      could collapse back into plain redundancy.
+    falsify: >-
+      Build a response-diversity index (variance in regional/cell-type tau-vulnerability across the
+      circuits serving one cognitive function, from open Allen/Agora cell-type maps x a connectome) and
+      test whether it predicts cognition-at-matched-tau BEYOND the Fiedler redundancy metric and
+      education. If it adds nothing, the construct is redundant with redundancy and dies.
+    evidence: observational
+    safety: "A modeling/metric concept on open summary and atlas data; no participant-level data; no intervention. Not medical advice."
+    next: "Prototype the decorrelated-vs-correlated vulnerability contrast in-silico on the synthetic connectome, then scope the Allen/Agora cell-type vulnerability maps needed for a real index."
+    sources:
+      - "10.1073/pnas.96.4.1463"
+      - "10.1890/1540-9295(2003)001[0488:RDECAR]2.0.CO;2"
+      - "10.1073/pnas.131216798"
+    history:
+      - date: 2026-11-05
+        note: "Created on the resilience / outside-medicine night; deliberately carved apart from reserve-as-redundancy-threshold (spare capacity) - this is decorrelated vulnerability, the insurance-hypothesis reading."

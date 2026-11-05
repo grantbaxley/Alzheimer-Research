@@ -24,6 +24,8 @@ lenses:
       - What do super-agers and centenarians have in common at the cellular level?
       - When a protective variant or state is found, is its protection sex-specific, and does the direction match or oppose women's faster tau accumulation?
       - Which resilience readouts are causal rather than mere markers, and which could move upward under an intervention (i.e. serve as reversal endpoints)?
+      - Is resilience better framed as TOLERANCE (a flat cognition-vs-pathology slope) than as RESISTANCE (low pathology), and does the between-person slope exceed measurement error enough to be a real target?
+      - If pathology spreads autocatalytically, does resilience live in the growth term (where it has a threshold) rather than in network topology (where firebreaks fail unless they fully disconnect)?
 
   - id: earliest-signal
     name: The first measurable change
