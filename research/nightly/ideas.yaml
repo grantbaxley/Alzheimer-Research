@@ -977,7 +977,7 @@ ideas:
     created: 2026-10-24
     lens: trial-design
     goal: detect
-    status: new
+    status: investigating
     mechanism: >-
       Every validated cognitive, digital and fluid measure is validated for rate of DECLINE, not for
       improvement above a person's own baseline, so no reversal trial can currently be scored on its
@@ -1002,14 +1002,32 @@ ideas:
       cheap negative.
     evidence: observational
     safety: "None; a measurement-validation proposal."
-    next: "List candidate within-person-reliable digital/functional measures and positive-control datasets (reversible-cause cognitive recovery) that could validate an improvement readout."
+    next: "Take one passive/practice-robust at-home signal with published within-person reliability - connected-speech MFCC acoustic-variance (ICC>0.65, 10.1186/s13195-024-01543-3) or an M2C2 burst aggregate (ICC 0.89-0.97, 10.1002/dad2.12283) - and test whether it registers the within-person rebound after one night of RECOVERY SLEEP following sleep deprivation (the one at-home positive control with documented reversible within-person change, PVT-validated, 10.3758/s13428-016-0763-8), above its own retest band. Days, not months; decisive negative if it fails."
     sources:
-      - "10.1001/jamaneurol.2014.803"
-      - "10.1002/alz.14314"
-      - "10.1002/alz.70753"
+      - "10.1016/S0140-6736(15)60461-5"
+      - "10.1016/j.trci.2017.08.010"
+      - "10.1002/dad2.12283"
+      - "10.1186/s13195-024-01543-3"
+      - "10.1002/alz.087332"
     history:
       - date: 2026-10-24
         note: "Created on trial-design night, from the scan's central finding that no instrument is validated to detect improvement above baseline."
+      - date: 2026-11-06
+        note: >-
+          Red-team / at-home revisit. Status new -> investigating, re-scoped. Survives the red-team but
+          only in a narrow form. Active cognitive tasks cannot cleanly show improvement: retest
+          (practice) effects mimic ~0.2 SD gains (FINGER both arms rose, 10.1016/S0140-6736(15)60461-5;
+          Jacobs 2017, 10.1016/j.trci.2017.08.010), and the only domain with a proven at-home
+          within-person recovery is vigilance (PVT after recovery sleep, 10.3758/s13428-016-0763-8),
+          not AD-relevant episodic memory. Key reframe: the practice effect is ALSO an AD signal - its
+          attenuation tracks amyloid and entorhinal tau (Tort-Merino 2025, 10.1002/alz.087332) - so the
+          ruler should be deviation from each person's expected practice-learning curve, not raw change
+          (spun out as practice-curve-deviation-endpoint). Only high-reliability burst-aggregated
+          measures (M2C2, ICC 0.89-0.97, 10.1002/dad2.12283) clear the detectability bar, and passive
+          measures that escape practice by construction (speech acoustics) have the weakest reliability
+          so far - the crux. Modelled tonight in scripts/improvement_detectability_2026_11_06.py. Also
+          corrected a mis-cited source: the old 10.1001/jamaneurol.2014.803 is the PACC decline
+          composite, not a practice-effects paper; swapped for FINGER + Jacobs."
 
   - id: remyelination-prevention-window
     title: "Test a cheap remyelination drug early, in high-myelin-risk people, with a myelin imaging endpoint"
@@ -1586,7 +1604,7 @@ ideas:
     created: 2026-11-01
     lens: cross-domain
     goal: slow
-    status: new
+    status: parked
     mechanism: >-
       HIV turned fatal into chronic by hitting an obligate step with combinations and treating to a
       quantified target (viral load); oncology adds measure/combine/adapt. The transferable move for
@@ -1619,6 +1637,22 @@ ideas:
     history:
       - date: 2026-11-01
         note: "Created on cross-domain night (symptomatic constraint); the cross-domain scan's single most transferable principle (HIV treat-to-target + oncology measure/combine/adapt, aimed at a proximal marker)."
+      - date: 2026-11-06
+        note: >-
+          Red-team DOWNGRADE, new -> parked. The distinctive claim - that steering a tau number
+          (p-tau217) steers cognition - does not survive. p-tau217 is a validated diagnostic/prognostic
+          READOUT, never a validated treatment surrogate (no trial-level surrogacy analysis exists for
+          it), and the sharpest available data point the wrong way: the drug that most cleanly lowered
+          tau still missed cognition with the best signal at the LOWEST dose (diranersen/CELIA; see
+          evidence/claims.yaml `diranersen`), and N-terminal/aggregated-tau antibodies engaged tau with
+          no cognitive benefit (gosuranemab, semorinemab/LAURIET, tilavonemab, zagotenemab). This is
+          amyloid's hollow surrogacy (Ackley 2021, 10.1136/bmj.n156) recurring one marker inward. The
+          winners that DID lower p-tau217 (lecanemab 10.1056/NEJMoa2212948, donanemab
+          10.1001/jama.2023.13239) are anti-amyloid, confounding tau-lowering with upstream amyloid
+          removal, and none shows the p-tau217 change SIZE predicts the cognition change size. Survivable
+          kernel spun out as biomarker-futility-gate-platform (use the marker as an enrichment and
+          go/no-go DROP rule, never to graduate an arm). The decisive prospective test (does maximal tau
+          lowering help) is DIAN-TU Tau NexGen, NCT05269394, not yet read out."
 
   - id: reversible-ceiling-staging
     title: "Estimate each patient's reversible-vs-banked deficit and set trial endpoints to the reachable ceiling"
@@ -2044,3 +2078,109 @@ ideas:
     history:
       - date: 2026-11-05
         note: "Created on the resilience / outside-medicine night; deliberately carved apart from reserve-as-redundancy-threshold (spare capacity) - this is decorrelated vulnerability, the insurance-hypothesis reading."
+  - id: biomarker-futility-gate-platform
+    title: "Use p-tau217/tau as an adaptive drop-rule and enrichment gate, never to graduate an arm"
+    created: 2026-11-06
+    lens: red-team
+    goal: understand
+    status: new
+    mechanism: >-
+      The survivable kernel of the parked treat-to-target idea. Keep the HIV/oncology
+      measure-combine-adapt borrowing but change what the tau marker does: use plasma p-tau217 (or
+      CSF MTBR-tau243) for trial ENRICHMENT and as a go/no-go FUTILITY GATE - an arm that fails to
+      move the marker is dropped early - while REQUIRING a cognitive/functional endpoint to graduate.
+      This exploits the marker's real strength (target engagement, prognosis) without betting that
+      lowering it causes benefit, which tonight's red-team found unsupported.
+    novelty: >-
+      Reframes a proximal biomarker from surrogate-endpoint (discredited by amyloid's hollow surrogacy
+      and diranersen's inverse dose-response) to a pure adaptive-design control variable; the testable
+      twist is a retrospective validation of the drop-rule against known winners and losers.
+    against: >-
+      A futility gate that drops arms failing to move tau would have been correct only if tau movement
+      is necessary for benefit - but if a beneficial mechanism acts without moving tau, the gate
+      wrongly kills it; and enrichment on p-tau217 narrows generalisability. The gate is a bet that
+      target engagement is necessary, which is weaker than surrogacy but still a bet.
+    falsify: >-
+      Retrospective in-silico test on the Alzforum Therapeutics tau-drug table: would a "drop if the
+      arm does not lower tau" rule have dropped the known cognitive failures (gosuranemab, semorinemab,
+      tilavonemab) while KEEPING the winners (lecanemab, donanemab)? If it mis-sorts the known
+      winners/losers, the gate is worthless.
+    evidence: in-silico
+    safety: "A trial-design/analysis concept; no intervention. Not medical advice."
+    next: "Tabulate tau-lowering vs cognitive outcome for each approved/failed tau or anti-amyloid arm (Alzforum Therapeutics, open) and test whether a tau drop-rule separates winners from losers."
+    sources:
+      - "10.1136/bmj.n156"
+      - "10.1056/NEJMoa2212948"
+      - "10.1001/jama.2023.13239"
+    history:
+      - date: 2026-11-06
+        note: "Spun out of the parked treat-to-target-proximal-biomarker on the red-team night; the biomarker as a drop-rule/enrichment gate, not a graduation surrogate."
+  - id: practice-curve-deviation-endpoint
+    title: "Score cognitive improvement as normalization of the practice-learning curve, not raw change"
+    created: 2026-11-06
+    lens: red-team
+    goal: detect
+    status: new
+    mechanism: >-
+      At-home-only. The retest (practice) effect both mimics improvement (~0.2 SD, the size of a
+      plausible treatment gain) and is itself an AD signal - its ATTENUATION tracks amyloid and
+      entorhinal tau (Tort-Merino 2025, 10.1002/alz.087332). So instead of raw endpoint-minus-baseline
+      (which a practice effect fakes), score each person against their own EXPECTED practice-learning
+      trajectory: a treatment that restores the normal practice gain is the readout. Tonight's toy
+      (scripts/improvement_detectability_2026_11_06.py) shows naive change reads a false ~+0.25 SD
+      "improvement" under a true null while the practice-curve-deviation estimator recovers ~0.
+    novelty: >-
+      Turns the central confounder of improvement measurement into the measurement itself; distinct
+      from existing decline-validated endpoints and from raw within-person change.
+    against: >-
+      Needs dense pre-onset repeated measures to estimate each person's practice curve (feasible only
+      with at-home high-frequency sampling) and assumes the curve's shape is modelled correctly -
+      mis-specifying it reintroduces the bias; and if genuine within-person gains essentially never
+      occur in AD there is nothing to detect.
+    falsify: >-
+      If restoring a reversible deficit (recovery sleep after deprivation; treated depression) does not
+      move the practice-curve-deviation metric beyond its retest CI, the reframing fails and raw change
+      is no worse.
+    evidence: observational
+    safety: "A measurement concept on at-home digital data; no intervention; no participant-level data. Not medical advice."
+    next: "Prototype the estimator against an open high-frequency at-home dataset (M2C2/Mobile Toolbox is open-source) using a reversible-cause positive control."
+    sources:
+      - "10.1002/alz.087332"
+      - "10.1002/dad2.12283"
+      - "10.1016/j.trci.2017.08.010"
+    history:
+      - date: 2026-11-06
+        note: "Created on the red-team / at-home night from the finding that the practice effect is both the threat and an AD signal; modelled tonight."
+  - id: ptau217-athome-slope-coupling
+    title: "Test whether within-person change in plasma p-tau217 tracks change in an at-home cognition slope"
+    created: 2026-11-06
+    lens: red-team
+    goal: detect
+    status: new
+    mechanism: >-
+      At-home-feasible necessary-condition test for the parked treat-to-target claim. Using serial
+      finger-prick/venous plasma p-tau217 (not PET or CSF) plus a passive at-home cognitive slope
+      (remote smartphone memory and passive connected-speech proper-name recall), test WITHIN
+      individuals whether a change in p-tau217 tracks a change in the at-home slope. If the marker and
+      the at-home readout do not move together within a person, the marker cannot be a steerable target.
+    novelty: >-
+      Most p-tau217 work is cross-sectional or clinic-based; this is a within-person, at-home coupling
+      test, and it is the cheapest partial kill of the treat-to-target idea.
+    against: >-
+      It tests only the NECESSARY condition (marker tracks cognition), not the sufficient causal step
+      (lowering it CAUSES improvement), which needs an interventional arm; passive at-home slopes are
+      noisy (see the detectability toy); and a coupling could be driven by shared upstream decline
+      rather than a steerable link.
+    falsify: >-
+      If within-person delta-p-tau217 does not predict delta(at-home slope) - especially if banked
+      remote-assessment arms of tau/anti-amyloid trials show the marker and the slope decoupled by dose
+      - the marker-as-steerable-target claim is dead cheaply.
+    evidence: observational
+    safety: "Observational; a finger-prick blood test and passive at-home measures; not medical advice; nothing self-dosed."
+    next: "Find an open cohort or banked trial arm with serial plasma p-tau217 plus any repeated at-home cognitive/speech measure and specify the within-person coupling analysis."
+    sources:
+      - "10.1136/bmj.n156"
+      - "10.1002/dad2.12283"
+    history:
+      - date: 2026-11-06
+        note: "Created on the red-team night as the cheapest at-home partial kill of treat-to-target-proximal-biomarker (necessary-condition, within-person, no scanner)."

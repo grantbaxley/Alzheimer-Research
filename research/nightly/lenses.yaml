@@ -109,6 +109,8 @@ lenses:
       - What is the cheapest experiment that could kill it, and what result would?
       - If it survived, what would the next, harder test be?
       - Can a liability be turned into a controllable variable - e.g. can the neurovascular unit, today the site of ARIA toxicity, become a pre-treatment stratifier that widens the therapeutic window?
+      - Is the idea's key biomarker a validated TARGET (does moving it cause clinical benefit) or only a READOUT - and is there a drug that moved it without benefit, or an inverse dose-response, that already falsifies the target claim?
+      - If the idea needs to detect IMPROVEMENT, does its readout escape the practice/retest effect (passive or practice-curve-corrected), and has it ever detected a genuine within-person recovery against a positive control?
 
   - id: frontier-scan
     name: What is new this week
