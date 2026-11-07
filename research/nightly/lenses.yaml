@@ -14,6 +14,8 @@ lenses:
       - If a drug restored function for 6 months and then stopped working, what would most likely have caught up with it?
       - Which published models does a result actually depend on - and does a good fit (high correlation) prove the mechanism, or could regional vulnerability produce the same pattern without it?
       - Where is the irreversible floor (lost neurons) at each stage, and does that set the latest point at which any reversal attempt could still work?
+      - If a damaged system is bistable (a self-reinforcing loop with two stable states), does reversing it require pushing the driver BELOW where it collapsed (a hysteresis gap / over-correction), not merely removing the trigger - and is there a readout that would show the basin rather than a single threshold?
+      - Is an apparent "point of no return" a true alternative-stable-state basin, or just a sharp monotone collapse (a threshold biomarker) - and which empirical signature (bimodality at matched exposure; path-dependent recovery) separates the two?
 
   - id: resilience
     name: People who have the pathology but not the disease

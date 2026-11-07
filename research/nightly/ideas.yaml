@@ -877,7 +877,7 @@ ideas:
     created: 2026-10-24
     lens: trial-design
     goal: reverse
-    status: new
+    status: parked
     mechanism: >-
       If the brain behaves like an ecosystem with alternative stable states, recovery is not a
       graded reversal of decline but a jump between basins, so the useful trial signals are (a)
@@ -889,8 +889,10 @@ ideas:
       bimodality/time-to-improvement endpoint AND a test for a discontinuous dose-response, both
       motivated explicitly by an alternative-stable-states model, is the contribution. Tonight's toy
       regime-shift model (scripts/regime_shift_2026_10_24.py) shows the hysteresis gap this would
-      look for; dynamical tipping-point models of AD exist (PMID 42899506, PMID 41675964) but have
-      not been turned into trial-readout prescriptions.
+      look for; dynamical AD models with thresholds/early-warning signals exist (PMID 42899506 =
+      a network-collapse phase transition; PMID 41675964 = a generic early-warning-signal method on
+      ADNI) but these are in-silico/method and show a threshold-to-collapse, NOT a demonstrated
+      bistable basin, and none has been turned into a trial-readout prescription.
     against: >-
       No instrument is validated to detect improvement above baseline in 6-12 months (the trial-
       design scan's central finding), so a "crossed back above baseline" endpoint has no validated
@@ -912,6 +914,23 @@ ideas:
     history:
       - date: 2026-10-24
         note: "Created on trial-design night under the ecosystem constraint, from tonight's regime-shift model and the finding that no endpoint detects improvement."
+      - date: 2026-11-07
+        note: >-
+          Inversion / vascular revisit - PARKED. The trial-signature half fails its own falsification
+          test: published anti-amyloid person-level distributions are unimodal and heavily overlapping
+          with no second mode (Espay/Kepp/Herrup, eNeuro 2024, 10.1523/ENEURO.0319-23.2024; donanemab's
+          ~47% 'no CDR-SB change' is a pile-up at the scale floor, not a subpopulation crossing above
+          baseline), the dose-response half is untestable in the single-dose pivotal trials (graded in
+          Phase 2), and the 'crossed back above baseline' endpoint still has no validated ruler
+          (improvement-endpoint-validation). As a TRIAL-SIGNATURE idea it is metaphor dressed as design.
+          What survives is strictly the VASCULAR mechanism: a genuine saddle-node + hysteresis exists in
+          a published cerebrovascular model (Ahern/Goriely, Proc R Soc A 2025, 10.1098/rspa.2024.0548),
+          with its first arm empirically real in human tissue (Nortley/Attwell 2019, Science,
+          10.1126/science.aav9518), spun out tonight as vascular-bistability-hysteresis (investigating,
+          modelled in scripts/vascular_hysteresis_2026_11_07.py). The honest open question is empirical,
+          not modeling: is a vascular readout bimodal at matched amyloid, and does post-clearance CBF
+          show path-dependence? Also softened the PMID wording above (those models are threshold/EWS, not
+          demonstrated bistability)."
 
   - id: microglia-plaque-predator-prey
     title: "A predator-prey model of microglia clearing amyloid, where the predator degrades as it feeds"
@@ -2184,3 +2203,114 @@ ideas:
     history:
       - date: 2026-11-06
         note: "Created on the red-team night as the cheapest at-home partial kill of treat-to-target-proximal-biomarker (necessary-condition, within-person, no scanner)."
+  - id: vascular-bistability-hysteresis
+    title: "A cerebrovascular tipping point with a reversal window that requires over-correcting the driver"
+    created: 2026-11-07
+    lens: inversion
+    goal: reverse
+    status: investigating
+    mechanism: >-
+      The two-hit vascular loop (amyloid-beta -> pericyte constriction -> hypoperfusion -> more
+      amyloid and worse clearance) is a positive feedback that a published model formalises as a
+      saddle-node with an S-shaped hysteresis: healthy and collapsed perfusion states can coexist
+      (Ahern/Goriely, Proc R Soc A 2025, 10.1098/rspa.2024.0548). The loop's first arm is empirically
+      real in HUMAN tissue (amyloid-beta ~halves cortical CBF via pericytes, reversibly;
+      Nortley/Attwell 2019, 10.1126/science.aav9518). If this bistability is real, reversal has two
+      consequences modelled tonight (scripts/vascular_hysteresis_2026_11_07.py): a latest point (the
+      upper saddle-node) past which removing the driver no longer helps, and a hysteresis gap meaning
+      you must push the driver well BELOW where perfusion collapsed, not just below the collapse point
+      (an over-correction).
+    novelty: >-
+      Reframes the vascular-AD story as a reversal problem with a quantified over-correction
+      requirement, and - crucially - separates the one place the bistability hypothesis is NOT metaphor
+      (vessels, where a derived saddle-node and an empirical first arm exist) from the trial-signature
+      version just parked. The contribution is to pair the model with the empirical discriminator it
+      implies, not to assert the brain is bistable.
+    against: >-
+      The bistability is model-structural, not a measured basin; the toy shows it exists only for
+      strong-enough feedback (weak feedback gives a smooth, fully reversible decline), and the model
+      cannot say which regime a real brain is in. Even a full perfusion recovery is capped by neuron
+      loss (~60% entorhinal layer-II gone by very-mild dementia, Gomez-Isla 1996, PMID 8699259), so the
+      vascular route still caps at "freeze" past that stage. Much of the pro-causal BBB data is
+      single-cohort and correlational.
+    falsify: >-
+      Empirical, not modeling: in a cohort with amyloid PET + ASL-CBF (and/or DCE-MRI Ktrans,
+      sPDGFRbeta), at MATCHED amyloid load, is the vascular readout BIMODAL across individuals (two
+      basins) or unimodal? And in anti-amyloid responders, does CBF recovery show path-dependence / a
+      baseline-CBF threshold (hysteresis) rather than a single-valued graded return? Unimodal and
+      single-valued kills the bistability rationale.
+    evidence: in-silico
+    safety: "A modeling/measurement hypothesis on summary and imaging data; no intervention; no participant-level data. Not medical advice."
+    next: "Run the amyloid-matched vascular-bimodality test on any open aggregate/imaging summary (ADNI-style); digitise published CBF-vs-amyloid distributions if person-level data are unavailable (DUA-gated)."
+    sources:
+      - "10.1098/rspa.2024.0548"
+      - "10.1126/science.aav9518"
+      - "10.1523/ENEURO.0319-23.2024"
+    history:
+      - date: 2026-11-07
+        note: "Spun out of the parked regime-shift-trial-signatures on the inversion/vascular night; the vascular lane is where bistability stops being metaphor (Ahern 2025 saddle-node + Nortley 2019 empirical first arm). Modelled tonight as a reduction of Ahern 2025."
+  - id: capillary-stall-transit-time-readout
+    title: "Capillary stalls / transit-time heterogeneity as a reversible-flow lever and an early readout"
+    created: 2026-11-07
+    lens: inversion
+    goal: reverse
+    status: new
+    mechanism: >-
+      The minimal vascular change that could restore function is relieving reversible capillary
+      hypoperfusion in tissue whose neurons are still alive. In mice, neutrophil plugging stalls
+      capillaries and clearing the stalls (anti-Ly6G) rapidly restores CBF and improves memory within
+      hours-days (Cruz Hernandez 2019, Nat Neurosci, 10.1038/s41593-018-0329-4); the human analog is
+      relieving amyloid/pericyte-mediated constriction (Nortley 2019, human tissue). Capillary transit-
+      time heterogeneity (CTH, from DSC-MRI) is the candidate human readout of this reversible deficit.
+    novelty: >-
+      Vascular-AD consortia (MarkVCID) validate WMH/PSMD/cerebrovascular reactivity but not capillary-
+      stall burden / CTH as an AD readout; the mouse stall-clearing rescue has no human translation.
+    against: >-
+      The stall-clearing rescue is mouse-only; CTH is noisy and not validated against AD outcomes; and
+      the reversible-flow benefit is still capped by neuron loss, so it is an early-window lever at best.
+    falsify: >-
+      In a cohort with DSC-MRI CTH + amyloid/tau-PET, does baseline CTH predict cognitive decline
+      INDEPENDENT of amyloid and tau? If it adds nothing, drop it.
+    evidence: preclinical
+    safety: "An imaging-readout and mechanism hypothesis; no intervention. Not medical advice."
+    next: "Check whether any open imaging cohort reports DSC-MRI transit-time heterogeneity alongside amyloid/tau, and specify the independent-prediction test."
+    sources:
+      - "10.1038/s41593-018-0329-4"
+      - "10.1126/science.aav9518"
+    history:
+      - date: 2026-11-07
+        note: "Created on the vascular-inversion night; the 'smallest change that restores function' answer (flow to surviving neurons) turned into a reversible-flow readout. Mouse-grounded rescue; human CTH test undone."
+  - id: stage-indexed-vascular-point-of-no-return
+    title: "Map the latest stage a perfusion rescue can still work by coupling vascular load to neuron loss"
+    created: 2026-11-07
+    lens: inversion
+    goal: reverse
+    status: new
+    mechanism: >-
+      Working backwards from reversal: the durable floor is not vascular but neuronal. Vascular states
+      (CBF, BBB leak, pericyte constriction, WMH penumbra) are functionally reversible, yet a perfusion
+      rescue has nothing to rescue once the neurons are gone (~60% of entorhinal layer-II neurons lost
+      by very-mild dementia, Gomez-Isla 1996, PMID 8699259). Formally couple a vascular-burden axis
+      (capillary rarefaction, WMH, CBF) to residual neuron/synapse count to define, per stage, the
+      latest point at which restoring perfusion could still recover function.
+    novelty: >-
+      Turns the recurring 'irreversibility = neuron loss' finding into an explicit, stage-indexed
+      point-of-no-return map specific to the vascular route; extends clearance-threshold-onset and the
+      reversible-ceiling work rather than duplicating them.
+    against: >-
+      Needs paired vascular-burden and residual-neuron data (largely autopsy or scarce imaging proxies);
+      the neuron-count threshold for 'recoverable' is itself uncertain; and the map is only as good as
+      the surrogate used for surviving substrate.
+    falsify: >-
+      In autopsy/imaging cohorts, does residual neuron/synapse count at a given vascular burden predict
+      whether function is recoverable (or was preserved)? If residual substrate adds nothing over
+      vascular burden alone, the coupling is not the right framing.
+    evidence: in-silico
+    safety: "A staging/modeling concept on summary and autopsy-derived data; no participant-level data; no intervention. Not medical advice."
+    next: "Scope published stage-wise neuron-loss and vascular-burden summaries that could be coupled into a point-of-no-return curve; sanity-check in-silico against the reversible-ceiling toy."
+    sources:
+      - "10.1523/JNEUROSCI.16-14-04491.1996"
+      - "10.1098/rspa.2024.0548"
+    history:
+      - date: 2026-11-07
+        note: "Created on the vascular-inversion night; makes the 'latest reversal point is set by surviving neurons, not vessels' finding into an explicit stage-indexed map."
