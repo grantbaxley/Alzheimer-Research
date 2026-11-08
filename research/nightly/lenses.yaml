@@ -75,6 +75,8 @@ lenses:
       - Which of those signals already failed in an RCT, and what did the failure show?
       - What active-comparator or target-trial-emulation design would make an observational signal credible?
       - When a claims-data signal and a Mendelian-randomization or regression-discontinuity estimate disagree, which do you believe and why - and how big is the gap (the likely size of healthy-user bias)?
+      - Did a failed repurposing trial test the wrong target, isoform, dose or timing rather than the wrong idea (e.g. MAO-B when the mechanism implicates MAO-A) - and is the corrected version a cheap approved drug?
+      - If you anchor the drug at the earliest-vulnerable region, is the targetable lever a DRUGGABLE accelerant on top of an undruggable structural vulnerability - and is the target genetically supported or only mechanistically (timing vs etiology)?
 
   - id: reversal-biology
     name: Rebuilding - synapses, circuits, cells

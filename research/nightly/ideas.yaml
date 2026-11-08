@@ -165,11 +165,15 @@ ideas:
       None for the analysis. Any resulting trial-timing rule would need prospective validation
       before use.
     next: >-
-      In a serial amyloid+tau PET cohort (ADNI, BioFINDER), test whether the amyloid-to-tau
-      interval predicts tau-accumulation rate and cognitive decline AFTER removing amyloid burden
-      and age, and whether a sex-by-interval term survives. If it adds nothing, the enrichment
-      premise dies cheaply; if a residual effect survives, re-cut an existing tau-stage-enriched
-      trial by estimated interval and sex before proposing anything bespoke.
+      Re-anchored clock: use time-since-amyloid-positivity (amyloid chronicity, SILA-estimated),
+      not chronological age or a two-scan tau interval, since sex acts on the amyloid->tau
+      conversion step, not amyloid rate. In ADNI/BioFINDER/WRAP, test whether amyloid chronicity
+      predicts tau-accumulation rate and decline after removing amyloid burden and age, and whether
+      a sex term adds. Add a cheap tracer-free leading edge: baseline LC neuromelanin-MRI
+      (Abeta-conditional, age-normed for its non-monotonic lifespan curve) as a second clock
+      variable, and test whether (LC contrast + amyloid chronicity) beats age + chronicity alone.
+      The full peer-reviewed version of this analysis does not yet exist (ingredients are all
+      positive), so it is an open, largely-scaffolded test, not a new data ask.
     sources:
       - "10.1001/jamaneurol.2025.0013"
       - "10.1016/j.tjpad.2026.100622"
@@ -203,6 +207,24 @@ ideas:
           the sex half: run the interval test first (see `next`), and treat sex as a hierarchical
           sub-analysis borrowing strength across a platform rather than a standalone powering
           demand. Status stays investigating.
+      - date: 2026-11-08
+        note: >-
+          Repurposing / LC "why there" revisit. Status stays investigating; sharpened and one
+          mechanism demoted. (1) Re-anchor the clock as amyloid chronicity (time-since-Abeta+), not
+          age or the two-scan interval, because the robust human sex effect is on the amyloid->tau
+          COUPLING step, not amyloid accumulation rate (Coughlan 2025 meta, PMID 40029638: female
+          excess is Abeta+-conditional; Wang Brain 2024 locates the sex term at the coupling step) -
+          i.e. the sex term and the leverage point are the SAME node. (2) Add LC neuromelanin-MRI as
+          a cheaper, earlier, tracer-free leading edge (LC integrity decline precedes MTL tau,
+          Bueicheku/Jacobs, Nat Aging 2024, PMID 38664576), kept Abeta-conditional and age-normed
+          (non-monotonic LC lifespan curve) and NOT over-claimed for sex content (human LC
+          dimorphism is 'minor', Galgani 2025). (3) DEMOTE the X-linked MAO-A sub-hypothesis to a
+          clearly-tagged mechanism-to-test: human MAO-A shows dosage compensation (not a clean
+          double-dose effect) and the estrogen link is contradictory (MAO-A VT peaks in
+          perimenopause, not with estrogen loss; Rekkas). Breadcrumb: the LC-seeding genes (MAOA,
+          LGMN/AEP, DBH, ADRA2A) are mechanistically hot but genetically COLD for AD (no GWAS
+          nomination), which argues this idea is about TIMING, not etiology. Modelled the 'why there'
+          decomposition in scripts/lc_why_there_2026_11_08.py."
 
   - id: fsh-blockade-women
     title: "Blocking follicle-stimulating hormone to slow post-menopausal Alzheimer's"
@@ -2314,3 +2336,114 @@ ideas:
     history:
       - date: 2026-11-07
         note: "Created on the vascular-inversion night; makes the 'latest reversal point is set by surviving neurons, not vessels' finding into an explicit stage-indexed map."
+  - id: maoa-dopegal-wrong-isoform-repurposing
+    title: "Trial a MAO-A inhibitor (not MAO-B) at the locus coeruleus DOPEGAL step the field skipped"
+    created: 2026-11-08
+    lens: repurposing
+    goal: slow
+    status: new
+    mechanism: >-
+      The earliest tau seed is in the locus coeruleus, and the human-grounded mechanism there is
+      MAO-A deaminating noradrenaline to the reactive aldehyde DOPEGAL, which activates asparagine
+      endopeptidase (AEP/legumain) to cleave tau at N368 and seed spread (Kang/Ye, J Clin Invest
+      2020, 10.1172/JCI130513; mouse/cell). The pathway implicates MAO-A specifically, yet the only
+      completed MAO-inhibitor AD biomarker RCT used MAO-B (rasagiline), which met an FDG-PET endpoint
+      but moved no tau marker (10.1002/trc2.12106). A safe, approved, cheap reversible MAO-A
+      inhibitor (e.g. moclobemide) aimed at DOPEGAL has, as far as can be sourced, never been trialed
+      in AD - the right isoform at the right place.
+    novelty: >-
+      The contribution is isoform correction: matching the drug (MAO-A) to the mechanism (MAO-A ->
+      DOPEGAL) rather than repeating the MAO-B trial. Tonight's toy (scripts/lc_why_there_2026_11_08.py)
+      makes the point that MAO-A/DOPEGAL is the one DRUGGABLE accelerant on top of the LC's undruggable
+      structural vulnerability.
+    against: >-
+      All causal DOPEGAL-AEP data are rodent/cell; human DOPEGAL-lowering by a MAO-A inhibitor is
+      untested; MAO-A inhibitors carry tyramine/serotonin-syndrome caution (reversible ones less so);
+      and boosting functional NE while blocking its toxic branch is a delicate balance. The LC-seeding
+      genes are also genetically cold for AD, so this is a timing/modifier bet, not an etiologic one.
+    falsify: >-
+      In amyloid-positive MCI, a >=12-week reversible MAO-A inhibitor should lower CSF/plasma DOPEGAL
+      and AEP-cleaved tau-N368 versus placebo (target engagement). If it moves neither, the DOPEGAL-at-
+      the-LC repurposing rationale is dead cheaply, before any cognitive trial.
+    evidence: preclinical
+    safety: >-
+      MAO-A inhibitors are approved (depression) but need dietary/interaction caution; a reversible
+      agent reduces risk. Research hypothesis; not medical advice; nothing self-dosed.
+    next: "Spec a biomarker-endpoint (DOPEGAL, tau-N368) target-engagement study of a reversible MAO-A inhibitor; check for any existing banked samples from MAO-A-inhibitor users."
+    sources:
+      - "10.1172/JCI130513"
+      - "10.1002/trc2.12106"
+      - "10.1038/s41594-022-00745-3"
+    history:
+      - date: 2026-11-08
+        note: "Created on the repurposing / LC 'why there' night; the night's most interesting finding was that the field trialed the wrong MAO isoform (MAO-B) for a MAO-A mechanism."
+  - id: atomoxetine-lc-mri-enrichment
+    title: "Repurpose atomoxetine for tau, enriching responders by locus-coeruleus neuromelanin-MRI"
+    created: 2026-11-08
+    lens: repurposing
+    goal: slow
+    status: new
+    mechanism: >-
+      Atomoxetine (a noradrenaline-reuptake inhibitor that raises synaptic NE) has the cleanest human
+      target-engagement signal at the LC step: a 12-month biomarker RCT in MCI-due-to-AD raised CSF NE,
+      lowered CSF total-tau and pTau181 (~5-6%), and raised temporal FDG-PET, with no cognitive effect
+      in an underpowered sample (Levey et al., Brain 2021, 10.1093/brain/awab452; NCT01522404). The
+      idea is to repurpose the drug AND a biomarker: enrich a trial to patients with preserved-but-
+      stressed LC on neuromelanin-sensitive MRI (tracer-free, cheap, and declining before MTL tau,
+      Bueicheku/Jacobs 2024, PMID 38664576), where an NE-restoring drug has the most substrate to act on.
+    novelty: >-
+      Uses LC neuromelanin-MRI as a predictive enrichment biomarker for an existing drug - a
+      drug-plus-biomarker repurposing - rather than treating unselected patients; the prior RCT did
+      not stratify by LC integrity.
+    against: >-
+      Atomoxetine's biomarker effect is modest and cognition-unproven; LC-MRI has a non-monotonic
+      lifespan curve and only 'minor' sex content; enrichment narrows generalisability; and raising NE
+      also feeds the MAO-A/DOPEGAL toxic branch (a reason to consider the combined lever below).
+    falsify: >-
+      In a cohort with baseline LC neuromelanin-MRI, does the LC signal moderate atomoxetine's tau-
+      lowering effect? If there is no interaction (the drug helps regardless of LC integrity, or not at
+      all), the enrichment premise is wrong.
+    evidence: observational
+    safety: "Atomoxetine is approved and broadly safe; a research hypothesis about enrichment, not medical advice."
+    next: "Check whether the banked atomoxetine-RCT or any ADNI-adjacent cohort has baseline LC neuromelanin-MRI to test the moderation; spec the interaction analysis."
+    sources:
+      - "10.1093/brain/awab452"
+      - "10.1038/s43587-024-00626-y"
+    history:
+      - date: 2026-11-08
+        note: "Created on the repurposing / LC night; pairs the drug with the cleanest human LC engagement signal to an LC-integrity enrichment biomarker."
+  - id: perimenopausal-maoa-window
+    title: "Test whether female tau excess peaks in a perimenopausal MAO-A window, not monotonically with age"
+    created: 2026-11-08
+    lens: repurposing
+    goal: understand
+    status: new
+    mechanism: >-
+      Women accumulate tau faster than men at matched amyloid, at the amyloid->tau coupling step
+      (Coughlan 2025, PMID 40029638). Brain MAO-A activity (which feeds the LC DOPEGAL->AEP->tau
+      pathway) is not simply higher with low estrogen: human PET shows MAO-A binding is HIGHEST in
+      perimenopause (driven by estrogen fluctuation, ~+34% vs reproductive; Rekkas, JAMA Psychiatry),
+      then falls. Hypothesis: if the LC/DOPEGAL step contributes to the female tau excess, that excess
+      should be concentrated in a narrow peri-/early-post-menopausal age band and attenuate later -
+      not increase monotonically with age.
+    novelty: >-
+      Turns a contradictory estrogen-MAO-A story into a sharp, falsifiable NON-MONOTONIC prediction
+      keyed to menopausal stage, distinct from the generic 'women accumulate tau faster' claim and from
+      the amyloid-chronicity clock.
+    against: >-
+      The MAO-A -> tau-seeding link is rodent/cell, not human; menopause timing is hard to date in
+      retrospective cohorts; the perimenopause MAO-A peak is from psychiatric PET, not AD; and the
+      female tau excess may simply track amyloid-positivity timing rather than a hormonal window.
+    falsify: >-
+      In longitudinal tau-PET stratified by menopause-proximate age, if the female-minus-male tau-
+      accumulation excess at matched amyloid is FLAT across age (not peaked peri-/early-post-menopause),
+      the window hypothesis is falsified.
+    evidence: observational
+    safety: "An observational analysis hypothesis; no intervention. Not medical advice."
+    next: "Scope whether an open tau-PET cohort records menopause-proximate age (or a usable proxy) to test the non-monotonic female-excess prediction."
+    sources:
+      - "10.1001/jamaneurol.2025.0013"
+      - "10.1172/JCI130513"
+    history:
+      - date: 2026-11-08
+        note: "Created on the repurposing / LC night; the honest resolution of the contradictory estrogen-MAO-A data (a perimenopausal peak, not estrogen loss) became a non-monotonic falsification test."
