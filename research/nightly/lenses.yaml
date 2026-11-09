@@ -95,6 +95,8 @@ lenses:
       - How could N-of-1, adaptive, platform or biomarker-enriched designs test reversal claims faster and more honestly?
       - What outcome measure would detect real improvement (not slower decline) in 6 to 12 months?
       - Is the drug's dose-response graded or threshold-like, and is the person-level outcome unimodal or bimodal - i.e. does the data show the signature of a basin boundary (alternative stable states) or not?
+      - Could the dose-response be NON-MONOTONE (inverted-U, as for remyelination), so that a two-arm top-dose test or a monotone-trend analysis would miss a real intermediate-dose effect - and does the design sample enough doses with a curvature-aware primary to catch it?
+      - Is an imaging/electrophysiology surrogate being used as an ENDPOINT (where benefit has repeatedly stopped) when it should be a go/no-go GATE - and has the surrogate-to-clinical-outcome link actually been shown?
 
   - id: modeling
     name: Put a number on it

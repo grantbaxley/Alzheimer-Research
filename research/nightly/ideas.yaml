@@ -1158,7 +1158,7 @@ ideas:
     created: 2026-10-25
     lens: prevention-population
     goal: understand
-    status: new
+    status: investigating
     mechanism: >-
       Two recent preclinical findings conflict: myelin loss drives amyloid accumulation (so repairing
       myelin should lower it), yet oligodendrocytes themselves produce amyloid-beta and contribute to
@@ -1179,14 +1179,34 @@ ideas:
       it rises, remyelination-as-therapy carries an amyloid penalty. Either result is decisive.
     evidence: preclinical
     safety: "None directly; the point is to prevent a harmful drug combination before it is tried in people."
-    next: "Read whether either source paper measured amyloid after a remyelination manipulation; if not, that is the experiment."
+    next: "Partly resolved (leans lower/GO). The missing decisive run is a 2x2 factorial in a humanized knock-in (APP-NL-G-F, not an overexpression model) - OPC-specific genetic remyelination x anti-amyloid, with an oligodendrocyte-Bace1 control arm - measuring cortical plaque load + soluble Abeta42 and the interaction (spun out as remyelination-amyloid-factorial-gonogo)."
     sources:
       - "10.1038/s41593-024-01730-3"
       - "10.1038/s41586-023-06120-6"
       - "10.1038/s41586-022-05439-w"
+      - "10.3389/fcell.2021.733945"
     history:
       - date: 2026-10-25
         note: "Created on prevention night from the oligodendrocyte victim-vs-culprit contradiction (Sasmita 2024 vs Depp 2023); a mechanistic go/no-go rather than a prevention lever."
+      - date: 2026-11-09
+        note: >-
+          Trial-design / oligodendrocyte revisit. Status new -> investigating; the contradiction
+          largely DISSOLVES and the go/no-go leans LOWER (GO), partly resolvable from existing papers.
+          (1) The two 'opposing' findings are SAME-LAB (Nave) and complementary, not opposing camps:
+          myelin dysfunction drives amyloid (Depp 2023, Nature, PMID 37258678 - loss-of-function only,
+          they did NOT remyelinate-then-measure), while oligodendrocytes do make Abeta but CANNOT seed
+          plaques without a neuronal threshold Abeta, so the oligo source is subordinate (Sasmita 2024,
+          Nat Neurosci, PMID 39103558; ~50% of human gray-matter oligodendrocytes carry APP/BACE1 mRNA
+          in AD, so the machinery is real in human tissue, but expression != plaque contribution).
+          (2) INDEPENDENT gain-of-function evidence outside the three cited papers: the remyelinating
+          drug clemastine LOWERS Abeta and rescues memory in APP/PS1 mice (Xie 2021, PMID 34746130) -
+          so the feared amyloid penalty is backwards, though clemastine has muscarinic off-targets and
+          this is an overexpression model. (3) Source correction: the cited Blanchard 2022 (PMID
+          36385529) is human APOE4 oligodendrocyte-cholesterol/myelin work with NO amyloid readout - it
+          is context, not an amyloid-source/lowering result. (4) Breadcrumb caveat: AD GWAS heritability
+          enriches in MICROGLIA, not oligodendrocytes (Nott 2019; Bryois 2020), so the mechanism likely
+          runs oligo-myelin <-> microglial clearance (BIN1, an Agora-nominated 'Myelination' target),
+          not oligo-amyloid-source in isolation. Not closed (all causal data mouse)."
 
   - id: sleep-regularity-vs-duration
     title: "Night-to-night regularity of consolidated slow-wave sleep may predict pathology better than sleep duration"
@@ -2447,3 +2467,109 @@ ideas:
     history:
       - date: 2026-11-08
         note: "Created on the repurposing / LC night; the honest resolution of the contradictory estrogen-MAO-A data (a perimenopausal peak, not estrogen loss) became a non-monotonic falsification test."
+  - id: remyelination-nonmonotone-trial-design
+    title: "Design remyelination trials for an inverted-U dose-response, never a monotone one"
+    created: 2026-11-09
+    lens: trial-design
+    goal: understand
+    status: new
+    mechanism: >-
+      Remyelination has a mechanistically expected NON-MONOTONE (inverted-U) dose-response - there is
+      an optimal OPC-differentiation window and over-drive is harmful - and the clearest human case is
+      opicinumab (anti-LINGO-1): SYNERGY (Cadavid, Lancet Neurol 2019, PMID 31285147) had its best
+      signal at an intermediate dose with benefit falling off at the top dose, so the pre-specified
+      LINEAR dose-trend was null (p ~ 0.89) and it missed; AFFINITY then bet on a single fixed dose,
+      the wrong move for a bell. The idea is to make non-monotonicity the design assumption for the
+      whole remyelination class: >=4 doses, a curvature-aware primary (quadratic/umbrella contrast or
+      MCP-Mod), and a responder-mixture endpoint, instead of two-arm or monotone-trend tests.
+    novelty: >-
+      Treats the inverted-U as a class property to design around, not an exception; tonight's toy
+      (scripts/nonmonotone_dose_trial_2026_11_09.py) quantifies that a two-arm top-dose or monotone-
+      trend analysis is near-powerless for an interior-peak drug while a quadratic contrast recovers
+      it, and - honestly - that the machinery costs power when the drug is truly monotone.
+    against: >-
+      Multi-dose designs cost sample size and need to bracket an unknown optimum; if the true curve is
+      monotone or saturating, the curvature machinery just dilutes power (shown in the toy); and the
+      whole concern is moot if no remyelination agent reaches a clinical endpoint at any dose (none has
+      yet - benefit has stopped at the myelin imaging surrogate).
+    falsify: >-
+      In silico, if a multi-dose + non-monotonicity analysis fails to beat two-arm/monotone-trend power
+      across the plausible region (interior optimal dose, modest peak effect), the lesson is void. In a
+      real trial, if the remyelination dose-response turns out monotone, the simpler design wins.
+    evidence: in-silico
+    safety: "A trial-design and analysis proposal; no intervention. Not medical advice."
+    next: "Extend the toy with MCP-Mod and a responder-mixture (dip-test) endpoint; sweep the optimal-dose location and peak size to map where the design pays."
+    sources:
+      - "10.1016/S1474-4422(19)30137-1"
+      - "10.1016/S0140-6736(17)32346-2"
+    history:
+      - date: 2026-11-09
+        note: "Created and modelled on the trial-design / oligodendrocyte night; the opicinumab inverted-U made concrete as a design rule."
+  - id: remyelination-amyloid-factorial-gonogo
+    title: "A 2x2 factorial in a humanized knock-in to settle whether remyelination raises or lowers amyloid"
+    created: 2026-11-09
+    lens: trial-design
+    goal: understand
+    status: new
+    mechanism: >-
+      The oligodendrocyte-amyloid-source question (does remyelination raise or lower amyloid?) leans
+      LOWER on current evidence but is unresolved because no study has remyelinated a humanized model
+      and measured amyloid. A single add-on arm cannot separate a cognitive benefit from an amyloid
+      penalty. The decisive, cheapest design is a 2x2 factorial - remyelination {yes/no} x anti-amyloid
+      {yes/no} - in a humanized knock-in (APP-NL-G-F, not an overexpression line), with an
+      oligodendrocyte-specific Bace1 control arm, reading cortical plaque load + soluble Abeta42 and the
+      interaction (does anti-amyloid erase a remyelination gain = penalty real, or additive/synergistic).
+    novelty: >-
+      Turns the mouse-level raise-vs-lower uncertainty into a single human-relevant contrast a single
+      add-on arm cannot resolve, and isolates the oligodendrocyte source term with a Bace1 arm.
+    against: >-
+      Interaction contrasts need ~4x the n of a main effect, so the interaction may be unpowerable at
+      feasible scale (power it in-silico first; fall back to co-primary cognition + amyloid non-
+      inferiority); and it is a preclinical model, so translation to humans is not guaranteed.
+    falsify: >-
+      Run the factorial: if the combined arm clears LESS amyloid than anti-amyloid alone, remyelination
+      carries a penalty (NO-GO for co-administration); if equal-or-greater, combining is safe (GO). A
+      flat or absent interaction answers the go/no-go either way.
+    evidence: preclinical
+    safety: "A preclinical design to prevent a harmful human drug combination before it is tried. Not medical advice."
+    next: "Power the interaction in-silico (a factorial power toy) before proposing the wet experiment; scope whether any lab runs APP-NL-G-F x remyelination."
+    sources:
+      - "10.1038/s41586-023-06120-6"
+      - "10.1038/s41593-024-01730-3"
+    history:
+      - date: 2026-11-09
+        note: "Created on the trial-design / oligodendrocyte night; operationalises the oligodendrocyte-amyloid-source-test go/no-go as a factorial with an oligo-Bace1 control arm."
+  - id: surrogate-gated-myelin-trial
+    title: "Use myelin imaging as a go/no-go gate, not an endpoint, to beat the benefit-stops-at-imaging failure"
+    created: 2026-11-09
+    lens: trial-design
+    goal: slow
+    status: new
+    mechanism: >-
+      No remyelination trial has translated a myelin imaging/electrophysiology surrogate (myelin-water
+      fraction, g-ratio, MTR, VEP latency) into a clinical endpoint - benefit stops at the imaging
+      marker, the same failure mode as BP control slowing WMH but not dementia (SPRINT-MIND, PMID
+      30688979/31408137). The design encodes 'imaging is necessary, not sufficient': enroll only
+      confirmed myelin-deficit, amyloid-positive patients; make a prespecified change in the myelin
+      surrogate a GO/NO-GO GATE that must move before a cognitive sub-study opens - so target engagement
+      is proven before spending on a clinical endpoint, but the surrogate is never the endpoint.
+    novelty: >-
+      Flips the surrogate from endpoint (discredited) to an explicit interim gate, directly attacking
+      the benefit-stops-at-imaging failure that has sunk every remyelination program so far.
+    against: >-
+      Needs the myelin-surrogate-to-cognition link to exist (if a myelin-water-fraction change does not
+      predict processing-speed change, the gate is uninformative); gating adds cost and delay; and the
+      cognitive readout still faces the unsolved improvement-endpoint problem (practice effects).
+    falsify: >-
+      In an observational cohort, test whether change in the myelin surrogate predicts change in a
+      processing-speed/myelin-weighted composite. If it does not, the gate is uninformative and the
+      design collapses.
+    evidence: observational
+    safety: "A trial-design proposal; no intervention. Not medical advice."
+    next: "Find an open cohort with longitudinal myelin imaging + processing speed to test the surrogate->cognition link that the gate depends on."
+    sources:
+      - "10.1001/jama.2019.0855"
+      - "10.1001/jama.2019.10551"
+    history:
+      - date: 2026-11-09
+        note: "Created on the trial-design / oligodendrocyte night; turns the recurring 'benefit stops at the imaging marker' finding into a gate-not-endpoint design."
