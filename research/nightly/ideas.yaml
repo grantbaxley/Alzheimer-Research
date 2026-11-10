@@ -1075,7 +1075,7 @@ ideas:
     created: 2026-10-25
     lens: prevention-population
     goal: slow
-    status: new
+    status: investigating
     mechanism: >-
       Myelin breakdown is demonstrably early in Alzheimer's - visible in preclinical disease and even
       in APOE4-carrier infants - and remyelination is druggable (clemastine shortened visual-evoked
@@ -1098,20 +1098,39 @@ ideas:
       structure-without-dementia) shows the chain does not reach clinical benefit, killing the
       prevention rationale. Choose a non-anticholinergic agent (e.g. metformin) to avoid confounding
       harm.
-    evidence: RCT
+    evidence: observational
     safety: >-
       Clemastine is sedating and anticholinergic (a real dementia-risk concern in older adults);
       metformin is safer but has its own cautions. Any trial needs a non-anticholinergic agent and
       careful monitoring. Not medical advice.
-    next: "Check whether any remyelination agent has been trialled in MCI/preclinical AD with a myelin-imaging endpoint; prefer metformin over clemastine on the anticholinergic concern."
+    next: "Before any trial, run the cheap open-data surrogate-validity check: does within-person change in myelin (MWF/R1) predict change in processing-speed slope AFTER adjusting for WMH volume AND amyloid? If myelin's partial R2 over WMH+amyloid is ~0, a dedicated myelin endpoint is redundant and this parks behind surrogate-gated-myelin-trial."
     sources:
       - "10.1016/S0140-6736(17)32346-2"
       - "10.1016/j.stem.2019.08.015"
       - "10.1038/s41586-023-06120-6"
       - "10.1001/jama.2019.10551"
+      - "10.1001/jamanetworkopen.2024.12824"
     history:
       - date: 2026-10-25
         note: "Created on prevention night starting from the oligodendrocyte; the AD remyelination-trial gap plus the anticholinergic safety tension are the crux."
+      - date: 2026-11-10
+        note: >-
+          Prevention-population revisit. Status new -> investigating; evidence RCT -> observational
+          (the 'RCT' was clemastine's MS conduction-latency surrogate, not AD prevention) and the
+          prevention rationale DOWNGRADED. The causal chain myelin/WMH -> dementia fails the tests it
+          needs: the most-cited 'WMH is causal' paper (JAMA Netw Open 2024, PMID 38776079) reports
+          WMH -> AD-liability MR OR ~1.43 but its own genetic-WMH score -> ALL-CAUSE dementia is NULL
+          (HR 1.02, p=0.07), with a paradoxical protective BP-MR signal (a pleiotropy flag), so the
+          causal headline rests on an AD-GWAS-liability outcome with by-proxy cases; and SPRINT-MIND
+          slowed WMH but missed its dementia primary (PMID 30688979). No remyelination agent has been
+          trialed in MCI/preclinical AD with a myelin endpoint (gap confirmed). Metformin (the preferred
+          non-anticholinergic agent) has a dementia signal only from target-trial emulation and
+          drug-target MR (~14% lower AD odds via mitochondrial complex I; 10.1038/s41467-022-35157-w,
+          10.1007/s00125-022-05743-0), with the first RCT (MAP, NCT04098666) unread until ~2027. GWAS
+          heritability is microglial, not oligodendroglial (Nott 2019; Bryois 2020), so starting from
+          the oligodendrocyte swims against the genetics - the defensible mechanism is oligo-myelin <->
+          microglial clearance. Tonight's preventable-fraction toy shows how little of the WMH-attributed
+          fraction survives causal restriction."
 
   - id: wmh-enriched-prevention-trial
     title: "Enrich a blood-pressure prevention trial for high white-matter-lesion burden before concluding BP does not prevent dementia"
@@ -2573,3 +2592,111 @@ ideas:
     history:
       - date: 2026-11-09
         note: "Created on the trial-design / oligodendrocyte night; turns the recurring 'benefit stops at the imaging marker' finding into a gate-not-endpoint design."
+  - id: epileptiform-gated-lev-prevention
+    title: "A low-dose levetiracetam prevention trial gated on amyloid-positive AND sleep-epileptiform-positive"
+    created: 2026-11-10
+    lens: prevention-population
+    goal: slow
+    status: new
+    mechanism: >-
+      Subclinical epileptiform activity is present in ~42% of AD and ~90% of its discharges occur in
+      sleep (Vossel, Ann Neurol 2016, PMID 27696483); low-dose levetiracetam normalises hippocampal
+      hyperactivity in aMCI (Bakker, Neuron 2012, PMID 22578498). Every cognitive-endpoint trial so
+      far was UNSELECTED or sub-grouped post hoc and was null (HOPE4MCI CDR-SB null, NCT03486938;
+      LEV-AD overall null, PMID 34570177 - only the epileptiform-positive subgroup improved). The idea
+      is a PREVENTION-stage trial that prospectively enriches on BOTH amyloid-positivity AND
+      sleep-EEG epileptiform-positivity - the ~subset in which the mechanism is actually present -
+      rather than treating everyone.
+    novelty: >-
+      No trial has used excitability (sleep-EEG epileptiform load) as the PRIMARY enrichment gate at
+      the preclinical stage; prior trials enriched on amyloid/MCI and found the excitability signal
+      only post hoc. Generic levetiracetam is ~$4-15/month, so the molecule is population-affordable.
+    against: >-
+      The causal case is weak: Mendelian randomization runs mainly AD -> epilepsy with the reverse
+      near-null (Fang 2023, PMID 37225432), and three LEV trials were null on cognition, so
+      hyperexcitability may be a downstream accelerant you can measure but not treat for prevention.
+      Benefit has so far stopped at the EEG/fMRI marker (the repo's recurring failure mode). AD GWAS
+      heritability is microglial, not neuronal, so the interneuron axis is not genetically upstream.
+    falsify: >-
+      In an amyloid-positive AND epileptiform-positive preclinical cohort, if 24-month low-dose
+      levetiracetam shows no slowing of a sensitive cognitive composite (PACC) or CDR-SB vs placebo,
+      the gated-prevention rationale is dead - the strongest test the axis can get.
+    evidence: none
+    safety: >-
+      Low-dose levetiracetam is generally well tolerated but has neuropsychiatric side effects; a
+      prevention trial in cognitively unimpaired people needs a high safety bar. Not medical advice.
+    next: "Scope whether any open preclinical-AD cohort has overnight/sleep EEG + amyloid + longitudinal cognition to size the enriched subgroup and the effect it would need."
+    sources:
+      - "10.1002/ana.24794"
+      - "10.1016/j.neuron.2012.03.023"
+      - "10.1212/WNL.0000000000011355"
+    history:
+      - date: 2026-11-10
+        note: "Created on the prevention-population / interneuron night; makes excitability the enrichment gate the null trials lacked, while recording that the causal MR runs the other way."
+  - id: sleep-eeg-hyperexcitability-screen
+    title: "At-home overnight sleep-EEG as a cheap population screen for network hyperexcitability"
+    created: 2026-11-10
+    lens: prevention-population
+    goal: detect
+    status: new
+    mechanism: >-
+      ~90% of AD epileptiform discharges occur in sleep and routine awake EEG misses them (Vossel,
+      Ann Neurol 2016, PMID 27696483), so a consumer/clinical OVERNIGHT sleep-EEG could triage the
+      high-excitability subgroup at population scale far more cheaply than the MEG + inpatient video-EEG
+      used in research. This is a screening idea (find the subgroup), not a drug - it would feed a gated
+      trial or a monitoring programme.
+    novelty: >-
+      Reframes the expensive research detection pipeline as a scalable at-home screen keyed to the
+      sleep timing of discharges; distinct from drug-centric excitability ideas.
+    against: >-
+      Consumer EEG is noisy and epileptiform detection is hard to automate reliably; and the screen is
+      only worth running if excitability adds predictive value - which, given the null MR and trials,
+      is unproven. It may simply re-identify people a plasma marker already flags.
+    falsify: >-
+      In a general older cohort, if sleep-EEG epileptiform load adds no incident-decline prediction
+      beyond plasma p-tau217 (and amyloid), the screen is uninformative and should be dropped.
+    evidence: observational
+    safety: "A screening-tool hypothesis; no intervention. Not medical advice; nothing identifies a real person."
+    next: "Check whether any open sleep-EEG + plasma-biomarker + longitudinal-cognition cohort could test the incremental-prediction question."
+    sources:
+      - "10.1002/ana.24794"
+      - "10.1212/WNL.0000000000011355"
+    history:
+      - date: 2026-11-10
+        note: "Created on the prevention-population / interneuron night from the finding that ~90% of discharges are in sleep, so a cheap sleep-EEG could replace MEG for triage."
+  - id: metformin-benefit-concentrates-in-high-wmh
+    title: "Test whether metformin's dementia signal concentrates in the high-white-matter-burden subgroup"
+    created: 2026-11-10
+    lens: prevention-population
+    goal: slow
+    status: new
+    mechanism: >-
+      Metformin (non-anticholinergic, cheap) shows a lower dementia hazard vs sulfonylurea in
+      active-comparator target-trial emulation and a ~14% lower AD odds in drug-target MR via
+      mitochondrial complex I (Charpignon 2022, 10.1038/s41467-022-35157-w; Diabetologia 2022,
+      10.1007/s00125-022-05743-0). If that benefit runs through a vascular/myelin mechanism rather than
+      a global one, it should be concentrated in people with high small-vessel/white-matter-hyperintensity
+      burden. Testing that interaction is both a mechanism probe and an enrichment strategy for the
+      unread metformin RCT (MAP, NCT04098666).
+    novelty: >-
+      Turns the metformin-dementia debate into a testable treatment-by-baseline-WMH interaction, which
+      also tells a prevention trial whom to enrich; most metformin-dementia work estimates a single
+      average effect.
+    against: >-
+      Metformin's dementia signal may be confounding (healthy-initiator / channeling bias) that an
+      active comparator does not fully remove; the interaction needs a large EHR+imaging cohort and is
+      underpowered otherwise; and if the mechanism is global (AMPK/metabolic), there is no WMH interaction
+      to find even if the drug works.
+    falsify: >-
+      In an EHR+imaging cohort (e.g. diabetics with brain MRI), if the metformin-vs-sulfonylurea
+      dementia hazard shows NO treatment-by-baseline-WMH interaction, the vascular/myelin mechanism is
+      wrong and metformin's effect (if real) is not myelin-mediated.
+    evidence: observational
+    safety: "An observational-analysis hypothesis; no intervention. Not medical advice."
+    next: "Scope whether an open diabetic cohort links metformin-vs-sulfonylurea use, baseline WMH, and incident dementia; specify the interaction test."
+    sources:
+      - "10.1038/s41467-022-35157-w"
+      - "10.1007/s00125-022-05743-0"
+    history:
+      - date: 2026-11-10
+        note: "Created on the prevention-population night from the remyelination revisit's metformin pivot; makes the metformin-dementia question a WMH-interaction test."
