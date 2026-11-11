@@ -66,6 +66,7 @@ lenses:
       - What does models/open-ad-sim say about the window for restoring surviving neurons, and how robust is that to its unidentified parameters?
       - What sequence (clear, protect, repair, rebuild) would a combination trial need?
       - Does a combination beat the best single agent on benefit while not compounding harm - and has any trial even been designed (a 2x2 factorial) to measure synergy rather than add one drug onto a backbone?
+      - Is a treatment's harm a failure mode of the RATE (flux) rather than the total dose - so that reshaping the trajectory (titration, feed-forward from a reserve readout) can hold efficacy fixed while cutting the harm, as a control engineer would rate-limit a fast actuator on a fragile plant?
       - For a sleep or circadian variable: is it a cause, an early prodromal marker, or just correlated - does it survive Mendelian randomization and an improvement trial, not only an acute-biomarker or observational study?
 
   - id: repurposing

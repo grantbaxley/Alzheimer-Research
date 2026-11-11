@@ -343,7 +343,7 @@ ideas:
     created: 2026-10-21
     lens: red-team
     goal: slow
-    status: new
+    status: investigating
     mechanism: >-
       The dominant neurovascular event in the clinic is iatrogenic ARIA, driven by cerebral
       amyloid angiopathy and vessel-wall fragility as anti-amyloid antibodies clear vascular
@@ -369,11 +369,12 @@ ideas:
       Aimed at reducing iatrogenic harm, but a mis-set rule could under-treat someone who would
       have benefited, or expose a mis-classified patient to ARIA. Any dosing rule needs
       prospective validation before use.
-    next: "List anti-amyloid trials with banked baseline CSF + MRI; check whether sPDGFR-beta or similar was measured."
+    next: "Re-scoped as a DISCRIMINATION question, not a dosing scheme: in any public ARIA risk dataset, quantify the incremental AUC of adding a fluid vascular marker to {APOE4 allele count + microbleed count + superficial siderosis + amyloid load + MAP}. Pre-register the kill: delta-AUC < 0.02 -> biomarker-gated dosing is dead and cheap static microbleed-count-gated titration wins."
     sources:
       - "10.1001/jamaneurol.2025.0065"
       - "10.1038/s41586-020-2247-3"
       - "10.1038/s41582-019-0281-2"
+      - "10.1002/alz.70062"
     history:
       - date: 2026-10-21
         note: "Created on red-team night under the blood-vessel/BBB constraint, from the observation that ARIA makes the neurovascular unit clinically central as a toxicity site."
@@ -387,6 +388,26 @@ ideas:
           microbleeds and CSF sPDGFR-beta. Still status new: the decisive test (does any vascular
           marker predict ARIA beyond APOE4 + microbleed count in banked trial data?) has not been
           run. Flagged for a dedicated ARIA-biomarker literature pull.
+      - date: 2026-11-11
+        note: >-
+          Combination-timing / engineer revisit - DOWNGRADE and RE-SCOPE (status new ->
+          investigating). The biomarker-gated-DOSING form is weakened on three fronts. (1) The
+          controller that already works is open-loop slow TITRATION: TRAILBLAZER-ALZ6 (NCT05738486,
+          Alz & Dementia 2025, 10.1002/alz.70062) cut donanemab ARIA-E 24% -> ~14% at equal cumulative
+          exposure and equal amyloid + p-tau217 lowering, and FDA approved the gentler titration label
+          - so the safe clearance RATE is set by dose schedule, needing NO per-patient vascular readout.
+          (2) sPDGFR-beta faces a compartment-mismatch objection (it reflects deep capillary pericyte
+          injury, while ARIA is driven by leptomeningeal/cortical CAA that microbleeds/siderosis already
+          image), is collinear with APOE4, and is single-lab (Zlokovic, under scrutiny); the actual
+          CSF-vs-ARIA proteome study nominated CHIT1/DDAH1 (innate immunity), not a pericyte marker
+          (Oosthoek 2025, 10.1186/s13195-025-01799-3). (3) The only in-vivo ARIA feedback signal is the
+          microbleed itself - a lagging failure, so a closed-loop controller would detect the crash, not
+          prevent it; the feed-forward setpoint already exists cheaply as baseline microbleed count. So
+          re-scoped as a DISCRIMINATION question with a pre-registered kill (delta-AUC < 0.02). The
+          current ARIA risk model (Zimmer 2025, 10.1001/jamaneurol.2025.0065) uses 6 imaging/genetic/
+          hemodynamic predictors and no fluid marker, and reports no headline AUC - group stratification
+          is good, individual discrimination poor. Modelled the rate-vs-dose control logic in
+          scripts/aria_titration_control_2026_11_11.py."
 
   - id: fn1-clearance-restore
     title: "Lower excess blood-brain-barrier fibronectin to phenocopy the FN1 resilience variant in APOE4 carriers"
@@ -2700,3 +2721,114 @@ ideas:
     history:
       - date: 2026-11-10
         note: "Created on the prevention-population night from the remyelination revisit's metformin pivot; makes the metformin-dementia question a WMH-interaction test."
+  - id: reserve-indexed-titration-rate
+    title: "Set the anti-amyloid titration slope per patient from baseline microbleed burden, not one schedule"
+    created: 2026-11-11
+    lens: combination-timing
+    goal: slow
+    status: new
+    mechanism: >-
+      ARIA is governed by the clearance RATE, not the total dose: a gentler titration cut donanemab
+      ARIA-E 24% -> ~14% at equal cumulative exposure and equal amyloid/p-tau217 lowering
+      (TRAILBLAZER-ALZ6, 10.1002/alz.70062). Tonight's control toy
+      (scripts/aria_titration_control_2026_11_11.py) shows the safe clearance rate scales with vascular
+      reserve. The idea: set the per-patient titration SLOPE from a cheap baseline reserve readout
+      (microbleed count + superficial siderosis + APOE4), so lower-reserve patients escalate slower and
+      higher-reserve patients clear faster - a feed-forward, biomarker-free refinement of ALZ6's single
+      gentler schedule.
+    novelty: >-
+      Current titration is one-size or at most genotype-tiered; indexing the escalation slope to measured
+      baseline vascular reserve (microbleed burden), without any fluid biomarker, is the contribution.
+    against: >-
+      ALZ6's single gentler schedule may already capture most of the benefit, leaving little for
+      per-patient tuning; the microbleed->ARIA-H link is solid but the interaction with titration rate is
+      untested; and over-slowing clearance in low-reserve patients could cost efficacy/time.
+    falsify: >-
+      In banked or future trial data, if ALZ6-style modified titration does NOT reduce ARIA-E more in
+      high-microbleed patients than in low-microbleed patients (no titration-by-reserve interaction), the
+      buffer-overflow rationale for per-patient slope is wrong.
+    evidence: RCT
+    safety: >-
+      Aimed at reducing iatrogenic ARIA; a mis-set slope could under-treat or expose a misclassified
+      patient. Any rule needs prospective validation. Not medical advice.
+    next: "Check whether ALZ6 or a pivotal trial reports ARIA-E by baseline microbleed stratum to test the titration-by-reserve interaction retrospectively."
+    sources:
+      - "10.1002/alz.70062"
+      - "10.1001/jamaneurol.2025.0065"
+    history:
+      - date: 2026-11-11
+        note: "Created on the combination-timing / engineer night; the biomarker-free, microbleed-indexed version of vascular-reserve-aria-dosing after that idea's fluid-marker form was downgraded."
+  - id: bp-cotreatment-aria-brake
+    title: "Intensive blood-pressure control during anti-amyloid therapy as a co-treatment ARIA brake"
+    created: 2026-11-11
+    lens: combination-timing
+    goal: slow
+    status: new
+    mechanism: >-
+      In the donanemab ARIA risk model, higher mean arterial pressure independently raised ARIA-E risk
+      and baseline antihypertensive use independently LOWERED it (Zimmer 2025, 10.1001/jamaneurol.2025.0065).
+      That suggests a "protect-then/while-clear" combination: intensive BP control co-administered with an
+      anti-amyloid antibody could stabilise the vessel wall and reduce ARIA without blunting amyloid
+      clearance - a timing/combination lever distinct from slowing the dose.
+    novelty: >-
+      Reframes an observational antihypertensive signal as a prospectively testable co-treatment ARIA
+      brake; a registered open-label RCT of intensive SBP (<120) vs usual care during anti-amyloid now
+      exists (design published 2025), so this is an adjudicable hypothesis, not just a correlation.
+    against: >-
+      The antihypertensive signal is observational and sponsor-authored (confounding by indication/
+      healthy-user bias not excluded); aggressive BP lowering in older adults has its own harms (falls,
+      hypoperfusion), and SPRINT-MIND showed BP control slows WMH but not dementia, so the vascular lever
+      may again stop at an imaging marker.
+    falsify: >-
+      If the registered intensive-SBP-vs-usual-care RCT during anti-amyloid shows no reduction in ARIA-E,
+      the co-treatment brake is dead.
+    evidence: observational
+    safety: >-
+      BP management is standard but intensive control carries hypotension/fall risk in older adults; this
+      is a research hypothesis, not medical advice.
+    next: "Track the registered intensive-BP-during-anti-amyloid RCT for its ARIA-E readout; check whether any banked trial can test the MAP-by-ARIA relationship with a causal design."
+    sources:
+      - "10.1001/jamaneurol.2025.0065"
+      - "10.1001/jama.2019.0855"
+    history:
+      - date: 2026-11-11
+        note: "Created on the combination-timing / engineer night; the one protect-then-clear lever with real (if observational) human support and a registered RCT."
+  - id: factorial-synergy-not-backbone-addon
+    title: "Measure combination synergy with a 2x2 factorial, not another add-on to an anti-amyloid backbone"
+    created: 2026-11-11
+    lens: combination-timing
+    goal: understand
+    status: new
+    mechanism: >-
+      Modern AD combination trials (anti-amyloid + anti-tau platforms such as DIAN-TU Tau NexGen,
+      NCT05269394) are ADD-ON designs: drug B on an anti-amyloid backbone present in every arm. An add-on
+      can show "B helps on an A backbone" but CANNOT identify the A x B interaction, because there is no
+      B-without-A or A-without-B cell - so it cannot measure SYNERGY (whether A+B beats A-alone plus
+      B-alone). The only true AD factorial precedent is old and cautionary: selegiline x alpha-tocopherol
+      (Sano 1997, NEJM, PMID 9110909), where the COMBINATION did not beat either monotherapy - exactly the
+      sub-additive interaction you only see with a factorial. The idea: for an independent-axis pair
+      (e.g. amyloid clearance x tau-spread blockade), run a 2x2 (or a response-surface dose design) powered
+      for the interaction term.
+    novelty: >-
+      Names a structural blind spot - the field cannot currently measure combination synergy because it
+      uses backbone add-on designs - and proposes the factorial/response-surface fix with the historical
+      cautionary precedent.
+    against: >-
+      Factorials need ~4x the sample size of a main effect for the interaction, so they are expensive and
+      often underpowered; a true placebo/placebo cell is ethically hard once a backbone is standard of
+      care; and if the two agents act on coupled rather than independent nodes, synergy may be small or
+      negative (as Sano found).
+    falsify: >-
+      Retrospective/in-silico: if, across mechanistically independent pairs, add-on designs and factorial
+      designs would reach the same conclusion (the interaction term is reliably ~0), the factorial buys
+      nothing and the add-on is sufficient. A single real factorial showing a non-zero interaction refutes
+      that.
+    evidence: observational
+    safety: "A trial-design argument; no intervention. Not medical advice."
+    next: "Pick one independent-axis pair and simulate the power/sample-size gap between a 2x2 factorial and an add-on design for detecting a plausible interaction (a factorial-power toy)."
+    sources:
+      - "10.1056/NEJM199704243361704"
+      - "10.1056/NEJMoa2212948"
+    history:
+      - date: 2026-11-11
+        note: "Created on the combination-timing / engineer night; the lens asked whether any trial was even designed to measure synergy, and the answer (almost none, only add-on) is the idea."
