@@ -1414,6 +1414,24 @@ ideas:
     history:
       - date: 2026-10-29
         note: "Created on earliest-signal night by fusing reserve-as-redundancy-threshold + clearance-threshold-onset; the research puts both components at hypothesis stage (no human tipping-point or redundancy-prediction evidence)."
+      - date: 2026-11-12
+        note: >-
+          CORRECTION to the 2026-10-29 statement that early-warning signals have "essentially no
+          human Alzheimer's precedent". More precisely: (a) generic resilience indicators have small,
+          mixed-direction human precedents in ageing and frailty (Gijzel 2017, PMID 28475664; Rector
+          2021, 10.1016/j.exger.2021.111341; Pyrkov 2021, 10.1038/s41467-021-23014-1); (b) STATIC
+          elevated cognitive variability is a replicated human correlate of amyloid and tau - about
+          10% more variable reaction times in amyloid-positive cognitively normal 70-year-olds with
+          similar mean speed (Lu 2020, 10.1002/dad2.12076, checked), and month-to-month variability
+          tracking tau PET (Jutten 2024, 10.1037/neu0000928); but (c) nobody has shown variance or
+          autocorrelation RISING within a person before a cognitive transition, and the ADNI
+          "early-warning" paper (10.1002/qub2.86) is a population-distribution mathematical method,
+          not a clinical test. Two explanations now stand side by side: sampling too sparse to see it
+          (quantified in scripts/resilience_probe_2026_11_12.py: autocorrelation is invisible at
+          clinic-visit spacing) and the WRONG EXPECTED SIGN - ageing brains show shorter neural
+          timescales (Wu & Gollo 2025, 10.1038/s42003-025-07517-x) and preclinical-model mice show
+          less behavioural variability (Ehret 2023, 10.1016/j.biopsych.2023.04.009). See
+          early-warning-direction-test.
 
   - id: passive-circadian-early-signal
     title: "A passive wearable sleep-regularity signal, validated against the intrinsic circadian-period marker"
@@ -2849,3 +2867,155 @@ ideas:
     history:
       - date: 2026-11-11
         note: "Created on the combination-timing / engineer night; the lens asked whether any trial was even designed to measure synergy, and the answer (almost none, only add-on) is the idea."
+  - id: natural-pulse-recovery-rate
+    title: "Measure resilience as recovery rate after a person's own bad nights and ill days"
+    created: 2026-11-12
+    lens: earliest-signal
+    goal: detect
+    status: new
+    mechanism: >-
+      Ecology's most direct measure of resilience is how fast a system returns after a disturbance;
+      variance and autocorrelation are only proxies (Scheffer 2018, 10.1073/pnas.1810630115). Use
+      each person's own spontaneous disturbances - worst-decile sleep nights from a wearable, febrile
+      or ill days, travel - as natural pulses, and estimate the half-life of the return of
+      burst-sampled smartphone cognition to that person's baseline. Hypothesis: the recovery
+      half-life lengthens in preclinical Alzheimer's before mean performance changes.
+    novelty: >-
+      The catalogue holds dense burst sampling, sleep and circadian signals separately; treating them
+      as disturbance and response to estimate a recovery RATE is new, and the literature review found
+      purpose-built cognitive "stress tests" (LASSI-L) that score recovery within one session but no
+      one measuring recovery time after a standard disturbance, repeated at home.
+    against: >-
+      Natural pulses are not randomised - bad nights travel with mood, pain and illness - and are
+      small: in tonight's model a 1-SD disturbance gives only AUC ~0.67 from 30 measurements, versus
+      ~0.97 for a 4-SD one. The expected direction is also contested (see
+      early-warning-direction-test), and p-tau217 may already carry the prognostic information.
+    falsify: >-
+      In cognitively unimpaired people, if recovery half-life after worst-decile sleep nights does
+      not differ between p-tau217-positive and -negative groups, or adds less than 0.02 AUC over
+      p-tau217 for later decline, the idea is dead.
+    evidence: observational
+    safety: "Passive monitoring and brief self-testing only; no intervention. Not medical advice."
+    next: "Specify the estimator (impulse-response fit per person) and the number of natural pulses needed per person for a usable half-life estimate; simulate it with the resilience-probe model."
+    sources:
+      - "10.1073/pnas.1810630115"
+      - "10.1037/neu0000928"
+      - "10.1016/j.jagp.2016.02.056"
+    history:
+      - date: 2026-11-12
+        note: "Created on the earliest-signal / ecologist night; the ecologist's recovery-rate measure applied to at-home burst cognition, with the model's small-kick weakness recorded as the main argument against."
+  - id: surgery-recovery-curve-stress-test
+    title: "Read elective surgery as a standard stress test: the shape of cognitive recovery, not delirium yes/no"
+    created: 2026-11-12
+    lens: earliest-signal
+    goal: detect
+    status: new
+    mechanism: >-
+      Major elective surgery is a large, scheduled disturbance with a known date - the closest thing
+      to a deliberate pulse experiment in older adults. The field scores it as delirium yes/no; in
+      the SAGES cohort delirious patients looked recovered at two months and then declined faster
+      over six years (Inouye 2016, 10.1016/j.jalz.2016.03.005). The idea: brief daily cognition on
+      postoperative days 1-7 and at one month, fit the recovery RATE, and test whether a slow rate
+      (alone, or with pre-operative p-tau217 / GFAP) predicts three-year decline beyond
+      pre-operative cognition and p-tau217.
+    novelty: >-
+      Replaces a binary outcome with the ecologist's actual resilience metric (recovery rate) on a
+      large standard disturbance, which tonight's model says is where a probe becomes efficient.
+    against: >-
+      Delirious patients already had lower pre-operative cognition, so delirium may be a marker and
+      not a cause; operations, anaesthesia and opioids vary; people fit for surgery are a selected
+      group; and blood-marker prediction of delirium is inconsistent (a p-tau217 AUC of 0.97 came
+      from 18 events and is almost certainly overfit, while the larger SAGES analysis found p-tau217
+      predicted severity, not incidence).
+    falsify: >-
+      If postoperative recovery rate adds less than 0.02 to the C-index for three-year cognitive
+      decline over pre-operative p-tau217 plus baseline cognition, the stress-test reading adds
+      nothing.
+    evidence: observational
+    safety: "Observational measurement around surgery that is happening anyway; no change to care. Not medical advice."
+    next: "Check whether any perioperative cohort already has daily postoperative cognitive scores plus stored pre-operative plasma; it would be access-controlled participant data, so this is a question for published analyses, not something to download."
+    sources:
+      - "10.1016/j.jalz.2016.03.005"
+      - "10.1093/brain/aws190"
+      - "10.1097/SLA.0000000000005487"
+    history:
+      - date: 2026-11-12
+        note: "Created on the earliest-signal / ecologist night; surgery as the one large, dated disturbance where a recovery-rate probe is efficient."
+  - id: early-warning-direction-test
+    title: "Settle which way the signal points before building an early-warning detector"
+    created: 2026-11-12
+    lens: earliest-signal
+    goal: understand
+    status: new
+    mechanism: >-
+      Critical-slowing-down theory predicts that a system losing resilience shows LONGER timescales
+      and MORE variance. But a brain losing neurons and synapses may instead drift away from
+      criticality, giving SHORTER intrinsic timescales (ageing human brains: Wu & Gollo 2025,
+      10.1038/s42003-025-07517-x) and LESS behavioural variability (preclinical-model mice: Ehret
+      2023, 10.1016/j.biopsych.2023.04.009), while human reaction-time variability is HIGHER with
+      amyloid (Lu 2020, 10.1002/dad2.12076) and frailty activity data ran opposite to theory (Rector
+      2021, 10.1016/j.exger.2021.111341). The sign plausibly depends on the signal and the stage. The
+      idea is to measure the direction first - per signal - instead of assuming it.
+    novelty: >-
+      Early-warning proposals for dementia assume the ecology sign; this makes the sign itself the
+      first empirical question, with an open dataset able to give a first (symptomatic-stage) answer.
+    against: >-
+      The open resting-EEG set is symptomatic Alzheimer's and frontotemporal dementia (88 people),
+      not preclinical, so it can only show the method works; EEG slowing by itself lengthens
+      autocorrelation, so peak frequency must be controlled; and a stage-dependent sign could make a
+      single answer misleading.
+    falsify: >-
+      On open resting EEG, after controlling for alpha-peak frequency: if Alzheimer's and controls
+      show no difference in intrinsic timescale or variance (|d| < 0.2), there is no direction to
+      exploit in that signal; a clear shift in either direction settles which detector to build.
+    evidence: in-silico
+    safety: "Analysis of already-public, de-identified recordings; no intervention. Not medical advice."
+    next: "Owner decision needed first: whether the open CC0 resting-EEG dataset (OpenNeuro ds004504) may be added to the registry and analysed - it is not under a data-use agreement but it is participant-level."
+    sources:
+      - "10.1038/s42003-025-07517-x"
+      - "10.1016/j.biopsych.2023.04.009"
+      - "10.1002/dad2.12076"
+    history:
+      - date: 2026-11-12
+        note: "Created on the earliest-signal / ecologist night from the review's most interesting finding: real data disagree on whether variance and timescales should rise or fall."
+  - id: autoregulation-gated-bp-lowering
+    title: "Blood-pressure lowering may help cognition only while the brain can still regulate its own blood flow"
+    created: 2026-11-12
+    lens: earliest-signal
+    goal: slow
+    status: new
+    mechanism: >-
+      An ecologist's reading of the blood-pressure trials: in a degraded habitat, removing one
+      stressor does not restore function, and the intervention can become a stressor itself. Heavy
+      white-matter damage and advanced cardio-kidney-metabolic disease mark loss of autoregulation;
+      below that floor, intensive lowering risks under-perfusion. In SPRINT, intensive treatment was
+      associated with MORE cognitive impairment in the high-white-matter-lesion half (HR 2.36,
+      1.20-4.66; interaction p=0.09; Reddy 2025, PMID 40586237) and its dementia benefit was confined
+      to people without advanced cardio-kidney-metabolic disease (reported interaction p=0.009; Wang
+      2026, 10.1002/alz.71623 - not independently checked here, and the paper's own sections are
+      said to give differing numbers). So the cognitive benefit may follow an inverted U across baseline damage,
+      and the group to enrich is moderate damage with intact autoregulation - not the most damaged.
+    novelty: >-
+      Turns the parked wmh-enriched-prevention-trial on its head: enrich away from the most damaged,
+      and gate on an autoregulation readout. Lines up three independent post hoc signals.
+    against: >-
+      All three signals are post hoc subgroups; the SPRINT one rests on about 60 events. PRESERVE
+      found no fall in cerebral blood flow with intensive lowering in severe small-vessel disease
+      (PMID 29507944), INFINITY found no cognitive harm in over-75s with white-matter lesions (PMID
+      31607143), and the same high-lesion SPRINT group had fewer cardiovascular events - so
+      withholding treatment has a real cost.
+    falsify: >-
+      If SPRINT MIND's extended follow-up shows a probable-dementia hazard ratio below 1 in the top
+      white-matter-lesion third, with no trend across thirds, the inverted-U reading is wrong.
+    evidence: observational
+    safety: >-
+      Nothing here supports changing anyone's blood-pressure treatment: intensive control reduced
+      cardiovascular events in the same subgroup. Research hypothesis only; not medical advice.
+    next: "Watch for a published treatment-by-white-matter-lesion analysis on SPRINT MIND's extended outcomes; check whether orthostatic or pulse-pressure proxies of autoregulation were reported by subgroup."
+    sources:
+      - "10.1097/HJH.0000000000004093"
+      - "10.1002/alz.71623"
+      - "10.1212/WNL.0000000000213334"
+    history:
+      - date: 2026-11-12
+        note: "Spun out of the parked wmh-enriched-prevention-trial on the earliest-signal / ecologist night."

@@ -168,7 +168,9 @@ def main() -> None:
     print(
         "bursts or a standard stress test could. Whether cognition really slows before Alzheimer's"
     )
-    print("is an empirical question this toy does not answer. Assumed parameters throughout.")
+    print("is an empirical question this toy does not answer - and some ageing-brain data point")
+    print("the other way (shorter neural timescales), so the SIGN must be settled first.")
+    print("Assumed parameters throughout.")
 
 
 if __name__ == "__main__":

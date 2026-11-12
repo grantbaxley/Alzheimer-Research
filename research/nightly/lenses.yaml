@@ -38,6 +38,8 @@ lenses:
       - Is there a signal that predicts who will NOT progress despite being amyloid-positive?
       - Is the earliest signal also the most predictive, or are "earliest" and "most prognostic" different markers (e.g. amyloid early but weak, tau/synaptic later but strong)?
       - When combining signals, does the addition beat the best single marker (p-tau217) on EXTERNAL validation, not just internal cross-validation - and by how much?
+      - Which way should the early signal point - is variance or persistence expected to RISE (critical slowing down) or FALL (lost neurons, shorter timescales) for this particular measure and stage, and has anyone measured the sign?
+      - Is the proposed signal a snapshot or a RECOVERY RATE after a disturbance - and is it sampled faster than the system recovers, or is it invisible at the planned visit spacing?
 
   - id: causal-chain
     name: Stress-test the causal chain
