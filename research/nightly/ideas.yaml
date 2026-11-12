@@ -2970,7 +2970,7 @@ ideas:
       exploit in that signal; a clear shift in either direction settles which detector to build.
     evidence: in-silico
     safety: "Analysis of already-public, de-identified recordings; no intervention. Not medical advice."
-    next: "Owner decision needed first: whether the open CC0 resting-EEG dataset (OpenNeuro ds004504) may be added to the registry and analysed - it is not under a data-use agreement but it is participant-level."
+    next: "APPROVED by the project owner on 2026-11-12, to be done on the next nightly run: (1) add OpenNeuro ds004504 to the registry as unverified per policy/VETTING.md, reading the upstream licence directly; (2) run the direction test (intrinsic timescale and variance, Alzheimer's vs controls, controlling for alpha-peak frequency). Keep the recordings out of the repository and out of the conversation; commit only code and summary statistics."
     sources:
       - "10.1038/s42003-025-07517-x"
       - "10.1016/j.biopsych.2023.04.009"
@@ -2978,6 +2978,8 @@ ideas:
     history:
       - date: 2026-11-12
         note: "Created on the earliest-signal / ecologist night from the review's most interesting finding: real data disagree on whether variance and timescales should rise or fall."
+      - date: 2026-11-12
+        note: "Project owner approved registering and analysing the open CC0 resting-EEG dataset (OpenNeuro ds004504); scheduled for the next nightly run."
   - id: autoregulation-gated-bp-lowering
     title: "Blood-pressure lowering may help cognition only while the brain can still regulate its own blood flow"
     created: 2026-11-12
