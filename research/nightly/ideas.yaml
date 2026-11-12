@@ -1158,7 +1158,7 @@ ideas:
     created: 2026-10-25
     lens: prevention-population
     goal: slow
-    status: new
+    status: parked
     mechanism: >-
       Intensive blood-pressure control slowed white-matter-hyperintensity growth in the SPRINT MIND
       MRI substudy and cut mild cognitive impairment, but missed its probable-dementia endpoint even on
@@ -1184,14 +1184,31 @@ ideas:
     safety: >-
       Intensive blood-pressure lowering carries falls/syncope/renal risks, especially in frail elders;
       a trial would weigh these. Not medical advice.
-    next: "Look for a published SPRINT MIND analysis stratified by baseline WMH burden; if absent, that interaction test is the first, cheap step."
+    next: "Parked. The one test that could revive it: re-run treatment x baseline WMH (continuous and by region) on SPRINT MIND's EXTENDED adjudicated outcomes (median 7 years); if the high-WMH hazard ratio stays >= 1 the enrichment premise is dead. Participant-level SPRINT data are access-controlled and off-limits here, so this waits for a publication."
     sources:
       - "10.1001/jama.2019.10551"
       - "10.1001/jama.2018.21442"
       - "10.1001/jamaneurol.2018.3122"
+      - "10.1097/HJH.0000000000004093"
     history:
       - date: 2026-10-25
         note: "Created on prevention night; connects the oligodendrocyte/WMH thread to the population BP lever and SPRINT MIND's structure-without-dementia result."
+      - date: 2026-11-12
+        note: >-
+          Earliest-signal / ecologist revisit - PARKED. The cheap first step this idea proposed has
+          been published and points the wrong way: in SPRINT's MRI subset (n=759), intensive BP
+          control was associated with MORE mild cognitive impairment or probable dementia in the
+          above-median WMH group (HR 2.36, 95% CI 1.20-4.66; 28/196 vs 12/184 events), with no
+          difference below the median and interaction p=0.09 (Reddy et al., J Hypertens 2025, PMID
+          40586237; checked against the full text). It is post hoc, about 60 events, original
+          follow-up only, so it does not prove harm - but it removes the premise that enriching for
+          high WMH unmasks a cognitive benefit. WMH-enriched trials have also already run: INFINITY
+          (WMH accrual slowed, cognition flat; PMID 31607143) and PRESERVE (neither imaging nor
+          cognition moved; PMID 34044580) - the "benefit stops at the imaging marker" pattern again,
+          though none was powered for cognition. SPRINT MIND's extended follow-up stayed borderline
+          (probable dementia HR 0.86, 0.72-1.02; PMID 39819096). The ecological reading - a degraded
+          system in which the intervention itself becomes a stressor once autoregulation is lost -
+          is spun out as autoregulation-gated-bp-lowering.
 
   - id: oligodendrocyte-amyloid-source-test
     title: "Does remyelination raise or lower amyloid? A go/no-go for combining it with anti-amyloid therapy"
