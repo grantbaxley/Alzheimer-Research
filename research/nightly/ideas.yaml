@@ -1347,7 +1347,7 @@ ideas:
     created: 2026-10-28
     lens: combination-timing
     goal: detect
-    status: new
+    status: parked
     mechanism: >-
       A longer intrinsic cellular circadian period (measured ex vivo) was associated with higher
       p-tau/NfL/GFAP, medial-temporal atrophy, and faster clinical decline, reportedly independent of
@@ -1374,6 +1374,20 @@ ideas:
     history:
       - date: 2026-10-28
         note: "Created on combination-timing night from the circadian-period prognostic signal; framed as trial enrichment, connecting to the trial-design night's power problem."
+      - date: 2026-11-13
+        note: >-
+          Frontier-scan revisit - PARKED. Checked the anchor paper directly (PNAS 2026,
+          10.1073/pnas.2527236123; 135 people, 119 followed): the progression model (longest-period
+          fifth, HR 4.41, 95% CI 1.52-12.83) adjusted for demographics, comorbidities, medication and
+          APOE but NOT for plasma p-tau217, amyloid status or baseline severity, and names no
+          replication cohort - so "independent of pathology" is not shown. The marker also cannot
+          scale (skin biopsy, weeks of cell culture, no published test-retest), and 2026 data lean
+          against a causal circadian story: chronotype is null for Alzheimer's in a 443,906-person
+          cohort (10.1177/13872877261498357) and rest-activity links to p-tau217 did not survive
+          multiple-testing correction in a 164-person actigraphy study (10.1007/s11357-026-02645-6)
+          (both as reported by tonight's review, not independently checked). Reopen only if the
+          authors report the model with p-tau217 and baseline severity added (hazard ratio still
+          above 2, interval excluding 1), or an independent cohort replicates.
 
   - id: distance-to-tipping-point-signal
     title: "A personal distance-to-tipping-point signal, fusing network reserve with pathology-accumulation rate"
@@ -2946,7 +2960,7 @@ ideas:
     created: 2026-11-12
     lens: earliest-signal
     goal: understand
-    status: new
+    status: investigating
     mechanism: >-
       Critical-slowing-down theory predicts that a system losing resilience shows LONGER timescales
       and MORE variance. But a brain losing neurons and synapses may instead drift away from
@@ -2970,7 +2984,7 @@ ideas:
       exploit in that signal; a clear shift in either direction settles which detector to build.
     evidence: in-silico
     safety: "Analysis of already-public, de-identified recordings; no intervention. Not medical advice."
-    next: "APPROVED by the project owner on 2026-11-12, to be done on the next nightly run: (1) add OpenNeuro ds004504 to the registry as unverified per policy/VETTING.md, reading the upstream licence directly; (2) run the direction test (intrinsic timescale and variance, Alzheimer's vs controls, controlling for alpha-peak frequency). Keep the recordings out of the repository and out of the conversation; commit only code and summary statistics."
+    next: "First pass done (see history). Next: a sleep or task EEG signal with a preclinical sample is needed to say anything about the years before symptoms; on this dataset, one pre-declared sensitivity check remains (broadband window after removing activity below 2 Hz, which currently dominates it)."
     sources:
       - "10.1038/s42003-025-07517-x"
       - "10.1016/j.biopsych.2023.04.009"
@@ -2980,6 +2994,20 @@ ideas:
         note: "Created on the earliest-signal / ecologist night from the review's most interesting finding: real data disagree on whether variance and timescales should rise or fall."
       - date: 2026-11-12
         note: "Project owner approved registering and analysing the open CC0 resting-EEG dataset (OpenNeuro ds004504); scheduled for the next nightly run."
+      - date: 2026-11-13
+        note: >-
+          First pass run on the open CC0 resting-EEG dataset (OpenNeuro ds004504; registry id
+          openneuro-ds004504; scripts/eeg_direction_test_2026_11_13.py), with owner approval. The
+          method works: the known EEG slowing is recovered (4-13 Hz centre of gravity lower in
+          Alzheimer's than controls, d = -0.76, 95% interval -1.52 to -0.23; n = 36 vs 29). But the
+          three resilience-type measures show NO direction: after adjusting for age, sex and peak
+          frequency, Alzheimer's minus controls is d = -0.14 for the broadband autocorrelation
+          window, +0.17 for envelope persistence and +0.07 for envelope variability - all under the
+          pre-stated 0.2 threshold, and all with intervals wide enough (roughly -0.9 to +0.9) to hide
+          a moderate effect either way. So at the dementia stage, in resting eyes-closed EEG, neither
+          the critical-slowing-down sign nor the opposite sign shows up; with 65 people this is
+          "no detectable direction", not proof of none. Limits: symptomatic, single site, and the
+          broadband window is dominated by activity below 2 Hz. Status new -> investigating.
   - id: autoregulation-gated-bp-lowering
     title: "Blood-pressure lowering may help cognition only while the brain can still regulate its own blood flow"
     created: 2026-11-12
@@ -3021,3 +3049,101 @@ ideas:
     history:
       - date: 2026-11-12
         note: "Spun out of the parked wmh-enriched-prevention-trial on the earliest-signal / ecologist night."
+  - id: hypnotic-plasma-ptau-bias
+    title: "Sleep drugs may shift plasma p-tau against the brain signal and misclassify people near a cutoff"
+    created: 2026-11-13
+    lens: frontier-scan
+    goal: detect
+    status: new
+    mechanism: >-
+      A secondary analysis of the randomised suvorexant study (preprint, 5 Nov 2026,
+      10.64898/2026.11.03.26367196; 25 people, one night) reports that the drug RAISED the plasma
+      p-tau181 ratio while LOWERING it in cerebrospinal fluid (the fall in CSF was already published:
+      10.1002/ana.26641). If sleep drugs move plasma and brain-side p-tau in opposite directions,
+      people taking them could be pushed across a plasma p-tau cutoff without any change in
+      pathology - a hidden source of error for blood-based screening and trial enrolment.
+    novelty: >-
+      Drug effects on the plasma-versus-brain agreement of p-tau markers are essentially unexamined;
+      the catalogue's detection ideas all assume plasma p-tau217 is a stable yardstick.
+    against: >-
+      One night, 25 people, a preprint, and the effect is on p-tau181 - p-tau217 did not change in
+      CSF in the original report. It may not generalise to chronic use, to other hypnotics, or to the
+      marker actually used for enrolment.
+    falsify: >-
+      By 2027-11-13: in any published or released cohort with medication records plus paired plasma
+      p-tau217 and amyloid PET or CSF, if hypnotic users show no excess plasma-versus-PET/CSF
+      discordance, the concern is dead.
+    evidence: RCT
+    safety: "A measurement-validity hypothesis; nothing here is a reason for anyone to change a medication. Not medical advice."
+    next: "Watch for peer review of the preprint and for any p-tau217 result; look for published discordance analyses stratified by sleep-medication use."
+    sources:
+      - "10.64898/2026.11.03.26367196"
+      - "10.1002/ana.26641"
+    history:
+      - date: 2026-11-13
+        note: "Created on the frontier-scan night from a preprint posted eight days earlier; graded RCT because the source is a randomised study, but it is a small, single-night secondary analysis not yet peer reviewed."
+  - id: amplitude-is-volume
+    title: "Test whether rest-activity rhythm strength predicts outcomes beyond how much a person moves"
+    created: 2026-11-13
+    lens: frontier-scan
+    goal: understand
+    status: new
+    mechanism: >-
+      Wearable rest-activity measures (relative amplitude, day-to-day stability) are linked to
+      cognition and dementia, but a person who moves more has a larger amplitude almost by
+      construction, and one large cohort's Alzheimer's association reportedly weakened after
+      adjusting for total activity. Hypothesis: most of the "rhythm" signal is activity volume. If
+      so, the catalogue's sleep and circadian early-signal ideas are measuring fitness, not timing.
+    novelty: >-
+      A direct, cheap test of a confound that sits under two of our own ideas
+      (passive-circadian-early-signal, sleep-regularity-vs-duration), runnable on fully public data.
+    against: >-
+      Some published rhythm associations partly survive adjustment for activity; volume and rhythm
+      are biologically entangled, so "adjusting away" volume may remove real signal.
+    falsify: >-
+      By 2027-11-13, on public wrist-accelerometer survey data with cognitive tests (US NHANES
+      2011-14): if relative amplitude keeps at least half of its association with processing speed
+      and mortality after adjusting for total activity, the confound claim is wrong.
+    evidence: observational
+    safety: "Analysis of public survey data; no intervention. Not medical advice."
+    next: "Owner decision needed first: NHANES public-use files need no application but are participant-level records, so analysing them is a policy call like the EEG dataset."
+    sources:
+      - "10.1001/jamaneurol.2017.4719"
+      - "10.1002/ana.22468"
+    history:
+      - date: 2026-11-13
+        note: "Created on the frontier-scan night from the circadian revisit; a 12-month, open-data test of a confound under two existing ideas."
+  - id: cxcr3-tolerance-lever
+    title: "Blocking T-cell entry may protect tissue without lowering tau - a disease-tolerance lever"
+    created: 2026-11-13
+    lens: frontier-scan
+    goal: slow
+    status: new
+    mechanism: >-
+      A mouse study (Neuron, Sept 2026, 10.1016/j.neuron.2026.08.030; reported by tonight's review,
+      not independently checked) found that blocking the CXCR3 receptor in tau mice roughly halved
+      brain T cells and preserved substantially more tissue while tau itself was unchanged, with an
+      antibody that stays outside the brain. That is the profile of a TOLERANCE mechanism - less
+      damage per unit of pathology - which is what disease-tolerance-slope-endpoint proposes to
+      measure. Human genetics can give a first check: do variants that lower the ligand CXCL10 in
+      blood associate with lower Alzheimer's risk?
+    novelty: >-
+      Connects a new preclinical result to the catalogue's tolerance framing and gives it a
+      genetics test that needs only summary statistics.
+    against: >-
+      Mouse only; tau-transgenic models translate poorly; CXCR3 blockade risks suppressing useful
+      immunity; a blood protein level may not reflect the brain-border signal; and a new 2026 GWAS
+      again places Alzheimer's heritability mainly in microglia, not T cells.
+    falsify: >-
+      By 2027-09-30: if cis-Mendelian-randomisation and colocalisation of plasma CXCL10 protein
+      variants against open Alzheimer's GWAS summary statistics is null (interval includes no
+      effect, or colocalisation probability below 0.5), there is no human genetic support.
+    evidence: preclinical
+    safety: "Immune blockade carries infection risk; this is a hypothesis for genetic testing only. Not medical advice."
+    next: "Add to the drug-target-mr-pipeline queue once that pipeline has passed its known-control validation."
+    sources:
+      - "10.1016/j.neuron.2026.08.030"
+      - "10.1126/science.1214935"
+    history:
+      - date: 2026-11-13
+        note: "Created on the frontier-scan night; source paper taken from the review's report and flagged as not independently checked."

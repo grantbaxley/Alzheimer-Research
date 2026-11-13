@@ -27,6 +27,23 @@ resources:
     to_verify: [Identify and pin specific AD-relevant accessions]
     checked: 2026-10-18
 
+  - id: openneuro-ds004504
+    name: "OpenNeuro ds004504: resting EEG in Alzheimer's disease, frontotemporal dementia and controls"
+    url: https://openneuro.org/datasets/ds004504
+    kind: dataset
+    access: open
+    triage: B
+    license: {spdx: CC0-1.0, class: permissive, source: docs}
+    peer_reviewed: "yes"
+    our_status: smoke-tested
+    verification: research/nightly/log/2026-11-13.md
+    reason: Open, no-application EEG set (88 people, 19 channels, 500 Hz, eyes closed); loads as documented and reproduces the known EEG slowing. Fetch at runtime, never re-host or commit recordings.
+    red_flags:
+      - Licence read from the dataset's own dataset_description.json (CC0, version 1.0.9) on 2026-11-13; there is no separate LICENSE file.
+      - Symptomatic patients from one hospital; says nothing about preclinical disease. Participant-level but de-identified; used with project-owner approval (2026-11-12).
+      - Heavily reused as a machine-learning benchmark; published accuracies on it should be presumed optimistic.
+    checked: 2026-11-13
+
   - id: adni
     name: ADNI (incl. TADPOLE data)
     url: https://adni.loni.usc.edu/data-samples/adni-data/

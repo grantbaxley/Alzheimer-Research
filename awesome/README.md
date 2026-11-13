@@ -168,6 +168,7 @@ A curated, skeptical list of open resources for modeling the brain and Alzheimer
 | [HCP-Aging](https://humanconnectome.org/study/hcp-lifespan-aging/data-use-terms) | NDA-DUC (docs) | not-started | Needs NDA DUC with an institutional signatory; use open-tier HCP connectomes as templates. |
 | [NACC](https://naccdata.org/requesting-data/data-request-process) | NACC-DUA (docs) | not-started | Free request plus DUA, 56,000+ participants; stratify by ADRC and UDS version. |
 | [OASIS-1/2/3/4](https://sites.wustl.edu/oasisbrains/) | OASIS-DUA (docs) | not-started | Despite the name, DUA-gated and non-commercial; no face-reconstructable derivatives. |
+| [OpenNeuro ds004504: resting EEG in Alzheimer's disease, frontotemporal dementia and controls](https://openneuro.org/datasets/ds004504) | CC0-1.0 (docs) | smoke-tested | Open, no-application EEG set (88 people, 19 channels, 500 Hz, eyes closed); loads as documented and reproduces the known EEG slowing. Fetch at runtime, never re-host or commit recordings. |
 | [UK Biobank](https://www.ukbiobank.ac.uk/use-our-data/fees/) | UKB-MTA (docs) | not-started | Fees GBP 3,000-9,000; analysis only inside the Research Analysis Platform. |
 
 ## Targets, drugs, knowledge graphs and agents

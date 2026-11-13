@@ -128,6 +128,7 @@ lenses:
       - Does anything new confirm, weaken or kill an idea in the catalogue or a claim in evidence/claims.yaml?
       - Is there a new open dataset, model or tool worth a registry record?
       - Does a new reanalysis or trial overturn something the catalogue currently treats as promising - and have you verified it against the primary source before downgrading?
+      - Is the 'news' an actual result, or only an announcement (abstract title, press release, trial launch)? Record what is pending and when it reads out, and do not regrade anything until the numbers exist.
 
   - id: prevention-population
     name: Prevention at population scale
