@@ -264,7 +264,7 @@ ideas:
     created: 2026-10-21
     lens: red-team
     goal: understand
-    status: new
+    status: parked
     mechanism: >-
       Perivascular and blood-brain-barrier routes continuously clear amyloid and tau, and
       clearance (not overproduction) is impaired in sporadic disease. Model the brain as
@@ -337,6 +337,23 @@ ideas:
           are null on cognition and amyloid. Only the worsening direction (acute deprivation) and an
           acute suvorexant biomarker drop are randomized. So: keep the model as an abstraction, but
           do not read it as "improve sleep clearance to slow AD" - that causal claim is unproven.
+      - date: 2026-11-17
+        note: >-
+          Modeling-lens revisit - PARKED; the hysteresis sub-claim is now contradicted by human data
+          as well as by our own model (2026-10-22). After antibody treatment clears plaque and dosing
+          stops, amyloid neither stays low nor jumps back: it re-grows at roughly 2.4-3.4 Centiloids
+          per year, about the natural early rate (donanemab: sponsor modelling 2.8 CL/yr and
+          conference reports of ~2.4; a 46-person florbetapir abstract ~3.4, 10.1002/alz.078175;
+          modelled 3.9 years to re-cross the treatment threshold, JAMA Neurol post hoc). That is the
+          behaviour of a single-state system with a persistent production-clearance imbalance and
+          burden-dependent growth - clearance resets the clock, it does not restore a healthy stable
+          state. Isotope-labelling studies agree on a gradual shift: clearance about 30% slower in
+          Alzheimer's with normal production (PMID 21148344) and amyloid turnover slowing steadily
+          with age (half-life 3.8 h at 30 to 9.4 h at 80; PMID 26040676), with overlapping groups and
+          no threshold. The rates are sponsor-modelled or from abstracts, so treat the exact numbers
+          with caution. One test could revive a capacity-threshold reading: a person's
+          re-accumulation slope being SLOWER than their own pre-treatment slope at the same amyloid
+          level (see reaccumulation-slope-readout).
 
   - id: vascular-reserve-aria-dosing
     title: "Stratify anti-amyloid dose by a pre-treatment vascular-integrity readout to widen the ARIA-limited window"
@@ -3147,3 +3164,103 @@ ideas:
     history:
       - date: 2026-11-13
         note: "Created on the frontier-scan night; source paper taken from the review's report and flagged as not independently checked."
+  - id: astrocyte-gate-or-artifact
+    title: "Test whether the 'amyloid links to tau only with reactive astrocytes' finding is a gate or a cutoff artifact"
+    created: 2026-11-17
+    lens: modeling
+    goal: understand
+    status: investigating
+    mechanism: >-
+      In 1,016 cognitively unimpaired people, amyloid was associated with p-tau only in those with
+      elevated blood GFAP, an astrocyte-reactivity marker (slope 0.34 vs 0.04; interaction 0.31;
+      Bellaver 2023, 10.1038/s41591-023-02380-x). The causal reading is that reactive astrocytes
+      GATE the amyloid-to-tau step. But GFAP rises with amyloid, falls when plaque is removed
+      (10.1001/jamaneurol.2022.3392), and tau responds to amyloid only above a threshold - so
+      splitting people on GFAP piles the high-amyloid range into the GFAP-positive group and can
+      produce a steep slope there and a flat one elsewhere even if astrocytes do nothing. Tonight's
+      model (scripts/astrocyte_gate_or_marker_2026_11_17.py) confirms it: in a synthetic world with
+      NO gating, the stratified comparison and the plain interaction term "find a gate" in 97-100% of
+      cohorts; only an interaction that lets amyloid's own effect be non-linear, or a longitudinal
+      interaction, tells the two worlds apart (false-positive rate 1-2%).
+    novelty: >-
+      The literature review found no published test of the gate finding against this artifact, and
+      replications so far use the same stratified or plain-interaction form.
+    against: >-
+      The original paper also reported a continuous-GFAP interaction and a small longitudinal tau-PET
+      analysis (71 people), which the artifact explains less easily; and the model's effect sizes are
+      assumed, so it shows what the analysis CAN be fooled by, not that it was.
+    falsify: >-
+      If, in the published cohorts, the amyloid-by-GFAP interaction on tau survives a flexible
+      (spline or threshold) amyloid term - or baseline GFAP modifies LATER tau change given baseline
+      amyloid and tau - the gate reading stands and this idea is wrong.
+    evidence: in-silico
+    safety: "A statistical-validity question; no intervention. Not medical advice."
+    next: "Extend the model to match the published slopes, cutoff and GFAP-amyloid correlation; the real-data check needs the authors (data are on request to academic investigators only)."
+    sources:
+      - "10.1038/s41591-023-02380-x"
+      - "10.1001/jamaneurol.2022.3392"
+      - "10.1093/brain/awab223"
+    history:
+      - date: 2026-11-17
+        note: "Created and modelled the same night (modeling lens, astrocyte as the starting cell). An earlier, stricter version of the stratified test never fired at this sample size, so a fairer version was added and both are reported."
+  - id: reaccumulation-slope-readout
+    title: "Use each person's amyloid re-growth rate after clearance as a readout of their production-clearance balance"
+    created: 2026-11-17
+    lens: modeling
+    goal: detect
+    status: new
+    mechanism: >-
+      After an antibody clears plaque and dosing stops, amyloid re-grows at a few Centiloids per
+      year. That slope integrates a person's production minus clearance with the plaque burden reset
+      to near zero - a cleaner view of the imbalance than the natural curve, where burden-dependent
+      growth is mixed in. It could set re-dosing intervals per person and test proposed clearance
+      factors (APOE type, sleep, vascular health) against a hard number.
+    novelty: >-
+      Published work reports population medians; treating the individual slope as a biomarker of
+      clearance capacity, and comparing it with the same person's pre-treatment slope, is new.
+    against: >-
+      Two to three Centiloids a year is close to the repeatability of an amyloid PET scan, so
+      individual slopes may be mostly noise for several years; blood markers may show rebound sooner
+      and more cheaply; and the available rates are sponsor-modelled.
+    falsify: >-
+      If individual re-accumulation slopes do not differ by APOE type, age or any clearance proxy
+      beyond scan test-retest noise, there is no personal signal to use.
+    evidence: observational
+    safety: "An analysis of scans taken anyway in trial extensions; no change to care. Not medical advice."
+    next: "Look for published per-person or subgroup re-accumulation rates in the antibody trial extensions; individual data are access-controlled."
+    sources:
+      - "10.1002/alz.078175"
+      - "10.1002/ana.24454"
+    history:
+      - date: 2026-11-17
+        note: "Created on the modeling night from the revisit of clearance-threshold-onset; also the one test that could revive a capacity-threshold reading."
+  - id: plaque-gfap-ptau-lag-test
+    title: "Under plaque-removing treatment, does the astrocyte marker fall before the tau marker?"
+    created: 2026-11-17
+    lens: modeling
+    goal: understand
+    status: new
+    mechanism: >-
+      If reactive astrocytes sit between amyloid and tau, then when an antibody removes plaque the
+      astrocyte marker (GFAP) should fall first and the tau marker (p-tau217) should follow, with
+      GFAP change predicting p-tau change beyond what plaque change explains. If GFAP is only a
+      readout of amyloid, both simply track plaque. Trial blood samples at fixed weeks make this a
+      natural experiment on ordering.
+    novelty: >-
+      Uses a randomised perturbation of amyloid to test ordering, instead of cross-sectional
+      association; the literature review found the gate question argued only from observational data.
+    against: >-
+      In the published donanemab data both markers had already fallen by week 12, so the sampling may
+      be too coarse to see an order; and group means cannot show person-level mediation.
+    falsify: >-
+      If GFAP change adds nothing to predicting p-tau217 change once plaque change is in the model,
+      or the two fall together at the earliest sample, the ordering test gives no support for a gate.
+    evidence: RCT
+    safety: "Secondary analysis of published trial biomarker data; no intervention. Not medical advice."
+    next: "Fit a simple lagged chain (plaque to GFAP to p-tau) to the published week-12/24/76 means and see whether the data can distinguish any ordering at all."
+    sources:
+      - "10.1001/jamaneurol.2022.3392"
+      - "10.1038/s41591-023-02380-x"
+    history:
+      - date: 2026-11-17
+        note: "Created on the modeling night; graded RCT because the perturbation is randomised, though the analysis would be secondary and may be underpowered by coarse sampling."

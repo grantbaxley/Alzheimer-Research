@@ -109,6 +109,7 @@ lenses:
       - Which open item in research/reproductions/open-ad-sim (e.g. the flagged calibration targets) moves the model most toward being trustworthy?
       - Does the model's most policy-relevant parameter even have the right SIGN according to the biology, or is a convenient assumption (e.g. "boosting immunity helps clearance") contradicted by the key experiment?
       - Is the step the idea targets (e.g. clearance) actually rate-limiting, or is the intervention aimed at a lever that does not move the outcome?
+      - When a finding says 'X links to Y only in people positive for marker Z', would a marker that merely RESPONDS to X produce the same pattern? Simulate a no-effect world with realistic non-linearity before reading it as a gate.
 
   - id: red-team
     name: Try to kill the best idea
