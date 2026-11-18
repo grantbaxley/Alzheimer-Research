@@ -1325,7 +1325,7 @@ ideas:
     created: 2026-10-28
     lens: combination-timing
     goal: slow
-    status: new
+    status: parked
     mechanism: >-
       A single dose of suvorexant acutely lowered CSF amyloid and p-tau in a small randomized study,
       and the field's best-evidenced timing lesson is that intervening earlier helps far more. The
@@ -1358,6 +1358,8 @@ ideas:
     history:
       - date: 2026-10-28
         note: "Created on combination-timing night; the DORA cognitive-endpoint gap plus the early-timing lesson are the crux, against a shaky sleep-causal premise."
+      - date: 2026-11-18
+        note: "Revisited on the cross-domain night. The next step is answered: as reported by a registry scan (not independently re-checked), no orexin-antagonist trial uses amyloid or tau PET; three prevention-style trials are recruiting with blood p-tau ratios as the primary endpoint (NCT04629547 suvorexant 18-24 months, n about 120; NCT06274528 lemborexant 6 months; NCT07213349 daridorexant 12 months), reading out from 2028. The acute effect is also weaker than recorded here: as reported from the full text, spinal-fluid amyloid was lower only after normalising to hour 6 and rebounded before the next dose, and p-tau217 did not fall. Our model (scripts/nightly_dip_accumulation_2026_11_18.py) shows a night-only dip of 10-20% is a 3-10% fall in the 24-hour average, giving a plaque slowing far below the 40% that failed to help cognition in A4 and needing hundreds to thousands of people per arm to see on PET. PARKED: the proposed PET trial is a poor test, and the informative trials are already running. Re-open if those trials show spinal-fluid and blood markers moving together, or a kinetic study shows lower production over 24 hours."
 
   - id: circadian-period-enrichment
     title: "Use intrinsic cellular circadian period as prognostic enrichment to select fast progressors for trials"
@@ -1857,6 +1859,8 @@ ideas:
     history:
       - date: 2026-11-01
         note: "Created on cross-domain night from the reversible-ceiling model and the cross-domain lesson that every reversal analogy fails on AD's irreversible neuron loss."
+      - date: 2026-11-18
+        note: "Cross-domain note 2026-11-18: eye medicine shows the same split in one organ - drugs reverse the active leaking form of macular degeneration and restore vision, while in the cell-death form they only slow spread - and fields that could not regrow tissue (hearing, movement disorders) succeeded by replacing a simple lost signal, not the cells. That suggests one way to measure the reachable ceiling: the part of a deficit carried by broadcast signals (acetylcholine, noradrenaline, arousal) is replaceable; the part carried by lost wiring is not."
 
   - id: fn1-staged-reversal-test
     title: "Run the missing staged experiment: does lowering fibronectin AFTER established pathology reverse it?"
@@ -3099,6 +3103,8 @@ ideas:
     history:
       - date: 2026-11-13
         note: "Created on the frontier-scan night from a preprint posted eight days earlier; graded RCT because the source is a randomised study, but it is a small, single-night secondary analysis not yet peer reviewed."
+      - date: 2026-11-18
+        note: "Sharpened on 2026-11-18: as reported by a registry scan, all three recruiting orexin-antagonist prevention trials use a blood p-tau ratio as the primary endpoint (NCT04629547, NCT06274528, NCT07213349), the same kind of marker that moved opposite to spinal fluid in the preprint. A fall in the blood marker in those trials therefore cannot be read as less brain pathology unless spinal fluid or PET agrees; only one of the three lists spinal-fluid secondary endpoints as far as the scan could tell."
   - id: amplitude-is-volume
     title: "Test whether rest-activity rhythm strength predicts outcomes beyond how much a person moves"
     created: 2026-11-13
@@ -3264,3 +3270,161 @@ ideas:
     history:
       - date: 2026-11-17
         note: "Created on the modeling night; graded RCT because the perturbation is randomised, though the analysis would be secondary and may be underpowered by coarse sampling."
+
+  - id: driver-passenger-removal-ledger
+    title: "A driver-or-passenger ledger: score every proposed cause by its human removal experiment"
+    created: 2026-11-18
+    lens: cross-domain
+    goal: understand
+    status: new
+    mechanism: >-
+      Restoration ecology settles whether a suspect is a driver of decline or a passenger of it with
+      one experiment: remove it and see whether the community recovers (10.1890/04-0669). Applied to
+      Alzheimer's, every proposed cause gets one ledger row - was it ever removed or boosted in a
+      randomised human trial, did the target move, and what share of downstream decline stopped -
+      so that amyloid (removed, about a quarter to a third of decline slowed), tau, microglial states
+      (TREM2 agonist: target engaged, no benefit, vascular side effects) and others are compared on
+      the same scale instead of by how often they correlate with disease.
+    novelty: >-
+      Reviews list failed trials by mechanism, but we found no table that scores each proposed
+      cause by removal fraction with an explicit third category for a back-seat driver (a passenger
+      that later reinforces the damage, 10.1007/s10530-011-0165-x). Checked against our own
+      catalogue: it would give several ideas a common test they currently lack.
+    against: >-
+      A failed removal does not prove a passenger. In a review of 151 ecological removal studies
+      about 31% showed no recovery or net harm even for real invaders (10.1007/s10530-017-1542-x),
+      because of wrong timing, lingering damage or a second invader moving in. Trials differ in
+      stage, dose and duration, so a single removal fraction per cause may be false precision.
+    falsify: >-
+      Build the ledger for ten proposed causes from published trial results. If it does not change
+      the ranking of at least two ideas in this catalogue, or if every row ends as "cannot tell:
+      wrong stage", the ledger adds nothing and is killed.
+    evidence: RCT
+    safety: "A reading discipline for published trials; no intervention. Not medical advice."
+    next: "Draft the first ten rows from trials already graded in evidence/claims.yaml and see whether any catalogue idea moves."
+    sources:
+      - "10.1890/04-0669"
+      - "10.1007/s10530-011-0165-x"
+      - "10.1007/s10530-017-1542-x"
+      - "10.3389/fnagi.2025.1576020"
+    history:
+      - date: 2026-11-18
+        note: "Created on the cross-domain night under the ecosystem constraint. The ecology sources were read as abstracts by a research assistant; the TREM2-agonist result is from company and press reports plus a review, not a results paper."
+
+  - id: donor-liver-apoe-natural-experiment
+    title: "Liver transplants as a natural experiment: does a donor liver's APOE type change the recipient's Alzheimer's markers?"
+    created: 2026-11-18
+    lens: cross-domain
+    goal: understand
+    status: new
+    mechanism: >-
+      Blood APOE is made by the liver and brain APOE by the brain, and after a liver transplant the
+      recipient's blood APOE switches to the donor's type while the brain's stays their own
+      (10.1172/JCI115288). Recipients of an APOE4 liver versus an APOE3 liver are therefore a human
+      test of whether APOE4 in the blood alone is a driver of Alzheimer's changes, as mice that carry
+      APOE4 only in the liver suggest (10.1038/s41593-022-01127-0), or only a marker of brain risk.
+    novelty: >-
+      Two searches (a research assistant's and ours) found no human study of dementia, cognition or
+      Alzheimer's blood markers by donor-liver APOE type; the nearest work is in mice with humanised
+      livers (10.1038/s41380-022-01548-0). A funded study of cognition after liver transplant exists
+      (about 2,000 recipients planned), so the cohort is being assembled without this question.
+    against: >-
+      Donor APOE type is not routinely recorded, so stored donor tissue or DNA would be needed.
+      Recipients are few, ill, on immune-suppressing drugs that may themselves alter dementia risk,
+      and often have liver-related confusion; follow-up is short against a decades-long disease.
+      Blood APOE also changes blood marker levels directly, so a marker difference could be
+      chemistry, not brain disease. The mouse result is from one laboratory.
+    falsify: >-
+      In a transplant cohort with donor genotype, compare recipients of APOE4 and non-APOE4 livers,
+      adjusting for the recipient's own type: no difference in the change of blood p-tau217 or in
+      amyloid imaging over five or more years, with a confidence interval excluding a modest effect,
+      means blood APOE4 is not a driver on that timescale.
+    evidence: preclinical
+    safety: "Observational; uses transplant-registry data that need an approved application and are not handled in this repository. Not medical advice."
+    next: "Find out whether any liver-transplant cognition cohort stores donor DNA or donor APOE type; this is a question for the investigators."
+    sources:
+      - "10.1172/JCI115288"
+      - "10.1038/s41593-022-01127-0"
+      - "10.1038/s41380-022-01548-0"
+    history:
+      - date: 2026-11-18
+        note: "Created on the cross-domain night. The 1991 transplant observation was confirmed through later reviews, not the original paper. A blood-stem-cell-transplant version was considered and set aside: ordinary transplants replace only about 1-25% of brain immune cells (10.1182/bloodadvances.2023010409), too little exposure for a clean test."
+
+  - id: census-closure-absolute-count-audit
+    title: "Audit brain-atlas claims that a glial cell type expands: shares of a census cannot show it"
+    created: 2026-11-18
+    lens: cross-domain
+    goal: understand
+    status: investigating
+    mechanism: >-
+      Single-nucleus atlases report each cell type as a share of the nuclei sequenced, and when
+      neurons are lost every other share rises although no cell was added - the closure problem
+      ecologists met in species censuses (10.3389/fmicb.2017.02224). Any claim that a glial state
+      increases with disease therefore needs either a reference cell type shown to be stable or an
+      absolute count per unit of tissue; our simulation shows what each analysis concludes when
+      neurons are lost and glia do not change.
+    novelty: >-
+      The statistical remedy exists (10.1038/s41467-021-27150-6) and the best-known atlas confirmed
+      its early interneuron loss against spatial imaging (10.1038/s41593-024-01774-5, agreement
+      R = 0.84 as reported). What we did not find is the same absolute-count check for the claimed
+      glial expansions, or a statement of which reference type each atlas assumed stable.
+    against: >-
+      The atlases may already handle this in their methods sections, which we did not read; the
+      spatial check they did publish compares shares with shares in part. If oligodendrocytes or
+      astrocytes are themselves lost, no reference is safe, and absolute counts are noisier and
+      depend on tissue shrinkage. Our simulation's effect sizes are assumed.
+    falsify: >-
+      Read the methods of the three large atlases. If each glial-expansion claim is already backed
+      by an absolute density or a justified stable reference, the audit is redundant and is killed.
+      If not, the open atlas's spatial counts per unit area can test one claim directly.
+    evidence: in-silico
+    safety: "Re-analysis question about published donor-level atlases; no intervention. Not medical advice."
+    next: "Read the three atlases' methods for the abundance model and reference type; list which glial claims have an absolute-count check."
+    sources:
+      - "10.3389/fmicb.2017.02224"
+      - "10.1038/s41467-021-27150-6"
+      - "10.1038/s41593-024-01774-5"
+      - "10.1016/j.cell.2023.08.039"
+    history:
+      - date: 2026-11-18
+        note: "Created and modelled on the cross-domain night (scripts/ecosystem_census_closure_2026_11_18.py): with neurons lost and glia unchanged, raw shares reported a microglial increase in 76% of simulated studies (apparent +20%); a ratio to oligodendrocytes was correct unless oligodendrocytes were also lost (then 75% false); a ratio to a stable type and absolute counts stayed quiet (1-3%), with absolute counts detecting a real 30% increase in 65% of studies against 85% for the ratio."
+
+  - id: build-before-lock-sequencing
+    title: "In a system that both builds and removes, the order of drugs matters: test build-first for synapses"
+    created: 2026-11-18
+    lens: cross-domain
+    goal: reverse
+    status: new
+    mechanism: >-
+      Bone is rebuilt and removed by coupled cells, and bone medicine found that order matters: a
+      building drug given first and then locked in with a removal-blocking drug gained far more hip
+      bone than the reverse order (at least 6% gain in 69% versus 15% of patients,
+      10.1007/s00198-021-06174-0), because blocking removal also damps building. Synapses are
+      likewise built and pruned by coupled processes - immune cells that prune also support
+      learning-driven synapse formation in mice (10.1016/j.cell.2013.11.030) - so a pruning blocker
+      given first might blunt any synapse-building treatment given after it.
+    novelty: >-
+      Combination proposals for synapse protection discuss which agents, not their order. We found
+      no animal study comparing build-then-block with block-then-build for synapses; this is a
+      prediction carried over from bone, not an observed brain effect.
+    against: >-
+      The bone result comes from comparisons across trials, not a randomised test of order, and
+      part of it reflects rebound after one drug is stopped. Adult cortex has no remodelling unit
+      like bone, synapse loss in Alzheimer's is driven by toxic proteins more than by normal
+      turnover, and no drug has yet been shown to raise synapse density in people. Pruning blockade
+      protects synapses in mouse models (10.1126/science.aad8373), which may simply outweigh any
+      order effect.
+    falsify: >-
+      A four-arm mouse study (builder then blocker, blocker then builder, both together, neither)
+      with synapse density as the readout: if order makes no difference beyond the sum of the two
+      drugs, the bone analogy does not transfer and the idea is killed.
+    evidence: none
+    safety: "Hypothesis for an animal experiment only; blocking immune pruning carries infection and autoimmunity risks in people. Not medical advice."
+    next: "Search for any published animal study that varied the order of a plasticity-promoting and a pruning-blocking treatment."
+    sources:
+      - "10.1007/s00198-021-06174-0"
+      - "10.1016/j.cell.2013.11.030"
+      - "10.1126/science.aad8373"
+    history:
+      - date: 2026-11-18
+        note: "Created on the cross-domain night. Graded none: an analogy from bone medicine with mouse support for each half but no test of the order itself. The two mouse papers are cited from memory and were not re-read on this night."

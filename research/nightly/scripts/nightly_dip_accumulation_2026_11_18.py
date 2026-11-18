@@ -22,9 +22,9 @@ Three worlds for what the spinal-fluid dip means:
     MARKER      the dip is a sampling/clearance-route shift; tissue concentration is unchanged
 Only the first can slow plaque at all.
 
-The trial arithmetic is checked by simulation. Accumulation rate and its spread are ASSUMED
-values chosen to sit inside the ranges reported for amyloid-positive, cognitively unimpaired
-people; they are parameters of this illustration, not estimates. Synthetic; not a drug claim and
+The trial arithmetic is checked by simulation. The spread of accumulation and the scan noise are
+ASSUMED round numbers, not estimates, and the A4 Centiloid figures are quoted as recalled from the
+paper - neither was re-checked against the source on this night. Synthetic; not a drug claim and
 not medical advice.
 """
 
@@ -113,14 +113,15 @@ def main() -> None:
         print(f"    slowing {s:.1%}: about {10 * s:.1f} years' worth of accumulation avoided")
     print()
 
-    print("Reading. A dip confined to the night shrinks to a few percent of the 24-hour average;")
-    print("even with steep (order 2-3) dependence of deposition on concentration the plausible")
-    print("slowing is roughly 7-19%, and only the round-the-clock upper bound reaches the 40% that")
-    print("already failed to move cognition in A4. Seeing a 7-13% slowing on PET needs thousands")
-    print("of people per arm for years. So a PET-endpoint trial is a poor test of this idea: a")
-    print("null would be uninformative and a positive would predict little clinical benefit.")
-    print("If the dip is rebound-compensated or only a marker shift, the expected effect is zero.")
-    print("Assumed spreads; the conclusion holds across a wide range because the effect is small.")
+    print("Reading. A dip confined to the night shrinks to a few percent of the 24-hour average.")
+    print("With simple deposition the slowing is 3-10%; only steep (order 2-3) dependence on")
+    print("concentration lifts it to 7-27%, and only the round-the-clock upper bound reaches the")
+    print("40% that already failed to move cognition in A4. Seeing a 3-7% slowing on PET needs")
+    print("thousands of people per arm for years; 13% still needs several hundred. So a PET trial")
+    print("is a poor test of this idea: a null would be uninformative and a positive would predict")
+    print("little clinical benefit. If the dip is rebound-compensated or only a marker shift, the")
+    print("expected effect is zero. Assumed spreads: halving or doubling them moves the sample")
+    print("sizes about four-fold either way, which does not rescue the small-effect rows.")
 
 
 if __name__ == "__main__":

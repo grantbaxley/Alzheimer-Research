@@ -59,6 +59,9 @@ lenses:
       - Which tool built for another disease (cancer, diabetes, heart failure, autoimmunity) has an unexplored mechanism in the brain?
       - What substrate does the source field actually regrow or remodel (hepatocytes, ECM, CD4 cells, myelin), and does AD have an analog - if not, the borrowed principle caps at "freeze progression", not "reverse"?
       - If you would treat-to-target a biomarker, is that marker validated as a TARGET (does lowering it improve outcomes) or only as a READOUT - and has trial-level surrogacy actually been shown?
+      - For each proposed cause, what was the human REMOVAL experiment, did the target actually move, and what share of downstream decline stopped - and does a failed removal mean "passenger", or wrong stage?
+      - Is the change you are borrowing a principle from measured as a SHARE of a census or as an absolute count - could it be produced by something else shrinking?
+      - In the source field, did the ORDER of treatments matter (build first, then lock in)? Is there a coupled build-and-remove process in the brain where order could matter too?
 
   - id: combination-timing
     name: Combinations and timing windows
