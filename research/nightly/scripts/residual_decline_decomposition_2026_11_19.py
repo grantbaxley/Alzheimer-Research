@@ -82,7 +82,7 @@ def calibrated_share(world: str) -> float:
     return DIFF_18 / difference(18, world, 1.0)
 
 
-def interaction_power(benefit_neg: float, benefit_pos: float, pos_share: float, trials: int):
+def interaction_power(benefit_neg: float, benefit_pos: float, pos_share: float, trials: float):
     sd = derive_sd()
     n_pos = [n * pos_share * trials for n in N_ARM]
     n_neg = [n * (1 - pos_share) * trials for n in N_ARM]
@@ -154,9 +154,16 @@ def main() -> None:
         p1, p2 = (interaction_power(neg, pos, 0.25, k) for k in (1, 2))
         s2 = simulated_power(neg, pos, 0.25, 2, rng)
         print(f"  {neg:>10.2f} / {pos:<4.2f}{'':<18}{p1:>8.0%}{p2:>15.0%}{s2:>17.0%}")
-    print("\n  Even if marker-positive people got NO benefit, one trial would show it only about")
-    print("  two times in three; a partial difference is close to invisible. A stratified")
-    print("  re-analysis is worth doing only pooled across trials; one trial's null means little.")
+    print("\n  The same test in a spinal-fluid SUBSTUDY (the only people with stored fluid):")
+    for n_total in (281, 410):
+        frac = n_total / sum(N_ARM)
+        p0 = interaction_power(0.60, 0.0, 0.25, frac)
+        print(f"    {n_total} people, marker-positive get NO benefit: power {p0:.0%}")
+    print("\n  Even if marker-positive people got NO benefit, one whole trial would show it only")
+    print("  about two times in three, and a substudy of a few hundred about one time in six to")
+    print("  one in five. A partial difference is close to invisible. So a 'no difference by")
+    print("  marker status' result from a substudy says almost nothing; the question needs every")
+    print("  participant (a marker from the baseline scan) and trials pooled.")
 
 
 if __name__ == "__main__":
