@@ -50,6 +50,9 @@ lenses:
       - What does the failure of a mechanism's drug actually tell us (wrong target, wrong time, wrong dose, wrong patients)?
       - Is onset better modelled as a tipping point (clearance capacity falling below aggregation rate) than as a seeding event, and would that predict hysteresis - a point past which restoring clearance no longer reverses pathology?
       - Does the modifiable genetic signal point at the causal ROOT or at a different, more leverageable node - and for a repurposing candidate, does drug-target MR support the direction the drug would push, or argue against it?
+      - Does a treatment remove a fixed SHARE of decline or a fixed SLICE (the same absolute amount at every stage)? Compare absolute, not percentage, benefit across stages before concluding it "works less" late.
+      - What does the SHAPE of benefit over time say - does it appear at full strength early (a fast switch) or grow as the target is cleared - and what does each shape imply about how much of the decline the target drives?
+      - Before reading a subgroup or substudy result, what was its power to see even the most extreme difference? If low, a null means nothing.
 
   - id: cross-domain
     name: Borrow from a field that reversed a degenerative process

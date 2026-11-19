@@ -1287,7 +1287,7 @@ ideas:
     created: 2026-10-28
     lens: combination-timing
     goal: understand
-    status: new
+    status: parked
     mechanism: >-
       Both short and long sleep associate with worse amyloid and cognition (a U-shape), which makes
       total duration a poor single axis. Tonight's timing model shows that, near a clearance
@@ -1319,6 +1319,8 @@ ideas:
     history:
       - date: 2026-10-28
         note: "Created on combination-timing night (sleep constraint), from the U-shaped duration finding plus the intermittent-clearance timing model."
+      - date: 2026-11-19
+        note: "Revisited on the causal-chain night (symptomatic focus). PARKED. Across cohorts the classic regularity measure is the least consistent rhythm predictor (null in several, and pointing the wrong way for Alzheimer's in one large analysis, 10.1186/s13195-024-01411-0); the two large analyses of the newer regularity index disagree on the shape of the curve and neither tested prediction formally (10.1212/WNL.0000000000208029; 10.1186/s12889-025-21649-z). Direction leans to consequence: rhythm decline doubles after a diagnosis of mild impairment and again after dementia (10.1016/s2666-7568(20)30015-5, abstract checked), and genetic studies find Alzheimer's risk shifting sleep but not sleep causing Alzheimer's (10.1212/WNL.0000000000010463, abstract checked). The slow-wave version has a measurement problem: night-to-night variation in scored deep sleep is 47%, mostly noise, while slow-wave power is stable (10.1093/sleep/zsaf329, abstract checked). In people with dementia, light and melatonin trials did not measurably move regularity, so regularising sleep has never actually been tested as a removal experiment. Re-open on a head-to-head comparison with a formal prediction statistic, or a study using slow-wave power variability with amyloid or tau imaging."
 
   - id: orexin-antagonist-early-window
     title: "A dual orexin-receptor antagonist tested early, with PET endpoints, to see if nightly use durably lowers accumulation"
@@ -2615,6 +2617,8 @@ ideas:
     history:
       - date: 2026-11-09
         note: "Created and modelled on the trial-design / oligodendrocyte night; the opicinumab inverted-U made concrete as a design rule."
+      - date: 2026-11-19
+        note: "Cross-reference 2026-11-19: a second human case of an upside-down dose response - the tau antisense drug's best clinical signal was at its lowest dose in two readouts (company and funder reports, not significant) - see tau-antisense-dose-inversion. The design rule (never make the top dose or a rising trend the primary test) may generalise beyond myelin repair."
   - id: remyelination-amyloid-factorial-gonogo
     title: "A 2x2 factorial in a humanized knock-in to settle whether remyelination raises or lowers amyloid"
     created: 2026-11-09
@@ -3136,6 +3140,8 @@ ideas:
     history:
       - date: 2026-11-13
         note: "Created on the frontier-scan night from the circadian revisit; a 12-month, open-data test of a confound under two existing ideas."
+      - date: 2026-11-19
+        note: "Partly answered by others (found 2026-11-19). In the public US survey data a rhythm-alignment measure lost its link to processing speed once sleep duration and total activity were adjusted for (10.1038/s41598-024-64309-9, abstract checked), and in a large UK analysis rhythm strength's link to Alzheimer's weakened after adjusting for activity volume while its link to all-cause dementia held (10.1186/s13195-026-02088-3, as reported). Both point the way this idea predicted. The planned open-data analysis is now a replication with the standard amplitude measure, not a first test, so it is less urgent."
   - id: cxcr3-tolerance-lever
     title: "Blocking T-cell entry may protect tissue without lowering tau - a disease-tolerance lever"
     created: 2026-11-13
@@ -3276,7 +3282,7 @@ ideas:
     created: 2026-11-18
     lens: cross-domain
     goal: understand
-    status: new
+    status: investigating
     mechanism: >-
       Restoration ecology settles whether a suspect is a driver of decline or a passenger of it with
       one experiment: remove it and see whether the community recovers (10.1890/04-0669). Applied to
@@ -3310,6 +3316,8 @@ ideas:
     history:
       - date: 2026-11-18
         note: "Created on the cross-domain night under the ecosystem constraint. The ecology sources were read as abstracts by a research assistant; the TREM2-agonist result is from company and press reports plus a review, not a results paper."
+      - date: 2026-11-19
+        note: "First twelve rows drafted in the log of 2026-11-19 from graded trials. Early yield: three causes have never had a true removal experiment (sleep irregularity, co-pathology, tau at a low dose), two removals moved the target with no clinical benefit, and the one partial driver (plaque) behaves like a fixed slice. It changed two catalogue entries the same night (sleep-regularity-vs-duration parked; a dose-inversion idea added), so the kill criterion is not met and the ledger continues."
 
   - id: donor-liver-apoe-natural-experiment
     title: "Liver transplants as a natural experiment: does a donor liver's APOE type change the recipient's Alzheimer's markers?"
@@ -3428,3 +3436,152 @@ ideas:
     history:
       - date: 2026-11-18
         note: "Created on the cross-domain night. Graded none: an analogy from bone medicine with mouse support for each half but no test of the order itself. The two mouse papers are cited from memory and were not re-read on this night."
+
+  - id: fixed-slice-not-fixed-share
+    title: "Plaque removal may subtract a fixed slice of decline, not a fixed share"
+    created: 2026-11-19
+    lens: causal-chain
+    goal: understand
+    status: new
+    mechanism: >-
+      In the donanemab trial the absolute benefit on the main clinical scale was the same in people
+      with low-to-medium tau (0.67 points) and, post hoc, in people with high tau (0.69 points),
+      although the high-tau group declined much faster (10.1001/jama.2023.13239). That pattern fits
+      a decline made of two parts: an amyloid-dependent slice of roughly constant size that the
+      drug removes, and a tau-linked part that grows with stage and that the drug does not touch.
+      "Percent slowing" then shrinks with stage by arithmetic, not because the drug works less.
+    novelty: >-
+      The high-tau result is usually reported as "less benefit in advanced disease". Reading it as
+      an equal absolute slice, and using that to size what a tau-directed add-on must do at each
+      stage, is our framing; we have not found it stated as a testable decomposition.
+    against: >-
+      On the trial's other main scale the absolute benefit at high tau was much smaller and not
+      significant (1.26 versus 3.25 points), so the equality may be a quirk of one scale. The
+      high-tau analysis is post hoc with a wide interval (0.20 to 1.19). Scales have floor and
+      ceiling effects that distort absolute comparisons across stages.
+    falsify: >-
+      Tabulate absolute benefit by baseline tau level for every scale in both antibody trials. If
+      absolute benefit falls with tau on most scales, the fixed-slice reading is dead and benefit
+      really does shrink with stage.
+    evidence: RCT
+    safety: "Re-reading of published trial results; no intervention. Not medical advice."
+    next: "Collect the published by-tau-level absolute differences for both antibodies on every reported scale."
+    sources:
+      - "10.1001/jama.2023.13239"
+      - "10.1056/NEJMoa2212948"
+    history:
+      - date: 2026-11-19
+        note: "Created on the causal-chain night. The two subgroup figures were re-checked against published summaries of the paper; the comparison between subgroups is ours and was not a planned trial analysis."
+
+  - id: benefit-timing-shape-test
+    title: "Read the shape of benefit over time to tell plaque mass from a fast switch"
+    created: 2026-11-19
+    lens: causal-chain
+    goal: understand
+    status: investigating
+    mechanism: >-
+      If decline tracks the amount of plaque still present, benefit should start small and grow as
+      plaque clears over many months; if the drug instead turns off a fixed part of decline within
+      weeks (for example by neutralising a soluble toxic form), benefit should appear at full
+      strength early. The two accounts fit the same 18-month result but differ at 6 months and
+      imply very different answers to how much of the decline amyloid is driving (27% versus 57%
+      in our model).
+    novelty: >-
+      The plaque-versus-soluble-form debate is old, but it is argued from biochemistry and
+      marketing claims. We found no independent analysis that fits the published visit-by-visit
+      differences of the antibody trials to competing time-shapes; the visit data are in the
+      papers' figures.
+    against: >-
+      The 6-month interval (0.05 to 0.29) includes both accounts. Early differences could come
+      from unblinding by side effects, and later ones from who stays in the trial. Our clearance
+      time constant is assumed, and long-term numbers come from an uncontrolled extension.
+    falsify: >-
+      Fit both shapes to every randomised visit (3 to 18 months) of the lecanemab and donanemab
+      trials, using each drug's own clearance curve. If neither shape is favoured once the visit
+      intervals are respected, the published data cannot answer the question and the idea is parked.
+    evidence: RCT
+    safety: "Analysis of published group-level trial results; no intervention. Not medical advice."
+    next: "Extract the visit-by-visit differences and intervals from the two trial papers and repeat the fit; add the antibody that cleared plaque slowly and failed as a third case."
+    sources:
+      - "10.1056/NEJMoa2212948"
+      - "10.1002/alz70861_108905"
+      - "10.1001/jama.2023.13239"
+    history:
+      - date: 2026-11-19
+        note: "Created and modelled on the causal-chain night (scripts/residual_decline_decomposition_2026_11_19.py). Calibrated to 0.45 points at 18 months, a fast switch predicts 0.15 at 6 months, plaque-tracking 0.08 and a nine-month downstream lag 0.03; the trial reported 0.17 (0.05 to 0.29). The lagged account is excluded (it would also need amyloid to drive more than 100% of decline); the other two are not separated by the public numbers."
+
+  - id: copathology-pooled-interaction-test
+    title: "Does a second brain disease blunt antibody benefit? Only a pooled, whole-trial test can say"
+    created: 2026-11-19
+    lens: causal-chain
+    goal: understand
+    status: new
+    mechanism: >-
+      About a fifth to nearly half of amyloid-positive symptomatic people also carry Lewy-body
+      disease, and many carry TDP-43 or vessel damage; these speed decline and are untouched by
+      plaque removal (10.1038/s41591-023-02449-7; 10.1186/s13024-025-00822-3). If that is why
+      benefit is modest, marker-positive trial participants should show smaller benefit. Our model
+      shows the test needs far more people than a spinal-fluid substudy holds, so it has to use a
+      marker every participant has (the baseline scan) and pool trials.
+    novelty: >-
+      No published antibody trial has been analysed by co-pathology; the first such analysis, in a
+      spinal-fluid substudy, was scheduled for a conference on the day this was written (as
+      reported; results not seen). Our contribution is the power statement made in advance and the
+      pooled, scan-based design.
+    against: >-
+      Measured brain diseases together explain only about 43% of the variation in late-life
+      decline (10.1093/brain/awab092), so co-pathology cannot be the whole story. Trials excluded
+      people with heavy vessel damage or Lewy-type symptoms, narrowing the range. There is no
+      validated test for TDP-43 disease in living people, and sponsors may not pool data.
+    falsify: >-
+      A pooled analysis of two or more antibody trials with a whole-trial co-pathology marker and
+      about 90% power to detect "no benefit in marker-positive people": if benefit is the same in
+      both groups, co-pathology is not what limits the drugs.
+    evidence: observational
+    safety: "Secondary analysis of existing trial data held by sponsors; no intervention. Not medical advice."
+    next: "Read the conference result when published and compare it with the power we computed; check whether any sponsor has announced a scan-based analysis."
+    sources:
+      - "10.1038/s41591-023-02449-7"
+      - "10.1186/s13024-025-00822-3"
+      - "10.1093/brain/awab092"
+      - "10.1002/ana.25123"
+    history:
+      - date: 2026-11-19
+        note: "Created and modelled on the causal-chain night. With the spread implied by the lecanemab trial (SD 2.34 points) and 25% marker-positive, a test for zero benefit in marker-positive people has about 15-20% power in a substudy of 281-410 people, 64% in one whole trial and 91% in two pooled. Prediction recorded before seeing the conference result: a substudy finding of no difference by marker status is uninformative."
+
+  - id: tau-antisense-dose-inversion
+    title: "The tau antisense drug's upside-down dose response: look for dose-related harm and test lower doses"
+    created: 2026-11-19
+    lens: causal-chain
+    goal: slow
+    status: new
+    mechanism: >-
+      In the phase 2 trial of the tau-lowering antisense drug, tau fell more at higher doses but
+      the clinical signal was strongest at the lowest dose, at 76 weeks and again at 96 weeks
+      (company and funder reports). One explanation is that benefit from lowering tau saturates
+      early while a cost rises with dose - either loss of tau's normal function or a harm of the
+      drug class given into the spinal fluid. The same class showed this in Huntington's disease,
+      where the more frequent dosing did worse than placebo with rising markers of nerve injury
+      and enlarging brain ventricles (10.1056/NEJMc2300400, as summarised).
+    novelty: >-
+      The sponsor reads the result as support for advancing the drug; commentators call it
+      unexplained. We have not seen the specific proposal to test the two cost explanations
+      against each other with dose-ordered injury markers, or to carry a dose below the phase 2
+      minimum into the next trial with a curvature test as primary.
+    against: >-
+      The simplest reading is noise: the primary endpoint was missed, the low-dose group was small
+      and the differences were not significant, and the placebo group crossed over before 96
+      weeks. Adverse events were reported as similar across doses. The Huntington's drug hits a
+      different target in a different disease.
+    falsify: >-
+      If nerve-injury markers and ventricle size in the phase 2 data show no ordering by dose, and
+      a lower dose in the next trial does no better than the higher ones, the inversion was chance.
+    evidence: RCT
+    safety: "Concerns a drug given by spinal injection in trials only; nothing here is a dosing suggestion. Not medical advice."
+    next: "When the phase 2 paper appears, read the dose-by-dose tables for nerve-injury markers and ventricle volume; check the phase 3 dose arms on the registry."
+    sources:
+      - "10.1056/NEJMc2300400"
+      - "NCT05399888"
+    history:
+      - date: 2026-11-19
+        note: "Created on the causal-chain night. The trial figures are from press releases and funder statements, not a peer-reviewed paper; the Huntington's comparison was checked only against secondary summaries. Links to remyelination-nonmonotone-trial-design, whose simulation shows a top-dose or rising-trend test has almost no power for this shape."
