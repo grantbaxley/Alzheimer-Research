@@ -48,11 +48,11 @@ def main() -> None:
     step = d6 - 6 * rate
     lo, hi = np.percentile(step, [2.5, 97.5])
     print("PART 1. Lecanemab benefit split into a lasting step and a slope")
-    print(f"  step (function restored): {np.median(step):+.2f} CDR-SB points, 95% range ")
-    print(f"      {lo:+.2f} to {hi:+.2f}")
+    print(f"  step (function restored): {np.median(step):+.2f} CDR-SB points")
+    print(f"      95% range {lo:+.2f} to {hi:+.2f}")
     r_lo, r_hi = np.percentile(rate * 12, [2.5, 97.5])
-    print(f"  slope (decline avoided): {np.median(rate) * 12:.2f} points per year, 95% range ")
-    print(f"      {r_lo:.2f} to {r_hi:.2f}")
+    print(f"  slope (decline avoided): {np.median(rate) * 12:.2f} points per year")
+    print(f"      95% range {r_lo:.2f} to {r_hi:.2f}")
     print(
         f"  For scale, the average deficit at entry was {BASELINE_DEFICIT} points, so the largest"
     )
@@ -72,17 +72,13 @@ def main() -> None:
     print(f"  {'shape':<14}{'12 wk':>8}{'28 wk':>8}{'52 wk':>8}   after stopping")
     weeks = np.array([12, 28, 52])
     decline = -weeks / 52
-    fading = 1.0 * 0.5 ** ((weeks - 12) / 16)
     rows = (
-        ("fading step", fading, "nothing to lose"),
+        ("fading step", 0.5 ** ((weeks - 12) / 16), "nothing to lose"),
         ("lasting step", np.ones(3), "kept if restored; lost if symptomatic"),
-        ("slope", 1.0 * weeks / 12 * (12 / 52) / (12 / 52), "kept"),
+        ("slope", 0.5 * weeks / 52, "kept"),  # half of the decline avoided
     )
     for name, gain, note in rows:
-        if name == "slope":
-            gain = 0.5 * weeks / 52  # half of the decline avoided
-        net = decline + gain
-        cells = "".join(f"{v:>+8.2f}" for v in net)
+        cells = "".join(f"{v:>+8.2f}" for v in decline + gain)
         print(f"  {name:<14}{cells}   {note}")
     print("  (values are change from the person's own baseline)")
     print("  A gain at 12 weeks that is gone by 52 is the fading-step shape. A lasting step and a")
