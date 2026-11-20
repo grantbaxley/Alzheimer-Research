@@ -22,6 +22,10 @@ visit.
 PART 3 shows what the three shapes look like at 12, 28 and 52 weeks for a gain of the same
 initial size, to compare against a report's time course.
 
+PART 4 converts reported "share improved" figures into the average change they imply. The
+low-tau figures are from company reports of a post hoc subgroup (18 months: conference coverage;
+3 years: press release), the placebo figure from Wilcock et al., BMJ 2000 (PMID 11110737).
+
 Aggregate published numbers and arithmetic; the two visit estimates are treated as independent,
 which overstates the uncertainty somewhat. Not medical advice.
 """
@@ -84,6 +88,30 @@ def main() -> None:
     print("  A gain at 12 weeks that is gone by 52 is the fading-step shape. A lasting step and a")
     print("  true reversal look the same until treatment stops, so a reversal claim needs a")
     print("  randomised stop: restored function stays, a symptomatic lift goes.")
+
+    print("\nPART 4. What a reported 'share of patients who improved' implies about the average")
+    print("  (if individual changes are roughly bell-shaped, share improved = share above zero)")
+    print(f"  {'report':<46}{'share':>7}{'n':>5}   implied mean change, in SDs (95% range)")
+    reports = (
+        ("low-tau group on lecanemab, 18 months", 0.60, None),
+        ("low-tau group on placebo, 18 months", 0.28, None),
+        ("low-tau group on lecanemab, 3 years", 21 / 41, 41),
+        ("placebo arm of an older drug trial, 6 months", 88 / 215, 215),
+    )
+    for name, share, n in reports:
+        z = stats.norm.ppf(share)
+        if n:
+            half = 1.96 * np.sqrt(share * (1 - share) / n)
+            lo_z, hi_z = stats.norm.ppf([share - half, share + half])
+            extra = f"{z:+.2f} ({lo_z:+.2f} to {hi_z:+.2f})"
+        else:
+            extra = f"{z:+.2f} (group size not reported)"
+        print(f"  {name:<46}{share:>7.0%}{n or '':>5}   {extra}")
+    print("  A group whose average does not change at all has about half its members 'improve'.")
+    print("  So 'half improved' means decline has stopped on average - not that function came")
+    print("  back. A reversal needs the average itself to rise, clear of its range.")
+    print("  (Coarse scales have ties - people scored as unchanged - so the true share above")
+    print("  zero is a little higher than the share reported as improved.)")
 
 
 if __name__ == "__main__":
