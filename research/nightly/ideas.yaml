@@ -506,7 +506,7 @@ ideas:
     created: 2026-10-22
     lens: inversion
     goal: understand
-    status: investigating
+    status: tested
     mechanism: >-
       Network-spreading models (including this repo's FKPP) assume tau grows autocatalytically via
       a logistic term alpha*x*(1-x), but "autocatalytic" is an assumption, not a measured human
@@ -561,6 +561,8 @@ ideas:
           does not cover - only growth vs pure diffusion; (2) real data add noise, unknown seed, and
           model misspecification. Those are the new `next`. Tonight this idea also became a component
           of the fused idea nonprogressor-rate-plus-synapse (personal tau rate as an early signal)."
+      - date: 2026-11-20
+        note: "Revisited on the reversal-biology night: TESTED, by others and by perturbation. A network growth model with regional capacities, fitted to people with three or more scans in two cohorts, finds net local growth of about 0.11-0.13 per year once amyloid and tau are both present and transport-dominated spread before that (10.1371/journal.pbio.3003241, abstract checked; rates as reported from the full text) - close to the earlier 0.14 per year (10.1126/sciadv.abh1448). The caveat this idea raised stands: with regional capacities fixed in advance, self-amplification and static vulnerability are confounded by design. Perturbation gives the practical answer instead: antibodies against tau outside cells mostly did not slow scans or decline, while lowering tau production by about half made scan signal fall below baseline (10.1001/jamaneurol.2023.3861, abstract checked). Our model (scripts/tau_knockdown_ladder_2026_11_20.py) shows a dose ladder locates the halting dose in either world but cannot prove self-amplification, and even re-growth after stopping differs only modestly. So net growth is positive; whether it is true self-amplification cannot be settled with available data and matters less than the halting dose. Continued as tau-halting-dose-ladder."
 
   - id: reserve-as-redundancy-threshold
     title: "Operationalise cognitive reserve as a measured network-redundancy quantity that predicts a tipping point"
@@ -1700,7 +1702,7 @@ ideas:
     created: 2026-10-31
     lens: modeling
     goal: reverse
-    status: new
+    status: parked
     mechanism: >-
       Most peripheral-immune interventions in AD failed (etanercept, IVIG), but a small phase-2 RCT of
       sargramostim (GM-CSF) produced a rare signal of genuine IMPROVEMENT above a patient's own
@@ -1732,6 +1734,8 @@ ideas:
     history:
       - date: 2026-10-31
         note: "Created on the modeling night (peripheral-immune constraint); the one above-baseline cognitive gain in the peripheral-immune record, flagged for replication, with its fragility recorded."
+      - date: 2026-11-20
+        note: "PARKED 2026-11-20 after reading the trial's own posted results (registry NCT01409915, checked directly). The memory-screen gain was a fading step: 17.10 at baseline, 18.55 at the end of three weeks of treatment, 18.00 at 45 days and 17.10 at 90 days, in a drug group that started lower than placebo (17.10 versus 20.75). The fuller cognitive scale moved the wrong way on drug (43.2 to 47.7 at 45 days; placebo flat) and so did the clinical rating. That is not an above-baseline gain worth replicating as such. A six-month follow-up trial (NCT04902703, about 42 people) is due to complete at the end of November 2026; re-open only if it shows a lasting gain on more than one scale."
 
   - id: clearance-vs-production-rate-limiting
     title: "Settle whether amyloid clearance is even rate-limiting before betting on clearance-boosting"
@@ -2129,6 +2133,8 @@ ideas:
     history:
       - date: 2026-11-04
         note: "Created on the reversal-biology / women night and modelled tonight (silent_engram_window toy): recoverable gain is front-loaded and capped by the surviving-neuron ceiling - the 'treat early' wall derived from alive-vs-dead rather than reversible-vs-banked damage."
+      - date: 2026-11-20
+        note: "2026-11-20: a human readout exists. The free-and-cued recall staging system separates people whose recall is rescued by cues (storage intact) from those whose recall is not. Among amyloid-positive, clinically normal people in a large prevention trial, about 50% sat in the cue-rescued stages and only about 4% in the storage-loss stages (10.1016/j.tjpad.2026.100641, as reported from the full text), so the window this idea asked about does exist in people. No study has linked the stages to synapse imaging or used them to predict treatment response. Continued as cue-rescue-recoverable-window."
   - id: resilience-is-growth-not-topology
     title: "Against an autocatalytic tau spreader, resilience lives in the growth term, not in network firebreaks"
     created: 2026-11-05
@@ -3585,3 +3591,156 @@ ideas:
     history:
       - date: 2026-11-19
         note: "Created on the causal-chain night. The trial figures are from press releases and funder statements, not a peer-reviewed paper; the Huntington's comparison was checked only against secondary summaries. Links to remyelination-nonmonotone-trial-design, whose simulation shows a top-dose or rising-trend test has almost no power for this shape."
+      - date: 2026-11-20
+        note: "2026-11-20, new detail (conference coverage and a reader's digitised figures, not sponsor tables): spinal-fluid tau fell about 52%, 59% and 65% across the three arms while scan signal fell in all three; confusion was reported in 13% at the lowest dose versus 25-28% at the higher ones and 5% on placebo, with more drop-outs and serious events at the top dose. Earlier, the first trial reported slightly larger ventricles on drug than placebo (10.1038/s41591-023-02326-3, as reported). A second way to split the two cost explanations now exists: an injectable RNA drug given under the skin lowered spinal-fluid tau by 40-73% in healthy volunteers (press coverage). If harm at high knock-down appears with that route too, it is loss of tau; if not, it is the spinal-injection drug class."
+
+  - id: step-slope-stop-signature
+    title: "Classify every benefit claim as fading step, lasting step or slope - and require a randomised stop before calling it reversal"
+    created: 2026-11-20
+    lens: reversal-biology
+    goal: reverse
+    status: investigating
+    mechanism: >-
+      Combines benefit-timing-shape-test with reversible-ceiling-staging. A quick gain that fades is
+      what placebo and practice produce; a quick gain that lasts while decline continues is restored
+      function or a symptomatic lift; no quick gain but slower decline is slowing. The first two
+      separate only when treatment is stopped: restored function stays, a symptomatic lift goes
+      (as it did within six weeks of stopping donepezil, PMID 9443470, and over a year in the
+      DOMINO trial, 10.1056/NEJMoa1106668). The size of the lasting step is a direct measure of the
+      reversible ceiling for that treatment.
+    novelty: >-
+      Delayed-start and randomised-withdrawal designs are established for telling symptomatic from
+      disease-modifying drugs. Using the same shapes as a reading rule for reversal claims, and
+      the fitted step as an estimate of how much function a treatment can restore, is our
+      combination; we found no report that fits a step to the antibody trials.
+    against: >-
+      Two randomised visits are too few to separate a small step from a slope, and the two
+      estimates are correlated. A treatment could restore function slowly, which would look like a
+      slope. Stopping a treatment that may be working raises ethical and practical problems.
+    falsify: >-
+      Apply the rule to every claim in evidence/claims.yaml with visit-by-visit data. If it cannot
+      classify most of them, or classifies a known symptomatic drug as reversal, the rule is not
+      usable and is killed.
+    evidence: RCT
+    safety: "A reading rule and trial-design suggestion; no intervention. Not medical advice."
+    next: "Extract visit-by-visit differences for both antibodies and the cholinesterase-inhibitor washout trials, and fit step and slope with proper intervals."
+    sources:
+      - "10.1056/NEJMoa2212948"
+      - "10.1056/NEJMoa1106668"
+      - "NCT01409915"
+    history:
+      - date: 2026-11-20
+        note: "Created and modelled on the reversal-biology night (scripts/step_or_slope_2026_11_20.py). From the two randomised visits in the public record, the lecanemab benefit splits into a step of +0.03 CDR-SB points (95% range -0.18 to +0.24) and a slope of 0.28 points per year: all slowing, with at most about 8% of the existing deficit restored. The sargramostim trial's posted results show a fading step on one scale only. A new uncontrolled stem-cell report shows a gain at 12 weeks that faded within a year: the fading-step shape."
+
+  - id: cue-rescue-recoverable-window
+    title: "Use cue-rescued recall as the human readout of memories that are silenced, not lost"
+    created: 2026-11-20
+    lens: reversal-biology
+    goal: reverse
+    status: new
+    mechanism: >-
+      Combines silent-engram-recoverable-window with improvement-endpoint-validation. In a
+      free-and-cued recall test, people whose recall becomes normal when given cues still hold the
+      memory and cannot retrieve it; people whose recall stays low with cues have lost storage.
+      The staging system built on this predicts progression and tracks tau and hippocampal size
+      (10.1016/j.dadm.2017.12.004; PMID 35197359). A reversal treatment should first raise free
+      recall in the cue-rescued stages, and only a rise in cued recall would mean storage rebuilt.
+    novelty: >-
+      The staging is used for prognosis and trial enrichment. A research assistant's search found
+      no study using cue rescue to predict or measure response to any treatment, and none linking
+      it to synapse imaging; the one large trial that collected it pooled its arms.
+    against: >-
+      Cue rescue may reflect attention or strategy, not silenced memory traces; the mouse work
+      reactivated cells directly, which a verbal cue does not do. The test has a ceiling and
+      practice effects, the stages have fuzzy edges, and its developer receives royalties on it.
+      Movement back to a lower stage could be noise unless alternate forms and a reliable-change
+      threshold are used.
+    falsify: >-
+      In any randomised trial that collected this test, compare stage movement between arms. If
+      no treatment, including a symptomatic drug that demonstrably lifts other scores, ever moves
+      free recall in the cue-rescued stages more than placebo, the readout does not capture
+      recoverable memory.
+    evidence: observational
+    safety: "A measurement proposal; the test is a standard paper-and-pencil memory task. Not medical advice."
+    next: "Find which completed randomised trials collected the free-and-cued test and whether stage movement by arm was ever reported."
+    sources:
+      - "10.1016/j.dadm.2017.12.004"
+      - "10.1016/j.tjpad.2026.100641"
+      - "10.1038/nature17172"
+    history:
+      - date: 2026-11-20
+        note: "Created on the reversal-biology night. Stage shares in amyloid-positive, clinically normal people (as reported from the full text, n=911): no impairment 45%, cue-rescued 37% and 14%, storage loss about 4%. Hazard of progression roughly 1.5, 1.8 and 3.0 times across those groups."
+
+  - id: tau-halting-dose-ladder
+    title: "Find the smallest cut in tau production that halts build-up, instead of the largest that is tolerated"
+    created: 2026-11-20
+    lens: reversal-biology
+    goal: stop
+    status: new
+    mechanism: >-
+      Combines identify-autocatalysis-rate with tau-antisense-dose-inversion. Tau build-up has a
+      slow net growth rate (about 0.11-0.14 per year), which means growth and clearance are nearly
+      balanced, so a modest cut in production could tip the balance. Every trial arm with scans so
+      far cut spinal-fluid tau by about half or more and scan signal fell in all of them, while
+      side effects rose with dose. The useful dose is therefore the smallest one at which scan
+      signal stops rising, which a ladder of two or three lower doses would locate.
+    novelty: >-
+      The development programme tested doses from about 50% lowering upward and is advancing them.
+      We found no proposal to locate the halting dose below that range; a crude straight-line
+      reading of digitised conference figures puts it near 30-35% lowering, which no arm with scans
+      has tested.
+    against: >-
+      The extrapolation rests on a reader's digitised figures and assumes a straight line. Scan
+      signal can fall because tissue shrinks, and ventricles were slightly larger on drug, so a
+      fall is not proof of less tau. Halting tau did not translate into clear clinical benefit, and
+      spinal-fluid tau may not track what neurons make.
+    falsify: >-
+      A trial arm with 25-35% lowering and tau scans: if scan signal keeps rising at close to the
+      placebo rate, the halting dose is not below the tested range and the idea is dead.
+    evidence: RCT
+    safety: "Concerns drugs given by injection in trials only; nothing here is a dosing suggestion. Not medical advice."
+    next: "When the phase 2 paper appears, take the sponsor's per-dose scan and spinal-fluid values and redo the interpolation with intervals."
+    sources:
+      - "10.1001/jamaneurol.2023.3861"
+      - "10.1038/s41591-023-02326-3"
+      - "10.1371/journal.pbio.3003241"
+      - "10.1126/sciadv.abh1448"
+    history:
+      - date: 2026-11-20
+        note: "Created and modelled on the reversal-biology night (scripts/tau_knockdown_ladder_2026_11_20.py). In a self-amplifying model with a five-year doubling time, the halting dose is about one minus the share of amplification that clearance already cancels; if scan signal falls at 50% lowering, that share is at least half. The same ladder locates a halting dose if tau instead comes from fixed regional sources, so the practical answer does not depend on settling the mechanism."
+
+  - id: half-improved-means-halted
+    title: "When half of a treated group 'improves', decline has stopped on average - a testable claim for the low-tau window"
+    created: 2026-11-20
+    lens: reversal-biology
+    goal: stop
+    status: new
+    mechanism: >-
+      Combines fixed-slice-not-fixed-share with practice-curve-deviation-endpoint. A group whose
+      average does not change has about half its members score better and half worse, so "51%
+      improved" in people with little tau on lecanemab at three years means the average stood
+      still, not that function returned. If plaque removal subtracts a fixed slice of decline, and
+      in people with little tau that slice is about the whole of their decline, treatment would
+      halt the disease in that window while only slowing it later.
+    novelty: >-
+      The improvement percentages are quoted by the sponsor as signs of benefit. Converting them
+      into the implied average change, and tying a "halted in the low-tau window" prediction to
+      the fixed-slice idea, is our combination.
+    against: >-
+      The low-tau group is a post hoc subgroup of about 41 people, followed open-label with no
+      concurrent placebo after 18 months and only among those who stayed. The implied average at
+      three years has a wide range (-0.36 to +0.43 SD). Coarse scales with many unchanged scores
+      blur the conversion.
+    falsify: >-
+      The placebo-controlled prevention trials now running in people with amyloid and little tau:
+      if treated groups still decline measurably on average, plaque removal does not halt disease
+      even in that window.
+    evidence: RCT
+    safety: "Re-reading of published trial summaries; no intervention. Not medical advice."
+    next: "Get the low-tau group sizes and mean changes by arm at 18 months, and compare the treated mean change with zero directly."
+    sources:
+      - "10.1056/NEJMoa2212948"
+      - "10.1002/alz70861_108905"
+    history:
+      - date: 2026-11-20
+        note: "Created and modelled on the reversal-biology night (scripts/step_or_slope_2026_11_20.py, part 4). Reported shares improved convert to implied average changes of +0.25 SD (low-tau, treated, 18 months), -0.58 SD (low-tau, placebo, 18 months) and +0.03 SD (low-tau, treated, three years). The 18-month figures are from conference coverage and the three-year figure from a company release."

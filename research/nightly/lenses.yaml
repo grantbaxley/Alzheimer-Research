@@ -96,6 +96,9 @@ lenses:
       - Can memories encoded in lost neurons be recovered at all, or only the capacity to form new ones?
       - Can the disease be staged by what is silenced-but-alive versus truly lost, so that "reversible" means the pre-ensemble-loss window - and is there a human readout (e.g. synaptic density plus cued retrieval) that separates the two?
       - Is the brain's regenerative or plasticity capacity itself sex-dimorphic (estrogen-gated, X-escape-linked), and if so is the reversal lever a modifiable context (hormonal/epigenetic state) rather than a fixed limit?
+      - Is a reported gain a fading step (placebo, practice), a lasting step (restored function or a symptomatic lift) or a slope (slowing)? Was treatment ever stopped under randomisation to see whether the gain stays?
+      - When a report says "x% of patients improved", what average change does that imply - and is it any different from standing still, where about half improve by chance?
+      - Could the measurement itself have moved the marker (a different sampling site, surgery, a device) rather than the disease?
 
   - id: trial-design
     name: Why trials fail and how to make them informative

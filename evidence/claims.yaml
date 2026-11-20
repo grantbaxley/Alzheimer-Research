@@ -204,3 +204,12 @@ claims:
     sources: [https://www.fiercebiotech.com/biotech/cassava-stops-alzheimers-program-simufilam-fails-another-phase-3]
     checked: 2026-10-18
     verified_by_us: false
+
+  - id: adipose-stem-cells-ventricular
+    claim: A patient's own fat-derived stem cells injected into the brain's ventricles improve Alzheimer's (RB-ADSC)
+    grade: D
+    effect: Uncontrolled phase 1 with 7 people enrolled; company-reported gains at 12 weeks faded within a year; figures differ between releases
+    implication: Not evidence of reversal. The blinded, saline-controlled phase 2 (115 planned, not yet recruiting) is the test.
+    sources: [https://clinicaltrials.gov/study/NCT05667649, https://clinicaltrials.gov/study/NCT07205601, https://doi.org/10.1002/alz70861_108493]
+    checked: 2026-11-20
+    verified_by_us: true
