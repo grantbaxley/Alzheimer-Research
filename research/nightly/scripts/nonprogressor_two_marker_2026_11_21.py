@@ -19,11 +19,13 @@ What can be measured:
 Each combination is scored by AUC (0.5 = coin toss, 1.0 = perfect) for predicting who stays
 well, using a model fitted on half the people and tested on the other half.
 
-ASSUMED parameters (see the night's log for the published values they sit near): personal
-growth rates with mean RATE_MEAN and between-person SD RATE_SD per year; scan test-retest error
-SCAN_SD in SUVR units, shown at three values because it differs by tracer and region; about a
-quarter of people progressing in five years. Synthetic illustration only; says nothing about any
-person.
+ASSUMED parameters (see the night's log for the published values they sit near). The key
+unknown is how much people truly differ in their rate of build-up, so two scenarios are run: a
+LOW and a HIGH between-person spread, bracketing the range implied by published scan data
+(observed spread of yearly change about 0.026 SUVR including noise; implied true spread roughly
+0.005 to 0.02). Scan test-retest error is shown at three values because it differs by tracer.
+About a quarter of people progress in five years in every scenario. Synthetic illustration only;
+says nothing about any person.
 """
 
 from __future__ import annotations
@@ -32,11 +34,12 @@ import numpy as np
 from scipy.stats import rankdata
 
 N = 40_000
-RATE_MEAN, RATE_SD = 0.06, 0.08  # per year
+RATE_MEAN = 0.06  # per year
+RATE_SPREADS = {"LOW": 0.025, "HIGH": 0.08}  # between-person SD of the yearly growth rate
 SCAN_SDS = (0.02, 0.04, 0.06)  # SUVR, test-retest
 HORIZON = 5.0
 RESERVE_SPREAD = 0.45  # log-scale spread of tolerated tau
-TOLERANCE = 0.36  # median tolerated tau burden (sets the share who progress)
+SHARE_PROGRESSING = 0.23
 
 
 def auc(score, outcome) -> float:
@@ -64,54 +67,68 @@ def score(features, y) -> float:
     return auc(np.column_stack([np.ones(len(y) - half), x[half:]]) @ beta, y[half:])
 
 
-def main() -> None:
-    rng = np.random.default_rng(0)
+def scenario(name: str, rate_sd: float, rng) -> None:
     tau0 = 0.15 * np.exp(rng.normal(0, 0.5, N))
-    rate = rng.normal(RATE_MEAN, RATE_SD, N)
+    rate = rng.normal(RATE_MEAN, rate_sd, N)
     reserve = rng.normal(0, 1, N)
 
     def tau_at(t):
         return tau0 * np.exp(rate * t)
 
-    stays_well = (tau_at(HORIZON) < TOLERANCE * np.exp(RESERVE_SPREAD * reserve)).astype(float)
+    margin = tau_at(HORIZON) / np.exp(RESERVE_SPREAD * reserve)
+    stays_well = (margin < np.quantile(margin, 1 - SHARE_PROGRESSING)).astype(float)
     true_2y = (tau_at(2.0) - tau0) / 2
     true_4y = (tau_at(4.0) - tau0) / 4
-    print(f"{N:,} synthetic amyloid-positive people; {1 - stays_well.mean():.0%} progress in")
-    print(
-        f"five years. True yearly change in scan signal: mean {true_2y.mean():.3f}, between-person"
-    )
-    print(f"SD {true_2y.std():.3f} SUVR.\n")
+    print(f"=== {name} spread of personal rates ===")
+    print(f"True yearly change in scan signal: mean {true_2y.mean():.3f}, between-person SD")
+    print(f"{true_2y.std():.3f} SUVR; {1 - stays_well.mean():.0%} progress in five years.\n")
 
-    print("A. Is a personal rate measurable? Share of the measured rate's variation that is real,")
-    print("   and AUC for predicting who stays well.\n")
-    print(f"   {'scan error (SUVR)':<20}{'rate reliability':>18}{'':>4}{'AUC':>6}")
-    heads = f"{'2 years':>9}{'4 years':>9}{'':>4}{'level':>7}{'+2y rate':>10}{'+4y rate':>10}"
-    print(f"   {'':<20}{heads}")
+    print("A. Is a personal rate measurable, and does it help predict who stays well?")
+    print("   ('repeat' = a second scan straight away, which sharpens the level but carries no")
+    print("   rate information: the fair comparison for a scan two years later)")
+    print(f"   {'scan error':<12}{'rate reliability':>18}{'':>3}{'AUC':>5}")
+    heads = f"{'2 years':>9}{'4 years':>9}{'':>3}{'level':>7}{'repeat':>8}"
+    heads += f"{'+2y rate':>10}{'+4y rate':>10}"
+    print(f"   {'(SUVR)':<12}{heads}")
     for sd in SCAN_SDS:
         level = 1 + tau0 + rng.normal(0, sd, N)
+        again = 1 + tau0 + rng.normal(0, sd, N)
         r2 = (1 + tau_at(2.0) + rng.normal(0, sd, N) - level) / 2
         r4 = (1 + tau_at(4.0) + rng.normal(0, sd, N) - level) / 4
         rel2 = np.corrcoef(r2, true_2y)[0, 1] ** 2
         rel4 = np.corrcoef(r4, true_4y)[0, 1] ** 2
-        cells = "".join(
-            f"{score(f, stays_well):>9.3f}" for f in ([level], [level, r2], [level, r4])
-        )
-        print(f"   {sd:<20}{rel2:>9.2f}{rel4:>9.2f}{'':>4}{cells}")
+        feats = ([level], [level, again], [level, r2], [level, r4])
+        aucs = [score(f, stays_well) for f in feats]
+        cells = f"{aucs[0]:>7.3f}{aucs[1]:>8.3f}{aucs[2]:>10.3f}{aucs[3]:>10.3f}"
+        print(f"   {sd:<12}{rel2:>9.2f}{rel4:>9.2f}{'':>3}{cells}")
     ceiling = score([1 + tau0, true_2y], stays_well)
     print(f"   level and rate both measured without error: AUC {ceiling:.3f}\n")
 
     sd = SCAN_SDS[1]
     level = 1 + tau0 + rng.normal(0, sd, N)
     r2 = (1 + tau_at(2.0) + rng.normal(0, sd, N) - level) / 2
-    print(f"B. What a reserve marker adds (scan error {sd} SUVR). Validity = its correlation with")
-    print("   the hidden reserve.\n")
-    print(f"   {'marker validity':<18}{'level + marker':>16}{'level + marker + 2y rate':>28}")
+    print(f"B. What a reserve marker adds (scan error {sd}). Validity = its correlation with the")
+    print("   hidden reserve.")
+    print(f"   {'validity':<12}{'level + marker':>16}{'level + marker + 2y rate':>28}")
     for validity in (0.0, 0.3, 0.5, 0.7, 1.0):
         marker = validity * reserve + np.sqrt(1 - validity**2) * rng.normal(0, 1, N)
         a, b = score([level, marker], stays_well), score([level, marker, r2], stays_well)
-        print(f"   {validity:<18}{a:>16.3f}{b:>28.3f}")
+        print(f"   {validity:<12}{a:>16.3f}{b:>28.3f}")
     everything = score([1 + tau0, reserve, true_2y], stays_well)
-    print(f"   everything known without error: AUC {everything:.3f}")
+    print(f"   everything known without error: AUC {everything:.3f}\n")
+
+
+def main() -> None:
+    rng = np.random.default_rng(0)
+    for name, rate_sd in RATE_SPREADS.items():
+        scenario(name, rate_sd, rng)
+    print("Reading. (1) Much of what a second scan adds is a better fix on the LEVEL: compare")
+    print("'repeat' with '+2y rate'. (2) If people differ little in their rate (LOW), a personal")
+    print("rate adds almost nothing beyond that, even measured perfectly. If they differ a lot")
+    print("(HIGH), it adds about 0.05-0.07 AUC, and four years between scans beats two.")
+    print("(3) A reserve marker adds about 0.03-0.04 at validity 0.5 and about 0.07 at 0.7, in")
+    print("either scenario, on top of whatever the scans give. Assumed parameters; the ordering")
+    print("and the LOW-versus-HIGH contrast are the result, not the third decimal.")
 
 
 if __name__ == "__main__":
