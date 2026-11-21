@@ -1511,7 +1511,7 @@ ideas:
     created: 2026-10-29
     lens: earliest-signal
     goal: detect
-    status: new
+    status: parked
     mechanism: >-
       Fuses two catalogue ideas - synaptic-reversal-endpoint (synaptic-integrity markers, the best
       single discriminator of progressors from non-progressors) and identify-autocatalysis-rate (a
@@ -1543,6 +1543,8 @@ ideas:
     history:
       - date: 2026-10-29
         note: "Created on earliest-signal night by fusing synaptic-reversal-endpoint + identify-autocatalysis-rate; grounded in Oh 2025 (synaptic markers best discriminator) and tonight's identifiability result (tau rate recoverable when real)."
+      - date: 2026-11-21
+        note: "Revisited on the resilience night: PARKED as stated; the surviving half is carried forward. The rate half is weak. In 761 amyloid-positive people, baseline tau imaging was a much stronger determinant of later decline than the change in tau imaging, whose contribution was marginal (10.1002/alz.70435, abstract checked), and blood-marker slopes did not beat baseline levels (10.1001/jamaneurol.2025.2974, as reported). Published scan precision implies a two-year personal rate is 20-60% real signal at best. Our model (scripts/nonprogressor_two_marker_2026_11_21.py) shows why: most of what a second scan adds is a better fix on the level, and unless people differ a lot in their rates the rate itself adds almost nothing. The synaptic half stands but is thin: one spinal-fluid ratio, hazard ratio 3.0 per SD for conversion in 168 unimpaired people with both pathologies (10.1038/s41591-025-03565-2, abstract checked), no reliability data, and it does not work in blood. No study has combined the two. Successors: level-twice-before-rate and slow-wave-power-reserve-marker."
 
   - id: down-syndrome-condensed-window-trial
     title: "Use Down syndrome's condensed, near-deterministic cascade as the fastest test of very-early amyloid lowering"
@@ -2550,6 +2552,8 @@ ideas:
     history:
       - date: 2026-11-08
         note: "Created on the repurposing / LC night; pairs the drug with the cleanest human LC engagement signal to an LC-integrity enrichment biomarker."
+      - date: 2026-11-21
+        note: "Cross-reference 2026-11-21: a cheaper enrichment marker may exist. Better locus coeruleus integrity went with more slow-wave activity (58 people) and poorer integrity with shorter, more broken sleep (39 people), as reported from abstracts, so at-home sleep physiology might stand in for specialised imaging. See brainstem-sparing-sleep-readout."
   - id: perimenopausal-maoa-window
     title: "Test whether female tau excess peaks in a perimenopausal MAO-A window, not monotonically with age"
     created: 2026-11-08
@@ -3744,3 +3748,151 @@ ideas:
     history:
       - date: 2026-11-20
         note: "Created and modelled on the reversal-biology night (scripts/step_or_slope_2026_11_20.py, part 4). Reported shares improved convert to implied average changes of +0.25 SD (low-tau, treated, 18 months), -0.58 SD (low-tau, placebo, 18 months) and +0.03 SD (low-tau, treated, three years). The 18-month figures are from conference coverage and the three-year figure from a company release."
+
+  - id: brainstem-sparing-sleep-readout
+    title: "Resilience may live in spared brainstem nuclei, with sleep physiology as their readable output"
+    created: 2026-11-21
+    lens: resilience
+    goal: understand
+    status: new
+    mechanism: >-
+      In people with the heaviest cortical tau stage, those who never became demented had much
+      less tau in the locus coeruleus and raphe nuclei than those who did (15 versus 15,
+      10.1186/s40478-025-02167-w), and more surviving locus coeruleus neurons predict slower
+      decline independent of other pathology (10.1212/WNL.0b013e3182897103). These nuclei also
+      shape deep sleep and spindles. So deep sleep may look like a tolerance factor because it
+      reads out the state of the brainstem nuclei that actually confer tolerance.
+    novelty: >-
+      Sleep is argued to be either a reserve factor or a readout of damage. Treating it as the
+      readout of a specific resilience organ reconciles the two and makes a test: the apparent
+      buffering by deep sleep should vanish once brainstem integrity is measured. A research
+      assistant found no study of sleep or sleep nuclei in resilient brains.
+    against: >-
+      The autopsy comparison is 15 people per group and measured tau deposits, not neuron counts,
+      with no sleep data. The imaging links between brainstem integrity and sleep come from
+      samples of 39 to 58. A pooled analysis of five cohorts found no link between sleep
+      architecture and later dementia (4,657 people, 10.1093/sleep/zsaf129). The imaging
+      correlations are as reported from abstracts and were not checked by us.
+    falsify: >-
+      In a cohort with brainstem imaging, sleep recordings, tau level and cognition: if deep-sleep
+      measures still buffer the effect of tau on cognition after brainstem integrity is in the
+      model, sleep is not merely its readout and the idea is dead.
+    evidence: observational
+    safety: "An analysis proposal; no intervention. Not medical advice."
+    next: "Find any cohort with both locus coeruleus imaging and overnight EEG in amyloid-positive people, and whether the mediation was tested."
+    sources:
+      - "10.1186/s40478-025-02167-w"
+      - "10.1212/WNL.0b013e3182897103"
+      - "10.1093/sleep/zsaf129"
+    history:
+      - date: 2026-11-21
+        note: "Created on the resilience night under the sleep constraint. The autopsy comparison and the five-cohort null were checked against their abstracts; the neuron-count study and the imaging links are as reported by a research assistant. A candidate sibling idea - that longer sleep and napping are the cost of coping - was dropped before entry: napping rises after diagnosis and genetic studies point from disease to napping (10.1002/alz.12636; 10.3233/JAD-220497, as reported)."
+
+  - id: slow-wave-power-reserve-marker
+    title: "Test at-home slow-wave power as the cheap 'reserve' half of a stay-well test"
+    created: 2026-11-21
+    lens: resilience
+    goal: detect
+    status: new
+    mechanism: >-
+      Predicting who stays well needs a measure of reserve alongside the amount of tau. The best
+      current one needs spinal fluid. Slow-wave power from a headband recording is stable from
+      night to night and tracks cognition in older adults (10.1093/sleep/zsaf129 for the pooled
+      null on architecture; 10.1093/sleep/zsaf329 for stability), and in one study more of it went
+      with better memory only in amyloid-positive people (10.1186/s12916-023-02811-z). Our model
+      says a reserve marker must correlate about 0.5 with true reserve to add a useful 0.03-0.04
+      to prediction, and about 0.7 to add as much as a perfect rate measurement.
+    novelty: >-
+      No study has tested whether deep sleep at baseline predicts who stays well among unimpaired
+      people with both amyloid and tau (as reported). Framing it as one half of a two-part test
+      with a stated validity bar is ours.
+    against: >-
+      The supporting study had 62 people, one night, no tau adjustment, and its amyloid-positive
+      group had more slow-wave activity, which fits compensation or over-excitability as well as
+      reserve. Tau itself produces abnormal slow waves, so the marker may only re-measure tau.
+      The five-cohort pooled analysis was null for delta power and dementia.
+    falsify: >-
+      In a cohort with at-home sleep EEG, a tau measure and three or more years of follow-up: if
+      slow-wave power adds less than 0.02 AUC to tau level for predicting who stays unimpaired,
+      it is not a usable reserve marker.
+    evidence: observational
+    safety: "A measurement proposal using a consumer-style headband; no intervention. Not medical advice."
+    next: "List cohorts that have overnight EEG plus a tau measure in unimpaired amyloid-positive people; watch the registered sound-stimulation trial that stratifies by blood p-tau217 (NCT07529015), the first design able to test whether benefit depends on pathology."
+    sources:
+      - "10.1186/s12916-023-02811-z"
+      - "10.1093/sleep/zsaf329"
+      - "10.1093/sleep/zsaf129"
+    history:
+      - date: 2026-11-21
+        note: "Created on the resilience night. Validity bar from scripts/nonprogressor_two_marker_2026_11_21.py (assumed parameters): level plus a marker of validity 0.3, 0.5, 0.7 gives AUC 0.84, 0.87, 0.90 when people differ little in rate, against 0.83 for level alone."
+
+  - id: level-twice-before-rate
+    title: "For prognosis, measure the level twice now before waiting years for a rate"
+    created: 2026-11-21
+    lens: resilience
+    goal: detect
+    status: investigating
+    mechanism: >-
+      A personal rate of tau build-up needs two scans years apart, and at published scan precision
+      a two-year rate is mostly noise. Our model shows that most of the predictive gain from the
+      second scan comes from pinning down the level better, which an immediate repeat measurement
+      gives without the wait. For a blood marker that varies 6-10% within a person from week to
+      week (10.1002/alz.13518), averaging two or three draws should sharpen prognosis the same way.
+    novelty: >-
+      Studies report that baseline levels beat slopes, and repeat-sampling studies report
+      within-person variation, but we found no proposal to use immediate repeat measurement as a
+      deliberate substitute for a slope, or a head-to-head test of the two.
+    against: >-
+      If people differ a lot in their true rates, the rate carries real extra information and
+      this shortcut loses it; our model shows a gain of 0.05-0.07 AUC from the rate in that case.
+      Scan errors on the same day may be correlated, so a repeat may sharpen less than assumed,
+      and a second scan costs money and radiation.
+    falsify: >-
+      In any dataset with three or more visits: if level plus slope predicts decline clearly
+      better than the average of the first two measurements, the personal rate matters and the
+      shortcut fails.
+    evidence: in-silico
+    safety: "A measurement-design suggestion; repeat scans add radiation dose, repeat blood draws do not. Not medical advice."
+    next: "Look for published analyses that compare an averaged baseline with a slope for blood p-tau217; several cohorts have the visits."
+    sources:
+      - "10.1002/alz.70435"
+      - "10.1002/alz.13518"
+      - "10.1093/brain/awy059"
+    history:
+      - date: 2026-11-21
+        note: "Created and modelled on the resilience night (scripts/nonprogressor_two_marker_2026_11_21.py). With scan error 0.04 SUVR and little true spread in rates: one scan AUC 0.825, an immediate repeat 0.841, a scan two years later 0.848, level and rate known perfectly 0.872. With a wide spread in rates the two-year scan reaches 0.855 against 0.797 for the repeat."
+
+  - id: short-sleeper-variant-natural-experiment
+    title: "Natural short sleepers as a test of whether less sleep, by itself, harms the brain"
+    created: 2026-11-21
+    lens: resilience
+    goal: understand
+    status: new
+    mechanism: >-
+      A few families carry variants that let them sleep four to six hours with no apparent cost.
+      If short sleep itself drove Alzheimer's changes, carriers should fare worse; in mouse models
+      two of these variants instead reduced tau and plaque (10.1016/j.isci.2022.103964), and a
+      third restored dream sleep and cut tau spread (10.1073/pnas.2221686120). That points to
+      sleep quality or efficiency, not hours, as what matters, and to these genes as candidate
+      resilience mechanisms.
+    novelty: >-
+      The mouse work is published; no human evidence on dementia in carriers was found. Gene-level
+      look-ups in two open, no-login portals were run for us tonight and showed nothing, but those
+      tests pool all damaging variants in a gene and cannot see these specific alleles.
+    against: >-
+      The variants are very rare, so there may never be enough carriers to test. The mouse groups
+      were small (3 to 17 per group) and one variant raised insoluble amyloid at an early age. All
+      the mouse work comes from one research group. Carriers may differ in many other ways.
+    falsify: >-
+      If the specific alleles can be counted in an open variant browser and carriers show the same
+      or higher dementia rates than non-carriers, or if a second laboratory fails to reproduce the
+      mouse protection, the idea is dead.
+    evidence: preclinical
+    safety: "A genetic natural experiment; not a suggestion to sleep less. Not medical advice."
+    next: "Check allele counts for the specific variants in an open population-frequency browser to see whether any human test is possible at all."
+    sources:
+      - "10.1016/j.isci.2022.103964"
+      - "10.1073/pnas.2221686120"
+    history:
+      - date: 2026-11-21
+        note: "Created on the resilience night under the sleep constraint. The mouse paper was checked against its abstract. Portal look-ups (as reported by a research assistant, not independently checked): no burden signal below p = 0.01 for the four short-sleep genes against dementia codes in one portal; nothing near significance in the other."
