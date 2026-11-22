@@ -172,11 +172,11 @@ claims:
   - id: lithium
     claim: Lithium (orotate) prevents or reverses AD
     grade: D
-    effect: Mouse reversal plus human postmortem association (Nature 2025); no human trial
-    implication: Animal-stage evidence; not a treatment claim.
-    sources: [https://www.nih.gov/news-events/nih-research-matters/lithium-levels-tied-alzheimers-disease-dementia]
-    checked: 2026-10-18
-    verified_by_us: false
+    effect: Mouse reversal plus human postmortem association (Nature 2025); a pilot RCT in 80 people with mild impairment met none of its six co-primary outcomes (2026)
+    implication: Animal-stage evidence and one small pilot that missed; not a treatment claim.
+    sources: [https://www.nih.gov/news-events/nih-research-matters/lithium-levels-tied-alzheimers-disease-dementia, https://doi.org/10.1001/jamaneurol.2026.0072]
+    checked: 2026-11-22
+    verified_by_us: true
 
   - id: blarcamesine
     claim: Blarcamesine slows AD

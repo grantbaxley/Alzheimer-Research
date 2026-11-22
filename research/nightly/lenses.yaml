@@ -133,6 +133,9 @@ lenses:
       - Can a liability be turned into a controllable variable - e.g. can the neurovascular unit, today the site of ARIA toxicity, become a pre-treatment stratifier that widens the therapeutic window?
       - Is the idea's key biomarker a validated TARGET (does moving it cause clinical benefit) or only a READOUT - and is there a drug that moved it without benefit, or an inverse dose-response, that already falsifies the target claim?
       - If the idea needs to detect IMPROVEMENT, does its readout escape the practice/retest effect (passive or practice-curve-corrected), and has it ever detected a genuine within-person recovery against a positive control?
+      - What is the base rate for this KIND of idea (for example, approved drugs with observational support), and what would a positive small trial be worth starting from that rate?
+      - Does the idea's mechanism rest on one research group? Has anyone independent reproduced the key step, and is there an independent result that contradicts it?
+      - If the idea selects people on a marker, can different readers or methods agree on who has it? If not, fix the measurement before the idea.
 
   - id: frontier-scan
     name: What is new this week

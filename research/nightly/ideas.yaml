@@ -843,6 +843,8 @@ ideas:
           a possible convergence: the RELN-COLBOS resilience variant lowers tau via Dab1 and lithium
           loss raises tau via GSK3-beta - plausibly the same kinase node. Kept evidence: preclinical;
           not promoted to promising (modest, heterogeneous, unreplicated by peer review)."
+      - date: 2026-11-22
+        note: "2026-11-22: the pilot trial in mild impairment has reported. None of its six co-primary outcomes met the pre-set threshold in 80 people; one memory test declined 0.73 against 1.42 points a year (difference 0.69, 95% range 0.01 to 1.37, p = 0.05), and serious adverse events were 29% against 23% (10.1001/jamaneurol.2026.0072, abstract checked). By tonight's base-rate model a nominal result on one of several outcomes in a small trial leaves the chance of a real effect at roughly 7-11%. A 200-person trial is registered but not recruiting (as reported). Status unchanged."
 
   - id: repurposing-credibility-gate
     title: "A standard active-comparator / regression-discontinuity bar before any observational repurposing claim is graded"
@@ -899,6 +901,8 @@ ideas:
           with a direction that argues against the drug -> criterion 4 catches a false-positive
           "protective" story). This is a PROPOSAL, not adopted; it needs owner sign-off to enter
           policy/VETTING.md."
+      - date: 2026-11-22
+        note: "Red-team night 2026-11-22: the gate's first criterion is necessary, not sufficient. The cleanest prospective test of an active-comparator health-record prediction - a diabetes drug reported to cut Alzheimer's diagnoses by 40-70% against sister drugs (10.1002/alz.14313, abstract checked) - failed in two large trials. Only 16-19% of drugs now in Alzheimer's trials pass a same-class comparison at all (10.1002/trc2.70193, abstract checked). Human-genetic support is the only feature with general evidence of raising success (about 2.6 times). The night's scoreboard and base-rate model (scripts/repurposing_prior_2026_11_22.py) put the starting chance for an approved drug with observational support at a few percent; the gate should state that number and require two pivotal-size wins before a claim is graded as established."
 
   - id: antiviral-hsv-reactivation
     title: "Antiherpes antivirals (valacyclovir) to slow Alzheimer's via the HSV-reactivation hypothesis"
@@ -1475,7 +1479,7 @@ ideas:
     created: 2026-10-29
     lens: earliest-signal
     goal: detect
-    status: new
+    status: killed
     mechanism: >-
       Fuses two catalogue ideas - sleep-regularity-vs-duration and circadian-period-enrichment. Use a
       passive, cheap, at-scale wearable sleep-regularity index as the earliest signal, and validate
@@ -1505,6 +1509,8 @@ ideas:
     history:
       - date: 2026-10-29
         note: "Created on earliest-signal night by fusing sleep-regularity-vs-duration + circadian-period-enrichment; bounded by the no-head-to-head-vs-duration gap and the null sleep-trait MR."
+      - date: 2026-11-22
+        note: "KILLED on the red-team night. This idea fused two others, and both have since failed their own tests: the cell-clock marker meant to anchor it was parked on 2026-11-13 (its key result was unadjusted for the main disease markers, unreplicated and not scalable), and sleep regularity was parked on 2026-11-19 (the weakest and least consistent rhythm predictor, with the direction of cause leaning to consequence). Its own kill clause is met as far as evidence exists: in the one cohort that tested rhythm measures against later amyloid imaging, regularity and sleep duration did not predict it (10.1001/jamaneurol.2024.1755, as reported on 2026-11-19), and no study shows regularity beating duration. Nothing remains to validate against."
 
   - id: nonprogressor-rate-plus-synapse
     title: "A two-marker non-progressor test: where you are (synaptic integrity) plus where you are going (tau rate)"
@@ -2481,7 +2487,7 @@ ideas:
     created: 2026-11-08
     lens: repurposing
     goal: slow
-    status: new
+    status: parked
     mechanism: >-
       The earliest tau seed is in the locus coeruleus, and the human-grounded mechanism there is
       MAO-A deaminating noradrenaline to the reactive aldehyde DOPEGAL, which activates asparagine
@@ -2517,12 +2523,14 @@ ideas:
     history:
       - date: 2026-11-08
         note: "Created on the repurposing / LC 'why there' night; the night's most interesting finding was that the field trialed the wrong MAO isoform (MAO-B) for a MAO-A mechanism."
+      - date: 2026-11-22
+        note: "PARKED on the red-team night, leaning to kill. (1) The mechanism rests on one research group; no independent laboratory has measured the toxic breakdown product in the locus coeruleus and shown it drives tau clipping (as reported). (2) An independent industry study found the clipped tau fragment at similar levels in Alzheimer's and control brain and only in trace amounts in tangles (10.1186/s40478-019-0831-2, abstract checked). (3) In spinal fluid the fragment ratio falls in Alzheimer's and tracks late tangle load, so it cannot serve as the early target-engagement marker our test relied on (10.1093/brain/awz346, as reported). (4) No human signal: a 542-person trial of the sister-enzyme inhibitor was null, and a drug blocking both enzymes did not reduce progression in 210 people (as reported). Several papers from the originating group carry unresolved public comments whose content we have not read; no retraction or formal finding was found. A cheap decisive test is carried forward as stored-sample-dopegal-test."
   - id: atomoxetine-lc-mri-enrichment
     title: "Repurpose atomoxetine for tau, enriching responders by locus-coeruleus neuromelanin-MRI"
     created: 2026-11-08
     lens: repurposing
     goal: slow
-    status: new
+    status: parked
     mechanism: >-
       Atomoxetine (a noradrenaline-reuptake inhibitor that raises synaptic NE) has the cleanest human
       target-engagement signal at the LC step: a 12-month biomarker RCT in MCI-due-to-AD raised CSF NE,
@@ -2554,12 +2562,14 @@ ideas:
         note: "Created on the repurposing / LC night; pairs the drug with the cleanest human LC engagement signal to an LC-integrity enrichment biomarker."
       - date: 2026-11-21
         note: "Cross-reference 2026-11-21: a cheaper enrichment marker may exist. Better locus coeruleus integrity went with more slow-wave activity (58 people) and poorer integrity with shorter, more broken sleep (39 people), as reported from abstracts, so at-home sleep physiology might stand in for specialised imaging. See brainstem-sparing-sleep-readout."
+      - date: 2026-11-22
+        note: "PARKED on the red-team night. (1) The drug is now in a 1,200-person platform trial with clinical endpoints (NCT07724132, results around 2031, as reported), so the unenriched question will be answered without us. (2) A 70,367-person health-record emulation found starting the drug was not associated with Alzheimer's risk at 5 or 10 years (10.1002/trc2.70345, abstract checked). (3) An independent mouse study found that a drug of the same class increased tau aggregates and caused memory deficits (10.1111/acel.14420, abstract checked). (4) The earlier human signal was a 5-6% fall in spinal-fluid tau on an unadjusted secondary outcome in 39 people, with no cognitive effect and more side effects (as reported). (5) The one study linking brainstem imaging to drug response, in Parkinson's disease, found people with LESS intact nuclei responded more - the opposite of enriching for intact ones. Re-open if the platform trial adds brainstem imaging."
   - id: perimenopausal-maoa-window
     title: "Test whether female tau excess peaks in a perimenopausal MAO-A window, not monotonically with age"
     created: 2026-11-08
     lens: repurposing
     goal: understand
-    status: new
+    status: parked
     mechanism: >-
       Women accumulate tau faster than men at matched amyloid, at the amyloid->tau coupling step
       (Coughlan 2025, PMID 40029638). Brain MAO-A activity (which feeds the LC DOPEGAL->AEP->tau
@@ -2589,6 +2599,8 @@ ideas:
     history:
       - date: 2026-11-08
         note: "Created on the repurposing / LC night; the honest resolution of the contradictory estrogen-MAO-A data (a perimenopausal peak, not estrogen loss) became a non-monotonic falsification test."
+      - date: 2026-11-22
+        note: "PARKED 2026-11-22 with its parent idea: the enzyme-to-tau mechanism it depends on is unreplicated outside one research group and contradicted at a key step (see maoa-dopegal-wrong-isoform-repurposing)."
   - id: remyelination-nonmonotone-trial-design
     title: "Design remyelination trials for an inverted-U dose-response, never a monotone one"
     created: 2026-11-09
@@ -2702,7 +2714,7 @@ ideas:
     created: 2026-11-10
     lens: prevention-population
     goal: slow
-    status: new
+    status: parked
     mechanism: >-
       Subclinical epileptiform activity is present in ~42% of AD and ~90% of its discharges occur in
       sleep (Vossel, Ann Neurol 2016, PMID 27696483); low-dose levetiracetam normalises hippocampal
@@ -2738,12 +2750,14 @@ ideas:
     history:
       - date: 2026-11-10
         note: "Created on the prevention-population / interneuron night; makes excitability the enrichment gate the null trials lacked, while recording that the causal MR runs the other way."
+      - date: 2026-11-22
+        note: "PARKED on the red-team night. The gate cannot yet be measured reliably: careful multi-expert review found sleep discharges in 3 of 30 people with early Alzheimer's and 1 of 30 controls, not a significant difference (10.1002/ana.78135, abstract checked), while other methods report anything from 18% to 54% in patients and up to 47% in healthy controls (as reported). The unselected trial of the low-dose drug in mild impairment was null (difference -0.10 points, 95% range -0.85 to 0.58, 164 people, 10.1002/trc2.12446, abstract checked) and the sponsor withdrew its follow-up trial. Genetic studies favour Alzheimer's causing over-excitability, not the reverse (as reported). Continued as epileptiform-marker-agreement-first."
   - id: sleep-eeg-hyperexcitability-screen
     title: "At-home overnight sleep-EEG as a cheap population screen for network hyperexcitability"
     created: 2026-11-10
     lens: prevention-population
     goal: detect
-    status: new
+    status: parked
     mechanism: >-
       ~90% of AD epileptiform discharges occur in sleep and routine awake EEG misses them (Vossel,
       Ann Neurol 2016, PMID 27696483), so a consumer/clinical OVERNIGHT sleep-EEG could triage the
@@ -2769,6 +2783,8 @@ ideas:
     history:
       - date: 2026-11-10
         note: "Created on the prevention-population / interneuron night from the finding that ~90% of discharges are in sleep, so a cheap sleep-EEG could replace MEG for triage."
+      - date: 2026-11-22
+        note: "PARKED 2026-11-22: a population screen cannot rest on a marker whose prevalence ranges from 3% to 47% in healthy people depending on method and reader (see epileptiform-gated-lev-prevention). Re-open when a fixed, validated detection method exists."
   - id: metformin-benefit-concentrates-in-high-wmh
     title: "Test whether metformin's dementia signal concentrates in the high-white-matter-burden subgroup"
     created: 2026-11-10
@@ -2805,6 +2821,8 @@ ideas:
     history:
       - date: 2026-11-10
         note: "Created on the prevention-population night from the remyelination revisit's metformin pivot; makes the metformin-dementia question a WMH-interaction test."
+      - date: 2026-11-22
+        note: "Watch dates added 2026-11-22 (as reported from registries): the 326-person metformin trial in mild impairment reached primary completion in April 2026 and has not reported, and the drug is one arm of a 1,200-person platform trial. Every other insulin-pathway drug tested at scale has failed. This idea's interaction test should be read against that prior."
   - id: reserve-indexed-titration-rate
     title: "Set the anti-amyloid titration slope per patient from baseline microbleed burden, not one schedule"
     created: 2026-11-11
@@ -3896,3 +3914,149 @@ ideas:
     history:
       - date: 2026-11-21
         note: "Created on the resilience night under the sleep constraint. The mouse paper was checked against its abstract. Portal look-ups (as reported by a research assistant, not independently checked): no burden signal below p = 0.01 for the four short-sleep genes against dementia codes in one portal; nothing near significance in the other."
+
+  - id: stored-sample-dopegal-test
+    title: "Use stored samples from a finished noradrenaline-drug trial to test the enzyme-to-tau chain cheaply"
+    created: 2026-11-22
+    lens: red-team
+    goal: understand
+    status: new
+    mechanism: >-
+      One theory holds that a breakdown product of noradrenaline in the locus coeruleus triggers
+      an enzyme that clips tau and starts tangles. A finished randomised trial of an approved
+      noradrenaline-raising drug already lowered the downstream breakdown marker in spinal fluid
+      (p < 0.0001) and lowered tau markers by about 5% (10.1093/brain/awab452). If the chain is
+      real, people whose breakdown marker fell most should show the largest fall in tau, and the
+      clipped-tau fragment should move with it. The samples exist; no new patients are needed.
+    novelty: >-
+      The trial reported the two changes separately. We found no analysis linking them person by
+      person, or measuring the clipped fragment in those samples; it would test a mechanism that
+      no independent laboratory has yet reproduced.
+    against: >-
+      Only 36 people, with a crossover design and no washout, so person-level correlations will be
+      noisy. The fragment in spinal fluid reflects late tangle load, not early enzyme activity
+      (10.1093/brain/awz346), so a null would not be decisive. The drug works on reuptake, not on
+      the enzyme, and a same-class drug worsened tau in mice (10.1111/acel.14420).
+    falsify: >-
+      If the fall in the breakdown marker does not correlate with the fall in tau markers across
+      people, and the clipped fragment does not move, the chain has no support in the only human
+      perturbation data available and the parent idea is killed.
+    evidence: RCT
+    safety: "Secondary analysis of stored trial samples held by the trial's investigators; no intervention. Not medical advice."
+    next: "Check whether the trial's stored samples and per-person marker changes are available to outside researchers; this is a question for its investigators."
+    sources:
+      - "10.1093/brain/awab452"
+      - "10.1093/brain/awz346"
+      - "10.1186/s40478-019-0831-2"
+    history:
+      - date: 2026-11-22
+        note: "Created on the red-team night as the cheapest way to settle a parked idea. The trial figures are as reported by a research assistant from the abstract and an automated full-text summary; not independently checked."
+
+  - id: epileptiform-marker-agreement-first
+    title: "Before any trial gated on silent brain discharges, fix how they are detected and show readers agree"
+    created: 2026-11-22
+    lens: red-team
+    goal: detect
+    status: new
+    mechanism: >-
+      Reported rates of silent epileptic discharges during sleep in Alzheimer's run from 10% to
+      54%, and in healthy older people from 3% to 47%, depending on the recording method and who
+      reads it. A trial that selects people on this marker inherits that uncertainty. The first
+      step is a blinded re-scoring of existing overnight recordings by three or more readers, and
+      by a fixed automated detector, to measure prevalence and agreement in amyloid-positive
+      people without symptoms.
+    novelty: >-
+      A recent case-control study ended with a call for a consensus method
+      (10.1002/ana.78135). We found no reader-agreement study specific to small sleep discharges
+      in this population, and no trial that pre-registered a detection rule before selecting
+      people on it.
+    against: >-
+      Even a reliable marker may be a consequence of the disease, as genetic studies suggest, so
+      perfect detection would not rescue the treatment idea. Automated detectors trained on
+      epilepsy may not transfer. Recordings sit in cohorts that need data applications.
+    falsify: >-
+      If blinded readers agree poorly (kappa below about 0.4) or prevalence in amyloid-positive
+      unimpaired people is under about 5%, a prevention trial cannot be enriched this way and the
+      gated-treatment idea is dead.
+    evidence: observational
+    safety: "A measurement-validation proposal using existing recordings; no intervention. Not medical advice."
+    next: "Look for any open overnight EEG dataset in older adults on which a fixed automated detector could be benchmarked without a data application."
+    sources:
+      - "10.1002/ana.78135"
+      - "10.1002/ana.24794"
+      - "10.1212/WNL.0000000000010612"
+    history:
+      - date: 2026-11-22
+        note: "Created on the red-team night from the kill attempt on epileptiform-gated-lev-prevention. Prevalence figures other than the 2026 case-control study are as reported by a research assistant from abstracts."
+
+  - id: prediction-scorecard-before-readout
+    title: "Score health-record and AI drug predictions prospectively: write down what each predicts before the trial reads out"
+    created: 2026-11-22
+    lens: red-team
+    goal: understand
+    status: new
+    mechanism: >-
+      Health-record comparisons and computer models keep nominating approved drugs for
+      Alzheimer's, and their record is judged after the fact, when failures are easy to explain
+      away. The one clean prospective case failed: a prediction of 40-70% fewer diagnoses was
+      followed by two null trials of about 1,900 people each. Recording each prediction with its
+      size and source before the randomised result arrives turns a stream of claims into a
+      measured hit rate that can discount the next one.
+    novelty: >-
+      Reviews tabulate failed trials, and one study emulated trials for drugs already in the
+      pipeline, but we found no running scorecard that fixes predictions in advance. Several
+      tests are imminent: a metformin trial has completed and not reported, and a platform trial
+      is testing two more nominated drugs.
+    against: >-
+      Few predictions ever reach a randomised test, so the hit rate will stay imprecise for years.
+      Trials test different doses, stages and outcomes from the ones the health records describe,
+      so a miss may not be a fair test. Keeping the list complete takes sustained effort.
+    falsify: >-
+      If after the next five readouts the recorded predictions do no better and no worse than the
+      base rate for all repurposing trials, the scorecard adds nothing to the base rate and can
+      be dropped.
+    evidence: observational
+    safety: "A record-keeping proposal using published predictions and trial results; no intervention. Not medical advice."
+    next: "Write the first entries: what the published health-record comparison predicts for the completed metformin trial, with its size, before the result appears."
+    sources:
+      - "10.1002/alz.14313"
+      - "10.1002/trc2.70193"
+      - "10.1038/s41467-022-35157-w"
+    history:
+      - date: 2026-11-22
+        note: "Created on the red-team night. Score so far, as compiled by a research assistant: of computational or health-record predictions later tested prospectively in a randomised trial, none succeeded; several were made after the drug had already failed."
+
+  - id: bp-benefit-vascular-not-alzheimer
+    title: "Blood-pressure lowering is the one repurposing success - test whether its benefit sits in people without Alzheimer's markers"
+    created: 2026-11-22
+    lens: red-team
+    goal: understand
+    status: new
+    mechanism: >-
+      Across 65 sizeable trials of approved medicines, the only benefit confirmed in independent
+      trials is a class effect: lowering blood pressure reduces all-cause dementia (risk ratio
+      0.85 in a trial of 33,995 people, 10.1038/s41591-025-03616-8). The endpoint is dementia of
+      any cause, and no trial shows an effect on Alzheimer's pathology. If the benefit works by
+      preventing vessel injury, it should concentrate in people with low Alzheimer's blood
+      markers, and be small or absent in those with high ones.
+    novelty: >-
+      The class effect is established. Splitting it by an Alzheimer's blood marker in the trials'
+      stored samples, to learn which disease is being prevented, is the proposal; we have not
+      found that analysis, though we have not searched the largest trial's biomarker papers.
+    against: >-
+      The largest positive trial was open-label and randomised by village, and the
+      placebo-controlled trials each missed on dementia. Vessel and Alzheimer's damage interact,
+      so a clean split may not exist. In one trial's imaging subset, intensive lowering went with
+      more impairment in people with heavy white-matter damage (noted here on 2026-11-12).
+    falsify: >-
+      If the benefit of blood-pressure lowering is the same in people with high and low
+      Alzheimer's blood markers, it is not specific to vessel disease and the split is wrong.
+    evidence: RCT
+    safety: "Secondary analysis of trial samples; blood-pressure targets are a matter for a person's own doctor. Not medical advice."
+    next: "Search for published blood-marker analyses of the large blood-pressure trials; if one exists, read whether benefit differed by marker level."
+    sources:
+      - "10.1038/s41591-025-03616-8"
+      - "PMID 30688979"
+    history:
+      - date: 2026-11-22
+        note: "Created on the red-team night from the scoreboard. The large trial's result was checked against its abstract; the second source is the earlier intensive-treatment trial, as listed in the night's scoreboard and not re-read."
