@@ -773,6 +773,8 @@ ideas:
           (Kivimaki >100% implied VE in 3 of 4 natural experiments, PMID 42754179; Wendeln 2018
           training worsened amyloid, PMID 29643512; no RCT). Not promising (effect base too weak),
           not parked/killed (the discriminating test is alive and currently favourable)."
+      - date: 2026-11-25
+        note: "2026-11-25: two developments. (1) A critique scaled the three natural experiments from 'eligible' to 'vaccinated' and found implied reductions in dementia of 18% in Wales but 177% in Australia and 84-111% in Canada - above the possible maximum - and concluded the designs are not strong evidence (10.1016/j.bbi.2026.107021, abstract checked). (2) Two randomised trials are now registered: one of about 33,600 people aged 76 and over against placebo, and an open-label one of about 162,000, reading out in 2029-2030 (as reported from registries). The mechanism question this idea asks is premature until those report. Status unchanged; tonight's ladder model gives the effect a 30% chance of being real."
   - id: lithium-microdose-target-trial
     title: "Microdose lithium for prevention, made credible by an active-comparator target-trial emulation"
     created: 2026-10-23
@@ -1598,7 +1600,7 @@ ideas:
     created: 2026-10-30
     lens: frontier-scan
     goal: detect
-    status: new
+    status: killed
     mechanism: >-
       In Down syndrome, serum beta-synuclein (a presynaptic protein) was reported elevated about two
       decades before symptoms, rising before p-tau217, NfL and GFAP, and linked to atrophy,
@@ -1628,6 +1630,8 @@ ideas:
     history:
       - date: 2026-10-30
         note: "Created on frontier-scan night from the DS serum beta-synuclein finding (Alz&Dem 2026, PMID 42768868); bounded by the age-dominates-prediction caveat (PMID 42449194)."
+      - date: 2026-11-25
+        note: "KILLED on the inversion night: the claim that this marker rises before the standard tau marker does not survive. (1) In inherited Alzheimer's, where timing can be placed against expected onset, it starts to rise about 11 years before symptoms and after amyloid (10.1002/alz.70146, abstract checked); the same paper puts spinal-fluid p-tau217 about 5 years earlier still (as reported from the full text). (2) In ordinary late-onset disease it has never been timed against p-tau217, and two analyses of one cohort found no rise in amyloid-positive people without symptoms (as reported). (3) The two-decade lead came from one cross-sectional study of 131 people that dated each marker by when patient and control curves separate; the marker was already raised in patients without amyloid. Our simulation (scripts/marker_order_artifact_2026_11_25.py) shows that method reports a lead of ten years or more in 43% of studies when one marker carries such an offset and both truly rise at the same age. (4) No study shows it adds to prediction beyond p-tau217; all blood results come from one laboratory's assay, whose run-to-run variation (about 10%) is as large as a year's change. What remains - a marker of synapse or nerve-cell injury that rises with tau - is not the early signal claimed."
 
   - id: resilience-downstream-effector
     title: "Target the downstream glial/vascular effector of resilience variants, not the variant itself"
@@ -4060,3 +4064,149 @@ ideas:
     history:
       - date: 2026-11-22
         note: "Created on the red-team night from the scoreboard. The large trial's result was checked against its abstract; the second source is the earlier intensive-treatment trial, as listed in the night's scoreboard and not re-read."
+
+  - id: months-per-dollar-ledger
+    title: "Put every low-cost option on one scale: expected months of decline deferred per 100 dollars"
+    created: 2026-11-25
+    lens: inversion
+    goal: slow
+    status: investigating
+    mechanism: >-
+      Effects are published as hazard ratios, standard-deviation gains, points on different scales
+      and percent slowing, which cannot be compared. Each can be converted into months of decline
+      or of dementia onset deferred, multiplied by a stated chance that the effect is real, and
+      divided by cost. Doing so shows which cheap options carry real weight (blood-pressure
+      lowering, a generic symptomatic drug) and which rest mostly on hope, and it makes each
+      pending trial's importance visible as the amount the table would move.
+    novelty: >-
+      Cost-effectiveness analyses exist for single interventions in formal health-economic units.
+      A plain common scale across cheap options with an explicit probability that each effect is
+      real, kept current as trials report, is what we did not find.
+    against: >-
+      The rows are measured in different people - healthy older adults, people with high blood
+      pressure, people with diagnosed disease - so the ranking is not a choice any one person
+      faces. The conversion from hazard ratio to months assumes dementia incidence doubles every
+      five years. The chances of being real are our assumptions. Product cost ignores visits,
+      monitoring and side effects.
+    falsify: >-
+      If reasonable changes to the assumed chances or the conversion reverse the order of the top
+      and bottom rows, the table carries no information beyond the raw results and is dropped.
+    evidence: RCT
+    safety: "A way of comparing published group-level results; not a recommendation to take or stop anything. Not medical advice."
+    next: "Run the sensitivity test in the kill clause; add rows as trials report (deprescribing, metformin, the vaccine trials)."
+    sources:
+      - "10.1038/s41591-025-03616-8"
+      - "10.1002/14651858.CD001190.pub3"
+      - "10.1016/j.ajcnut.2023.12.011"
+      - "10.1002/trc2.70197"
+    history:
+      - date: 2026-11-25
+        note: "Created and modelled on the inversion night (scripts/low_cost_ladder_2026_11_25.py). Expected months per 100 dollars over five years: blood-pressure lowering 22.5, generic symptomatic drug 6.5, multivitamin 3.7, speed training 1.9, shingles vaccination 1.2, plaque-removing antibody 0.01. Different populations; assumed chances of 80%, 95%, 35%, 15%, 30% and 95%."
+
+  - id: multivitamin-responder-subset
+    title: "The multivitamin effect may be a real gain in a minority with a correctable shortfall"
+    created: 2026-11-25
+    lens: inversion
+    goal: reverse
+    status: new
+    mechanism: >-
+      A daily multivitamin gave a small average gain in global cognition (+0.07 SD, 0.03 to 0.11)
+      that appeared within a year and then held, the shape of a one-time gain and not of slower
+      decline (10.1016/j.ajcnut.2023.12.011). A twelve-year trial in well-nourished male doctors
+      found nothing. Both fit one explanation: a minority of older adults have a correctable
+      shortfall in some nutrient, they gain a lot, and everyone else gains nothing. If so, the
+      average hides a genuine reversal of a reversible deficit in an identifiable subgroup.
+    novelty: >-
+      The trial reported a larger effect in people with heart disease. We have not found an
+      analysis of the effect by baseline blood nutrient levels or diet quality, which the trial's
+      stored samples would allow; that analysis may exist in papers we did not read.
+    against: >-
+      The three positive analyses are substudies of one trial, so the effect itself is not
+      independently confirmed, and by our base-rate model it has perhaps a one-in-three chance of
+      being real. Trials of single nutrients (B vitamins, vitamin D) in unselected people were
+      null. A subgroup search after the fact invites a false positive.
+    falsify: >-
+      In the trial's stored baseline samples, if the cognitive effect is no larger in people with
+      low nutrient levels than in those with adequate levels, there is no responder subset and
+      the average effect, if real, is something else.
+    evidence: RCT
+    safety: "A question about a published trial's stored samples; not a suggestion to take supplements. Not medical advice."
+    next: "Search the trial's publications for any analysis by baseline nutrient status or diet quality."
+    sources:
+      - "10.1016/j.ajcnut.2023.12.011"
+      - "10.1002/alz.12767"
+      - "PMID 24490265"
+    history:
+      - date: 2026-11-25
+        note: "Created on the inversion night. The pooled result was checked against its abstract; the null twelve-year trial and the heart-disease subgroup are as reported by a research assistant."
+
+  - id: symptomatic-step-positive-control
+    title: "Use the known gain from a generic symptomatic drug as the positive control for any 'improvement' readout"
+    created: 2026-11-25
+    lens: inversion
+    goal: detect
+    status: new
+    mechanism: >-
+      Several catalogue ideas need a readout that can detect a person getting better, and none has
+      been checked against a real improvement. One exists: starting a generic cholinesterase
+      inhibitor in diagnosed Alzheimer's produces a gain of about one point on a 30-point screen
+      (2.7 points on the fuller scale) that lasts while the drug is taken and is lost on stopping
+      (10.1002/14651858.CD001190.pub3; 10.1056/NEJMoa1106668). A new readout - an at-home test,
+      a practice-corrected score, a cue-rescue measure - should detect that gain and that loss
+      before it is trusted to detect anything subtler.
+    novelty: >-
+      The drug effect is old. Using it deliberately as a calibration standard for new improvement
+      measures, with the withdrawal as a second check, is what we did not find; digital cognitive
+      tests are usually validated against diagnosis, not against a known within-person change.
+    against: >-
+      The gain is small and varies between people, so many patients would be needed. Starting
+      treatment is not randomised in routine care, and a placebo response would be mixed in. A
+      readout tuned to this drug's effect on attention might miss other kinds of improvement.
+    falsify: >-
+      If a candidate readout cannot distinguish people starting the drug from people not starting
+      it over three months, at a sample size where the standard scale can, it is not sensitive
+      enough to serve as an improvement endpoint.
+    evidence: RCT
+    safety: "A measurement-validation design using treatment decisions made in ordinary care; not a suggestion to start or stop a medicine. Not medical advice."
+    next: "Check whether any at-home or digital cognitive test has published data from people before and after starting a cholinesterase inhibitor."
+    sources:
+      - "10.1002/14651858.CD001190.pub3"
+      - "10.1056/NEJMoa1106668"
+    history:
+      - date: 2026-11-25
+        note: "Created on the inversion night. Links to practice-curve-deviation-endpoint, cue-rescue-recoverable-window and step-slope-stop-signature, each of which needs a positive control. The review figures were checked against its abstract."
+
+  - id: turning-point-not-divergence
+    title: "Date a marker's rise by its fitted turning point, never by when patient and control curves separate"
+    created: 2026-11-25
+    lens: inversion
+    goal: detect
+    status: investigating
+    mechanism: >-
+      Claims that one blood marker rises years before another often rest on the age at which each
+      marker's patient curve separates from the control curve. That age depends on how noisy the
+      marker is, how many people were sampled at each age, and whether patients carry a constant
+      offset unrelated to the disease process - none of which is timing. Fitting each marker's
+      turning point directly, with an interval, or using repeat samples within people, measures
+      what the claim is about.
+    novelty: >-
+      Statisticians know that threshold crossings confound timing with sensitivity, but
+      marker-ordering papers still use curve separation. We found no published check of how often
+      the method invents a lead at realistic sample sizes; tonight's simulation is one.
+    against: >-
+      Real marker trajectories are not "flat, then rising", so a fitted turning point can also
+      mislead. With around 100 people the turning point is known only to within several years,
+      which may be too coarse to order markers at all. Our effect sizes are assumed.
+    falsify: >-
+      Re-analyse a published ordering claim with fitted turning points. If the ordering is
+      unchanged and the intervals do not overlap, curve separation was adequate there and the
+      warning is overstated.
+    evidence: in-silico
+    safety: "A statistical-method proposal; no intervention. Not medical advice."
+    next: "Add a within-person version to the simulation (repeat samples) and report how many people and visits are needed to order two markers five years apart."
+    sources:
+      - "10.1002/alz.71860"
+      - "10.1002/alz.70146"
+    history:
+      - date: 2026-11-25
+        note: "Created and modelled on the inversion night (scripts/marker_order_artifact_2026_11_25.py). With two markers rising at the same age in 88 patients and 43 controls, curve separation reported a lead of ten years or more in 4% of studies for identical markers, 11% when one marker was less noisy, and 43% when one carried a constant offset; matched cut-offs showed the same bias; fitted turning points showed none."

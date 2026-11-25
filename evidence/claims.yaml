@@ -83,9 +83,9 @@ claims:
     claim: Shingles vaccination lowers dementia diagnoses
     grade: B
     effect: Natural experiment (Wales), >280,000 people; -3.5 percentage points (20% relative) over 7 years
-    implication: Strong quasi-causal design, but no RCT and unknown mechanism.
-    sources: [https://med.stanford.edu/news/all-news/2025/03/shingles-vaccination-dementia]
-    checked: 2026-10-18
+    implication: Quasi-causal design repeated in three countries, but a 2026 critique finds the implied per-person effects implausibly large in two of them; randomised trials are registered and read out around 2029-2030.
+    sources: [https://med.stanford.edu/news/all-news/2025/03/shingles-vaccination-dementia, https://doi.org/10.1016/j.bbi.2026.107021]
+    checked: 2026-11-25
     verified_by_us: false
 
   - id: hearing-aids-achieve
@@ -212,4 +212,22 @@ claims:
     implication: Not evidence of reversal. The blinded, saline-controlled phase 2 (115 planned, not yet recruiting) is the test.
     sources: [https://clinicaltrials.gov/study/NCT05667649, https://clinicaltrials.gov/study/NCT07205601, https://doi.org/10.1002/alz70861_108493]
     checked: 2026-11-20
+    verified_by_us: true
+
+  - id: bp-lowering-dementia
+    claim: Lowering blood pressure with generic medicines reduces dementia
+    grade: A
+    effect: All-cause dementia risk ratio 0.85 (0.76-0.95) in a 33,995-person trial randomised by village; pooled placebo-controlled trials about 0.87
+    implication: The one repurposing benefit confirmed across independent trials. A class effect on dementia of any cause; the largest trial was open label and no trial shows an effect on Alzheimer's pathology.
+    sources: [https://doi.org/10.1038/s41591-025-03616-8, https://pubmed.ncbi.nlm.nih.gov/36282295/]
+    checked: 2026-11-25
+    verified_by_us: true
+
+  - id: multivitamin-cosmos
+    claim: A daily multivitamin improves cognition in older adults (COSMOS)
+    grade: B
+    effect: Global cognition +0.07 SD (0.03-0.11) pooled across three substudies of one trial; an independent 12-year trial found no effect
+    implication: Small and not independently confirmed; no change in blood markers of brain injury.
+    sources: [https://doi.org/10.1016/j.ajcnut.2023.12.011, https://pubmed.ncbi.nlm.nih.gov/24490265/]
+    checked: 2026-11-25
     verified_by_us: true

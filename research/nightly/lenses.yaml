@@ -16,6 +16,9 @@ lenses:
       - Where is the irreversible floor (lost neurons) at each stage, and does that set the latest point at which any reversal attempt could still work?
       - If a damaged system is bistable (a self-reinforcing loop with two stable states), does reversing it require pushing the driver BELOW where it collapsed (a hysteresis gap / over-correction), not merely removing the trigger - and is there a readout that would show the basin rather than a single threshold?
       - Is an apparent "point of no return" a true alternative-stable-state basin, or just a sharp monotone collapse (a threshold biomarker) - and which empirical signature (bimodality at matched exposure; path-dependent recovery) separates the two?
+      - On one scale - months of decline or onset deferred, times the chance the effect is real, per dollar - how do the options compare, and which pending trial would move the table most?
+      - Is a small average gain a small gain in everyone, or a large gain in a minority with something correctable? What stored sample or baseline measure would tell?
+      - When a claim says one marker rises "before" another, was timing fitted (a turning point with an interval, or repeat samples) or read off where curves separate?
 
   - id: resilience
     name: People who have the pathology but not the disease
